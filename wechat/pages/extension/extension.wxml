@@ -1,0 +1,61 @@
+<view class='con'>
+    <view class='title' bindtap='goback'>
+        <image src='../../image/icon/backwhite.svg'></image>
+    </view>
+    <view class='wfr-float'>
+        <view class='wfr-float-left'>
+            <view class='wfr-text1'>用户昵称</view>
+            <view class='wfr-text2'>{{user.nick_name}}</view>
+        </view>
+        <view class='wfr-float-right'>
+            <image src='{{user.img_url}}'></image>
+        </view>
+    </view>
+    <swiper circular="true" bind:touchstart="start" duration="500" previous-margin="80rpx" bindchange="scroll" bindanimationfinish="scrollover" next-margin="80rpx">
+        <swiper-item class="swiper-view " wx:for="{{proList}}" wx:for-index="index" wx:for-item="item">
+            <view class="wfr-swiper {{index==idx?'da':''}}">
+                <view class='{{item.style}}'>
+                    <view class='ka-posi'>
+                        <view class='ka-float'>
+                            <view class='ka-float-left'>
+                                <view class='ka-img'>
+                                    <image src='{{item.img}}'></image>
+                                </view>
+                                <view class='ka-text3'>{{item.proDec}}</view>
+                            </view>
+                            <view class='ka-float-right' bindtap='kaika'>
+                                <view class='ka-img2'>
+                                    <image src='../../image/team/regcode.svg'></image>
+                                </view>
+                                <view class='ka-text4'>开卡</view>
+                            </view>
+                        </view>
+                        <view class='ka_number'>
+                            <view wx:for="{{str}}" wx:item="{{item}}" class='number ka_{{item}}'></view>
+                        </view>
+                        <view class='beizhu'>
+                            <view>备注：</view>
+
+                            <!-- <input bindinput='set_note' placeholder='请输入备注'></input> -->
+
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class='footer'>
+        <view class='footer-cycle {{item.nick_name?"":"inuse"}}' wx:for="{{ka_obj.lie}}" wx:for-item="item">
+            <view class='footer-img ' bindtap='goto1' bindlongpress='copy' data-item='{{item}}' data-info="{{item.joincode}}">
+                <image  src='{{!!item.img_url?item.img_url:"../../image/icon/none.svg"}}'></image>
+            </view>
+            <view class='footer-con' bindtap='goto1' bindlongpress='copy' data-item='{{item}}' data-info="{{item.joincode}}">
+                <view class='footer-con-text1 '>{{item.nick_name?item.nick_name:"未注册"}}{{item.level?" ("+item.level+")":""}}</view>
+                <view class='footer-con-text2'>{{item.joincode}}</view>
+            </view>
+            <view class='shouquan shouquan1' wx:if="{{item.shouquan==1}}" bindtap='goto2' data-info="{{item}}">已授权</view>
+            <view class='shouquan shouquan2' wx:if="{{item.shouquan==0}}" bindtap='goto2' data-info="{{item}}">未授权</view>
+            <!-- <view class='shouquan shouquan3' wx:elif="{{item.username==null}}" bindtap='goto2' data-info="{{item}}">未激活</view> -->
+        </view>
+    </view>
+</view>

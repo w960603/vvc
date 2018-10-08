@@ -1,0 +1,71 @@
+page{
+    width:100%;
+}
+.content{
+    width:100%;
+    position:fixed;
+    top:0;
+    bottom:0;
+    background:rgba(0,0,0,0.56);
+    animation:donghua1 0.2s linear both;
+    z-index:999;
+}
+@keyframes donghua1{
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+}
+.wfr-content{
+    width:750rpx;
+    /* height:489rpx; */
+    background:#ffffff;
+    /* position:fixed; */
+    position:absolute;
+    bottom:0;
+    z-index:9999;
+    animation:donghua 0.2s linear both;
+    
+}
+@keyframes donghua{
+    0%{
+        bottom:-500rpx;
+        opacity:0;
+    }
+    100%{
+        bottom:0;
+        opacity:1;
+    }
+}
+
+
+
+.Self_Lifting{
+    width:100%;
+    font-size:32rpx;
+    color:#4A4A4A;
+    line-height:98rpx;
+    text-align:center;
+}
+.Self_Lifting-img{
+    width:36rpx;
+    height:36rpx;
+    position:absolute;
+    top:32rpx;
+    right:32rpx;
+}
+.Self_Lifting1{
+    width:100%;
+    overflow:hidden;
+    line-height:98rpx;
+}
+
+.wfr-confirm{
+    line-height:96rpx;
+    text-align:center;
+    color:white;
+    font-size:32rpx;
+    background:linear-gradient(90deg,rgba(255,3,3,1) 0%,rgba(246,73,21,1) 100%);
+}

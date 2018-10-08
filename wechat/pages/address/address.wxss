@@ -1,0 +1,251 @@
+page {
+    background-color: #f6f6f6;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+button {
+    display: inline-block;
+    border-radius: 50rpx;
+}
+
+.title {
+    position:fixed;
+    top:0;left:0;z-index: 2;
+    width:100%;
+    height:88rpx;
+    background-color: #f6f6f6;
+    text-align: center;
+}
+
+.title image {
+    float: left;
+    width: 48rpx;
+    height: 48rpx;
+    margin-top:20rpx;
+    margin-left:32rpx;
+}
+
+.title view {
+    display: inline-block;
+    width: 216rpx;
+    height: 88rpx;
+    margin: auto;
+    margin-left:-48rpx;
+    font-size: 36rpx;
+    color: #4a4a4a;
+    vertical-align: top;
+    line-height: 88rpx;
+}
+
+.main {
+    padding-bottom: 175rpx;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    height: 200rpx;
+    overflow-x: 0;
+    margin-bottom: 8rpx;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.content-left {
+    position: relative;
+    left: 0;
+    float: left;
+    display: flex;
+    width: 687rpx;
+    height: 108rpx;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40rpx 32rpx 52rpx 36rpx;
+    background-color: #fff;
+    transition: 0.5s;
+}
+.left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center
+}
+.content .content-main {
+    min-width: 520rpx;
+}
+
+.content .icon-left {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 30rpx;
+}
+
+.content .edit {
+    width: 32rpx;
+    height: 32rpx;
+    margin-left:20rpx;
+}
+
+.bottom{
+    display: flex;
+    margin-top:14rpx;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.top {
+    height: 50rpx;
+    font-size: 36rpx;
+}
+
+.tag {
+    
+    padding: 0 12rpx;
+    /* margin-top:8rpx; */
+    min-width:50rpx;
+    text-align: center;
+    line-height: 36rpx;
+    background-color: #5188ff;
+    font-size: 20rpx;
+    color: #fff;
+    border-radius: 50rpx;
+}
+
+.path {
+    font-size: 28rpx;
+    color: #9b9b9b;
+    line-height: 36rpx;
+    margin-left: 20rpx;
+}
+
+.name {
+    padding-right: 40rpx;
+}
+
+.on {
+    left: -280rpx;
+}
+
+.on + .additional {
+    visibility: visible;
+    right: 0;
+    opacity: 1;
+}
+
+.plus {
+    position: relative;
+    display: inline-block;
+    top: -45rpx;
+    right: 20rpx;
+    font-size: 70rpx;
+    /* vertical-align:middle; *//* line-height: 92rpx; */
+}
+
+.add-address {
+    position: relative;
+    display: inline-block;
+    top: -55rpx;
+    left: 10rpx;
+    /* line-height: 92rpx; *//* vertical-align:middle; */
+}
+
+.additional {
+    position: absolute;
+    top: 0;
+    right: -280rpx;
+    width: 280rpx;
+    transition: 0.5s;
+}
+
+.additional view {
+    float: left;
+    width: 140rpx;
+    height: 200rpx;
+    line-height: 200rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #fff;
+}
+
+.additional view:nth-child(1) {
+    background-color: #e6e6e6;
+}
+
+.additional view:nth-child(2) {
+    background-color: #f74314;
+}
+
+.set {
+    font-size: 32rpx;
+}
+
+.set switch {
+    float: right;
+    width: 96rpx;
+    height: 48rpx;
+    vertical-align: middle;
+}
+
+.save-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+}
+
+.save {
+    position: fixed;
+    bottom: 54rpx;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    width: 466rpx;
+    height: 92rpx;
+    margin: auto;
+    background: linear-gradient(-90deg, rgba(246, 71, 20, 1), rgba(255, 5, 4, 1));
+    color: #fff;
+    font-size: 32rpx;
+}
+
+.child-save {
+    width: 432rpx;
+    height: 92rpx;
+    z-index: 0;
+    opacity: 0.2;
+    box-shadow: 0 16rpx 24rpx #ff0504;
+}
+
+.edit{
+    float:right;
+}
+/* 代理地址 */
+
+.people {
+    margin:136rpx auto;
+    width: 160rpx;
+    height: 160rpx;
+    background: rgba(81, 136, 255, 1);
+    border-radius: 50%;
+    text-align: center;
+}
+.people image {
+    width: 90rpx;
+    height: 62rpx;
+    margin: 30rpx 35rpx 0rpx 35rpx;
+}
+
+.proxy_address {
+    width: 100rpx;
+    /* height:34rpx; */
+    font-size: 25rpx;
+    font-family: PingFangSC-Regular;
+    color: rgba(255, 255, 255, 1);
+    margin: -6rpx 30rpx 20rpx 30rpx;
+}

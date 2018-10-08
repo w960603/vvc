@@ -1,0 +1,33 @@
+<!--pages/commodity/commodity.wxml-->
+<tabbar selected='2'></tabbar>
+
+<view class="store" style='{{h}}'>商品</view>
+
+<!-- 适应ipx -->
+<view class='fill' style='{{fill}}'></view>
+
+<scroll-view scroll-x="true">
+    <view class="store_sun">· 防晒系列 ·</view>
+    <view class="storeList">
+        <block wx:for="{{ sunscreen }}" wx-if="{{index < sunscreen_num}}" wx:key="index" wx:for-index="index" wx:for-item="item" >
+            <image src="{{ item.img }}" class="store_img" mode='aspectFill' bindtap="jumpToDetail" data-id="{{item.id}}"></image>
+        </block>
+    </view>
+    <view class="button-wrapper more">
+        <view  bindtap="more" data-num='sunscreen_num' class="more">
+            {{loadText}}
+        </view>
+    </view>
+
+    <view class="store_sun">· 爆汗系列 ·</view>
+    <view class="storeList">
+        <block wx:for="{{ sweat }}" wx-if="{{index < sweat_num}}" wx:key="index" wx:for-index="index" wx:for-item="item" >
+            <image src="{{ item.img }}" class="store_img" mode='aspectFill' bindtap="jumpToDetail" data-id="{{item.id}}"></image>
+        </block>
+    </view>
+    <view class="button-wrapper">
+        <view bindtap="more" data-num='sweat_list_num' class="more" >
+            {{loadText}}
+        </view>
+    </view>
+</scroll-view>

@@ -1,0 +1,254 @@
+/* pages/Order/Order.wxss */
+page{
+    background:#efefef;
+}
+
+.header {
+    position: fixed;
+    top:0;left:0;
+    height:88rpx;
+    width:100vw;
+    display:flex;
+    line-height:88rpx;
+    z-index:999;
+    background:#efefef;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+.search {
+    width: 48rpx;
+    height: 48rpx;
+    /* margin: 20rpx 224rpx 20rpx 32rpx; */
+}
+
+/* .order-wrap{
+    padding-top:182rpx;
+} */
+.order_list {
+    /* width:144px; */
+    height:88rpx;line-height: 88rpx;
+    margin:  auto  ;
+    font-size: 36rpx;
+    font-family: PingFang-SC-Medium;
+    color: rgba(74, 74, 74, 1);
+    
+}
+
+.nav {
+    position:fixed;
+    z-index:99;
+   font-size:28rpx;
+    height: 74rpx;
+    line-height:74rpx;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 2rpx 0px 0px rgba(215, 215, 215, 1);
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav .nav1 {
+    font-size: 28rpx;
+    font-family: PingFang-SC-Medium;
+    color: rgba(74, 74, 74, 1);
+    line-height: 40px;
+}
+
+.nav .nav2 {
+    font-size: 28rpx;
+    font-family: PingFang-SC-Medium;
+    color: rgba(155, 155, 155, 1);
+    line-height: 40px;
+}
+
+/* 内容详情 */
+
+.order-wrap{
+    margin-top:74rpx;
+}
+
+.order{
+    display: flex;
+    flex-direction: column;
+    background-color:#fff;
+    margin-bottom:16rpx;
+}
+.order_img{
+    width:140rpx;
+    height:140rpx;
+}
+.order_num{
+    display: flex;
+    justify-content: space-between;
+    font-size:  32rpx;
+}
+.order_num image{
+    width:36rpx;
+    height:36rpx;
+    margin-right:10rpx;
+}
+.state{
+    display: flex;
+    align-items: center;
+}
+.border{
+    padding:24rpx 32rpx;
+}
+.bdb{
+    border-bottom:1rpx solid #d7d7d7; 
+}
+.icon{
+    width:28rpx;
+    height:28rpx;
+}
+.order_cont{
+    display: flex;
+
+}
+.description{
+    margin-left:24rpx;
+    color: #9B9B9B;
+}
+.title_price{
+    margin-top:-10rpx;
+}
+.title{
+    font-size: 28rpx;
+}
+.color_size{
+    display: flex;
+    padding-top:20rpx;
+    white-space: nowrap;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    justify-content: flex-start;
+}
+.right{
+    margin-left:15rpx;
+    margin-top:-3rpx;
+    font-size: 24rpx;
+}
+.right view{
+    width:380rpx;
+
+}
+.right view:nth-child(1){
+    margin-bottom:8rpx;
+}
+/* 订单列表 */
+
+.tab-item {
+    width: 33%;
+    color:#9b9b9b;
+    text-align: center;
+    display: inline-block;
+}
+.detail-top{
+    display: flex;
+    height:96rpx;
+    font-size: 32rpx;
+    color: #9b9b9b;
+    padding:12rpx;
+    border-bottom:1px solid #d7d7d7;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around
+}
+.tab-item.active {
+    color: #000;
+    position: relative;
+}
+
+.tab-item.active:after{
+    content: "";
+    display: block;
+    height:70rpx;
+    width: 130rpx;
+    margin-left:60rpx;
+    /* background: #999; */
+    border-bottom:2px solid #C5E57D;
+    position: absolute;
+    bottom: 0;
+    left: 0rpx;
+    border-radius: 5rpx;
+}
+.express-pop{
+    position:fixed;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%) ;
+}
+.express-pop .content{
+    width:686rpx;
+    height:826rpx;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 16rpx;
+    padding-bottom: 40rpx;
+}
+.express_detail{
+    width:602rpx;
+    height:706rpx;
+    padding:42rpx;
+}
+
+.detail-wrap{
+    position: absolute;
+    top:0;left:0;
+    z-index:100000;
+    height:100vh;
+    width:100vw;
+    background-color: rgba(0,0,0,.3)
+}
+.cancel{
+    margin-top:24rpx;
+    text-align: center;
+}
+.cancel-img{
+    width:64rpx;
+    height:64rpx;
+}
+.list{
+    position: relative;
+    display: flex;
+    padding-bottom:20rpx;
+}
+.list:before{
+    content:'';
+    position: absolute;
+    display:block;
+    width:2rpx;
+    height:100%;
+    left:12rpx;
+    top:10rpx;
+    background-color: #bbb;
+}
+.list-right{
+    margin-left:16rpx;
+    width:556rpx;
+    color:#9b9b9b;
+    border-bottom:1rpx solid #efefef;
+}
+.list-right view:nth-child(1){
+    font-size: 28rpx;
+    margin-bottom:8rpx;
+}
+.list-right view:nth-child(2){
+    font-size: 24rpx;
+    margin-bottom:12rpx;
+}
+.detail-top{
+    
+    background-color: #fff;
+}
+.circel{
+    position: relative;
+    z-index: 1;
+    margin-top:-5rpx;
+}
+.spot{
+    margin:20rpx 5rpx 20rpx 9rpx;
+    width:10rpx;
+    height:10rpx;
+    background-color: #ddd;
+    border-radius: 50%;
+}

@@ -1,0 +1,219 @@
+.page {
+    width: 100%;
+    min-height: 100%;
+}
+.userinfo-btn{
+    position:fixed;
+    top:0;left:0;
+    z-index:999;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0);
+}
+.content {
+    width: 100%;
+    height: 754rpx;
+    /* background:linear-gradient(to right,#228eec 0%,#2497ff 100%); */
+    position: relative;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    position: relative;
+}
+
+.header-posi {
+    width: 44rpx;
+    height: 44rpx;
+    margin-top: 20rpx;
+    position: absolute;
+    top: 70rpx;
+    left: 32rpx;
+    font-size: 0;
+}
+
+.header-posi-img {
+    position:absolute;
+    bottom:20rpx;left:24rpx;
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.header-con {
+    width: 100%;
+    margin:auto;
+    text-align: center;
+    font-size: 35rpx;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.chaxun {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin: 44rpx 0 55rpx 0;
+    /* position:relative;
+    z-index:999; */
+}
+
+.chaxun-img {
+   /* position:relative;
+    z-index:999; */
+    width: 160rpx;
+    height: 162rpx;
+}
+
+.chaipt {
+    width: 686rpx;
+    height: 90rpx;
+    background: rgba(253, 253, 253, 1);
+    border-radius: 4rpx;
+    margin: 0 auto;
+}
+
+.chaipt-input {
+    display: inline-block;
+    width: 550rpx;
+    height: 62rpx;
+    font-size: 32rpx;
+    color: rgba(155, 155, 155, 1);
+    margin: 14rpx 0 0 15rpx;
+    line-height: 90rpx;
+}
+
+.placeholder {
+    color: rgba(215, 215, 215, 1);
+}
+
+.wfr-chaipt-img {
+    display: inline-block;
+    margin: 14rpx 0 8rpx 40rpx;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.posi-qr-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -10;
+}
+
+.wfr-chaxun-tap {
+    width: 212rpx;
+    height: 72rpx;
+    font-size: 28rpx;
+    text-align: center;
+    color: rgba(74, 74, 74, 1);
+    line-height: 72rpx;
+    background: linear-gradient(180deg, rgba(252, 242, 216, 1) 0%, rgba(231, 211, 166, 1) 100%);
+    margin: 0 auto;
+    margin-top: 64rpx;
+    border-radius: 8rpx;
+}
+
+.wfr-chaxun-Result {
+    width: 686rpx;
+    height: 300rpx;
+    background: linear-gradient(180deg, rgba(255, 249, 237, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    box-shadow: 0px 4rpx 6rpx 0px rgba(215, 215, 215, 1);
+    border-radius: 8rpx 8rpx 8rpx 0px;
+    position: relative;
+    top: -28rpx;
+    margin: 0 auto;
+}
+
+.wfr-chaxun-Result1 {
+    width: 686rpx;
+    height: 300rpx;
+    background: white;
+    box-shadow: 0px 4rpx 6rpx 0px rgba(215, 215, 215, 1);
+    border-radius: 8rpx 8rpx 8rpx 0px;
+    position: relative;
+    top: -28rpx;
+    margin: 0 auto;
+}
+.noth_mess{
+    position:absolute;
+    top:46px;
+    left:116px;
+    background: none
+}
+.nothing{
+    width:200rpx;
+    height:106rpx;
+    margin:0 auto;
+    margin-top:28rpx;
+}
+.nothing image{
+    width:100%;
+    height:100%;
+}
+.message{
+    height:78rpx;
+    text-align: center;
+    line-height:78rpx;
+    font-size:24rpx;
+    color:rgba(215,215,215,1);
+}
+
+.button {
+    width: 116rpx;
+    height: 70rpx;
+    position: absolute;
+    right: 0rpx;
+    top: 275rpx;
+}
+
+.button image {
+    width: 100%;
+    height: 100%;
+}
+
+.wfr-line {
+    width: 652rpx;
+    height: 42rpx;
+    margin: 0 auto;
+}
+
+.wfr-line-img {
+    width: 100%;
+    height: 100%;
+}
+
+.wfr-result {
+    font-size: 32rpx;
+    padding-left: 20rpx;
+    padding-top: 10rpx;
+    font-weight: normal;
+    color: rgba(208, 163, 116, 1);
+    text-align: center;
+    padding: 19rpx 0;
+    margin: 0 20rpx;
+    border-bottom: 1px dashed lightgray;
+}
+
+.item_result {
+    display: flex;
+    /* justify-content:space-around; */
+    margin-left:32rpx;
+}
+
+.item_result text {
+    height: 40rpx;
+    font-size: 28rpx;
+    font-family: PingFang-SC-Medium;
+    font-weight: normal;
+    color: rgba(208, 163, 116, 1);
+    line-height: 40rpx;
+    margin-top: 36rpx;
+}
+.item_result  .result1{
+    width: 60%;
+}

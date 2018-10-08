@@ -1,0 +1,62 @@
+{
+    "pages": [
+        "pages/blank/blank",
+        "pages/login/login",
+        "pages/extension/extension",
+        "pages/home/home",
+        "pages/agency_tutorials/agency_tutorials",
+        "pages/management-child1/management-child1",
+        "pages/management/management",
+        "pages/authorization/authorization",
+        "pages/ship/ship",
+        "pages/security/security",
+        "pages/order/order",
+        "pages/detail/detail",
+        "pages/express/express",
+        "pages/head/head",
+        "pages/shop/shop",
+        "pages/scan/scan",
+        "pages/address/address",
+        "pages/my/my",
+        "pages/order_detail/order_detail",
+        "pages/add_address/add_address",
+        "pages/after_sale/after_sale",
+        "pages/settlement/settlement",
+        "pages/ship_detail/ship_detail",
+        "pages/wallet/wallet",
+        "pages/success_pay/success_pay",
+        "pages/proxy_address/proxy_address",
+        "pages/commodity/commodity",
+        "pages/accountnumber/accountnumber",
+        "pages/phone/phone"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "rgba(0,0,0,0)",
+        "navigationBarTitleText": "WeChat",
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "rgba(0,0,0,0)"
+    },
+    "tabBar": {
+        "color": "rgba(0,0,0,0)",
+        "borderStyle": "white",
+        "backgroundColor": "white",
+        "list": [
+            {
+                "pagePath": "pages/home/home"
+            },
+            {
+                "pagePath": "pages/order/order"
+            },
+            {
+                "pagePath": "pages/ship/ship"
+            },
+            {
+                "pagePath": "pages/shop/shop"
+            },
+            {
+                "pagePath": "pages/my/my"
+            }
+        ]
+    }
+}

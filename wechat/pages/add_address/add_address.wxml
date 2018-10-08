@@ -1,0 +1,52 @@
+<view class='title'  style='{{h}}'>
+    <image src='../../image/icon/back.svg' bindtap='navigateBack'></image>
+    <view>{{title}}收货地址</view>
+</view>
+<!-- <view style='{{fill}}'></view> -->
+
+<view class='main'>
+    <view class='content'>
+        <view>收货姓名： </view>
+        <input  data-name='username' bindblur='input' type='text' value='{{username}}' adjust-position='true'></input>
+    </view>
+    <view class='content'>
+        <view>手机号码： </view>
+        <input data-name='phone' bindblur='input' type='number' value='{{phone}}' adjust-position='true'></input>
+    </view>
+    <view class='content address' bindinput='search'>
+        <view>所在地址： </view>
+        <view class="section">
+            <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <!-- <view class="picker"> -->
+                <text class='region'>{{region[0]}}</text> —
+                <text class='region'>{{region[1]}}</text> —
+                <text class='region'>{{region[2]}}</text>
+            <!-- </view> -->
+            </picker>
+        </view>
+    </view>
+    <view class='content'>
+        <view>详细地址： </view>
+        <input placeholder='街道、楼牌号等' data-name='detail_address' adjust-position='true' bindblur='input' value='{{detail_address}}' type='text'></input>
+    </view>
+    <view class='tag content'>
+        <view>常用位置：</view>
+        <text wx:for="{{tags}}" class="{{item.checked==true?'on':''}}" bindtap='changechecked' data-index='{{index}}'>{{item.tag}}</text>
+    </view>
+    <!-- 填写地址 -->
+    <view class="write_address">
+        <image src="../../image/envelope.svg" class="envelope"></image>
+            <view class="intelligent">智能填写地址</view>
+            <textarea class="textarea" type="text" placeholder="请粘贴文本，例：张三，15312345688，浙江省杭州市 西湖区123号" data-name='{{add_address}}' adjust-position='true' show-confirm-bar='false' bindblur='copytext' value='{{textfield}}' ></textarea>
+            
+    </view>
+    <view class='set '>
+        <text>设为默认地址</text>
+        <switch color='#5188FF' bindtap='change_status' checked='{{isdefault}}'></switch>
+    </view>
+</view>
+<button class='save' bindtap='save'>
+    保存并使用
+</button>
+<button class='child-save save'></button>
+

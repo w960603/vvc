@@ -1,0 +1,107 @@
+<!-- 订单结算页面 -->
+<view class='content'>
+    <view class='title' style='{{h}}'>
+        <image class='title-img' src='../../image/icon/backfff.svg' bindtap='goback'></image>
+        结算订单</view>
+    <view class='wfr-local' bindtap='goto' data-back='true'>
+    
+        <view wx:if="{{wfrobj.address == null}}" class='require'>请先添加地址</view>
+        <view wx:else class='wfr-local-left'>
+            <image class='wfr-local-img' src='../../image/icon/local.svg'></image>
+        </view>
+         <view class='wfr-just'>
+            <view class='wfr-border'>
+                <text class='wfr-text1'>{{wfraddress.name}}</text>
+                <text class='wfr-text2'>{{wfraddress.phone}}</text>
+            </view>
+            <view class='wfr-center'>
+                <!-- 0：仓库 1：家 2：地址 -->
+                <view class='wfr-text3' wx:if="{{wfraddress.type == 0}}">仓库</view>
+                <view class='wfr-text3' wx:elif="{{wfraddress.type == 1}}">家</view>
+                <view class='wfr-text3' wx:elif="{{wfraddress.type == 1}}">地址</view>
+                <view class='wfr-text4'>{{wfraddress.full_address}}</view>
+            </view>
+        </view> 
+        <view class='wfr-local-right'>
+            <image class='wfr-local-right-img' src='../../image/icon/tiaozhuan.svg'></image>
+        </view>
+    </view>
+
+    <!-- 购买的商品 -->
+    <view class='wfr-margin' wx:for="{{wfrobj.order_goods}}" wx:for-index="index" wx:for-item="item">
+        <view class='mask' wx:if="{{item.child.length>1}}">
+            <view class='wfr-mask-float'>
+                <view class='wfr-shop-name'>{{item.goods}}</view>
+                <view class='wfr-shop-pice'>￥{{item.money}}</view>
+            </view>
+            <view class='wfr-mask'>
+                <image class='wfr-mask-img' src='{{item.img}}'>
+                    <view class='wfr-posi-boxshaow'></view>
+                </image>
+            </view>
+            <view class='wfr-mask-right1'>
+                <view class='wfr-border1'>
+                    <view class='wfr-mask-for' wx:for="{{item.child}}" wx:for-item="item2">
+                        <text class='wfr-text7'>{{item2.color}}</text>
+                        <text class='wfr-text8' wx:if="{{item2.size == null}}">尺码:均码</text>
+                        <text class='wfr-text8' wx:else>尺码:{{item2.size}}</text>
+                        <text class='wfr-text9'>x{{item2.num}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='wfr-bg'>
+        <view class='wfr-margin1' wx:for="{{wfrobj.order_goods}}" wx:for-index="index" wx:for-item="item">
+            <view wx:if="{{item.child.length==1}}">
+                <view class="order-list">
+                    <image src='{{item.img}}' class='order-img1'></image>
+                    <view class='list-detail'>
+                        <view class='order-title'>
+                            <view class='title1'>{{item.goods}}</view>
+                        </view>
+                        <view class='type'>{{item.child[0].color}}
+                            <text wx:if="{{item[0].size == null}}">均码</text>
+                            <text wx:else>{{item.child[0].size}}</text>
+                            <view class='num'>X{{item.child[0].num}}</view>
+                        </view>
+                        <view class='price'>￥{{item.money}}</view>
+                    </view>
+                </view>
+            </view>
+            <!-- 配送类型 -->
+        </view>
+    </view>
+    <view class='wfr-clearboth'>
+        <view class='wfr-footer-left'>配送类型</view>
+        <view class='wfr-footer-right' bindtap='express_type'>
+            {{express.menu[express.checked].name}}
+            <image class='wfr-footer-img' src='../../image/icon/tiaozhuan.svg'></image>
+        </view>
+    </view>
+    <view class='wfr-clearboth'>
+        <view class='wfr-footer-left'>配送运费</view>
+        <view class='wfr-footer-right'>实收
+            <image class='wfr-footer-img' src='../../image/icon/tiaozhuan.svg'></image>
+        </view>
+    </view>
+    <view class='wfr-Remarks'>
+        <!-- <text style='display: inline-block;text-indent:100rpx;width:50%;'>53632</text> -->
+        <text>备注:</text>
+        <textarea wx:if="{{!isshow}}" class='wfr-Remarks-textarea'  placeholder='输入备注信息（备注颜色无效，请单拍!）'></textarea>
+    </view>
+    <!-- 购买 -->
+    <view class='wfr-footer'>
+        <view class='wfr-over'>
+            <view class='wfr-over-left'>
+                <view class='wfr-text6'>总计</view>
+                <view class='wfr-pice'>￥{{wfrobj.order_goods.money_total}}</view>
+                <view class='wfr-text5'>({{wfrobj.order_goods.num_total}})件</view>
+            </view>
+            <view class='wfr-over-right' bindtap='purchase'>
+                立即订购
+            </view>
+        </view>
+    </view>
+<my-assembly wx:if="{{isshow}}" prop-menu="{{express}}"  bindclosed="express_type"></my-assembly>
+</view>

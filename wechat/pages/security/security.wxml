@@ -1,0 +1,70 @@
+<view class='page'>
+
+    <button class='userinfo-btn' wx:if='{{btn_show}}' bindgetuserinfo='getuserinfo' open-type="getUserInfo"></button>
+
+
+
+    <view class='content'>
+        <image class="posi-qr-bg" src='/image/qr_bg.svg' style='background-color:#228EEC'></image>
+        <view class='header' style='{{h}}'>
+            <image wx:if="{{showback}}" class='header-posi-img' src='../../image/icon/backwhite.svg' bindtap="goback"></image>
+            <view class='header-con' bindtap='lalala'>防伪查询 </view>
+        </view>
+        <view class="button" bindtap='tosecurity'>
+            <image src="../../image/icon/authorizationbutton.svg"></image>
+        </view>
+        <view class='chaxun'>
+            <image class='chaxun-img' src='/image/chalogo.svg'></image>
+        </view>
+        <view class='chaipt'>
+            <input class='chaipt-input' value="{{qrcode}}" adjust-position='true' bindinput='chaxuninput' placeholder="请输入12位查询码" placeholder-class='placeholder'></input>
+            <image bindtap='QR_code' class='wfr-chaipt-img' src='../../image/scaveng.svg'></image>
+        </view>
+        <view class='wfr-chaxun-tap' bindtap='chaxun'>立即查询</view>
+    </view>
+    <view class='wfr-chaxun-Result' wx:if="{{isshow}}">
+        <view class='wfr-result'>查询结果</view>
+        <!--<view class='wfr-line'>
+                <image class='wfr-line-img' src='../../image/resulrline.svg'></image>
+            </view>-->
+        <view class='wfr-chaxun-float'>
+            <view class='wfr-chaxun-left'>查询用户:</view>
+            <view class='wfr-chaxun-img'>
+                <view>
+                    <image src='{{object1.img_url}}'></image>
+                    <text class='wfr-chaxun-name1'>{{object1.nick_name}}</text>
+                </view>
+            </view>
+            <!-- 274112080015 -->
+        </view>
+        <view class='wfr-chaxun-float'>
+            <view class='wfr-chaxun-left'>查询号码:</view>
+            <view class='wfr-chaxun-img' bindtap="">{{object1.phone}}</view>
+        </view>
+        <view class='wfr-chaxun-float'>
+            <view class='wfr-chaxun-left'>查询时间:</view>
+            <view class='wfr-chaxun-img'>{{object1.time}}</view>
+        </view>
+        <view class='wfr-chaxun-float' wx:if='{{object1.owner}}'>
+            <view class='wfr-chaxun-left'>所属团队:</view>
+            <view class='wfr-chaxun-img'>【{{object1.owner}}】团队</view>
+        </view>
+        <view class='wfr-chaxun-float'>
+            <view class='wfr-chaxun-left'>查询结果:</view>
+            <view class='wfr-chaxun-img-red'>{{object1.msg}}</view>
+        </view>
+    </view>
+
+    
+</view>
+<view class='record' wx:if='{{newly.length}}'>
+        <view class='record-title'>最近查询记录</view>
+        <scroll-view  scroll-x="{{true}}" >
+            <view class='record-item' wx:for='{{newly}}'>
+                <image src='{{item.img_url}}' class='user-img'></image>
+                <view class='nick-name'>{{item.nick_name}}</view>
+                <view class='date'>{{item.time}}</view>
+            </view>
+
+        </scroll-view>
+    </view>

@@ -1,0 +1,201 @@
+
+.wfr-page{
+  width:100%;
+  min-height:100%;
+}
+.wfr-content{
+  width:100%;
+  height:615rpx;
+  position:relative;
+}
+.wfr-content-img{
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  z-index:-5;
+}
+.wfr-title{
+    display: flex;
+    align-items: center;
+    width:100%;
+    height:88rpx;
+    line-height:88rpx;
+    position:relative;
+}
+.wfr-title-img{
+  width:48rpx;
+  height: 48rpx;
+  position: absolute;
+  left:32rpx;
+}
+.wfr-mywallet{
+  width:100%;
+  height: auto;
+  font-size:36rpx;
+  text-align: center;
+  color:white;
+}
+.wfr-wallte-float{
+  padding:0 32rpx 0 32rpx;
+  width:100%;
+  height:150rpx;
+  overflow:hidden;
+}
+.wfr-wallte-left{
+  width:80%;
+  height:150rpx;
+  float:left;
+}
+.wfr-Name{
+  width:100%;
+  height:60rpx;
+  line-height:60rpx;
+  font-size:24rpx;
+  color:rgba(255,255,255,0.8);
+}
+.wfr-nameuser{
+  width:100%;
+  height:80rpx;
+  font-size:48rpx;
+  color:rgba(255,255,255,1);
+}
+.wfr-wallte-right{
+  width:20%;
+  height:150rpx;
+  float:right;
+  line-height:150rpx;
+}
+.wfr-wallteImg{
+  display:block;
+  margin-top:38rpx;
+  border:3rpx solid white;
+  width:84rpx;
+  height:84rpx;
+  border-radius:50%;
+}
+.wfr-rmb{
+  width:90%;
+  height:370rpx;
+  margin:10rpx auto;
+  background:rgba(255,255,255,1);
+  box-shadow:0rpx 4rpx 60rpx 0rpx rgba(39,52,125,0.25);
+  border-radius:24rpx;
+  position: relative;
+  overflow:hidden;
+}
+.wfr-rmb-bg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:91%;
+  height:343rpx;
+  margin:0 auto;
+  padding:34rpx 0 0 62rpx;
+
+  background:rgba(255,255,255,0.73);
+  border-radius:24rpx;
+}
+.wfr-wallet-rmb{
+  font-size:32rpx;
+  font-weight:600;
+  opacity:0.8;
+  margin-bottom:40rpx;
+  color:rgba(33,44,103,1);
+}
+.wfr-RechargeRmb{
+  height:90rpx;
+   overflow:hidden;
+   margin-bottom:30rpx;
+}
+.wfr-wallet-text1{
+  float:left;
+  width:128rpx;
+  height:54rpx;
+  font-size:24rpx;
+  line-height:54rpx;
+  text-align:center;
+  background:rgba(251,167,3,1)!important;
+  border-radius:16rpx;
+  color:white;
+}
+.wfr-wallet-text2{
+  float:left;
+  height:54rpx;
+  line-height:54rpx;
+  font-size:60rpx;
+  padding-left:15rpx;
+  /* padding-bottom:50rpx; */
+  font-weight:500;
+  color:rgba(33,44,104,1);
+}
+.wfr-Record-order{
+  font-size:28rpx;
+  height:50rpx;
+  margin-left:64rpx;
+  line-height:100rpx;
+  color:rgba(33,44,103,1);
+}
+.wfr-Record-data{
+  margin:30rpx 0 30rpx 64rpx;
+  font-size:24rpx;
+  color:rgba(142,142,147,1);
+}
+.wfr-mywallet-footer{
+  width:100%;
+  height: auto;
+  background:rgba(245,245,245,0.8);
+}
+.wfr-order{
+  width:100%;
+  height: auto;
+  padding-top:20rpx;
+  background:rgba(245,245,245,0.8);
+}
+.orderlist{
+  width:100%;
+  height:120rpx;
+  padding-top: 34rpx;
+  background:white;
+  /* box-shadow:1rpx 10rpx 50rpx #ccc; */
+}
+.orderlist-float{
+  width:100%;
+  height:60rpx;
+  overflow:hidden;
+}
+.orderlist-left{
+  float:left;
+  font-size:26rpx;
+  color:rgba(65,65,65,1);
+  padding-left:32rpx; 
+}
+.orderlist-right{
+  float:right;
+  font-size:26rpx;
+  font-weight:600;
+  padding-right:32rpx; 
+  color:rgba(208,2,27,1);
+}
+.orderlist-text1{
+    height: 30rpx;
+  font-size:20rpx;
+  padding:0 32rpx;
+  color:rgba(155,155,155,1);
+}
+.wfr-content-img1{
+  z-index:-4;
+margin-left:-45rpx;
+filter:blur(10rpx);
+margin-top:-247rpx;
+opacity:0.4;
+height:615rpx;
+width:750rpx;
+}
+
+.text-left{
+    float: left;
+}
+.text-right{
+    float:right;
+}

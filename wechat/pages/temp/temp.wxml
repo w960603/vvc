@@ -1,0 +1,10 @@
+<view class='just'>
+  <view data-index='{{index}}' bindtap='click' wx:for-index="index" wx:for='{{image}}'>
+    <image src='{{selected==index?item.img_active:item.img}}'></image>
+    <view class='tabbar-title'>{{item.title}}</view>
+  </view>
+  <view class='circle' data-index='2' bindtap='click' > 
+    <image src='{{selected==2?image[2].img_active:image[2].img}}'></image>
+ </view>
+</view>
+ 

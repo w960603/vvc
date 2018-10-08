@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "my-component": "../ship_search/ship_search",
+        "header": "../head/head"
+    }
+}

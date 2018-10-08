@@ -1,0 +1,223 @@
+<!--pages/Order/Order.wxml-->
+
+<tabbar selected='1'></tabbar>
+
+<view style="backgeound:#EFEFEF">
+    <view class="header" style='{{h}}'>
+
+        <view class="order_list">订单列表</view>
+    </view>
+    <view style='{{fill}}'></view>
+    <view>
+        <scroll-view scroll-x="true" class="nav" scroll-left="{{scrollLeft}}">
+            <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">全部订单</view>
+            <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">已完成</view>
+            <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">未完成</view>
+        </scroll-view>
+        <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:100vh  ; z-index:0">
+            <swiper-item style="overflow:scroll">
+                <!-- 订单部分 -->
+                <!-- 全部订单 -->
+                <view class='order-wrap'>
+                    <view class="order" wx:for="{{ orderCont }}" wx:for-item="item" data-id='{{item.id}}'>
+                        <view class="order_num" bindtap='order_num'>
+                            <text class="number">订单编号：{{item.time }}</text>
+                            <block wx:if="{{item.order_status== -1}}">
+                                <text class="state">订单取消</text>
+                            </block>
+                            <block wx:elif="{{item.order_status== 1}}">
+                                <text class="state">等待付款</text>
+                            </block>
+                            <block wx:elif="{{item.order_status== 2}}">
+                                <text class="state">订单确认</text>
+                            </block>
+                            <block wx:elif="{{item.order_status== 3}}">
+                                <text class="state">正在配货</text>
+                            </block>
+                            <block wx:elif="{{item.order_status== 4}}">
+                                <text class="state">配送中</text>
+                            </block>
+                            <block wx:elif="{{item.order_status== 5}}">
+                                <text class="state">已完成</text>
+                            </block>
+                        </view>
+                        <view class="order_cont">
+                            <view class="img">
+                                <image src="{{ item.goods_img}}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill'></image>
+                            </view>
+                            <view class="description" data-id="{{item.id}}" bindtap='order'>
+                                <view class="title_price">
+                                    <text class="title">{{ item.goods_title }}</text>
+                                    <text class="price">￥{{ item.order_money }}</text>
+                                </view>
+                                <view class="color_size">
+                                    <text class="color">颜色:{{ item.color?item.color:'无' }}</text>
+                                    <text class="size">尺寸:{{ item.size?item.size:'无' }}</text>
+                                </view>
+                                <view class="title_price">
+                                    <view class="address_phone">
+                                        <view class="address">地址：{{ item.address?item.address:'' }}</view>
+                                        <view class="phone">{{item.name?item.name:'姓名无'}} {{item.phone?item.phone:'手机无' }}</view>
+                                    </view>
+                                    <view class="much">X{{item.order_num}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="background">
+                            <view class='cancel'>
+                                <view class="time">   </view>
+                                <view class='cancel_order' bindtap='cancel_order' data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>
+                            </view>
+                            <!-- <view class="logistics" bindtap='cancel_logistics' wx:if='{{item.order_status>2}}'>
+                                <view class="flex" style="color:#9B9B9B">
+                                    <view>最新物流</view>
+                                    <view>{{Traces.date}}</view>
+                                </view>
+                                <view class="flex1" style="color:#3998E0">
+                                    <view style="width:92rpx">{{Traces.time}}</view>
+                                    <view>{{Traces.AcceptStation}}</view>
+                                </view>
+                            </view> -->
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item style="overflow:scroll">
+                <!-- 订单部分 -->
+                <!-- 已完成 -->
+                <view class='order-wrap'>
+                    <view class="order" wx:for="{{ orderCont }}" wx:if="{{item.order_status>3}}">
+                        <view class="order_num" bindtap='order_num'>
+                            <text class="number">订单编号：{{item.time}}</text>
+                            <text class="state" wx:if="{{item.order_status===5}}">已完成</text>
+                        </view>
+                        <view class="order_cont">
+                            <view class="img">
+                                <image src="{{ item.goods_img }}" data-id="{{item.id}}" class="order_img" bindtap='order' mode='aspectFill'></image>
+                            </view>
+                            <view class="description" bindtap='order' data-id="{{item.id}}">
+                                <view class="title_price">
+                                    <text class="title">{{ item.goods_title }}</text>
+                                    <text class="price">￥{{ item.order_money }}</text>
+                                </view>
+                                <view class="color_size">
+                                    <text class="color">颜色:{{ item.color?item.color:'无' }}</text>
+                                    <text class="size">尺寸:{{ item.size?item.size:'无' }}</text>
+                                </view>
+                                <view class="title_price">
+                                    <view class="address_phone">
+                                        <view class="address">地址：{{ item.address?item.address:'' }}</view>
+                                        <view class="phone">{{item.name?item.name:'姓名无'}} {{item.phone?item.phone:'手机无' }}</view>
+                                    </view>
+                                    <view class="much" wx:if='{{item.order_num}}'>X{{item.order_num}}</view>
+                                </view>
+
+                            </view>
+                        </view>
+                        <view class="background">
+                            <view class='cancel'>
+                                <view class="time">   </view>
+                                <view class='cancel_order' bindtap='cancel_order' data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>
+                            </view>
+                            <!-- <view class="logistics" bindtap='cancel_logistics' wx:if='{{item.order_status>2}}'>
+                                <view class="flex" style="color:#9B9B9B">
+                                    <view>最新物流</view>
+                                    <view>{{Traces.date}}</view>
+                                </view>
+                                 <view class="flex1" style="color:#3998E0">
+                                    <view style="width:92rpx">{{Traces.time}}</view>
+                                    <view>{{Traces.AcceptStation}}</view>
+                                </view>
+                            </view> -->
+                        </view>
+
+                    </view>
+                </view>
+
+
+            </swiper-item>
+            <swiper-item style="overflow:scroll">
+                <!-- 订单部分 -->
+                <!-- 未完成 -->
+                <view class='order-wrap'>
+                    <view class="order" wx:for="{{ orderCont }}" wx:if="{{item.order_status<4}}">
+                        <view class="order_num" bindtap='order_num'>
+                            <text class="number">订单编号：{{item.time}}</text>
+                            <text class="state" wx:if="{{item.order_status===-1}}">订单取消 </text>
+                            <text class="state" wx:elif="{{item.order_status===1}}">等待付款 </text>
+                            <text class="state" wx:elif="{{item.order_status===2}}">订单确认</text>
+                            <text class="state" wx:elif="{{item.order_status===3}}">正在配货</text>
+                            <text class="state" wx:elif="{{item.order_status===4}}">配送中</text>
+                        </view>
+                        <view class="order_cont">
+                            <view class="img">
+                                <image src="{{ item.goods_img }}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill'></image>
+                            </view>
+                            <view class="description" bindtap='order' data-id="{{item.id}}">
+                                <view class="title_price">
+                                    <text class="title">{{ item.goods_title }}</text>
+                                    <text class="price">￥{{ item.order_money }}</text>
+                                </view>
+                                <view class="color_size">
+                                    <text class="color">颜色:{{ item.color?item.color:'无' }}</text>
+                                    <text class="size">尺寸:{{ item.size?item.size:'无' }}</text>
+                                </view>
+                                <view class="title_price">
+                                    <view class="address_phone">
+                                        <view class="address">地址：{{ item.address?item.address:'' }}</view>
+                                        <view class="phone">{{item.name?item.name:'姓名无'}} {{item.phone?item.phone:'手机无' }}</view>
+                                    </view>
+                                    <view class="much" wx:if='{{item.order_num}}'>X{{item.order_num}}</view>
+                                </view>
+                            </view>
+                        </view>
+
+                        <view class="background">
+                            <view class='cancel'>
+                                <view class="time">   </view>
+                                <view class='cancel_order' bindtap='cancel_order' data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>
+                            </view>
+                            <!-- <view class="logistics" bindtap='cancel_logistics' wx:if='{{item.order_status>2}}'>
+                                <view class="flex" style="color:#9B9B9B">
+                                    <view>最新物流</view>
+                                    <view>{{Traces.date}}</view>
+                                </view>
+                                <view class="flex1" style="color:#3998E0">
+                                    <view style="width:92rpx">{{Traces.time}}</view>
+                                    <view>{{Traces.AcceptStation}}</view>
+                                </view>
+                            </view> -->
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <!-- </view> -->
+    </view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

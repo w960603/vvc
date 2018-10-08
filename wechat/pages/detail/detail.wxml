@@ -1,0 +1,116 @@
+<header title='详情页' ></header>
+
+<!-- 轮播图 -->
+<swiper class="swiper" indicator-dots='true' autoplay="true" interval="3000" duration="1000">
+    <view wx:for="{{movies}}" wx:key="key" wx:for-item="item">
+        <swiper-item>
+            <image src="{{item}}?x-oss-process=image/resize,w_1125" class="slide-image" mode="aspectFill"></image>
+          </swiper-item>
+    </view>
+</swiper>
+<view class='detail-desc'>
+    <view class="theme"> {{title}}</view>
+    <view class="describe">
+        <text class="uv">{{ uv }}</text>
+        <text class="price">¥{{ price }}.00</text>
+    </view>
+</view>
+<!-- 商品区域 -->
+<view  style="padding-bottom:98rpx;position:relative;">
+<view class='wfr-posi'></view>
+    <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}" bindscroll='deltaY'>
+        <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">详情</view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">参数</view>
+        <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">价格表</view>
+        <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">素材</view>
+    </scroll-view>
+    <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:77vh">
+        <!-- 详情 -->
+        <swiper-item>
+            <scroll-view scroll-y="true" class="scoll-h" style="white-space:wrap;">
+                <view class="parameters">
+                    <view>
+                        <view class="store">详情</view>
+                        <view class="commodity">Commodity display</view>
+                        <!-- <view wx:for="{{movies}}" wx:for-item="item">
+                            <image src="{{item}}" mode='widthFix'></image>
+                        </view> -->
+                    </view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+        <!-- 参数 -->
+        <swiper-item>
+            <scroll-view scroll-y="true" class="scoll-h" style="white-space:pre-wrap;">
+                <view class="parameters">
+                    <view class="pro_par">
+                        <view> 产品参数</view>
+                    </view>
+                    <view class="flex" wx:for="{{parameterList}}" wx:key="key" wx:for-index="index" wx:for-item="item">
+                      <view class="gray" wx:if="item.length>1">{{item[0]}}</view>
+                      <view class="black" wx:if="item.length>1">{{item[1]}}</view>
+                    </view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+
+        <!-- 价格表 -->
+        <swiper-item>
+            <scroll-view scroll-y="true" class="scoll-h" style="white-space:pre-wrap;">
+                <view class="parameters">
+                    <view class="price_img">
+                        <image src="{{price_img}}?x-oss-process=image/resize,w_1125"></image>
+                    </view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+
+
+        <!-- 素材 -->
+        <swiper-item>
+            <scroll-view scroll-y="true" class="scoll-h" style="white-space:pre-wrap;">
+                <view class="parameters">
+                    <view class="pro_par">
+                        <view> 素材</view>
+                    </view>
+                    <view class='material-desc'>
+                        <view class="cloth"><text selectable='true'>{{material.cloth}}</text></view>
+                    </view>
+                    <view class="photo">
+                        <image class='material-img' data-img='{{item}}' bindtap='show_imgs' src="{{item}}?x-oss-process=image/resize,w_150" bindlongtap='show_save' data-index='{{index}}' wx:for="{{movies}}" wx:key="index" wx:for-item="item"></image>
+                    </view>
+                    <view class='album' bindtap='show_save'>保存至相册</view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+
+    </swiper>
+</view>
+
+<!-- 加入购物车 -->
+<view class="addTocar">
+    <view class="go_car" bindtap='ShoppingCart'>
+        <image src="../../image/tabbar/shopping.svg"></image>
+        <view class='go_car_view'>购物车</view>
+        <view class='allshop-posi' wx:if="{{cartNum>=1}}">{{cartNum}}</view>
+    </view>
+     <view class="add_car orangered"  data-wfrid='{{wfrid}}'  bindtap='wfrskuDetail'>加入购物车</view>
+      <view  class="add_car red" bindtap='wfrskuDetail' data-wfrid='{{wfrid}}'>立即购买</view>
+</view>
+
+
+<my-component class="donghua"  wx:if='{{isshow2}}' prop-wfrid="{{wfrid}}" isshow="{{isshow2}}" bindover="cartAdd"  bindclosed="wfrskuDetail">
+  </my-component>
+
+  <view class='mask' catchtouchmove="true" wx:if='{{img_show}}' bindtap='closemask'>
+    <button bindtap='save_image' class='save-btn'>保存到相册</button>
+  </view>
+
+
+  <view wx:if='{{imgs_show}}'>
+    <swiper>
+        <swiper-item>
+            <image src='{{item}}'></image>
+        </swiper-item>
+    </swiper>
+  </view>

@@ -1,0 +1,88 @@
+<header title='订单详情'></header>
+
+<view class='main '>
+    <view class='top top-container flex-row'>
+        <image src="{{list.img?list.img:'../../image/icon/no_product.svg'}}" class='logo' mode='aspectFill'></image>
+        <view class='flex-col top-main'>
+            <text class='top-title'>{{list.goods_title?list.goods_title:'无标题'}}</text>
+            <text class='desc'>{{list.order}}</text>
+            <text class='desc'>颜色: {{list.color?list.color:'无'}}</text>
+        </view>
+        <text class='price' wx:if='{{list.order_money}}'>¥{{list.order_money}}</text>
+    </view>  
+    <view class='container'>
+        <view class='title line'>
+            <image src='../../image/icon/address.svg' class='small-logo'></image>
+            <text>地址</text>   
+        </view>
+        <view class='flex-col'>
+            <view class=' address'>
+                <text>{{list.name}}</text>
+                <text>{{list.phone}}</text>
+            </view>
+            <view class='address-list'>
+                <text class='tag' wx:if="{{list.type==0}}">仓库</text>
+                <text class='tag' wx:elif="{{list.type==1}}">家</text>
+                <text class='tag' wx:elif="{{list.type==2}}">公司</text>
+                <view class='full-address'>
+                     <text>{{list.full_address}}</text> 
+                
+                </view> 
+            </view>
+        </view>
+    </view> 
+    <view class='container '>
+        <view class='title line'>
+            <image src='../../image/icon/order.svg' class='small-logo'>这里有张图片</image>
+            <text>订单详情</text>   
+        </view>
+        <view class='cont-main flex-col'>
+            <view class='order'>
+                <text class='gray'>订单号码: </text>
+                <text class='number'>{{list.order}}</text>
+            </view>
+            <view>
+                <text class='gray'>下单日期: </text>
+                <text class='number'>{{list.time}}</text>
+            </view>
+            <view class='last'>
+                <text class='gray'>出货日期: </text>
+                <text class='number'>{{list.send_time}}</text>
+            </view>
+        </view>
+    </view> 
+    <view class='container '>
+        <view class='title line'>
+            <image src='../../image/icon/jilu.svg' class='small-logo'>这里有张图片</image>
+            <text>出货记录</text>   
+        </view>
+        <view class='flex-col cont-main'>
+            <view class='flex-row ' wx:for='{{list.sends}}'>
+                <image class='small-logo'></image>
+                <view>
+                    <text class='gray'>日期:</text>
+                    <text class='number' >    {{item.time}} </text>
+                </view>
+                <view>
+                    <text class='gray'>{{item.note}}</text>
+                    <!-- <text class='number'>¥0</text> -->
+                </view>
+                <view>
+                    <text class='gray'>发货:</text>
+                    <text class='number'>{{item.send_num}}件</text>
+                </view>
+            </view>
+            
+        </view>
+    </view> 
+    <view class='container'>
+        <view class='title line'>
+            <image src='../../image/icon/remarks.svg' class='small-logo'>这里有张图片</image>
+            <text>备注</text>   
+        </view>
+        <view class='cont-main remark'>
+           {{list.order_node}}
+        </view>
+    </view>
+     
+</view>

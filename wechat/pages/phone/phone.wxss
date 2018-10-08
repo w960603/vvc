@@ -1,0 +1,25 @@
+
+.container {
+    height: 100%;
+    width:100%;
+    background-size:100% 100%; 
+}
+.camera {
+    width: 100%;
+    height:100%;
+    position:absolute;
+    top: 0;
+}
+.WFRfanhui{
+  width: 100%;
+  height: 100%;
+}
+
+.WFRfanhui image{
+  width: 100%;
+  height: 100%;
+}
+.Return{
+  width: 100%;
+  height: 100%;
+}

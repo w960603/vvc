@@ -1,0 +1,28 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 88rpx;
+    width: 100vw;
+    display: flex;
+    line-height: 88rpx;
+    z-index: 999;
+    
+    align-items: center;
+}
+
+.header-posi-img {
+    width: 48rpx;
+    height: 48rpx;
+    padding: 0 32rpx;
+}
+
+.order_list {
+    /* width:144px; */
+    height: 88rpx;
+    line-height: 88rpx;
+    margin: auto;
+    font-size: 36rpx;
+    font-family: PingFang-SC-Medium;
+    color: rgba(74, 74, 74, 1);
+}

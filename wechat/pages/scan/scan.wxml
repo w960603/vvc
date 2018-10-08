@@ -1,0 +1,77 @@
+<!-- 头部 -->
+<view style="background:#EFEFEF;height:100%;width:100%;">
+    <header title='发货'></header>
+    <!-- 内容 -->
+    <view class="content">
+        <!-- part1 -->
+        <view style="border-bottom:16rpx solid #efefef;padding-left: 32rpx;">
+            <view class="flex" style="padding-top:36rpx">
+                <image src="{{user.img}}" class="avatra"></image>
+                <text>{{user.nick_name}}</text>
+            </view>
+            <view class="scan_pre">扫码率</view>
+            <view class="flex">
+                <!-- <progress class="progress" show-info='{{hidden}}' strok-width="{{width}}rpx" bindchange="changewidth" color="#5188ff" active-mode='backwords' present="{{user.num}}"/> -->
+                <progress class="progress" percent="{{user.num}}"  stroke-width="12" color="#5188ff" />
+                <text class="precent">{{user.num}}%</text>
+            </view>
+            <view class="flex proxy">
+                <view class="number">代理数:
+                    <text class="text">{{user.num1?user.num1:'0'}}</text>
+                </view>
+                <view class="number">授权数:
+                    <text class="text">{{user.num2?user.num2:'0'}}</text>
+                </view>
+                <block>
+                    <text class="green">{{user.codemsg}}</text>
+                </block>
+            </view>
+        </view>
+
+        <!-- part2 -->
+        <view class="myteam" style="border-bottom:16rpx solid #efefef;padding-left: 32rpx;">
+            <view class="team">我的团队</view>
+            <block wx:for="{{team}}" wx:for-item="item" data-index="{{index}}" >
+                <view class="flex teamone">
+                    <image src="{{item.img}}" style='background:url(https://cdn.vvc.tw/images/none.svg) center/cover no-repeat' class="avatraone" ></image>
+                    <text class="team_name">{{item.nick_name}}</text>
+                </view>
+                <view class="flex teamtwo">
+                    <progress class="progress" percent="{{item.num}}" stroke-width="12" color="#5188ff" />
+                    <text class="precent">{{item.num}}%</text>
+                </view>
+            </block>
+        </view>
+
+        <!-- part3 -->
+         <view class='record'>
+        <view class="recent_ship">发货纪录</view>
+        <block>
+            <view class="shipid" wx:for="{{hair_log}}" wx:for-item="item" wx:key="shipId" wx:for-index="index">
+                <view class="img">
+                    <image src="{{item.img_url?item.img_url:'../../image/icon/none.svg'}}"  style='background:url(https://cdn.vvc.tw/images/none.svg) center/cover no-repeat' model='aspectFill'></image>
+                </view>
+                <view class="ship_list">
+                    <view class="name">
+                        <text wx:if='{{item.goods_title}}'>{{item.goods_title}}</text>
+                        <text wx:if='{{item.username}}' class="ship_num">{{item.username}}</text>
+                    </view>
+                    <view class="time">
+                        <text wx:if='{{item.time}}'>发货时间：{{item.time}}</text>
+                        <!-- <text class="{{item.status==1?'red':'dis_red'}}">{{item.status==1?'成功':'失败'}}</text> -->
+                    </view>
+                    <view class="time">
+                        <text wx:if='{{item.nick_name}}'>收货人：{{item.nick_name}}</text>
+                        <text class="ship_num" wx:if='{{item.num}}'>X{{item.num}}</text>
+                    </view>
+                </view>
+
+            </view>
+        </block>
+    </view>
+    <!-- 扫描发货 -->
+    <view class="sacn_code">
+        <image src="../../image/icon/scan_one.svg" bindtap="scan_click"></image>
+    </view>
+    </view>
+</view>

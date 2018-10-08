@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="351px" height="201px" viewBox="0 0 351 201" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>会员信息@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="81.7838872%" y1="0%" x2="41.0266507%" y2="104.830301%" id="linearGradient-1">
+            <stop stop-color="#ED596E" offset="0%"></stop>
+            <stop stop-color="#F56B55" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="351" height="201" rx="6"></rect>
+        <linearGradient x1="28.7913955%" y1="65.1467972%" x2="22.8958293%" y2="92.1881951%" id="linearGradient-4">
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="62.4478577%" y1="53.0053583%" x2="87.8321947%" y2="1.40804757%" id="linearGradient-5">
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="发货" transform="translate(-12.000000, -70.000000)">
+            <g id="会员信息" transform="translate(12.000000, 70.000000)">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <use id="Mask" fill="url(#linearGradient-1)" transform="translate(175.500000, 100.500000) scale(-1, -1) translate(-175.500000, -100.500000) " xlink:href="#path-2"></use>
+                <ellipse id="Oval-2" fill-opacity="0.3" fill="url(#linearGradient-4)" style="mix-blend-mode: soft-light;" mask="url(#mask-3)" cx="271.5" cy="-6.5" rx="326.5" ry="142.5"></ellipse>
+                <ellipse id="Oval-2-Copy" fill="url(#linearGradient-5)" style="mix-blend-mode: soft-light;" opacity="0.3" mask="url(#mask-3)" cx="137" cy="146.5" rx="239" ry="119.5"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>

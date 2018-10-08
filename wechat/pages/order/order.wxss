@@ -1,0 +1,286 @@
+/* pages/Order/Order.wxss */
+
+/* .top{
+    position: fixed;
+    z-index:999;
+    top:0;
+    left:0;
+    width:100vw;
+} */
+
+page {
+    background-color: #efefef;
+}
+
+.header {
+    background: white;
+    padding-top: 35rpx;
+    height: 88rpx;
+    width: 100vw;
+    display: flex;
+    line-height: 109rpx;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.search {
+    width: 48rpx;
+    height: 48rpx;
+    margin: 20rpx 224rpx 20rpx 32rpx;
+}
+
+.order {
+    position: relative;
+    border-bottom: 1px solid lightgray;
+}
+
+.order-wrap {
+    padding-bottom: 130rpx;
+}
+
+.order_list {
+    margin:auto;
+    font-size: 36rpx;
+    line-height: 88rpx;
+    font-family: PingFang-SC-Medium;
+    color: rgba(74, 74, 74, 1);
+}
+
+.cancel {
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex{
+    display:flex;
+    justify-content: space-between;
+}
+.flex1{
+    display:flex;
+}
+.logistics{
+    width:686rpx;
+    height:102rpx;
+    overflow: hidden;
+    margin:0 auto;
+    line-height:46rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 4rpx 10rpx 0px rgba(239,239,239,1),0px 0px 8rpx 0px rgba(237,237,237,1);
+    border-radius:8rpx;
+    font-size:24rpx;
+    padding:0 16rpx;
+    /* margin-bottom: 22rpx; */
+}
+.time{ 
+    padding-left:32rpx;
+    line-height:40rpx;
+    font-size:24rpx;
+    font-family:SFUIText-Regular;
+    font-weight:400;
+    color:rgba(155,155,155,1);
+}
+
+.cancel_order {
+    margin-right:32rpx;
+    color: #9b9b9b;
+    padding: 8rpx 24rpx;
+    border-radius: 50rpx;
+    font-size: 24rpx;
+    border: 1rpx solid #bbb;
+}
+.background{
+    background:white;
+    padding-bottom:22rpx;
+}
+.nav {
+    position: fixed;
+    z-index: 11;
+    font-size: 28rpx;
+    height: 74rpx;
+    line-height: 74rpx;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 2rpx 0px 0px rgba(215, 215, 215, 1);
+    display: flex;
+    justify-content: space-around;
+}
+
+/* 内容详情 */
+
+.order-wrap {
+    padding-top: 74rpx;
+}
+
+.order_num {
+    height: 92rpx;
+    line-height: 92rpx;
+    background: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid #d7d7d7;
+    border-top: 8rpx solid #efefef;
+}
+
+.order_num .number {
+    font-size: 32rpx;
+    font-family: PingFang-SC-Medium;
+    color: rgba(74, 74, 74, 1);
+    margin: 24rpx 0 24rpx 32rpx;
+}
+
+.order_num .state {
+    float: right;
+    font-size: 32rpx;
+    padding-right: 32rpx;
+    font-family: PingFang-SC-Medium;
+    color: rgba(74, 74, 74, 1);
+}
+
+.order_cont {
+    display: flex;
+    align-items: center;
+    /* height: 160rpx; */
+    padding: 28rpx 32rpx 0rpx 32rpx;
+    background: rgba(255, 255, 255, 1);
+}
+
+.order {
+    
+}
+
+.description {
+    width: 498rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.img {
+    /* padding-top:28rpx; */
+    padding-right: 24rpx;
+    /* margin:0rpx 18rpx 0rpx 0rpx; */
+}
+
+.img image {
+    width: 160rpx;
+    height: 160rpx;
+}
+
+.title_price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 50rpx;
+}
+
+.title {
+    font-size: 28rpx;
+    font-family: PingFang-SC-Medium;
+    color: #000;
+    line-height: 44rpx;
+    /* font-weight:bolder; */
+}
+
+.color_size {
+    line-height: 34rpx;
+}
+
+.price {
+    height: 32prx;
+    font-size: 28rpx;
+    font-family: SFUIDisplay-Regular;
+    color: rgba(208, 2, 27, 1);
+    line-height: 32rpx;
+}
+
+.color {
+    width: 180rpx;
+    font-size: 24rpx;
+    font-family: PingFang-SC-Medium;
+    color: rgba(155, 155, 155, 1);
+    line-height: 40rpx;
+    margin-right: 20rpx;
+}
+
+.size {
+    width: 180rpx;
+    height: 34rpx;
+    font-size: 24rpx;
+    font-family: PingFang-SC-Medium;
+    color: rgba(155, 155, 155, 1);
+    line-height: 34rpx;
+}
+
+.address_phone {
+}
+
+.address {
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular;
+    color: rgba(155, 155, 155, 1);
+    line-height: 40prx;
+}
+
+.phone {
+    /* width: 406rpx; */
+    font-size: 24rpx;
+    font-family: PingFangSC-Regular;
+    color: rgba(155, 155, 155, 1);
+    line-height: 40rpx;
+}
+
+.much {
+    height: 32rpx;
+    font-size: 28rpx;
+    font-family: SFUIDisplay-Regular;
+    color: rgba(155, 155, 155, 1);
+    line-height: 32rpx;
+}
+
+/* 订单列表 */
+
+.tab-h {
+    height: 80rpx;
+    width: 100%;
+    box-sizing: border-box;
+    /* overflow: hidden; */
+    line-height: 80rpx;
+    background: #f7f7f7;
+    font-size: 16px;
+    white-space: nowrap;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.tab-item {
+    width: 33%;
+    text-align: center;
+    display: inline-block;
+}
+
+.tab-item.active {
+    color: #000;
+    position: relative;
+}
+
+.tab-item.active:after {
+    content: "";
+    display: block;
+    height: 70rpx;
+    width: 250rpx;
+    /* background: #999; */
+    border-bottom: 2px solid rgb(249, 70, 70);
+    position: absolute;
+    bottom: 0;
+    left: 0rpx;
+}
+
+.scoll-h {
+    height: 100%;
+}

@@ -1,0 +1,34 @@
+<!-- pages/proxy_address/proxy_address.wxml-->
+<mask class="mask" bindtap="closeMask"></mask> 
+    <view class="content">
+        <view class="search_input">
+            <image src="../../image/icon/search.svg"></image>
+            <input type="search" class="search" placeholder='请输入昵称或电话号码' bindinput='search_data' adjust-position='true' focus='true' bindfocus='changeColor' />
+            <view class='{{activeOpacity?"iscanal2":"iscanal"}}' bindtap="cancel">取消</view>
+        </view>
+        <view class="recent_user">{{recent_user}}</view>
+        <view class="avator" wx:if='{{user.length}}'>
+            <block wx:for="{{user}}" wx:for-item="item" wx:for-index="index" wx:if='{{index<5}}' >
+                <view class="avator_list" data-index='{{index}}' bindtap='adduser'>
+                    <image src="{{item.img_url?item.img_url:'../../image/icon/none.svg'}}"></image>
+                    <view class="theme">{{item.nick_name}}</view>
+                </view>
+            </block>
+        </view>
+        <view wx:elif='{{inputValue}}' class='user-search'>没有用户</view>
+        <scroll-view scroll-y scroll-top="{{scrollTop}}">
+            <view wx:for="{{user}}" wx:index="{{index}}" wx:key="index" data-index='{{index}}' wx:if='{{index<20}}' bindtap='adduser'>
+                <view class="message">
+                    <view class="avator_list">
+                        <image src="{{item.img_url?item.img_url:'../../image/icon/none.svg'}}"></image>
+                        <view class="theme">{{item.shouquan?"已授权":"未授权"}}</view>
+                    </view>
+                    <view class="management">
+                        <view class="department">{{item.nick_name}}</view>
+                        <text class="tel">{{item.phone}}</text>
+                        <view class="address">{{item.city}}</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>

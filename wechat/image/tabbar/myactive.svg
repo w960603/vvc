@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/24/我的@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icon/24/我的" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval-3" fill="#C5E57D" cx="14" cy="7" r="6"></circle>
+        <path d="M6.09370982,8.06207879 C6.59511991,10.8691885 9.0487211,13 12,13 C15.3137085,13 18,10.3137085 18,7 C18,3.6862915 15.3137085,1 12,1 C9.40797013,1 7.19983103,2.64363182 6.36097006,4.94550812" id="Oval-2" stroke="#424242" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M9,17.3249234 C9,19.4660521 9,21.6910777 9,28 C14.2467051,28 18.5,23.7467051 18.5,18.5 C18.5,13.2532949 14.2467051,9 9,9 C9,10.6746043 9,12.9305575 9,13.7678597" id="Oval-2-Copy" fill="#C5E57D" transform="translate(13.750000, 18.500000) rotate(-90.000000) translate(-13.750000, -18.500000) "></path>
+        <path d="M7,17.3249234 C7,19.4660521 7,21.6910777 7,28 C12.2467051,28 16.5,23.7467051 16.5,18.5 C16.5,13.2532949 12.2467051,9 7,9 C7,10.6746043 7,12.9305575 7,13.7678597" id="Oval-2-Copy" stroke="#424242" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" transform="translate(11.750000, 18.500000) rotate(-90.000000) translate(-11.750000, -18.500000) "></path>
+    </g>
+</svg>

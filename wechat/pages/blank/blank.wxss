@@ -1,0 +1,27 @@
+view {
+    position: absolute;
+    bottom:110rpx;
+    width: 210rpx;
+    height: 34rpx;
+    font-size: 24rpx;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(149, 160, 182, 1);
+    line-height: 34rpx;
+}
+
+page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+image {
+    position:absolute;
+    bottom:180rpx;
+    width: 128rpx;
+    height: 74rpx;
+    margin: auto;
+}

@@ -1,0 +1,38 @@
+<view class="header" style='{{h}};background-color:{{color}}'>
+    <image class='header-posi-img' src='../../image/icon/author_back.svg' bindtap="goback"></image>
+    <view class="order_list">账号注册</view>
+    <image class='header-posi-img' src='../../image/icon/back.svg' style="opacity:0"></image>
+
+    <slot ></slot>
+</view>
+<view style='{{fill}}'></view>
+
+<image src='../../image/icon/bg_img.svg' class='head-img'></image>
+
+<view class='main'>
+    <view class='title main-title'>
+    <image src='../../image/icon/none.svg' class='avator'></image>
+    <view>
+        您的邀请码由Alex申请
+    </view>    
+
+    </view>
+    <view>
+        <view class='title'>账号信息</view>
+        <input placeholder='输入昵称' placeholder-class='placeholder' adjust-position='true' value="{{infoList.nick_name}}" bindblur='inputed' data-info='nick_name'></input>
+        <input placeholder='输入自定义账号' placeholder-class='placeholder' adjust-position='true' value="{{infoList.username}}" bindblur='inputed' data-info='username'></input>
+        <input placeholder='请输入您的密码'type='password'  adjust-position='true' placeholder-class='placeholder' value="{{infoList.password}}" bindblur='inputed' data-info='password'></input>
+        <input placeholder='再次确认密码' adjust-position='true' type='password' placeholder-class='placeholder' value="{{infoList.password1}}" bindblur='inputed' data-info='password1'></input>
+    </view>
+    <view>
+        <view class='title'>邀请码</view>
+        <input placeholder='请输入邀请码' adjust-position='true' value='{{infoList.join_code}}' placeholder-class='placeholder' bindblur='joincode'></input>
+    </view>
+    <view>
+        <view class='title'>收/付方式</view>
+        <input placeholder='请输入支付宝' adjust-position='true' placeholder-class='placeholder' value="{{infoList.alipay}}" bindblur='inputed' data-info='alipay'></input>
+        <input placeholder='请输入支付宝相对应的真实姓名' adjust-position='true' placeholder-class='placeholder' value="{{infoList.truename}}" bindblur='inputed' data-info='truename'></input>
+        <input placeholder='请输入手机/快速联系方式' adjust-position='true' placeholder-class='placeholder' value="{{infoList.phone}}" bindblur='inputed' data-info='phone'></input>
+    </view>
+    <button bindtap='confirm'>确认</button>
+</view>

@@ -1,0 +1,48 @@
+<header title='收货地址'></header>
+<view class='main'>
+    <scroll-view scroll-x='true' class='content clearfix' wx:for="{{address_lists}}">
+        <view class="content-left {{(item.editshow&&item.editshow==true)?'on':''}}">
+        <view class='left' data-item='{{item}}' bindtap='choiceaddress'>
+            <block wx:if='{{item.default ==1}}'>
+                <image src='../../image/icon/local.svg' class='icon-left'></image>
+            </block>
+            <view class='content-main' >
+                <view class='top'>
+                    <text class='name'>{{item.name}}</text>
+                    <text class='tel'>{{item.phone}}</text>
+                </view>
+                <view class='bottom'>
+                    <view class='tag' wx:if='{{item.type==0}}'>仓库</view>
+                    <view class='tag' wx:elif='{{item.type==1}}'>家</view>
+                    <view class='tag' wx:elif='{{item.type==2}}'>公司</view>
+                    <view class='path'>{{item.full_address}}</view>
+                </view>
+            </view>
+        </view>
+            <view class='edit' bindtap='goto' data-info='{{item}}'> 
+               <image src='../../image/icon/change.svg' class='edit' data-index='{{index}}'></image> 
+            </view>
+        </view>
+            <view  class="additional">
+                <view bindtap='set_default' data-index="{{index}}">设为默认</view>
+                <view bindtap='edit' data-index="{{index}}" bindtap='del'>删除</view>
+            </view>
+            
+    </scroll-view>
+    <view class="people" bindtap='proxy_address'>
+                <image src="../../image/icon/people.svg"></image>
+                <view class="proxy_address">代理地址</view>
+    </view>
+</view>
+<!-- 代理地址 -->
+
+<!-- <my-component class="donghua"  wx:if='{{isshow}}' prop-id="{{id}}" isshow="{{isshow}}" bindover="cartAdd"  bindclosed="wfrskuDetail">
+</my-component> -->
+
+<button class='save' bindtap='goto'>
+    <view class="plus">+ </view>
+    <view class='add-address'> 添加收货地址</view>    
+</button>
+<button class='child-save save'></button>
+<CmponentName  wx:if="{{isshow1}}" pror-id="{{myid}}" isshow="{{isshow1}}" bindover='closeAddress' bindclosed='close'></CmponentName>
+

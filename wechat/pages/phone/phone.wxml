@@ -1,0 +1,5 @@
+<!-- <view class='container'> -->
+        <camera id="myCamera" device-position="front"  flash="off" binderror="error" bindstop='stop'
+  class="camera">
+      </camera>
+<!-- </view> -->

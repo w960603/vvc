@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>Button/48/返回@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="24" cy="24" r="24"></circle>
+        <filter x="-103.1%" y="-96.9%" width="306.2%" height="306.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="16" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.0282909598   0 0 0 0 0.101429634   0 0 0 0 0.0936281757  0 0 0 0.360167572 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Button/48/返回" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Close-Button">
+            <g id="Oval">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <path d="M26.1383662,23.9992394 L32.555493,17.5821127 C33.1461972,16.9914085 33.1461972,16.0336901 32.555493,15.4430704 C31.9647887,14.8523662 31.0071549,14.8523662 30.4164507,15.4430704 L23.9992394,21.8602817 L17.5820282,15.4429859 C16.9913239,14.8522817 16.0336901,14.8522817 15.4429859,15.4429859 C14.8523662,16.0336901 14.8523662,16.9914085 15.4429859,17.5820282 L21.8601972,23.9991549 L15.4429859,30.4163662 C14.8523662,31.0070704 14.8523662,31.9647887 15.4429859,32.5554085 C16.0336901,33.1461127 16.9913239,33.1461127 17.5820282,32.5554085 L23.9992394,26.1381972 L30.4164507,32.5554085 C31.0070704,33.1461127 31.9647887,33.1461127 32.555493,32.5554085 C33.1461972,31.9647042 33.1461972,31.0070704 32.555493,30.4163662 L26.1383662,23.9992394 Z" id="Shape" fill="#000000" fill-rule="nonzero" opacity="0.75"></path>
+        </g>
+    </g>
+</svg>

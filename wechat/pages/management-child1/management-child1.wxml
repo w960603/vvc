@@ -1,0 +1,43 @@
+<view class="header" style='{{h}};background-color:{{color}}'>
+    <image class='header-posi-img' src='../../image/icon/author_back.svg' bindtap="goback"></image>
+    <view class="order_list">授权</view>
+    <image class='header-posi-img' src='../../image/icon/back.svg' style="opacity:0"></image>
+
+</view>
+<view style='{{fill}}'></view>
+
+<image src='../../image/icon/bg_img.svg' class='head-img'></image>
+<view class='wrap'>
+    <view class='title'>
+        <view>卡号：</view>
+        <view class='text' wx:if='{{!!infos.joincode}}'>{{infos.joincode}}</view>
+    </view>
+    <view class='title'>
+        <view>昵称：</view>
+        <view class='text' wx:if='{{!!infos.nick_name}}'>{{infos.nick_name}}</view>
+    </view>
+    <view class='title'>
+        <view>级别：</view>
+        <view class='text' wx:if='{{!!infos.level}}'>{{infos.level}}</view>
+    </view>
+    <view class='title' wx:if='{{infos.shouquan!=1}}'>
+        <view>费用：</view>
+        <view class='text' wx:if='{{infos.lvl==1}}'>100.00</view>
+        <view class='text' wx:elif='{{infos.lvl==2}}'>300.00</view>
+        <view class='text' wx:elif='{{infos.lvl==3}}'>500.00</view>
+    </view>
+    <view class='title level' wx:if='{{infos.level!="董事"&&infos.shouquan!=1}}'>
+        <!-- <view>请选择级别</view> -->
+        <view class="select" bindtap='show_list'>
+        <view class='select_tips {{selected?" ":"shouquan2"}}'>点击选择级别</view>
+            <text>{{item}}</text>
+        </view>
+    </view>
+    <view class='title'>
+        <view>授权状态：</view>
+            <view class='shouquan shouquan1' wx:if="{{infos.shouquan==1}}" bindtap='goto2' >已授权</view>
+            <view class='shouquan shouquan2' wx:elif="{{infos.shouquan==0}}" bindtap='goto2'>未授权</view>
+            <!-- <view class='shouquan shouquan3' wx:elif="{{infos.username==null}}" bindtap='goto2'>未注册</view> -->
+    </view>
+    <button wx:if='{{(infos.shouquan==0||!infos.username)&&infos.shouquan!=1}}' bindtap='submit'>提交保证金</button>
+</view>

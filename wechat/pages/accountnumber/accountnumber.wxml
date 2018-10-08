@@ -1,0 +1,51 @@
+<view class='content'>
+    <view class='posi'>
+        <view class='box-img'>
+            <!-- <view class='img-p'> -->
+            <image src='../../image/login/login.jpg' class='posi-img'></image>
+        </view>
+        <!-- </view> -->
+        <view class='wfr-dingwei'>
+            <view class='back-iamge'>
+                <image src='../../image/login/smallLogin.svg'></image>
+            </view>
+            <view class='wfr-text3'>ACCOUNT LOGIN</view>
+            <view bindtap='backpage' class="us_user">
+                <image src='../../image/login/back.svg'></image>
+            </view>
+        </view>
+    </view>
+    <!-- 账号登录 -->
+    <view wx:if="{{num == 1}}" class='wfr-form'>
+        <view class='phone'>
+            <view class='wfr-left'>账号:</view>
+            <input class='wfr-right' name="userName" cursor-spacing="35"  adjust-position='true'  bindinput="getPhone"value='{{userName}}'></input>
+        </view>
+        <view class='phone'>
+            <view class='wfr-left'>密码:</view>
+                <input class='wfr-right' type='password' cursor-spacing="35" name="password" adjust-position='true' bindinput="getpossword" bindconfirm='tijiao' value='{{password}}'></input>
+        </view>
+        <view class='wfr-posi-denglu' bindtap='tijiao'>
+            <button class='wfr-login'>登录</button>
+            <view class='wfr-bg'></view>
+        </view>
+    </view>
+    <view wx:if="{{num == 2}}" class='wfr-form'>
+            <view class='phone'>
+                <view class='wfr-left phone_yz'>手机号:</view>
+                <input class='wfr-right' name="Phone1"  cursor-spacing="35"  adjust-position='true'  bindinput="getPhone1"></input>
+            </view>
+            <view class='phone'>
+                <view class='wfr-left phone_yz'>验证码:</view>
+                <view class='wfr-right'>
+                    <input maxlength='4'  cursor-spacing="35"  adjust-position='true'  name="password1" bindinput="getpossword1"> </input>
+                    <view class="wfr-yzm" bindtap='Obtain' wx:if="{{show}}">获取验证码</view>
+                    <view class='wfr-yzm' bindtap='Obtain1' wx:if="{{!show}}">{{data1+" s"}}</view>
+                </view>
+            </view>
+            <view class='wfr-posi-denglu'>
+                <button class='wfr-login' bindtap='phonelogin'>登录</button>
+                <view class='wfr-bg'></view>
+            </view>
+    </view>
+</view>

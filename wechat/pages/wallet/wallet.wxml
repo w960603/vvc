@@ -1,0 +1,52 @@
+<view class='wfr-page'>
+    <view class='wfr-content'>
+        <image class='wfr-content-img' src='../../image/wallet/bg.svg' ></image>
+        <view class='wfr-title' style='{{h}}'>
+            <image bindtap='goback' class='wfr-title-img' src='../../image/icon/backwhite.svg'></image>
+            <view class='wfr-mywallet'>我的钱包</view>
+        </view>
+
+        <view class='wfr-wallte-float'>
+            <view class='wfr-wallte-left'>
+                <view class='wfr-Name'>用户昵称</view>
+                <view class='wfr-nameuser'>{{userinfo.nick_name}}</view>
+            </view>
+            <view class='wfr-wallte-right'>
+                <image class='wfr-wallteImg' src='{{userinfo.img_url}}'></image>
+            </view>
+        </view>
+        <view class='wfr-rmb'>
+        <image class='wfr-content-img1' src='../../image/wallet/bg.svg' ></image>
+
+            <view class='wfr-rmb-bg'>
+                <view class='wfr-wallet-rmb'>钱包</view>
+                <view class='wfr-RechargeRmb'>
+                    <text class='wfr-wallet-text1'>充值金额</text>
+                    <text class='wfr-wallet-text2'>{{userinfo.money}}</text>
+                </view>
+                <view class='wfr-balance'>
+                    <view class='wfr-wallet-text1'>账户金额</view>
+                    <view class='wfr-wallet-text2'wx:if='{{userinfo.surplar}}'>{{userinfo.surplar}}</view>
+                </view>
+            </view>
+        </view>
+        <view class='wfr-mywallet-footer'>
+            <view class='wfr-Record'>
+                <view class='wfr-Record-order'>账单记录</view>
+                <view class='wfr-Record-data'>{{id}}</view>
+            </view>
+            <view class='wfr-order' wx:for="{{order_list}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+                <view class='orderlist'>
+                    <view class='orderlist-float'>
+                        <view class='orderlist-left'>{{item.title}}</view>
+                        <view class='orderlist-right'>{{item.order_money}}</view>
+                    </view>
+                    <view class='orderlist-text1'>
+                    <text class='text-left'>{{item.time}}</text>
+                    <text class='text-right'>×{{item.order_num}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

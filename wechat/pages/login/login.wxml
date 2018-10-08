@@ -1,0 +1,25 @@
+<view class='content'>
+    <view class='posi' >
+        <video  style='width:750rpx;height:1624rpx' show-progress="false" enable-progress-gesture="false" controls='{{false}}' show-play-btn="false" muted="true" autoplay="true" loop="true" src='https://api.vvc.tw/video.mp4' show-center-play-btn="false">
+            <!-- <cover-view class='content-posi'> -->
+            <cover-image class='logo' style=' height:140rpx; width:244rpx;' src='https://wangfurui.oss-cn-hangzhou.aliyuncs.com/image/vvc_1535616329567.jpg'></cover-image>
+                <cover-view class='wfr-text1'>VVC 董事后台系统</cover-view>
+                <cover-view class='denglu'>
+                    <button bindtap='wfrAccount' wx:if='{{!btn_show}}'class='mt'>账号登录</button>
+
+                
+                
+                    <button class='mt' wx:if='{{btn_show}}' open-type='openSetting' bindopensetting='set_log'>账号登录</button>
+                    
+               
+                </cover-view>
+                   
+                
+
+                <cover-view class='phone1' bindtap='phonelogin'>手机登录</cover-view>
+                <cover-view class='Face-recognition' bindtap='cancelListen' >人脸登录</cover-view>
+                <cover-view class='wfr-text2'>Produced by VVC</cover-view>
+            <!-- </cover-view> -->
+        </video>
+    </view>
+</view>

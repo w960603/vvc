@@ -1,0 +1,298 @@
+.title{
+    width:100%;
+    padding: 0 0 0 32rpx;
+}
+.title image{
+    width:48rpx;
+    height:48rpx;
+}
+.con{
+    margin-bottom:20rpx;
+    padding-top:108rpx;
+    background:url(https://cdn.vvc.tw/a/images/Group5.svg) no-repeat;
+    background-size:100%;
+}
+.swiper-view{
+  margin: 0 auto!important;
+display: flex;
+padding:40rpx 0;
+justify-content:center;
+/* align-items:Center; */
+}
+swiper {
+  height: 575rpx;
+}
+.da{
+  /* height:300rpx; */
+  /* width:100%!important; */
+  /* display:inline-block; */
+  /* height: 90%; */
+  /* transform: scale(1.25);  */
+  animation:myfirst 0.8s both;
+}
+
+@keyframes myfirst
+{
+from {transform: scale(1);}
+to {transform: scale(1.25);}
+}
+
+.wfr-swiper{
+  width: 85%;
+  height:325rpx;
+  margin:4rpx auto;
+  overflow:hidden;
+  text-align:center;
+  background-size:100% 100%;
+  position:absolute;
+  /* filter:blur(10rpx); */
+  box-shadow:0px 14px 30px 0px rgba(88,119,255,0.45);
+  border-radius:20rpx; 
+  background:rgba(255,255,255,0.43);
+  /* background:linear-gradient(45deg,rgba(48,46,46,1) 15%,transparent 15%,transparent 50%,rgba(48,46,46,1) 50%,rgba(48,46,46,1) 65%,transparent 65%);
+  background-size:16rpx 16rpx; 
+  background-color:rgba(43,39,37,1);
+  box-shadow:0px 14px 30px 0px rgba(88,119,255,0.45);
+  border-radius:20px; */
+}
+swiper-item{
+  overflow: visible !important;
+}
+
+.swiper-view:last-child .wfr-swiper{
+  background:linear-gradient(45deg,rgba(48,46,46,1) 15%,transparent 15%,transparent 50%,rgba(48,46,46,1) 50%,rgba(48,46,46,1) 65%,transparent 65%); 
+  background-size:16rpx 16rpx; 
+  background-color:rgba(43,39,37,1); 
+  background-position: right;
+}
+.page-section-spacing{
+  margin-top: 60rpx;
+}
+/* 用户信息 */
+.wfr-float{
+width:90%;
+padding:42rpx 40rpx 46rpx 36rpx;
+overflow:hidden;
+}
+.wfr-float-left{
+    float:left;
+}
+.wfr-float-right{
+    width:84rpx;
+    height:84rpx;
+    float:right;
+    border-radius:50%;
+    border:4rpx solid white;
+    font-size:0;
+}
+.wfr-float-right image{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+}
+.wfr-text1{
+    font-size:24rpx;
+    line-height:24rpx;
+    color:rgba(255,255,255,1);
+    margin-bottom:24rpx;
+    opacity:0.8;
+}
+.wfr-text2{
+    font-size:48rpx;
+    line-height:42rpx;
+    color:rgba(255,255,255,1);
+}
+.nvshen{
+    width: 100%;
+    height:100%;
+    background-image: -webkit-cross-fade(url("https://cdn.vvc.tw/a/images/kong.svg"),url("https://cdn.vvc.tw/a/images/goddess.svg"),40%);
+    background-size: 144% 112%;
+    background-repeat: no-repeat;
+    background-position: 14% -172%; 
+}
+.xiannv{
+    width: 100%;
+    height:100%;
+    background-image: -webkit-cross-fade(url("https://cdn.vvc.tw/a/images/kong.svg"),url("https://cdn.vvc.tw/a/images/fairy.svg"),40%);
+    background-size: 144% 112%;
+    background-repeat: no-repeat;
+    background-position: 14% -172%; 
+}
+.dongshi{
+    width: 100%;
+    height:100%;
+    background-image: -webkit-cross-fade(url("https://cdn.vvc.tw/a/images/kong.svg"),url("https://cdn.vvc.tw/a/images/director.svg"),40%) !important;
+    background-size: 144% 112%;
+    background-repeat: no-repeat;
+    background-position: 14% -172%; 
+}
+.tianshi{
+    width: 100%;
+    height:100%;
+    background-size: 144% 112%;
+     background-image: -webkit-cross-fade(url("https://cdn.vvc.tw/a/images/kong.svg"),url("https://cdn.vvc.tw/a/images/angel.svg"),40%) !important;
+    background-repeat: no-repeat;
+    background-position: 14% -172%; 
+}
+.ka-float{
+    width:86%;
+    padding:22rpx 46rpx 12rpx 40rpx;
+    overflow:hidden;
+}
+.ka-float-left{
+    float:left;
+}
+.ka-float-right{
+    float:right;
+}
+.ka-img,.ka-img2{
+    width:46rpx;
+    height:46rpx;
+}
+.ka-img image,.ka-img2 image{
+    width:100%;
+    height:100%;
+}
+.ka-text3,.ka-text4{
+    font-size:18rpx;
+    opacity:0.8;
+    color:rgba(255,255,255,1);
+    text-shadow:0px 2px 1px rgba(76,112,254,0.5);
+}
+.ka-posi{
+    position:relative;
+    width:100%;
+    height:100%;
+    z-index:10;
+}
+.ka_number{
+    margin-top:40rpx; 
+}
+
+
+.number{
+    display: inline-block;
+    width:22rpx;
+    height:50rpx;
+    /* float: left; */
+    background-image:url("https://cdn.vvc.tw/a/images/white_num.svg");
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:2% 0%;
+    /* background-color: red; */
+    opacity:0.9;
+}
+.ka_-{
+    background-position:-30% 0%;
+
+}
+.ka_1{
+	background-position: -36rpx 0px;
+}
+.ka_2{
+	background-position: -62rpx 0%;
+}
+.ka_3{
+	background-position: -90rpx 0px;
+}
+.ka_4{
+	background-position: -112rpx 0px;
+}
+.ka_5{
+	background-position: -138rpx 0px;
+}
+.ka_6{
+	background-position: -162rpx 0px;
+}
+.ka_7{
+    background-position: -192rpx 0px;
+}
+.ka_8{
+	background-position: -214rpx 0px;
+}
+.ka_9{
+	background-position: -242rpx 0px;
+}
+
+.ka_0{
+	background-position: -12rpx 0px;
+}
+.dongshi .number {
+      background-image:url("https://cdn.vvc.tw/a/images/gold_num.svg");
+}
+.footer-img{
+    width:84rpx;
+    height:84rpx;
+    border-radius:50%;
+}
+.footer-cycle{
+    display:flex;
+    width:90%;
+    padding:38rpx 40rpx 36rpx 42rpx;
+    justify-content:space-around;
+    align-items:center;
+    /* box-shadow:0px -8px 52px 0px rgba(75,136,253,0.19),0px -2px 0px 0px rgba(239,239,239,1); */
+    border-bottom:1rpx solid rgba(239,239,239,1);
+}
+.footer-img image{
+    width:100%;
+    height:100%;
+    border-radius:50%; 
+    border:2rpx solid rgba(75, 111, 245, 0.23); 
+}
+.footer-con-text1{
+    font-size:32rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:normal;
+    color:rgba(74,74,74,1);
+}
+.footer-con{
+    width:56%;
+}
+.footer{
+    box-shadow:0px -8px 52px 0px rgba(75,136,253,0.19),0px -2px 0px 0px rgba(239,239,239,1);
+}
+.footer-con-text2{
+    font-size:24rpx;
+    color:rgba(155,155,155,1);
+}
+
+.shouquan{
+   width:122rpx;
+    height:44rpx;
+    line-height:44rpx;
+    font-size:28rpx;
+    text-align:center;
+    border-radius:16rpx;
+}
+
+
+.shouquan1{
+ 
+    color:#08C299;
+    border:2rpx solid rgba(8,194,153,1);
+}
+.shouquan2{
+  
+    color:#E72608;
+    border:2rpx solid rgba(231,38,8,1);
+}
+.shouquan3{
+
+    color:#999999;
+    border:2rpx solid rgba(153,153,153,1);
+}
+.beizhu{
+    display: flex;
+    align-items: center;
+     font-size:20rpx;
+    opacity:0.8;
+    text-align: left;
+    margin-left:45rpx;
+    height: 1.4rem;
+    color:rgba(255,255,255,1);
+    text-shadow:0px 1rpx 1rpx rgba(76,112,254,0.3);
+}
+.inuse{
+    background: #F4F4F3;
+}

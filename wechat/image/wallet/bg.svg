@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375px" height="314px" viewBox="0 0 375 314" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>bg@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M259.075024,489.814448 C379.566127,489.814448 374.977008,386.515923 374.977008,286.355852 C374.977008,186.195781 338.659544,105 218.168441,105 C97.6773382,105 0,186.195781 0,286.355852 C0,386.515923 138.583921,489.814448 259.075024,489.814448 Z" id="path-1"></path>
+        <pattern id="pattern-2" width="16.3308824" height="16.3308824" x="-16.3308824" y="88.6691176" patternUnits="userSpaceOnUse">
+            <use xlink:href="#image-3" transform="scale(0.340226716,0.340226716)"></use>
+        </pattern>
+        <image id="image-3" width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEGWlDQ1BrQ0dDb2xvclNwYWNlR2VuZXJpY1JHQgAAOI2NVV1oHFUUPrtzZyMkzlNsNIV0qD8NJQ2TVjShtLp/3d02bpZJNtoi6GT27s6Yyc44M7v9oU9FUHwx6psUxL+3gCAo9Q/bPrQvlQol2tQgKD60+INQ6Ium65k7M5lpurHeZe58853vnnvuuWfvBei5qliWkRQBFpquLRcy4nOHj4g9K5CEh6AXBqFXUR0rXalMAjZPC3e1W99Dwntf2dXd/p+tt0YdFSBxH2Kz5qgLiI8B8KdVy3YBevqRHz/qWh72Yui3MUDEL3q44WPXw3M+fo1pZuQs4tOIBVVTaoiXEI/MxfhGDPsxsNZfoE1q66ro5aJim3XdoLFw72H+n23BaIXzbcOnz5mfPoTvYVz7KzUl5+FRxEuqkp9G/Ajia219thzg25abkRE/BpDc3pqvphHvRFys2weqvp+krbWKIX7nhDbzLOItiM8358pTwdirqpPFnMF2xLc1WvLyOwTAibpbmvHHcvttU57y5+XqNZrLe3lE/Pq8eUj2fXKfOe3pfOjzhJYtB/yll5SDFcSDiH+hRkH25+L+sdxKEAMZahrlSX8ukqMOWy/jXW2m6M9LDBc31B9LFuv6gVKg/0Szi3KAr1kGq1GMjU/aLbnq6/lRxc4XfJ98hTargX++DbMJBSiYMIe9Ck1YAxFkKEAG3xbYaKmDDgYyFK0UGYpfoWYXG+fAPPI6tJnNwb7ClP7IyF+D+bjOtCpkhz6CFrIa/I6sFtNl8auFXGMTP34sNwI/JhkgEtmDz14ySfaRcTIBInmKPE32kxyyE2Tv+thKbEVePDfW/byMM1Kmm0XdObS7oGD/MypMXFPXrCwOtoYjyyn7BV29/MZfsVzpLDdRtuIZnbpXzvlf+ev8MvYr/Gqk4H/kV/G3csdazLuyTMPsbFhzd1UabQbjFvDRmcWJxR3zcfHkVw9GfpbJmeev9F08WW8uDkaslwX6avlWGU6NRKz0g/SHtCy9J30o/ca9zX3Kfc19zn3BXQKRO8ud477hLnAfc1/G9mrzGlrfexZ5GLdn6ZZrrEohI2wVHhZywjbhUWEy8icMCGNCUdiBlq3r+xafL549HQ5jH+an+1y+LlYBifuxAvRN/lVVVOlwlCkdVm9NOL5BE4wkQ2SMlDZU97hX86EilU/lUmkQUztTE6mx1EEPh7OmdqBtAvv8HdWpbrJS6tJj3n0CWdM6busNzRV3S9KTYhqvNiqWmuroiKgYhshMjmhTh9ptWhsF7970j/SbMrsPE1suR5z7DMC+P/Hs+y7ijrQAlhyAgccjbhjPygfeBTjzhNqy28EdkUh8C+DU9+z2v/oyeH791OncxHOs5y2AtTc7nb/f73TWPkD/qwBnjX8BoJ98VQNcC+8AAAFFSURBVGgF7djbDYMwDAXQBjEMYqyqY1WMxTppLiJIQIA8ariWkp8IPuweO60am67r7MstY8wwjuPH7dMz3uUua63p+/7r9rePIRW/9QmQzCV9ub0YgSIgzhxvQkjFb1EZBAdEKolkfJTqtnb7bv/zOJm58moRE0AzYgFoRawAGhE7gDZEEKAJcQjQgjgFaEBcAtgRUQBmRDSAFZEEYEQkA9gQWQAmRDaABVEEYEAUAx5H4EaGOyw+SMl66mbXzNOD4k6gCPNUY/CFwF1YOn5zRxJJRINqaUbUuZA/79sd3wm3xIdbdS60rXzo2XVCbO60/HxKJgFKKv4CkEziuyKBWAE0InYAbYggQBPiEKAFcQrQgLgEsCOiAMyIaAArIgnAiEgGsCGyAEyIbAALogjAgCgGPI7AX9w6F3JtqHMhnMWLFSrSD9jOnakVHpZYAAAAAElFTkSuQmCC"></image>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的钱包">
+            <g id="bg" transform="translate(-75.000000, -176.000000)">
+                <g id="Oval-4">
+                    <use fill="#26221F" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.2" fill="url(#pattern-2)" style="mix-blend-mode: screen;" xlink:href="#path-1"></use>
+                </g>
+                <path d="M361.730441,411.490585 C457.057846,463.590257 529.372811,302.280752 529.372811,213.915192 C529.372811,125.549632 487.687485,50.1810446 399.321925,50.1810446 C310.956365,50.1810446 245.563193,84.9141445 239.321925,210.181045 C233.080657,335.447945 266.403037,359.390913 361.730441,411.490585 Z" id="Oval-4-Copy" fill="#DAC897" transform="translate(383.983481, 235.904389) scale(-1, 1) rotate(-35.000000) translate(-383.983481, -235.904389) "></path>
+                <path d="M381.643624,451.381139 C443.294814,451.381139 463.025035,302.706624 466.013323,237.614318 C469.001611,172.522012 458.52407,119.650283 396.87288,119.650283 C335.221689,119.650283 337.21945,163.01565 285.243525,237.244964 C233.2676,311.474278 319.992434,451.381139 381.643624,451.381139 Z" id="Oval-4-Copy-2" fill="#ECDAB1" transform="translate(367.897042, 285.515711) scale(-1, 1) rotate(-35.000000) translate(-367.897042, -285.515711) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

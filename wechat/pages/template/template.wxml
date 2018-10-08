@@ -1,0 +1,45 @@
+<view class='{{isshow?"inner":"inner1"}}'>
+    <view class='{{isshow?"wfr-content":"wfr-content1"}}'>
+        <view class='wfrfloat'>
+            <view class='wfrfloat-left'>
+                <image class='wfr-left-img' src='{{shoplist.img}}?x-oss-process=image/resize,w_1125'  mode='aspectFill'></image>
+            </view>
+            <view class='wfrfloat-right'>
+                <view class='wfr-text1'>￥{{shoplist.pice}}</view>
+                <view class='wfr-text2'>库存:{{shoplist.kucun}}</view>
+                <view class='wfr-text3'>{{shoplist.name}}</view>
+            </view>
+            <view class='wfr-cancel' bindtap='wfrcancel'>
+                <image class='wfr-cancel-img' src='../../image/icon/cancel.svg'></image>
+            </view>
+        </view>
+        <view class='wfr-sku'>
+            <view class='wfr-sku-color'>分类</view>
+            <view class='wfr-color'>
+                <text wx:for="{{shoplist.sku}}" wx:for-index="index" wx:for-item="item" data-img='{{item.thumb}}' data-id="{{index}}" class='{{index==selected? "wfr-change-sku1":"wfr-change-sku"}} {{item.delete == 0? "":"wfr-change-sku-delete"}} {{item.deleted}}'  bindtap='wfrclicksku'>{{item.title}}</text>
+            </view>
+        </view>
+        <view class='wfr-sku1'>
+         <!--class='{{goods.deleted == 0?"textcolor":"textcolor1"}}'-->
+            <view class='wfr-sku-color1'>尺码</view>
+            <view class='wfr-color1' wx:if="{{shoplist.sku[selected].child != null}}">
+                <text wx:for="{{shoplist.sku[selected].child}}" wx:for-item="item1" wx:for-index="index1" data-img='{{item1.thumb}}' data-id="{{index1}}"  class='{{index1==selected1? "wfr-change-sku2":"wfr-change-sku3"}} {{item1.delete == 0? "":"wfr-change-sku-delete"}}'  bindtap='chageimg'>{{item1.title}}</text>
+            </view>
+            <view lass='wfr-color1' wx:if="{{shoplist.sku[selected].child == null}}">
+                <text class='wfr-sku-null'>均码</text>
+            </view>
+        </view>
+        <view class='wfr-number'>
+            <view class='wfr-num'>数量</view>
+            <view class='wfr-click-num'>
+                <view class='wfr-text4'  bindtap='reduce'>-</view>
+                <input value="{{num}}" bindinput='wfrnumipt' adjust-position='true'></input>
+                <view class='wfr-text5'  bindtap="increase">+</view>
+            </view>
+        </view>
+        <view class='wfr-footer'>
+            <view class='wfr-look-detail' bindtap='add_Shopping_Cart'>加入购物车</view>
+            <view class='wfr-footer-Sure' bindtap='GoPurchase'>去购买</view>
+        </view>
+    </view>
+</view>

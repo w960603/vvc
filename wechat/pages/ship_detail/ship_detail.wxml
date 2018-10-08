@@ -1,0 +1,52 @@
+<view style="width:100%;height:100%;">
+
+    <header title='发货详情'></header>
+     <view class='shop-null' wx:if="{{list==null}}">
+        <image class='shop-null-img' src='../../image/shipnothing.svg'></image>
+    </view>
+
+    <view class="wrap" >
+        <view class="content" wx:for="{{list}}" wx:for-item="item">
+            <view class="part_1">
+                <view class="img">
+                    <image src="{{item.goods_img}}" model='aspectFill'></image>
+                </view>
+                <view class="speak">{{item.order_goods}}</view>
+                <view>{{item.color?item.color:'无颜色'}}/{{item.size?item.size:'无款式'}}</view>
+            </view>
+            <view class="part_2">
+                <view class="item_state">
+                    <view class="ship_list">
+                        <image src="../../image/icon/date.svg"></image>
+                        <view class="one" bindtap='cancel1'>日期</view>
+                    </view>
+                    <view class='right-text'>{{item.time}}</view>
+                </view>
+                <view class="item_state">
+                    <view class="ship_list">
+                        <image src="../../image/icon/time.svg"></image>
+                        <view class="one">剩余</view>
+                    </view>
+                    <view class='right-text'>{{item.shengyu}}/160</view>
+                </view>
+            </view>
+
+            <view class="part_2">
+                <view class="item_state">
+                    <view class="ship_list">
+                        <image src="../../image/icon/freight.svg"></image>
+                        <view class="one">运费</view>
+                    </view>
+                    <view class='right-text'>{{item.note}}</view>
+                </view>
+                <view class="item_state">
+                    <view class="ship_list">
+                        <image src="../../image/icon/shipped.svg"></image>
+                        <view class="one">已发货</view>
+                    </view>
+                    <view class='right-text' wx:if='{{item.order_status!=-2}}'>{{item.order_status}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

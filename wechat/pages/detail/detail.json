@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-component": "../template/template",
+    "header":"../head/head"
+  }
+}

@@ -1,0 +1,131 @@
+page {
+    background: rgba(239, 239, 239, 1);
+}
+.shop-null{
+  width:100%;
+  height: 100%;
+  text-align:center;
+  padding-top:60%;
+}
+.shop-null-img{
+  width:280rpx;
+  height:341rpx;
+}
+image {
+    width: 100%;
+    height: 100%;
+}
+
+.detail-title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 88rpx;
+    background: rgba(246, 246, 246, 1);
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+.detail-title .back {
+    height: 48rpx;
+    width: 48rpx;
+    margin-left: 32rpx;
+}
+
+.white {
+    opacity: 0;
+}
+
+.content {
+    width: 716rpx;
+    height: 348rpx;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 20rpx;
+    margin: 0 auto;
+    border-top: 16rpx solid rgba(239, 239, 239, 1);
+    border-bottom: 8rpx solid rgba(239, 239, 239, 1);
+}
+
+.part_1 {
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    border-bottom: 1px dashed lightgrey;
+}
+.part_1 view:last-child{
+    flex: 1;
+}
+.part_1 view:nth-child(2){
+    flex:2;
+}
+
+.part_1 view {
+    font-size: 28rpx;
+    font-family: PingFang-SC-Medium;
+    font-weight: normal;
+    color: rgba(74, 74, 74, 1);
+}
+
+.part_1 .speak {
+    width: 442rpx;
+}
+
+.img {
+    width: 72rpx;
+    height: 72rpx;
+    padding: 14rpx 16rpx 8rpx 22rpx;
+}
+
+.img image {
+    border-radius: 50%;
+}
+
+.part_2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 28rpx;
+}
+
+.item_state {
+    display: flex;
+    width: 50%; 
+    padding-left: 24rpx;
+    box-sizing: border-box;
+    
+    align-items: center;
+}
+.ship_list{
+    min-width:80rpx;
+    text-align: center;
+}
+.ship_list image {
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.part_2 .right-text {
+    height: 40rpx;
+    font-size: 28rpx;
+    margin-right:30rpx;
+    font-family: PingFang-SC-Medium;
+    font-weight: normal;
+    color: rgba(74, 74, 74, 1);
+    line-height: 40rpx;
+    text-align: center;
+    flex:1;
+}
+
+.part_2 .one {
+    height: 34rpx;
+    font-size: 24rpx;
+    font-family: PingFang-SC-Medium;
+    font-weight: normal;
+    color: rgba(74, 74, 74, 1);
+    line-height: 34rpx;
+}

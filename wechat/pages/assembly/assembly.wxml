@@ -1,0 +1,15 @@
+<mask class='content'>
+
+    <view class='wfr-content'>
+        <view class='Self_Lifting'>{{propMenu.title}}
+            <image class='Self_Lifting-img' bindtap='wfrcancel' src='../../image/cancel.svg'></image>
+        </view>
+        <radio-group  bindchange="radioChange" wx:for="{{propMenu.menu}}" wx:for-item="item" data-index='{{item.id}}'>
+            <label class="radio_groun">
+                {{item.name}}
+                <radio checked='{{propMenu.checked==item.id}}' class="radio" color='#fff' />
+            </label>
+        </radio-group>
+        <view class='wfr-confirm' bindtap='confirm'>确定</view>
+    </view>
+</mask>

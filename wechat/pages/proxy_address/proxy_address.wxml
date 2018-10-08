@@ -1,0 +1,35 @@
+<!-- pages/proxy_address/proxy_address.wxml-->
+<mask class="mask" bindtap="closemask"></mask> 
+    <view class="content">
+        <view class="search_input">
+            <image src="../../image/icon/search.svg"></image>
+            <!-- bindinput='search_data' bindfocus='changecolor' bindblur='setSearchStorage' -->
+            <input type="search" placeholder='请输入用户名称' adjust-position='true' class="search" bindblur='search_data' />
+            <view class='{{activeOpacity?"iscanal2":"iscanal"}}' bindtap="cancel">取消</view>
+        </view>
+        <view class="recent_user">{{recent_user}}</view>
+        <view class="avator">
+            <block wx:for="{{user}}" wx:for-item="item" wx:for-index="index">
+                <view class="avator_list">
+                    <image src="{{item.img_url}}" style='background:url("https://cdn.vvc.tw/images/none.svg") 0 0 /cover no-repeat '></image>
+                    <view class="theme clip" >{{item.nick_name}}</view>
+                </view>
+            </block>
+        </view>
+        <scroll-view scroll-y scroll-top="{{scrollTop}}">
+            <view wx:for="{{user}}" wx:index="{{index}}" wx:key="index">
+                <view class="message" data-item='{{item}}'  bindtap='agent_address'>
+                    <view class="avator_list">
+                        <image src="{{item.img_url}}" style='background:url("https://cdn.vvc.tw/images/none.svg") 0 0 /cover no-repeat '></image>
+                        <view class="theme">{{item.shouquan?"已授权":"未授权"}}</view>
+                    </view>
+                    <view class="management">
+                        <text class="department">{{item.nick_name}}</text>
+                        <text class="tel">{{item.phone}}</text>
+                        <view class="address">{{item.province}}{{item.city}}</view>
+                        
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>

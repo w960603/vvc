@@ -1,0 +1,8 @@
+{
+    "component": "true",
+    "usingComponents": {
+        "tabbar": "../temp/temp",
+        "header": "../head/head"
+
+    }
+}

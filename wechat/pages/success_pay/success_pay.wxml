@@ -1,0 +1,32 @@
+<view class='title' style='{{h}}'>
+    <image src='../../image/icon/back.svg'  bindtap='navigateBack'></image>
+    <view>支付成功</view>
+</view>
+<view style='{{fill}}'></view>
+<view class='pay-detail'>
+    <image src='../../image/icon/success_pay.svg'></image>
+    <view class='success_pay'>支付成功</view>
+    <view class='price'>¥{{money}} </view>
+    <view class='view'>
+        <button bindtap='looklist'>
+            查看订单
+        </button>
+        <button bindtap='go_home'>
+            返回首页
+        </button>
+    </view>
+</view>
+<view class="hot_produce">
+    <view class="hot">· 热销产品 ·</view>
+    <view class="produce">HOT PRODUCTS</view>
+</view>
+<view class="list">
+    <view class="img_list" bindtap='img_list' wx:for="{{oytarr}}" wx:for-index="index" wx:for-item="item"
+    wx:if='{{index<6}}'>
+        <image src="{{item.img}}?x-oss-process=image/resize,w_332" class="img" bindtap="jumpToDetail" data-id="{{item.id}}" lazy-load='true'></image>
+        <view class="commentary">
+            <view class="theme">{{item.title}}</view>
+            <view class="price">￥{{item.mon1}}</view>
+        </view>
+    </view>
+</view>

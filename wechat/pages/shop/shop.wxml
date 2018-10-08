@@ -1,0 +1,99 @@
+
+<tabbar selected='3'></tabbar>
+
+<view class='con'>
+    <view class="header" style='{{h}}'>
+        购物车
+    </view>
+
+    <view style='{{fill}}'></view>
+    <view class='shop-null' wx:if="{{list == null}}">
+        <image class='shop-null-img' src='../../image/icon/shopnull.svg'></image>
+    </view>
+    <view class='wfr-content'>
+        <!-- 循环购物车 -->
+        <view class='wfr-content-for' wx:for="{{list.cart}}" wx:for-index="index" wx:for-item="item">
+            <view class='wfr-clear-both' data-goods="{{index}}" bindtap='wfrradio'>
+                <view class='wfr-radio' wx:if="{{list.cart[index].isshow}}">
+                    <image src='../../image/icon/activecar.svg'></image>
+                </view>
+                <view class='wfr-radio' wx:else>
+                    <image class='wfr-radio-img' src='../../image/icon/noactivecar.svg'></image>
+                </view>
+                <view class='wfr-content-img'>
+                    <image class='wfr-img' src='{{list.goods[item.child[0].goods_id].img}}?x-oss-process=image/resize,w_332' mode='aspectFill'></image>
+                </view>
+                <view class='wfr-text2'>
+                    <view class='wfr-text3'>
+                        <text>{{list.goods[item.child[0].goods_id].title}}   {{list.goods[item.child[0].goods_id].shopname}}</text>
+                    </view>
+                    <view class='wfr-pice'>
+                        <view class='wfr-pice-view1'>
+                            <text class='wfr-pice-text'>价格</text>
+                            <text class='wfr-pice-text1'>￥{{[item.child[0].price]}}</text>
+                        </view>
+                        <view class='wfr-pice-view1'>
+                            <text class='wfr-pice-text'>一箱</text>
+                            <text class='wfr-pice-text1'> {{list.goods[item.child[0].goods_id].spec}}</text>
+                        </view>
+                        <view class='wfr-pice-view1'>
+                            <text class='wfr-pice-text'>起订量</text>
+                            <text class='wfr-pice-text1'>{{list.goods[item.child[0].goods_id].min_num}}</text> </view>
+                    </view>
+                </view>
+            </view>
+            <!-- 列表开始 -->
+            <view class='wfr-sku-content'>
+                <view class='wfr-sku' wx:for="{{item.child}}" wx:for-index="index1" wx:for-item="item1">
+
+            
+                    <view  class='{{index1 == 0?"wfr-sku2":"wfr-sku1"}} {{index1 == item.child.length-1?"wfr-line":""}}'>
+                        <view class='wfr-sku-mane'>{{list.cate[item1.cate_one].title}}</view>
+                        <view class='wfr-sku-sku'  wx:if="{{list.cate[item1.cate_two]}}">{{list.cate[item1.cate_two].title}}</view>
+                        <view class='wfr-sku-sku' wx:else>
+                        <!-- <image style=' font-size:0;height:24rpx;width:24rpx;' src='../../image/jian.svg'></image> -->
+                        /
+                        </view>
+                        <view class='wfr-jian'  bindtap='reduce' data-id='{{item1.id}}' data-num='{{item1.num}}' data-goods="{{index}}" data-index="{{index1}}">
+                            <image src='../../image/jian.svg'></image>
+                        </view>
+                        <!-- <view class='wfr-number1'></view> -->
+                        <view class='wfr-number1'>
+                            <input class='wfr-number1-inpt' maxlength='3' value='{{item1.num}}' bindinput='setnum' data-goods="{{index}}" data-index="{{index1}}"></input>
+                        </view>
+                        <view class='wfr-jia' bindtap='plus' data-num='{{item1.num}}' data-id='{{item1.id}}' data-goods="{{index}}" data-index="{{index1}}"> 
+                            <image src='../../image/jia.svg'></image>
+                        </view>
+                    </view>
+                    <!-- 商品父亲的ID data-goods="{{index}}" -->
+                    <view class='wfr-del' data-goods="{{index}}" data-cateone='{{item1.cate_one}}' data-catetwo='{{item1.cate_two}}' data-num='{{item1.num}}' bindtap='deleteitem'>
+                        <image class='deletesku-img' src='../../image/icon/deletesku.svg'></image>
+                    </view>
+                </view>
+                <!-- <view class='wfr-line'></view> -->
+            </view>
+            <!-- 循环列表 -->
+        </view>
+    </view>
+    <!-- 结束 -->
+    <view class='Allpice' wx:if="{{list != null}}">
+        <view class='wfr-con' bindtap='allRideo'>
+            <view class='wfr-radio2'>
+                <view class='allxuan1' wx:if="{{kaiguan}}">
+                    <image src='../../image/icon/activecar.svg'></image>
+                </view>
+                <view class='allxuan2' wx:else>
+                    <image src='../../image/icon/noactivecar.svg'></image>
+                </view>
+            </view>
+            <view class='wfr-text8'>全选</view>
+        </view>
+        <view class='wfr-txt'>
+            <text class='Nofreight'>不含运费</text>
+            <text class='wfr-txt-text9'>合计:</text>
+            <text class='wfr-txt-text10'>￥{{totalPrice}}</text>
+            <text class='wfr-shuliang'>({{num}}件)</text>
+        </view>
+        <view class='Settlement' bindtap='jiesuan'>结算</view>
+    </view>
+</view>

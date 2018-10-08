@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="30px" viewBox="0 0 34 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>Combined Shape@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M317.501219,218.744401 L289,218.744401 L289,206.731605 C289,206.31695 289.344876,205.980805 289.770303,205.980805 L293.684326,205.980805 C293.740464,205.900494 293.814094,205.826796 293.906534,205.763789 L301.177246,200.808091 C304.813861,198.329384 309.144238,197 313.581839,197 L319.89304,197 C320.36101,197 320.740374,197.369759 320.740374,197.82588 C320.740374,198.282001 320.36101,198.65176 319.89304,198.65176 L313.581839,198.65176 C309.491666,198.65176 305.500322,199.877064 302.148424,202.161708 L297.082369,205.614718 L311.413042,205.614718 C312.243193,205.614718 312.578179,206.657629 311.896233,207.119035 L305.141512,211.689301 C304.25767,212.287311 304.003447,213.452195 304.56105,214.349056 C305.109387,215.231016 306.274921,215.532752 307.199993,215.032232 L317.289133,209.573398 L317.501219,209.446596 L317.501219,209.458647 L319.741259,208.24665 C320.150415,208.025272 320.666225,208.169098 320.893353,208.567894 C321.120481,208.966689 320.972919,209.469439 320.563764,209.690817 L317.501219,211.347839 L317.501219,218.744401 Z M317.501219,220.246001 L317.501219,223.2492 C317.501219,223.663855 317.156343,224 316.730916,224 L289.770303,224 C289.344876,224 289,223.663855 289,223.2492 L289,220.246001 L317.501219,220.246001 Z" id="path-1"></path>
+        <filter x="-7.8%" y="-5.6%" width="115.6%" height="122.2%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.298039216   0 0 0 0 0.439215686   0 0 0 0 0.996078431  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="推广码" transform="translate(-288.000000, -197.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Combined-Shape" opacity="0.970000029">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

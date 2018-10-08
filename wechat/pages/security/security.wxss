@@ -1,0 +1,242 @@
+.page {
+    width: 100%;
+    /* min-height:100%; */
+}
+.userinfo-btn{
+    position:fixed;
+    top:0;left:0;
+    z-index:999;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    position: relative;
+}
+
+/* .header-posi {
+    width: 44rpx;
+    height: 44rpx;
+    margin-top: 20rpx;
+    position: absolute;
+    top: 70rpx;
+    left: 32rpx;
+    font-size: 0;
+} */
+
+.header-posi-img {
+    position:absolute;
+    bottom:20rpx;left:24rpx;
+    width: 48rpx;
+    height: 48rpx;
+}
+
+
+.header-con {
+    
+    margin-right: 50rpx;
+    text-align: center;
+    font-size: 35rpx;
+    font-weight: normal;
+    margin:auto;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.chaxun {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin: 44rpx 0 55rpx 0;
+}
+
+.button {
+    width: 116rpx;
+    height: 70rpx;
+    position: absolute;
+    right: 0rpx;
+    top: 275rpx;
+}
+
+.button image {
+    width: 100%;
+    height: 100%;
+}
+
+.chaxun-img {
+    width: 192rpx;
+    height: 160rpx;
+}
+
+.chaipt {
+    width: 686rpx;
+    height: 90rpx;
+    background: rgba(253, 253, 253, 1);
+    border-radius: 4rpx;
+    margin: 0 auto;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+.chaipt-input {
+    display: inline-block;
+    width: 550rpx;
+    height: 62rpx;
+    font-size: 32rpx;
+    color: rgba(155, 155, 155, 1);
+    line-height: 90rpx;
+}
+.placeholder {
+    color: #d7d7d7;
+}
+.wfr-chaipt-img {
+    display: inline-block;
+    width: 50rpx;
+    height: 50rpx;
+}
+.posi-qr-bg {
+    width: 100%;
+    height: 798rpx;
+    position: absolute;
+    top: 0;
+    z-index: -10;
+}
+.wfr-chaxun-tap {
+    width: 212rpx;
+    height: 72rpx;
+    font-size: 28rpx;
+    text-align: center;
+    color: rgba(74, 74, 74, 1);
+    line-height: 72rpx;
+    background: white;
+    margin: 0 auto;
+    margin-top: 64rpx;
+    border-radius: 8rpx;
+}
+
+.wfr-chaxun-Result {
+    width: 686rpx;
+    /* height:384rpx; */
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 4rpx 6rpx 0rpx rgba(215, 215, 215, 1);
+    border-radius: 8rpx;
+    position: relative;
+    top: 57rpx;
+}
+
+.wfr-line {
+    width: 652rpx;
+    height: 42rpx;
+    margin: 0 auto;
+}
+
+.wfr-line-img {
+    width: 100%;
+    height: 100%;
+}
+
+.wfr-result {
+    line-height: 73rpx;
+    margin: 0 20rpx;
+    font-weight: normal;
+    color: rgba(74, 74, 74, 1);
+    border-bottom: 1px dashed lightgray;
+    font-size: 32rpx;
+}
+
+/* .wfr-chaxun-img {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 50%;
+} */
+
+.wfr-chaxun-img image {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 50%;
+}
+
+.wfr-chaxun-img {
+    width: 500rpx;
+    line-height:60rpx;
+    font-size: 30rpx;
+    color: #4a4a4a;
+}
+.wfr-chaxun-float {
+    display: flex;
+    line-height: 70rpx;
+    justify-content:space-around;
+}
+.wfr-chaxun-left {
+    flex:3;
+    font-size: 28rpx;
+    color: rgba(155, 155, 155, 1);
+    text-align:center;
+    /* 274112080015 */
+}
+.wfr-chaxun-img-red {
+    flex:8;
+    display: inline;
+    font-size: 30rpx;
+    vertical-align: 15rpx;
+    color: red;
+}
+.wfr-chaxun-name {
+    display: inline-block;
+    vertical-align: 15rpx;
+    color: #4a4a4a;
+}
+.wfr-chaxun-name1 {
+    display: inline-block;
+    vertical-align: 20rpx;
+    color: #4a4a4a;
+    margin-left: 10rpx;
+}
+.record{
+    padding-top:120rpx;
+}
+scroll-view{
+    position: relative;
+    z-index:10;
+    width:718rpx;
+    padding-left:32rpx;
+    white-space: nowrap;
+    height:200rpx;
+}
+.record-title{
+    color:#9B9B9B;
+    width:100vw;
+    text-align: center;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    margin-bottom:36rpx;
+}
+.record-item{
+    display: inline-block;
+    width:120rpx;
+    margin-right:66rpx;
+    text-align: center;
+}
+.record-item .user-img{
+    width:86rpx;
+    height:86rpx;
+    border-radius:50%;
+}
+.nick-name{
+    margin-top:16rpx;
+    line-height: 28rpx;
+    font-size: 24rpx;
+    color: #4a4a4a;
+}
+.date{
+    margin-top:4rpx;
+    line-height: 28rpx;
+    font-size: 20rpx;
+    color:#9b9b9b;
+}

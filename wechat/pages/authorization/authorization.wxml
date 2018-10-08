@@ -1,0 +1,48 @@
+<view class='page'>
+
+
+    <button class='userinfo-btn' wx:if='{{btn_show}}' bindgetuserinfo='getuserinfo' open-type="getUserInfo"></button>
+
+
+    <view class='content'>
+        <image class="posi-qr-bg" src='/image/authorization.svg' mode="widthFix"></image>
+        <view class='header' style='{{h}}'>
+            <image wx:if="{{showback}}" class='header-posi-img' src='../../image/icon/backwhite.svg' bindtap="goback"></image>
+            <!-- <image wx:else class='header-posi-img' src='../../image/icon/backwhite.svg' bindtap="goback"></image> -->
+            <view class='header-con'>授权查询</view>
+        </view>
+        <view class='chaxun'>
+            <image class='chaxun-img' src='../../image/group.svg'></image>
+        </view>
+        <view class="button" bindtap='tosecurity'>
+            <image src="../../image/icon/securitybutton.svg"></image>
+        </view>
+        <view class='chaipt'>
+            <input class='chaipt-input' bindinput='chaxuninput' adjust-position='true' placeholder="请输入编号" placeholder-class='placeholder'></input>
+            <!-- <image bindtap='QR_code' class='wfr-chaipt-img' src='../../image/Scaveng.svg'></image> -->
+        </view>
+        <view class='wfr-chaxun-tap' bindtap='chaxun'>立即查询</view>
+    </view>
+    <view class="{{active?'wfr-chaxun-Result' :'wfr-chaxun-Result1'}}" wx:if="{{isshow}}">
+        <block wx:if="{{obj.nic_name}}">
+            <view class='wfr-result'>查询结果</view>
+            <view class="item_result">
+                <text class="result1">授权：{{obj.nic_name}}</text>
+                <text>级别：{{obj.level}}</text>
+            </view>
+            <view class="item_result">
+                <text class="result1">微信：{{obj.wechat}}</text>
+                <text>日期：{{obj.time}}</text>
+            </view>
+        </block>
+        <block wx:else="{{msg}}" class="noth_mess"> 
+            <view class='wfr-result' style="color:rgba(215,215,215,1)">查询结果</view>
+            <view class="nothing">
+                <image src="../../image/nothing.svg"></image>
+            </view>
+            <view class="message">{{msg}}</view>
+        </block>
+    </view>
+    
+
+</view>

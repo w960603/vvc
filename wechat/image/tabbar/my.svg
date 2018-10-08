@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.2 (51160) - http://www.bohemiancoding.com/sketch -->
+    <title>icon/24/我的未点击 copy@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icon/24/我的未点击-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6,8.06207879 C6.50141009,10.8691885 8.95501129,13 11.9062902,13 C15.2199987,13 17.9062902,10.3137085 17.9062902,7 C17.9062902,3.6862915 15.2199987,1 11.9062902,1 C9.31426031,1 7.10612122,2.64363182 6.26726024,4.94550812" id="Oval-2" stroke="#9B9B9B" stroke-width="1.25"></path>
+        <path d="M7,17.3249234 C7,19.4660521 7,21.6910777 7,28 C12.2467051,28 16.5,23.7467051 16.5,18.5 C16.5,13.2532949 12.2467051,9 7,9 C7,10.6746043 7,12.9305575 7,13.7678597" id="Oval-2-Copy" stroke="#9B9B9B" stroke-width="1.25" transform="translate(11.750000, 18.500000) rotate(-90.000000) translate(-11.750000, -18.500000) "></path>
+    </g>
+</svg>

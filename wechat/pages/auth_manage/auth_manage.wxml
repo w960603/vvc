@@ -1,0 +1,31 @@
+<!--pages/auth_manage/auth_manage.wxml-->
+<view class='page'>
+    <!-- 头部 -->
+        <image class="posi-qr-bg" src='../../image/auth_manage.svg'></image>
+    <view class='header'>
+        <view class='title' style='{{h}}'>
+            <image class='header-posi-img' src='../../image/icon/backwhite.svg' bindtap="goback"></image>
+            <view class='header-con'>授权管理</view>
+            <image class='header-posi-img' src='../../image/icon/backwhite.svg' style="opacity:0"></image>
+        </view>
+    </view>
+    <!-- 导航 -->
+    <view class="nav">
+        您的邀请码由Alex申请
+    </view>
+    <!-- 内容 -->
+    <view class="content">
+        <view class="acc_infor">账号信息</view>
+        <input type="text" placeholder='输入昵称' adjust-position='true' class="input" value="{{nickname}}" placeholder-class='placeholder' bindblur='nicknameInput'/>
+        <input type="text" placeholder='输入自定义账号' adjust-position='true' class="input" value="{{account}}" placeholder-class='placeholder' bindblur='accountInput'/>
+        <input type="password" placeholder='请输入您的密码' adjust-position='true' class="input" value="{{password}}" placeholder-class='placeholder' bindblur='passwordInput'/>
+        <input type="password" placeholder='再此确认密码' adjust-position='true' class="input" value="{{passtrue}}" placeholder-class='placeholder' bindblur='passtrueInput'/>
+        <view class="acc_infor">邀请码</view>
+        <input type="nunber" placeholder='请输入邀请码' adjust-position='true' class="input" value="{{invation}}" placeholder-class='placeholder' bindblur='invationInput'/>
+        <view class="acc_infor">收/付方式</view>
+        <input type="text" placeholder='请输入支付宝' class="input" adjust-position='true' value="{{alipay}}" placeholder-class='placeholder' bindblur='alipayInput'/>
+        <input type="text" placeholder='请输入支付宝相对应的真实姓名' adjust-position='true' class="input" value="{{name}}"  placeholder-class='placeholder' bindblur='nameInput'/>
+        <input type="number" placeholder='请输入手机/快递联系方式' adjust-position='true' class="input" value="{{phone}}" placeholder-class='placeholder' bindblur='phoneInput'/>
+        <input type="button" class="btn" value="确认" bindtap="orderMeeting"/>
+    </view>
+</view>

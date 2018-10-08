@@ -1,0 +1,157 @@
+page {
+    background-color: #f6f6f6;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.main-title {
+    position: fixed;
+    top:0;left:0;
+    z-index:1;
+    display: flex;
+    width:100%;
+    height:88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    background-color:#f6f6f6;
+}
+
+.main-title image {
+    float: left;
+    width: 48rpx;
+    height: 48rpx;
+    margin:20rpx 0 0 24rpx;
+}
+
+.main-title view {
+    display: inline-block;
+    width: 216rpx;
+    height: 50rpx;
+    margin:0 auto;
+    transform:translateX(-30rpx);
+    font-size: 36rpx;
+    color: #4a4a4a;
+    vertical-align: top;
+}
+.flex-col{
+    display:flex;
+    flex-direction: column;
+}
+.flex-row{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.logo{
+    width:144rpx;
+    height:144rpx;
+}
+.small-logo{
+    width:32rpx;
+    height:32rpx;
+}
+
+.address-list{
+    display: flex;
+    align-items:flex-start;
+}
+
+.main{
+    padding:0 14rpx 14rpx 14rpx;
+}
+.top-main{
+    margin-left:16rpx;
+}
+.top-title{
+    font-size: 32rpx;
+    color: #4A4A4A;
+}
+.desc{
+    margin-top:18rpx;
+    font-size: 24rpx;
+    color: #9B9B9B;
+}
+.price{
+    position: absolute;
+    right:60rpx;
+    font-size: 28rpx;
+    color:#4A4A4A;
+}
+.top-container{
+    padding:30rpx 38rpx 34rpx 24rpx;
+    background:#fff;
+    margin-bottom:24rpx;
+}
+.container{
+    margin-bottom:24rpx;
+    padding:14rpx 36rpx 32rpx 24rpx;
+    background:#fff;
+}
+.title{
+    position: relative;
+    font-size: 32rpx;
+    color: #4a4a4a;
+}
+.title text{
+    padding:12rpx;
+    line-height: 64rpx;
+}
+.line:after{
+    content:'';
+    display: block;
+    width:95%;
+    margin:0 auto 32rpx;
+    border:1rpx dashed #d7d7d7;
+}
+.address{
+    font-weight: 600;
+    margin-bottom:20rpx;
+}
+.address text:nth-child(1){
+    margin-right:50rpx;
+
+}
+
+.tag{
+    display:inline-block;
+    height:30rpx;
+    min-width:40rpx;
+    margin-right:20rpx;
+    padding:0 26rpx;
+    background-color: #5188FF;
+    font-size: 20rpx;
+    color: #fff;
+    border-radius:50rpx;
+    text-align: center;
+}
+.full-address{
+    color:#9B9B9B;
+    font-size: 28rpx;
+    margin-top:-5rpx;
+}
+.cont-main{
+    /* height:216rpx; */
+    /* justify-content: space-between; */
+    font-size: 28rpx;
+}
+.cont-main > view{
+    margin-bottom:20rpx;
+}
+.cont-main .last{
+    margin-bottom:0;
+}
+.gray{
+    color: #9b9b9b;
+    margin-left: 12rpx; 
+}
+.number{
+    color:#4a4a4a;
+}
+.remark{
+    min-height:174rpx;
+}
