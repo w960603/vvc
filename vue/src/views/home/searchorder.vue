@@ -6,21 +6,20 @@
             <div class="search_name">
                 <label style="flex:1.22"  class="">昵称搜索</label>
                 <div style="flex: 5">
-                    <input  type="text" placeholder="昵称" v-model="keywords.username" class="search" @input="search_name">
+                    <input  type="text" style="text-indent:5px"  placeholder="昵称" v-model="keywords.username" class="search" @input="search_name">
                     <ul class='search-result' v-if="search_result.length">
                         <li :key="index" v-for="(item,index) in search_result" @click="select(item)">{{item}}</li>
                     </ul>
                 </div>
-
                 <div style="flex:2">
-                    <input type="text"  class="search_order"  placeholder="商品id" v-model="keywords.goods_id" >
+                    <input type="text" style="text-indent:5px"  class="search"  placeholder="商品id" v-model="keywords.goods_id" >
                 </div>
-                <button style="flex: 1" class="search_order_btn" @click="searchorder">搜索</button>
+                <button style="flex:1"  class="search_order_btn" @click="searchorder">搜索</button>
             </div>
             <div class="search_name1">
                 <label>订单号搜索</label>
                 <div style="margin: 0 20px">
-                    <input type="text" placeholder="" v-model="keywords.order_id" class="">
+                    <input type="text" style="text-indent:4px"  placeholder="订单号" v-model="keywords.order_id" class="search">
                 </div>
                 <button  class="search_order_btn" @click="searchorder">搜索</button>
             </div>
@@ -106,7 +105,7 @@
                 this.search_result = [];
                 this.searchorder()
             },
-            search_order() {
+            searchorder() {
                 $.ajax({
                     type: 'post',
                     url: 'https://api.vvc.tw/suc/order/ordersearch',
@@ -151,7 +150,6 @@
                     for (value in back2) {
                         if (this.search_result.length < 20) {
                             this.search_result.push(back2[value].match('@@(.*?)\\|@')[1]);
-
                         }
                     }
 
@@ -213,7 +211,7 @@
         align-items: center;
     }
     .search{
-        line-height: 36px;
+        line-height: 35px;
         border: 1px solid #ddd;
     }
     .search_name1{
@@ -234,13 +232,13 @@
     }
     .search-result {
         position: absolute;
-        top: 38px;
-        left: 0;
         z-index: 100;
-        width: 100%;
+        width: 50%;
+        list-style: none;
         border: 1px solid #ddd;
         border-bottom: none;
         background-color: #fff;
+        -webkit-box-sizing: border-box;
         box-sizing: border-box;
     }
     .search-result li{

@@ -1,17 +1,20 @@
 <template>
   <div id="order-list">
 
-    <div class="row">
-      <div class=" form-group col-md-12">
-        <input type="text" v-model="SearchGoods" placeholder="请输入搜索内容..." class="form-control col-md-8 col-md-offset-2"><br/>
-        <button class="btn btn-primary  " @click="add">添加商品</button>
-        <button @click="showDelLayer" class="btn btn-danger  ">删除</button>
+      <div class="container">
+          <div class="row">
+              <div class=" form-group col-md-12">
+                  <input type="text" v-model="SearchGoods" placeholder="请输入搜索内容..." class="form-control col-md-6 "><br/>
+                  <button class="btn btn-primary  " @click="add">添加商品</button>
+                  <button @click="showDelLayer" class="btn btn-danger  ">删除</button>
+              </div>
+          </div>
       </div>
-    </div>
+
 
     <table class="table table-bordered table-hover " v-if="filterData.length">
       <colgroup>
-        <col width="150">
+        <col width="100">
         <col width="200">
         <col width="300">
         <col width="200">
@@ -269,19 +272,11 @@
       showOverlay(row, index) {
         //this.selected=index;
         console.log(row);
-        $.ajax({
-          type: 'get',
-          url: 'https://api.vvc.tw/suc/goods/goodslist',
-          data: {
-            id: row.id
-          },
-          success: (res) => {
-            console.log(res);
+
             this.isModelActive = true;
-            this.selectedlist = res.data[0];
+            this.selectedlist = row;
             console.log(this.selectedlist);
-          }
-        });
+
       },
       modelSave(arr) {
 
@@ -459,181 +454,10 @@
 </script>
 
 <style >
-  #order-list {
-    position: relative;
-    padding: 20px;
-    background: white;
-  }
 
-  .add {
-    width: 100%;
-    text-align: center;
-    margin: 20px 0;
-  }
-
-  .add input, .add button {
-    width: 400px;
-    height: 40px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    font-size: 18px;
-    border: 1px solid #d8d8d8;
-  }
-
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 6;
-    background: rgba(0, 0, 0, 0.7);
-  }
-
-  .overlay td:first-child {
-    width: 66px;
-  }
-
-  .overlay .con {
-    position: absolute;
-    width: 650px;
-    min-height: 545px;
-    background: #fff;
-    left: 29%;
-    top: 15%;
-    animation: wfrProjectileFrame 0.4s linear;
-  }
-
-  @keyframes wfrProjectileFrame {
-    0% {
-      transform: scale(0);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  .wfr-show-frame {
-    position: fixed;
-    width: 200px;
-    height: 150px;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.5);
-    top: 50%;
-    left: 50%;
-    margin-left:-100px;
-    margin-top:-75px;
-    animation: wfrProjectileFrame 0.4s linear;
-  }
-
-  .store {
-    margin: 10px 30px;
-    width: 300px;
-  }
-
-  .wfr-content-frame .list {
-    margin: 10px 30px;
-    width: 300px;
-  }
-
-  .wfr-show-frame p {
-    color: white;
-    text-align: center;
-    font-size: 16px;
-    margin: 40px 0;
-
-  }
-
-  .wfr-btn1, .wfr-btn2 {
-    width: 65px;
-    height: 30px;
-    margin-left: 20px;
-    background: white;
-    border: 0;
-    color: black;
-    border-radius: 4px;
-  }
-
-  .wfr-content-frame {
-    padding: 10px 35px;
-    margin-top: 10px;
-  }
-
-  .title {
-    padding: 10px 20px;
-    font-size: 20px;
-    border-bottom: 1px solid lightgray;
-  }
-
-  .wrfList {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .wfr-Warehouse-btn {
-    text-align: right;
-    margin: 60px auto;
-  }
-
-  .wfr-content-frame input {
-    font-size: 16px;
-    width: 245px;
-    border: 1px solid #d8d8d8;
-    margin: 10px 5px;
-    height: 32px;
-    border-radius: 4px;
-  }
-
-  .wfrList input {
-    padding: 5px 13px;
-    margin: 0 20px;
-    border-radius: 5px;
-    border: 1px solid lightgray;
-    background: none;
-  }
-
-  .wfr-Warehouse-btn input:nth-child(2) {
-    background: #2b87fb;
-    color: white;
-  }
-
-  .wfr-Warehouse-btn {
-    text-align: right;
-    margin: 60px auto;
-  }
-
-  .wfr-Warehouse-btn input {
-    padding: 5px 20px;
-    margin-right: 20px;
-    border-radius: 3px;
-    border: 1px solid lightgray;
-    background: none;
-  }
-
-  .wfr-Warehouse-btn input:nth-child(2) {
-    background: #2b87fb;
-    color: white;
-  }
 
   .product-img {
     width: 50px;
-  }
-
-  .add-img {
-    margin: 0 auto;
-    cursor: pointer;
-    color: #fff;
-  }
-
-  .add-img + input {
-    opacity: 0;
-  }
-
-  .img_file {
-    padding-left: 10%;
   }
 
   .table th {
@@ -645,9 +469,6 @@
     padding: 8px;
     text-align: center;
     vertical-align: middle!important;
-  }
-  input[type='checkbox'] {
-    width: 30px;
   }
 
 </style>

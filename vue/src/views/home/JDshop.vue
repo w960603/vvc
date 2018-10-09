@@ -1,6 +1,6 @@
 <template>
     <div id="app" >
-        <table  >
+        <table style="margin:0 auto">
             <colgroup>
                 <col width="100">
                 <col width="200">
@@ -13,11 +13,11 @@
                 <col width="150">
                 <col width="150">
             </colgroup>
-            <thead >
-            <th v-for="col in titles">
-                {{col.cn}}
-            </th>
-            <th>获取订单</th>
+            <thead class="jdshop_thead">
+                <th v-for="col in titles">
+                    {{col.cn}}
+                </th>
+                <th>获取订单</th>
             </thead>
             <tbody>
             <tr v-for="(row,index) in product_lists">
@@ -33,7 +33,6 @@
                 <td>
                     <button class="obtain_btn" @click="getLists(row)">获取sku</button>
                 </td>
-
             </tr>
             </tbody>
         </table>
@@ -49,7 +48,7 @@
                         <col width="100">
                         <col width="100">
                     </colgroup>
-                    <thead>
+                    <thead class="jdshop_thead">
                         <th v-for="row in sub_title">
                             {{row.cn}}
                         </th>
@@ -255,10 +254,17 @@
         left: 20px;
         right: 20px;
         z-index: 0;
+        padding: 20px 0;
         /*background: white;*/
         /*padding: 20px;*/
     }
-
+    .jdshop_thead{
+        text-align: center;
+    }
+    .jdshop_thead th{
+        height: 50px;
+        border:1px solid #e6e6e6;
+    }
     table tr th{
         color: #000;
         font-size: 15px;

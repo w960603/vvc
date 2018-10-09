@@ -1,4 +1,5 @@
 <template>
+
     <a-layout id="components-layout-demo-custom-trigger">
 
         <a-layout-sider
@@ -16,7 +17,7 @@
         >
             <div class="logo">VVC后台管理系统</div>
             <a-menu theme="dark" mode="inline"
-                    :defaultSelectedKeys="['智能排单表']"
+                    :defaultSelectedKeys="['发货统计']"
                     :defaultOpenKeys="['订单']"
                      v-for="(first,index) in nav"
                     :key="index"
@@ -67,8 +68,8 @@
 
 <script>
     export default {
-        data() {
 
+        data() {
             return {
                 collapsed: false,
                 rootSubmenuKeys: ['订单', '仓库', '供应商列表', '售后管理', '电子面单', '系统管理',],
@@ -79,19 +80,24 @@
                          key:1,
                         children:[
                             {
+                                name: '发货统计',
+                                url:'/Statistics',
+                                key:1,
+                            },
+                            {
                                 name:'智能排单表',
-                                url:'/com1',
+                                url:'/commodity',
                                 key:2,
                             },
                             {
                                 name:'已发货列表',
-                                url:'/com3',
+                                url:'/shippinglist',
                                 key:3,
                             },
                             {
                                 name:'大货系统',
+                                url:'/biggoods',
                                 key:4,
-                                url:'/com2',
                             },
                             {
                                 name:'订单搜索',
@@ -107,11 +113,11 @@
                                     },
                                     {
                                         name: '天猫商品',
-                                        url:'/com1'
+                                        url:'/commodity'
                                     },
                                     {
                                         name: '天猫订单发货',
-                                        url:'/com4'
+                                        url:'/tmallShip'
                                     },
                                 ],
                                 key:5,
@@ -120,24 +126,47 @@
                                 name:'京东',
                                 children:[
                                     {
-                                        name: '京东订单',
-                                        url:'/jdorder'
+                                        name: '京东打印',
+                                        url:'/jdorder',
+                                        key:1,
                                     },
                                     {
                                         name: '京东商品',
-                                        url:'/JDshop'
+                                        url:'/JDshop',
+                                        key:1,
+                                    },
+                                    {
+                                        name:"京东订单搜索",
+                                        url:"/jdsearch",
+                                        key:1
                                     }
                                 ],
                                 key:5,
                             },
                             {
-                                name: '拼团',
-                                url:'/com3',
-                                key:1,
+                              name:"小红书",
+                                children:[
+                                    {
+                                        name:"小红书打印",
+                                        url:"/red_book_printing",
+                                        key:1
+                                    },
+                                    {
+                                        name:"小红书商品",
+                                        url:"/red_book_goods",
+                                        key:1
+                                    },
+                                    {
+                                        name:"小红书订单搜索",
+                                        url:"/red_book_search",
+                                        key:1
+                                    }
+                                ],
+                                key:1
                             },
                             {
-                                name: '发货统计',
-                                url:'/Statistics',
+                                name: '拼团',
+                                url:'/com3',
                                 key:1,
                             },
                             {
@@ -147,7 +176,7 @@
                             },
                             {
                                 name: '自定义',
-                                url:'/com1',
+                                url:'/commodity',
                                 key:1,
                             },
                         ]
@@ -159,7 +188,7 @@
                         children:[
                             {
                                 name:'仓库总览',
-                                url:'/com1',
+                                url:'/commodity',
                                 key:2,
                             },
                             {
@@ -179,7 +208,7 @@
                             },
                             {
                                 name:'分仓管理',
-                                url:'/com1',
+                                url:'/commodity',
                                 key:5,
                             },
                         ]
@@ -191,7 +220,7 @@
                         children:[
                             {
                                 name:'供应商入库出库',
-                                url:'/com1',
+                                url:'/commodity',
                                 key:2,
                             },
                             {
@@ -211,7 +240,7 @@
                             },
                             {
                                 name:'半成品实时监控',
-                                url:'/com1',
+                                url:'/commodity',
                                 key:5,
                             },
                         ]
@@ -243,7 +272,7 @@
                             },
                             {
                                 name:'售后报表',
-                                url:'/com1',
+                                url:'/commodity',
                                 key:5,
                             },
                         ]
@@ -255,7 +284,7 @@
                         children:[
                             {
                                 name:'电子面单',
-                                url:'/com1',
+                                url:'/commodity',
                                 key:2,
                             },
                             {
@@ -275,7 +304,7 @@
                             },
                             {
                                 name:'面单模板',
-                                url:'/com1',
+                                url:'/commodity',
                                 key:6,
                             },
                         ]
@@ -352,9 +381,6 @@
 
 <style scoped>
 
-    #components-layout-demo-custom-trigger{
-        /*height:100vh*/
-    }
     #components-layout-demo-custom-trigger .trigger {
         font-size: 18px;
         line-height: 64px;
@@ -381,8 +407,7 @@
         font-size: 0;
         background: url('../assets/logo.svg') center / contain no-repeat;
     }
-    #components-layout-demo-custom-trigger .ant-layout-sider-collapsed
-    a {
+    #components-layout-demo-custom-trigger .ant-layout-sider-collapsed a{
         color: #fff;
     }
     .main-nav::-webkit-scrollbar{

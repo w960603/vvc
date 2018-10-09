@@ -21,39 +21,40 @@
 <script>
     export default {
         name: "tmall",
-        data: {
-            titles: [
-                {
-                    en: 'pic_url',
-                    cn: '商品预览'
-                },
-                {
-                    en: 'title',
-                    cn: '商品名称'
-                },
-                {
-                    en: 'num_iid',
-                    cn: 'sku'
-                },
-                {
-                    en: 'price',
-                    cn: '商品价格'
-                },
-                {
-                    en: 'num',
-                    cn: '商品数量'
-                },
-                {
-                    en: 'modified',
-                    cn: '修改时间'
-                },
-                {
-                    en: 'approve_status',
-                    cn: '商品状态'
-                },
-            ],
-            product_lists: []
-
+        data() {
+            return{
+                titles: [
+                    {
+                        en: 'pic_url',
+                        cn: '商品预览'
+                    },
+                    {
+                        en: 'title',
+                        cn: '商品名称'
+                    },
+                    {
+                        en: 'num_iid',
+                        cn: 'sku'
+                    },
+                    {
+                        en: 'price',
+                        cn: '商品价格'
+                    },
+                    {
+                        en: 'num',
+                        cn: '商品数量'
+                    },
+                    {
+                        en: 'modified',
+                        cn: '修改时间'
+                    },
+                    {
+                        en: 'approve_status',
+                        cn: '商品状态'
+                    },
+                ],
+                product_lists: []
+            }
 
         },
         created() {

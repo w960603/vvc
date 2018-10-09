@@ -19,7 +19,7 @@
             <select style="width: 150px" @change="express_type($event)">
                 <option v-for="item in express" :value="item.name">{{item.name}}</option>
             </select>
-            <div  @click="dayin" class="btn btn-success">一键打单</div>
+            <div   class="btn btn-success">一键打单</div>
         </div>
         <table style="margin: 0 auto" class="table table-hover table-bordered table-responsive">
             <colgroup>
@@ -35,8 +35,8 @@
                 <col width="200">
             </colgroup>
             <thead class="jdorder_heard">
-                <th v-for="col in titles">{{col}}</th>
-                <th>订单</th>
+            <th v-for="col in titles">{{col}}</th>
+            <th>订单</th>
             </thead>
             <tbody>
             <tr style="user-select:none;" v-for="(row,index) in sub_lists" :key="index" class="jdorder_tr">
@@ -50,10 +50,8 @@
                 <!--<td>{{row.storeOrder}}</td>-->
 
                 <!--卖家备注-->
-                <!--isbg = true-->
                 <td @click="sellerRemark($event,index) ">{{row.venderRemark}}</td>
                 <!--买家备注-->
-                <!--isbg = false"-->
                 <td @click="buyerRemark($event,index)">{{row.orderRemark}}</td>
                 <td>
                     <button class="btn btn-info" @click="getLists(row)">修改订单</button>
@@ -102,7 +100,7 @@
 </template>
 <script>
     export default {
-        name: "jdorder",
+        name: "jd_order",
         data() {
             return {
                 titles: ["订单编号", "收件人", "地址", "手机", "商品sku","卖家","买家"],// "价格","发货位置","更新时间",
@@ -279,20 +277,6 @@
                 console.log("断开连接");
             };
 
-
-            //     computed: {
-        //         items: function() {
-        //             var _search = this.search;
-        //             if (_search) {
-        //                 return this.product_lists.filter(function(product) {
-        //                     return Object.keys(product).some(function(key) {
-        //                         return String(product[key]).toLowerCase().indexOf(_search) > -1
-        //                     })
-        //                 })
-        //             }
-        //
-        //             return this.products;
-        //         }
         },
         methods: {
             express_type(ev){
@@ -342,24 +326,24 @@
                 })
             },
             //搜索订单编号
-            search(val,item) {
-                var that = this;
-                var list = [];
-                console.log(item);
-                if(item==='user'){
-                    list = this.product_lists.filter(function (val1) {
-                        console.log(val1);
-                        return val1.consigneeInfo.fullname.indexOf(val)>-1;
-                        // return val.consigneeInfo.fullname.indexOf(that.name)>-1;
-                    })
-                }else{
-                    list = this.product_lists.filter(function (val1) {
-                        return val1[item].indexOf(val)>-1;
-                        // return val.consigneeInfo.fullname.indexOf(that.name)>-1;
-                    })
-                }
-                this.sub_lists = list
-            },
+            // search(val,item) {
+            //     var that = this;
+            //     var list = [];
+            //     console.log(item);
+            //     if(item==='user'){
+            //         list = this.product_lists.filter(function (val1) {
+            //             console.log(val1);
+            //             return val1.consigneeInfo.fullname.indexOf(val)>-1;
+            //             // return val.consigneeInfo.fullname.indexOf(that.name)>-1;
+            //         })
+            //     }else{
+            //         list = this.product_lists.filter(function (val1) {
+            //             return val1[item].indexOf(val)>-1;
+            //             // return val.consigneeInfo.fullname.indexOf(that.name)>-1;
+            //         })
+            //     }
+            //     this.sub_lists = list
+            // },
             dayin(){
                 console.log(this.bools);
                 if (this.bools){
@@ -396,6 +380,7 @@
                 }
             },
             // 多个面单打印
+
             allorder(printers,express) {
                 $.ajax({
                     type:"post",
@@ -409,33 +394,33 @@
                             console.log(res.data[i]);
                             // 数据结构发生改变
                             // for (var j = 0; j < res.data[i].length;j++){
-                                var taskid = this.getUUID(8,10);
-                                console.log(res.data[i].documentID);
-                                this.orderid.push({documentID:res.data[i].documentID,taskID:taskid});
-                                localStorage.setItem("documentID",res.data[i].documentID);
-                                // console.log("订单完成id",this.orderid);
-                                var  miandan = {
-                                    "cmd": "print",
-                                    "requestID": res.data[i].documentID,
-                                    "version": "1.0",
-                                    "task":{
-                                        "taskID": taskid,
-                                        "preview": false,
-                                        "taskStatus":"printed",
-                                        "previewType": "image",
-                                        "printer": printers,
-                                        "documents": [{
-                                            "documentID":res.data[i].documentID,
-                                            "contents":res.data[i].contents
-                                        }]
-                                    }
-                                };
-                                console.log("面单",miandan);
-                                // var json_miandan =JSON.stringify(miandan);
-                                // if ()
-                                // this.WebSocket.send(miandan);
-                                // console.log(res.data[i][j].documentID);
-                                // 建立连接
+                            var taskid = this.getUUID(8,10);
+                            console.log(res.data[i].documentID);
+                            this.orderid.push({documentID:res.data[i].documentID,taskID:taskid});
+                            localStorage.setItem("documentID",res.data[i].documentID);
+                            // console.log("订单完成id",this.orderid);
+                            var  miandan = {
+                                "cmd": "print",
+                                "requestID": res.data[i].documentID,
+                                "version": "1.0",
+                                "task":{
+                                    "taskID": taskid,
+                                    "preview": false,
+                                    "taskStatus":"printed",
+                                    "previewType": "image",
+                                    "printer": printers,
+                                    "documents": [{
+                                        "documentID":res.data[i].documentID,
+                                        "contents":res.data[i].contents
+                                    }]
+                                }
+                            };
+                            console.log("面单",miandan);
+                            // var json_miandan =JSON.stringify(miandan);
+                            // if ()
+                            // this.WebSocket.send(miandan);
+                            // console.log(res.data[i][j].documentID);
+                            // 建立连接
                         }
                         // this.orderid 把数组转化成字符串存到本地
                         var str = JSON.stringify(this.orderid);
@@ -549,28 +534,11 @@
                     }
                 }
                 // console.log(this.sub_lists[idx].orderRemark);
-            },
-            //搜索手机号码
-            // searchPhone(){
-            //     var that = this
-            //     var phone = []
-            //     phone = this.product_lists.filter(function(val){
-            //         return val.orderPayment.indexOf(that.phone)>-1;
-            //     })
-            //     this.sub_lists = phone
-            // },
-            //搜索收件人
-            // searchName(){
-            //     var that = this
-            //     var  listName = [];
-            //     listName = this.product_lists.consigneeInfo.filter(function(val){
-            //         console.log(product_lists.consigneeInfo.fullname,55555);
-            //         return val.consigneeInfo.fullname.indexOf(that.name)>-1;
-            //     })
-            //     this.fullName = listName
-            // }
-        },
+            }
+
+        }
     }
+
 </script>
 
 <style scoped>
@@ -604,13 +572,13 @@
     }
 
     /*#order-list li span:nth-child(1) {*/
-        /*display: inline-block;*/
-        /*width: 20%;*/
-        /*margin-right: 10px;*/
+    /*display: inline-block;*/
+    /*width: 20%;*/
+    /*margin-right: 10px;*/
     /*}*/
     /*table tr th{*/
-        /*color: #000;*/
-        /*font-size: 15px;*/
+    /*color: #000;*/
+    /*font-size: 15px;*/
     /*}*/
     .jdorder_heard th{
         height: 50px;
