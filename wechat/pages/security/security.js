@@ -1,4 +1,5 @@
 const app = getApp();
+const innerAudioContext = wx.createInnerAudioContext()
 Page({
 
     /**
@@ -24,17 +25,16 @@ Page({
         btn_show: true,
         we_userinfo: null,
         showback: false,
-        newly: [
-            //     {
-            //     img_url:           "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83erY3fIicJCfYDicPSpdCab7Ike021f1HcFDb5vQWn9cfdjIopPdMkSWbUCjupYybjFP2ShpBGVx3Tjw/132",
-            //     nick_name: "夜近天溟",
-            //     time: "2018-09-06"
-            // }
-        ]
+        newly: [],
+
+        status:true
+        
     },
-    onShow: function(){},
+    onShow: function() {
+
+    },
     getuserinfo(e) {
-        console.log(e)
+        
         if (e.detail.userInfo) {
             wx.showToast({
                 title: '登录成功',
@@ -44,6 +44,7 @@ Page({
                 we_userinfo: e.detail.userInfo,
                 btn_show: false
             })
+
         } else {
             console.log(222)
             wx.showToast({
@@ -52,7 +53,6 @@ Page({
                 duration: 5000
             })
         }
-        console.log(this.data.we_userinfo)
     },
     // 时间
     getDate(time) {
@@ -103,7 +103,6 @@ Page({
             app.globalData.token = "789456123"
         }
 
-        console.log(options)
         this.setData({
             user: app.globalData.userinfo
         })
@@ -121,10 +120,8 @@ Page({
             this.setData({
                 qrcode: result[0]
             })
-            console.log(result[0])
         }
         if (!!app.globalData.userinfo) {
-            console.log(!!app.globalData.userinfo)
             this.setData({
                 btn_show: false,
             })
@@ -135,14 +132,13 @@ Page({
                         // 已经授权，可以直接调用 getUserInfo 获取头像昵称
                         wx.getUserInfo({
                             success: (res) => {
-                                console.log(res.userInfo)
                                 this.setData({
                                     we_userinfo: res.userInfo,
                                     btn_show: false
                                 })
                             },
                             fail: (err) => {
-                                console.log(err)
+                                // console.log(err)
                             }
                         })
                     }
@@ -155,20 +151,12 @@ Page({
             })
         }
 
-        // console.log(this.data.we_userinfo)
-        // console.log(this.data.btn_show)
-
-        /***********************用户验证*********************/
-
-
 
     },
     goback() {
         wx.switchTab({
             url: '../my/my',
         });
-
-
     },
     tosecurity() {
         wx.redirectTo({
@@ -177,7 +165,7 @@ Page({
         wx.showToast({
             title: '请稍后',
             icon: "loading",
-            duration:500
+            duration: 500
         })
     },
     // input的值
@@ -189,9 +177,9 @@ Page({
         // console.log(this.data.chaNumber);
     },
     // 查询防伪号
+
     chaxun(e) {
 
-        console.log(this.data.qrcode, this.data.qrcode);
         if (this.data.qrcode.length != 12) {
             wx.showToast({
                 title: '请输入正确的位数',
@@ -212,7 +200,6 @@ Page({
             data = {
                 qrcode: this.data.qrcode,
             }
-
         } else {
             data = {
                 qrcode: this.data.qrcode,
@@ -220,8 +207,8 @@ Page({
                 img: this.data.we_userinfo.avatarUrl
             }
         }
-        console.log(this.data.we_userinfo)
 
+        
         app.request({
             url: 'https://api.vvc.tw/dlxin/user/qrcode',
             method: 'post',
@@ -236,11 +223,12 @@ Page({
                     this.data.object1.msg = res.data.msg;
                     this.data.object1.owner = res.data.data.owner;
                     this.data.object1.nick_name = res.data.data.nick_name;
+
                     this.data.object1.img_url = res.data.data.img_url;
                     this.setData({
                         object1: this.data.object1,
-
                     });
+
                     if (res.data.data.log) {
                         this.setData({
                             newly: res.data.data.log
@@ -250,11 +238,11 @@ Page({
                             newly: null
                         })
                     }
-                    const innerAudioContext = wx.createInnerAudioContext()
+                    
                     innerAudioContext.autoplay = true
-                    innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&ctp=1&vol=15&tok=24.e431b35570cb0088c5f252cd5487a76f.2592000.1540104071.282335-14254401';
+                    innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&ctp=1&vol=15&tok=24.6be9789b8520e2550ef52f03672dbd4c.2592000.1541409606.282335-14254401';
+                    
                     innerAudioContext.onPlay(() => {});
-                    console.log(this, res.data.msg);
                 }
             }
 
@@ -266,7 +254,6 @@ Page({
         wx.scanCode({
             onlyFromCamera: true,
             success: (res) => {
-                console.log(res)
                 var reg2 = /([\d]{8,12})/;
                 var str2 = res.result;
                 var result = str2.match(reg2);
@@ -274,7 +261,6 @@ Page({
                     qrcode: result[0]
                 })
                 this.chaxun();
-                console.log(result);
             }
         });
     },

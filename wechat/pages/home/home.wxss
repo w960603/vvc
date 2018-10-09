@@ -35,7 +35,7 @@
     /* width:750rpx; */
     height:862rpx;
     background:rgba(255,255,255,1);
-    padding:32rpx;
+    margin:32rpx;
     justify-content: space-between;  
 }
 .img_list{

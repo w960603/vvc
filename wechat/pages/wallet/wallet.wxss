@@ -118,6 +118,7 @@
   background:rgba(251,167,3,1)!important;
   border-radius:16rpx;
   color:white;
+  font-family: 'SF UI Text';
 }
 .wfr-wallet-text2{
   float:left;
@@ -126,6 +127,7 @@
   font-size:60rpx;
   padding-left:15rpx;
   /* padding-bottom:50rpx; */
+  font-family: 'Helvetica',"arial";
   font-weight:500;
   color:rgba(33,44,104,1);
 }

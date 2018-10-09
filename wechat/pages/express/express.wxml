@@ -1,136 +1,135 @@
 <!--pages/Order/Order.wxml-->
 <view>
-         
-        <header title='我的物流' color='#F6F6F6'></header>
-        <view>
-            <scroll-view scroll-x="true" class="nav" scroll-left="{{scrollLeft}}">
-                <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">全部物流</view>
-                <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">已完成</view>
-                <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">未完成</view>
-            </scroll-view>
-            <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:90vh;">
-                <swiper-item style="overflow:scroll">
-                    <!-- 订单部分 -->
-                    <!-- 全部订单 -->
-                    <view class='order-wrap'>
-                        <view class="order" wx:for="{{ orderCont }}" bindtap='show' data-list='{{item}}'>
-                            <view class="order_num border bdb" bindtap='order_num'>
-                                <text class="number" >订单编号：{{item.order_num }}</text>
-                                <view class='state'>
-                                    
-                                    <block wx:if="{{item.order_status== 0}}">
-                                        <image src='../../image/icon/success.svg'></image>
-                                        <text style='color:#2290EF'>已签收</text>
-                                    </block> 
-                                    <block wx:elif="{{item.order_status== 1}}">
-                                        <image src='../../image/icon/diliver.svg'></image>
-                                        <text style='color:#FBA703'>派送中</text>
-                                    </block>
-                                    <block wx:elif="{{item.order_status== 2}}">
-                                        <image src='../../image/icon/error.svg'></image>
-                                        <text style='color:#F23030'>订单异常</text>
-                                    </block> 
-                                </view>
+    <header title='我的物流' color='#F6F6F6'></header>
+    <view>
+        <scroll-view scroll-x="true" class="nav" scroll-left="{{scrollLeft}}">
+            <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">全部物流</view>
+            <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">已完成</view>
+            <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">未完成</view>
+        </scroll-view>
+        <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:90vh;">
+            <swiper-item style="overflow:scroll">
+                <!-- 订单部分 -->
+                <!-- 全部订单 -->
+                <view class='order-wrap'>
+                    <view class="order" wx:for="{{ orderCont }}" bindtap='show' data-list='{{item}}'>
+                        <view class="order_num border bdb" bindtap='order_num'>
+                            <text class="number">订单编号：{{item.order_num }}</text>
+                            <view class='state'>
 
+                                <block wx:if="{{item.order_status== 0}}">
+                                    <image src='../../image/icon/success.svg'></image>
+                                    <text style='color:#2290EF'>已签收</text>
+                                </block>
+                                <block wx:elif="{{item.order_status== 1}}">
+                                    <image src='../../image/icon/diliver.svg'></image>
+                                    <text style='color:#FBA703'>派送中</text>
+                                </block>
+                                <block wx:elif="{{item.order_status== 2}}">
+                                    <image src='../../image/icon/error.svg'></image>
+                                    <text style='color:#F23030'>订单异常</text>
+                                </block>
                             </view>
-                            <view class="order_cont border bdb" bindtap='order_cont'>
-                                    <image src="{{ item.img }}" class="order_img"></image>
-                                <view class="description">
-                                    <view class="title_price">
-                                        <text class="title">{{ item.title }}</text>
-                                    </view>
-                                    <view class="color_size">
-                                        <image src='../../image/icon/circle.svg' class='icon'></image>
-                                        <view class='right'>
-                                            <view class="color" >{{ item.address }}</view>
-                                            <view class="size" >{{ item.order_time }}</view>
-                                        </view>
+
+                        </view>
+                        <view class="order_cont border bdb" bindtap='order_cont'>
+                            <image src="{{ item.img }}" class="order_img"></image>
+                            <view class="description">
+                                <view class="title_price">
+                                    <text class="title">{{ item.title }}</text>
+                                </view>
+                                <view class="color_size">
+                                    <image src='../../image/icon/circle.svg' class='icon'></image>
+                                    <view class='right'>
+                                        <view class="color">{{ item.address }}</view>
+                                        <view class="size">{{ item.order_time }}</view>
                                     </view>
                                 </view>
                             </view>
                         </view>
                     </view>
-                </swiper-item>
-                <swiper-item style="overflow:scroll">
-                 <!-- 订单部分 -->
-                 <!-- 已完成 -->
-                    <view class='order-wrap' >
-                        <view class="order" wx:for="{{ orderCont }}" bindtap='show' wx:if="{{item.order_status== 0}}">
-                            <view class="order_num border bdb" >
-                                <text class="number" >订单编号：{{item.order_num }}</text>
-                                <view class='state'>
-                                    
-                                        <image src='../../image/icon/success.svg'></image>
-                                        <text style='color:#2290EF'>已签收</text>
-                                    
-                                </view>
+                </view>
+            </swiper-item>
+            <swiper-item style="overflow:scroll">
+                <!-- 订单部分 -->
+                <!-- 已完成 -->
+                <view class='order-wrap'>
+                    <view class="order" wx:for="{{ orderCont }}" wx:key='item' bindtap='show' wx:if="{{item.order_status== 0}}">
+                        <view class="order_num border bdb">
+                            <text class="number">订单编号：{{item.order_num }}</text>
+                            <view class='state'>
+
+                                <image src='../../image/icon/success.svg'></image>
+                                <text style='color:#2290EF'>已签收</text>
 
                             </view>
-                            <view class="order_cont border bdb">
-                                    <image src="{{ item.img }}" class="order_img"></image>
-                                <view class="description">
-                                    <view class="title_price">
-                                        <text class="title">{{ item.title }}</text>
-                                    </view>
-                                    <view class="color_size">
-                                        <image src='../../image/icon/circle.svg' class='icon'></image>
-                                        <view class='right'>
-                                            <view class="color" >{{ item.address }}</view>
-                                            <view class="size" >{{ item.order_time }}</view>
-                                        </view>
+
+                        </view>
+                        <view class="order_cont border bdb">
+                            <image src="{{ item.img }}" class="order_img"></image>
+                            <view class="description">
+                                <view class="title_price">
+                                    <text class="title">{{ item.title }}</text>
+                                </view>
+                                <view class="color_size">
+                                    <image src='../../image/icon/circle.svg' class='icon'></image>
+                                    <view class='right'>
+                                        <view class="color">{{ item.address }}</view>
+                                        <view class="size">{{ item.order_time }}</view>
                                     </view>
                                 </view>
                             </view>
                         </view>
                     </view>
-                
-                
-                </swiper-item>
-                <swiper-item style="overflow:scroll">
-                 <!-- 订单部分 -->
-                 <!-- 未完成 -->
-                    <view class='order-wrap'>
-                        <view class="order" wx:for="{{ orderCont }}" bindtap='order' wx:if="{{item.order_status!== 0}}">
-                            <view class="order_num border bdb">
-                                <text class="number" >订单编号：{{item.order_num }}</text>
-                                <view class='state'>
-                                    
-                                    <block wx:if="{{item.order_status== 1}}">
-                                        <image src='../../image/icon/diliver.svg'></image>
-                                        <text style='color:#FBA703'>派送中</text>
-                                    </block>
-                                    <block wx:elif="{{item.order_status== 2}}">
-                                        <image src='../../image/icon/error.svg'></image>
-                                        <text style='color:#F23030'>订单异常</text>
-                                    </block> 
-                                </view>
+                </view>
 
+
+            </swiper-item>
+            <swiper-item style="overflow:scroll">
+                <!-- 订单部分 -->
+                <!-- 未完成 -->
+                <view class='order-wrap'>
+                    <view class="order" wx:for="{{ orderCont }}" wx:key='item' bindtap='order' wx:if="{{item.order_status!== 0}}">
+                        <view class="order_num border bdb">
+                            <text class="number">订单编号：{{item.order_num }}</text>
+                            <view class='state'>
+
+                                <block wx:if="{{item.order_status== 1}}">
+                                    <image src='../../image/icon/diliver.svg'></image>
+                                    <text style='color:#FBA703'>派送中</text>
+                                </block>
+                                <block wx:elif="{{item.order_status== 2}}">
+                                    <image src='../../image/icon/error.svg'></image>
+                                    <text style='color:#F23030'>订单异常</text>
+                                </block>
                             </view>
-                            <view class="order_cont border bdb">
-                                    <image src="{{ item.img }}" class="order_img"></image>
-                                <view class="description">
-                                    <view class="title_price">
-                                        <text class="title">{{ item.title }}</text>
-                                    </view>
-                                    <view class="color_size">
-                                        <image src='../../image/icon/circle.svg' class='icon'></image>
-                                        <view class='right'>
-                                            <view class="color" >{{ item.address }}</view>
-                                            <view class="size" >{{ item.order_time }}</view>
-                                        </view>
+
+                        </view>
+                        <view class="order_cont border bdb">
+                            <image src="{{ item.img }}" class="order_img"></image>
+                            <view class="description">
+                                <view class="title_price">
+                                    <text class="title">{{ item.title }}</text>
+                                </view>
+                                <view class="color_size">
+                                    <image src='../../image/icon/circle.svg' class='icon'></image>
+                                    <view class='right'>
+                                        <view class="color">{{ item.address }}</view>
+                                        <view class="size">{{ item.order_time }}</view>
                                     </view>
                                 </view>
                             </view>
                         </view>
                     </view>
+                </view>
 
-                    </swiper-item>
-            </swiper>
-        </view>
+            </swiper-item>
+        </swiper>
+    </view>
 
-<!-- 详细信息 -->
+    <!-- 详细信息 -->
 
-        
+
 </view>
 <view class='detail-wrap' wx:if='{{status}}'>
     <view class='express-pop'>
@@ -144,14 +143,14 @@
                     <view class=' circel'>
                         <block wx:if='{{index==0}}'>
                             <image src='../../image/icon/circle.svg' class='icon'></image>
-                        
+
                         </block>
                         <block wx:else>
                             <view class='spot'></view>
                         </block>
                     </view>
                     <view class='list-right'>
-                        <view>福建省厦门市思明区前埔路168号乐凡销售部</view>    
+                        <view>福建省厦门市思明区前埔路168号乐凡销售部</view>
                         <view>
                             2018-08-22 09:48:45
                         </view>
@@ -159,10 +158,10 @@
                 </view>
             </scroll-view>
         </view>
-        
+
         <view class='cancel' bindtap='close'>
             <image src='../../image/icon/x.svg' class='cancel-img'></image>
         </view>
     </view>
-    
+
 </view>

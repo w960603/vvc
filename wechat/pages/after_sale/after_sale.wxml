@@ -1,6 +1,6 @@
 <!--pages/Order/Order.wxml-->
 <view class='sale_content'>
-<!-- class='sale_content' -->
+    <!-- class='sale_content' -->
     <header></header>
     <view class='shop-null' wx:if="{{list}}">
         <image class='shop-null-img' src='../../image/icon/salenull.svg'></image>
@@ -19,40 +19,9 @@
             </view>
         </view>
         <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:89vh;">
-            <!-- <view class="order" wx:for="{{ orderCont }}" bindtap='show' data-list='{{item}}'>
-                        <view class="order_num border bdb" bindtap='order_num'>
-                            <text class="number">订单编号：{{item.number }}</text>
-                        </view>
-                        <view class="order_cont border bdb" bindtap='order_cont'>
-                            <image src="{{ item.goods_img}}" class="order_img" mode='aspectFill'></image>
-                            <view class="description">
-                                <view class="title_price">
-                                    <view wx:for="{{item.goods_list}}" data-item="{{item}}">
-                                        <view class="title1">{{ item.name}}</view>
-                                        <view class="title1">数量{{ item.num }}</view>
-                                    </view>
-                                    <view class="title2">{{ item.time }}</view>
-                                </view>
-                            </view>
-                            <view class='state'>
-                                <block wx:if="{{item.status== 1}}">
-                                    <text class="circle red" bindtap='apply_sale'>申请售后</text>
-                                </block>
-                                <block wx:elif="{{item.status== 2}}">
-                                    <text class="circle green">处理完成</text>
-                                </block>
-                                <block wx:elif="{{item.status== 3}}">
-                                    <text class="circle yellow">等待处理</text>
-                                </block>
-                            </view>
-                        </view>
-                    </view> -->
-
+        
             <swiper-item style="overflow:scroll">
-                <!-- <view class="search_input">
-                    <icon type="search" size="20" color="gray" style="width:32rpx;height:32rpx" />
-                    <input type="search" value="{{order}}" placeholder='商品名称/商品编号/订单编号' bindinput='searchInput' />
-                </view> -->
+               
                 <!-- 处理完成 -->
                 <view class='order-wrap'>
                     <view class="order" wx:for="{{ orderCont }}" bindtap='show' data-list='{{item}}'>
@@ -82,10 +51,7 @@
 
             </swiper-item>
             <swiper-item style="overflow:scroll">
-                <!-- <view class="search_input">
-                    <icon type="search" size="20" color="gray" style="width:32rpx;height:32rpx" />
-                    <input type="search" value="{{order}}" placeholder='商品名称/商品编号/订单编号' bindinput='searchInput' />
-                </view> -->
+                
                 <!-- 处理中 -->
                 <view class='order-wrap'>
                     <view class="order" wx:for="{{ orderCont }}" bindtap='show' data-list='{{item}}'>
@@ -116,7 +82,7 @@
                     </view>
                 </view>
             </swiper-item>
-                <swiper-item style="overflow:scroll">
+            <swiper-item style="overflow:scroll">
                 <!-- 售后申请 -->
                 <view class='sale_apply'>
                     <view class="nav2">
@@ -131,20 +97,23 @@
                                     <view>选择类型</view>
                                     <view>选择数量</view>
                                 </view>
-                                <view class='modify_type'>
-                                    <!-- <image src='../../image/whitejia.svg'></image> -->
-                                    <text class="whitejia">+</text>
+                                <view bindtap='show_list'>
+                                    <view class='modify_type' bindtap='choice_shop'>
+                                        <text class="whitejia">+</text>
+                                    </view>
                                 </view>
+                                  
                             </view>
-                            <view class='order_type1' wx:for="{{shop_type}}" wx:for-item="list" >
+                            <view class='order_type1' wx:for="{{shop_type}}" wx:for-item="list">
                                 <view class='choice_type'>
                                     <view class='choice_type_text1'>{{list.name}}</view>
                                     <view class='choice_type_text2'>{{list.sku}}</view>
                                     <view class='choice_type_text3'>{{list.num}}</view>
                                 </view>
                                 <view class='one_type'>
-                                   <text class="blackjia" bindtap='deletelist' data-index='{{index}}'>✕</text>
-                                   <!-- <image class="blackjia" src="../../image/icon/deletesku.svg" bindtap='deletelist'></image> -->
+                                    <text class="blackjia" bindtap='deletelist' data-index='{{index}}'>✕</text>
+                                   
+                                   
                                 </view>
                             </view>
                         </view>
@@ -152,22 +121,24 @@
                             <view class="reason" bindtap='choseReason'>
                                 <view class="app_rea">申请原因</view>
                                 <view class="chose_reason">
-                                    <text>请选择申请原因</text>
+                                    <text wx:if="{{return_goods == ''}}">请选择申请原因</text>
+                                    <text wx:else>{{return_goods}}</text>
                                     <image src="../../image/icon/right.svg"></image>
                                 </view>
                             </view>
-                            <view class="return_reason">
+                            <view class="return_reason" style='{{bottom}}'>
                                 <view class="ret_rea">退换货理由</view>
-                                <textarea class="textarea" placeholder='请描述申请售后的具体原因' bindblur='textareaInput'></textarea>
+                                <textarea wx-if="{{currentTab == 2}}" class="textarea" placeholder='请描述申请售后的具体原因' bindblur='textareaInput'></textarea>
                             </view>
-                        </view>
-                        <view class="footer">
-                            <input type="button" class="btn1" bindtap='comfirmRefer' adjust-position='true' value="提交" />
-                        </view>
+                        </view> 
                     </view>
                 </view>
                 <!-- 弹出层 -->
-                <mask class="mask" wx:if='{{isshow}}'>
+
+            </swiper-item>
+        </swiper>
+
+        <mask class="mask" wx:if='{{isshow}}'>
                     <view class="apply">
                         <view class="apply_title">
                             <image src="../../image/icon/close.svg" class="close" style="opacity:0" />
@@ -182,8 +153,9 @@
                         </radio-group>
                         <button class="btn" bindtap='confirm'>确认</button>
                     </view>
-                </mask>
-            </swiper-item>
-        </swiper>
+        </mask>
+        <view class="footer" wx:if="{{currentTab == 2}}" style='{{iphonex}}'>
+            <input type="button" class="btn1" bindtap='comfirmRefer' adjust-position='true' value="提交" />
+        </view>
     </view>
 </view>

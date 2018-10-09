@@ -2,23 +2,30 @@
 <tabbar selected='0'></tabbar>
 
 
-<scroll-view scroll-y style=';padding-bottom:118rpx;z-index:0'>
+<scroll-view scroll-y style='{{margin}};z-index:0'>
     <!-- 轮播图 -->
     <swiper class="swiper" indicator-dots='true' autoplay="true" circular interval="3000" duration="1000">
-        <block wx:for="{{movies}}" wx:for-item="item">
-            <swiper-item>
+            
+        <block wx:for="{{movies}}" wx:key='item' wx:for-item="item">
+            <swiper-item wx:if='{{index==0&&!loaded}}'>
+                <image src="{{item.url}}?x-oss-process=image/resize,w_350" class="slide-image" mode="aspectFill"></image>
+            </swiper-item>
+            <swiper-item  wx:if='{{index==0&&loaded}}'>
                 <image src="{{item.url}}" class="slide-image" mode="aspectFill"></image>
+            </swiper-item>
+            <swiper-item wx:if='{{index>0}}'>
+                <image src="{{item.url}}" class="slide-image" bindload='imgload' mode="aspectFill"></image>
             </swiper-item>
         </block>
     </swiper>
     <!-- 导航内容 -->
     <view class="hot_produce">
-        <view class="hot" >· 热销产品 ·</view>
+        <view class="hot" >· 热销产品 · </view>
         <view class="produce">HOT PRODUCTS</view>
     </view>
-    <view class="list">
-        <view class="img_list" bindtap='imgList' data-id="{{item.id}}" data-img="{{item.img}}" wx:for="{{oytarr}}" wx:for-index="index" wx:for-item="item">
-            <image src="{{item.img}}?x-oss-process=image/resize,w_332" class="img" lazy-load='true' bindload="imgload" data-img='{{item.img}}'></image>
+    <view class="list" >
+        <view class="img_list" bindtap='imgList' data-id="{{item.id}}" data-index='{{index}}' wx:key='index' wx:for="{{oytarr}}" wx:for-index="index" wx:for-item="item">
+            <image src="{{item.img}}?x-oss-process=image/resize,w_332" class="img" lazy-load='true'  data-img='{{item.img}}'></image>
             <view class="commentary">
                 <view class="theme">{{item.title}}</view>
                 <view class="price" wx:if='{{userinfo.level>3}}'>￥{{item.mon1}}.00</view>
@@ -30,6 +37,6 @@
         </view>
     </view>
     <view wx:if="{{false}}" >
-    <image wx:for="{{img_da}}" src='{{item}}?x-oss-process=image/resize,w_1125' wx:for-item="item"></image>
+    <image wx:for="{{img_da}}" src='{{item}}?x-oss-process=image/resize,w_1125' wx:key='index' wx:for-item="item"></image>
     </view>
 </scroll-view>

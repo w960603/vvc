@@ -8,7 +8,7 @@
     height: 108rpx;
     /* padding: 0 12rpx; */
     background: #fff;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px -1px 0px 0px rgba(215, 215, 215, 1);

@@ -282,6 +282,7 @@ page {
     position: fixed;
     bottom: 0;
     z-index:10;
+    background: white;
 }
 .wfr-clearboth {
     width: 100%;

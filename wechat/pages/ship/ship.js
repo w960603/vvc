@@ -2,15 +2,7 @@ var app = getApp();
 Page({
 
     data: {
-        ship: [{
-            img: '../../image/ship.png',
-            name: 'Eertha',
-            name2: '王大拿',
-            time: '2018-08-22 09:40:25',
-            whodid: '王大拿',
-            whoget: '赵四',
-            num: '600'
-        }],
+        ship: [],
         array: ['电商', '网销', '零售', '批发'],
         arr1: '批发',
         user: '',
@@ -30,16 +22,15 @@ Page({
 
     },
     bindPickerChange: function (e) {
-        console.log('picker发送选择改变，携带值为', e.detail.value)
+        
         var data = this.data.array[e.detail.value];
-        console.log(this.data.array[e.detail.value])
+        
         this.setData({
             arr1: this.data.array[e.detail.value]
         })
     },
 
     attached: function () {
-
         app.request({
             url: 'https://api.vvc.tw/dlxin/user/getSubAddress',
             methos: 'post',
@@ -54,14 +45,9 @@ Page({
             }
 
         })
-
-
     },
-    goback: function () {
-        // wx.navigateBack({
-        //     delta: 1
-        // })
 
+    goback: function () {
       wx.switchTab({
         url: "../my/my",
       })
@@ -89,38 +75,27 @@ Page({
     },
 
     onLoad: function (option) {
-
+        
         //适应ipx
         this.setData({
             h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx"
         })
         this.setData({
             fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx"
+        });
+
+        app.request({
+            url: 'https://api.vvc.tw/dlxin/user/hairlog',
+            method: 'POST',
+            success: (res) => {
+                console.log(res.data)
+                this.setData({
+                    ["ship.log"]:res.data.data
+                })
+            }
         })
     },
 
-
-
-    // search_data(e) {
-    //     this.setData({
-    //         inputValue: e.detail.value
-    //     })
-    //     console.log(this.data.inputValue);
-    //     app.request({
-    //         url: "https://api.vvc.tw/dlxin/user/getSubAddress",
-    //         method: "POST",
-    //         data: {
-    //             name: this.data.inputValue,
-    //         },
-    //         success: (res) => {
-    //             if (res.data.code) {
-    //                 this.setData({
-    //                     user: res.data.data
-    //                 })
-    //             }
-    //         }
-    //     });
-    // },
 
     scan_click: function () {
         var that = this;
@@ -155,7 +130,7 @@ Page({
                                 })
                                 const innerAudioContext = wx.createInnerAudioContext()
                                 innerAudioContext.autoplay = true
-                                innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&ctp=1&vol=15&tok=24.8a2e6af29b0287b1b2510c71572e55ab.2592000.1538550764.282335-11761952'
+                                innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&ctp=1&vol=15&tok=24.6be9789b8520e2550ef52f03672dbd4c.2592000.1541409606.282335-14254401'
                                 innerAudioContext.onPlay(() => {
                                     
                                 })
@@ -164,7 +139,7 @@ Page({
                                 console.log(res.data);
                                 const innerAudioContext = wx.createInnerAudioContext()
                                 innerAudioContext.autoplay = true
-                                innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&vol=15&ctp=1&tok=24.8a2e6af29b0287b1b2510c71572e55ab.2592000.1538550764.282335-11761952'
+                                innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&vol=15&ctp=1&tok=24.6be9789b8520e2550ef52f03672dbd4c.2592000.1541409606.282335-14254401'
                                 innerAudioContext.onPlay(() => {
                                 })
                                 wx.showToast({

@@ -40,9 +40,6 @@ page {
     border-bottom: 1px solid lightgray;
 }
 
-.order-wrap {
-    padding-bottom: 130rpx;
-}
 
 .order_list {
     margin:auto;
@@ -115,6 +112,7 @@ page {
 
 .order-wrap {
     padding-top: 74rpx;
+    overflow: scroll
 }
 
 .order_num {

@@ -11,14 +11,28 @@ Page({
 
       //适应ipx
       h: '',
-      fill: ''
+      fill: '',
+
+      margin:null,
+      bottom:null
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+      if (app.globalData.model == 'iphonex') {
+          this.setData({
+              margin: 'margin-bottom:188rpx',
+              bottom:'bottom:188rpx'
+          })
+      } else {
+          this.setData({
+              margin: 'margin-bottom:118rpx',
+              bottom: 'bottom:118rpx'
+          })
+      }
+
       wx.hideTabBar({
           success: function (res) {
               console.log(11111)

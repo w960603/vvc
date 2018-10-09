@@ -1,4 +1,5 @@
 // pages/temp/temp.js
+const app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -47,9 +48,19 @@ Component({
               url: "/pages/my/my"
           },
       ],
-      select:0
+      select:0,
+      iphonex:null,
+      icon:null
   },
-
+    attached(){
+        
+        if(app.globalData.model=='iphonex'){
+            this.setData({iphonex:"padding-bottom:60rpx",icon:'bottom:74rpx'})
+        }else{
+            this.setData({ iphonex: '' })
+        }
+        console.log(this.data.iphonex,234234234)
+    },
   /**
    * 组件的方法列表
    */

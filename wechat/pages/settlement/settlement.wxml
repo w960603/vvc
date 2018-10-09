@@ -91,7 +91,7 @@
         <textarea wx:if="{{!isshow}}" class='wfr-Remarks-textarea'  placeholder='输入备注信息（备注颜色无效，请单拍!）'></textarea>
     </view>
     <!-- 购买 -->
-    <view class='wfr-footer'>
+    <view class='wfr-footer' style='{{iphonex}}'>
         <view class='wfr-over'>
             <view class='wfr-over-left'>
                 <view class='wfr-text6'>总计</view>

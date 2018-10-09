@@ -8,7 +8,7 @@
         <view class="order_list">订单列表</view>
     </view>
     <view style='{{fill}}'></view>
-    <view>
+    <view style='{{margin}}'>
         <scroll-view scroll-x="true" class="nav" scroll-left="{{scrollLeft}}">
             <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">全部订单</view>
             <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">已完成</view>
@@ -18,8 +18,8 @@
             <swiper-item style="overflow:scroll">
                 <!-- 订单部分 -->
                 <!-- 全部订单 -->
-                <view class='order-wrap'>
-                    <view class="order" wx:for="{{ orderCont }}" wx:for-item="item" data-id='{{item.id}}'>
+                <scroll-view class='order-wrap' scroll-y='true'>
+                    <view class="order" wx:for="{{ orderCont }}" wx:key='{{index}}'  wx:for-item="item" data-id='{{item.id}}'>
                         <view class="order_num" bindtap='order_num'>
                             <text class="number">订单编号：{{item.time }}</text>
                             <block wx:if="{{item.order_status== -1}}">
@@ -47,7 +47,7 @@
                             </view>
                             <view class="description" data-id="{{item.id}}" bindtap='order'>
                                 <view class="title_price">
-                                    <text class="title">{{ item.goods_title }}</text>
+                                    <text class="title">{{ item.goods_title||' ' }}</text>
                                     <text class="price">￥{{ item.order_money }}</text>
                                 </view>
                                 <view class="color_size">
@@ -80,13 +80,13 @@
                             </view> -->
                         </view>
                     </view>
-                </view>
+                </scroll-view>
             </swiper-item>
             <swiper-item style="overflow:scroll">
                 <!-- 订单部分 -->
                 <!-- 已完成 -->
                 <view class='order-wrap'>
-                    <view class="order" wx:for="{{ orderCont }}" wx:if="{{item.order_status>3}}">
+                    <view class="order" wx:for="{{ orderCont }}" wx:key='item' wx:if="{{item.order_status>3}}">
                         <view class="order_num" bindtap='order_num'>
                             <text class="number">订单编号：{{item.time}}</text>
                             <text class="state" wx:if="{{item.order_status===5}}">已完成</text>
@@ -140,7 +140,7 @@
                 <!-- 订单部分 -->
                 <!-- 未完成 -->
                 <view class='order-wrap'>
-                    <view class="order" wx:for="{{ orderCont }}" wx:if="{{item.order_status<4}}">
+                    <view class="order" wx:for="{{ orderCont }}" wx:key='item' wx:if="{{item.order_status<4}}">
                         <view class="order_num" bindtap='order_num'>
                             <text class="number">订单编号：{{item.time}}</text>
                             <text class="state" wx:if="{{item.order_status===-1}}">订单取消 </text>

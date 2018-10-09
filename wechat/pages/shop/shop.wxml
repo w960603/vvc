@@ -10,7 +10,7 @@
     <view class='shop-null' wx:if="{{list == null}}">
         <image class='shop-null-img' src='../../image/icon/shopnull.svg'></image>
     </view>
-    <view class='wfr-content'>
+    <view class='wfr-content ' style='{{margin}}'>
         <!-- 循环购物车 -->
         <view class='wfr-content-for' wx:for="{{list.cart}}" wx:for-index="index" wx:for-item="item">
             <view class='wfr-clear-both' data-goods="{{index}}" bindtap='wfrradio'>
@@ -76,7 +76,7 @@
         </view>
     </view>
     <!-- 结束 -->
-    <view class='Allpice' wx:if="{{list != null}}">
+    <view class='Allpice' wx:if="{{list != null}}" style='{{bottom}}'>
         <view class='wfr-con' bindtap='allRideo'>
             <view class='wfr-radio2'>
                 <view class='allxuan1' wx:if="{{kaiguan}}">

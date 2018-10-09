@@ -1,6 +1,4 @@
 const app = getApp();
-
-
 Page({
 
     /**
@@ -26,41 +24,29 @@ Page({
             buy_num: '3',
             apply_num: '3'
         },
-        array: [{
-            value: "商品破损",
-            checked: true
-        },
-        {
-            value: "换货",
-            checked: false
-        },
-        {
-            value: "格式错误",
-            checked: false
-        },
-        {
-            value: "其他",
-            checked: false
-        }
+        itemList: ['VVC防晒短裤', 'VVC夏季女神帽', 'VVC防晒衣'],
+        array: [
+            {value: "商品破损",checked: true},
+            {value: "换货",checked: false},
+            {value: "格式错误",checked: false},
+            {value: "其他",checked: false}
         ],
+        return_goods:"",
         isshow: false,
         str: '',
         evaContent: '',
         shop_type:[
-            { name: "VVC防晒短裤", sku: "蓝色", num: 10, img:"../../image/type_chengh.svg"},
-            { name: "VVC夏季女神帽", sku: "霓虹色", num: 10, img: "../../image/type_chengh.svg"},
-            { name: "VVC防晒衣", sku: "红色", num: 10, img: "../../image/type_chengh.svg"},
-        ]
-
+            // { name: "VVC防晒短裤", sku: "蓝色", num: 10, img:"../../image/type_chengh.svg"},
+            // { name: "VVC夏季女神帽", sku: "霓虹色", num: 10, img: "../../image/type_chengh.svg"},
+            // { name: "VVC防晒衣", sku: "红色", num: 10, img: "../../image/type_chengh.svg"},
+            //  { name: "VVC防晒衣", sku: "红色", num: 10, img: "../../image/type_chengh.svg"},
+            // { name: "VVC防晒衣", sku: "黄色", num: 10, img: "../../image/type_chengh.svg" },
+        ],
     },
     switchTab: function (e) {
-
         this.setData({
             currentTab: e.detail.current
         });
-        // this.setData({
-        //     idx: e.detail.current
-        // });
         console.log(this.data.currentTab);
         this.checkCor();
     },
@@ -102,6 +88,13 @@ Page({
         this.setData({
             fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx"
         })
+        if (app.globalData.model == 'iphonex') {
+            this.setData({ iphonex: "padding-bottom:60rpx", icon: 'bottom:74rpx' });
+            this.setData({ bottom: "margin-bottom:170rpx", icon: 'bottom:74rpx' })
+        } else {
+            this.setData({ bottom: "margin-bottom:98rpx", icon: 'bottom:74rpx' })
+            this.setData({ iphonex: '' })
+        }
 
         var that = this;
         // 高度自适应
@@ -117,7 +110,6 @@ Page({
                 });
             }
         });
-
         app.request({
             url: 'https://api.vvc.tw/dlxin/order/returnGooodsList',
             method: 'POST',
@@ -134,8 +126,9 @@ Page({
                     goods_list: res.data.data.list.goods_list
                 })
             }
-        })
+        });
     },
+
     footerTap: app.footerTap,
     //显示详情
     show(e) {
@@ -144,7 +137,74 @@ Page({
             status: true
         })
     },
+    // 显示商品
+    show_list() {
+        wx.showActionSheet({
+            itemList: this.data.itemList,
+            success: (res) => {
+                console.log(res)
+                console.log(this.data.infos)
+                this.setData({
+                    item: this.data.itemList[res.tapIndex],
+                    ['infos.lvl']: res.tapIndex + 1
 
+                });
+                console.log(this.data.infos)
+            },
+            fail: function (res) {
+                console.log(res.errMsg)
+            }
+        })
+    },
+
+    // 显示商品
+    choice_shop(){
+        app.request({
+            url: "https://api.vvc.tw/dlxin/order/returnGoodsView",
+            method: "POST",
+            success: (res) => {
+                console.log(res.data.data);
+                for (var i in res.data.data){
+                    // console.log(res.data.data[i]);
+                    for (var j in res.data.data[i]){
+                        // console.log("我走啦", res.data.data[i][j].goods_title);
+                        // var imgs = "../../image/type_chengh.svg";
+                        // var obj = {
+                        //     name: res.data.data[i][j].goods_title,
+                        //     // num: res.data.data[i].total_num,
+                        //     num: res.data.data[i][j].order_num,
+                        //     img: imgs
+                        // };
+                        this.data.shop_type.push(res.data.data[i][j]);
+                    }
+                }
+                console.log("我走啦",this.data.shop_type);
+                // for (var i = 0; i < res.data.data.list.length;i++){
+                //     for (var ij = 0; j < res.data.data.list[i].goods_list.length;j++){
+                //         var imgs = "../../image/type_chengh.svg";
+                //         // { name: "VVC防晒衣", sku: "红色", num: 10, img: "../../image/type_chengh.svg" },
+                //         var obj = {
+                //             name: res.data.data.list[i].goods_list[j].name,
+                //             num: res.data.data.list[i].goods_list[j].num,
+                //             img: imgs
+                //         };
+                //         var shop_list = this.data.shop_type.push(obj);
+
+                //         this.setData({shop_type: shop_list});
+                //         console.log(shop_list, this.data.shop_type);
+                //     }
+                // }
+            }
+        })
+    },
+
+    // 删除商品
+    deletelist(e){
+        // console.log(e.currentTarget.dataset.index);
+        var arr = this.data.shop_type;
+        arr.splice(e.currentTarget.dataset.index,1);
+        this.setData({ shop_type: arr});
+    },    
     //关闭详情
     close() {
         this.setData({
@@ -168,10 +228,7 @@ Page({
         })
     },
     choseReason() {
-        this.setData({
-            isshow: !this.data.isshow
-
-        })
+        this.setData({isshow: !this.data.isshow});
     },
     close1() {
         this.setData({
@@ -181,7 +238,7 @@ Page({
 
     // radio待选状态
     radioChange(e) {
-        console.log('radio发生change事件，携带value值为：', e.detail.value)
+        // console.log('radio发生change事件，携带value值为：', e)
 
         var index = e.currentTarget.dataset.index;
 
@@ -197,7 +254,9 @@ Page({
             array: this.data.array,
             str: index
         })
-        console.log(this.data.array[index].checked)
+        console.log(this.data.array[index].checked);
+        console.log(this.data.array[index].value);
+        this.setData({return_goods: this.data.array[index].value}) 
     },
     confirm() {
         this.setData({

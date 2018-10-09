@@ -29,7 +29,7 @@
                 <text class='wfr-sku-null'>均码</text>
             </view>
         </view>
-        <view class='wfr-number'>
+        <view class='wfr-number' style='{{pdb}}'>
             <view class='wfr-num'>数量</view>
             <view class='wfr-click-num'>
                 <view class='wfr-text4'  bindtap='reduce'>-</view>
@@ -37,7 +37,7 @@
                 <view class='wfr-text5'  bindtap="increase">+</view>
             </view>
         </view>
-        <view class='wfr-footer'>
+        <view class='wfr-footer ' style='{{iphonex}};background="#fff"' >
             <view class='wfr-look-detail' bindtap='add_Shopping_Cart'>加入购物车</view>
             <view class='wfr-footer-Sure' bindtap='GoPurchase'>去购买</view>
         </view>

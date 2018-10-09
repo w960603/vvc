@@ -1,8 +1,6 @@
 <view class='page'>
 
-    <button class='userinfo-btn' wx:if='{{btn_show}}' bindgetuserinfo='getuserinfo' open-type="getUserInfo"></button>
-
-
+    <!-- <button class='userinfo-btn' wx:if='{{btn_show}}' bindgetuserinfo='getuserinfo' open-type="getUserInfo"></button> -->
 
     <view class='content'>
         <image class="posi-qr-bg" src='/image/qr_bg.svg' style='background-color:#228EEC'></image>
@@ -17,7 +15,7 @@
             <image class='chaxun-img' src='/image/chalogo.svg'></image>
         </view>
         <view class='chaipt'>
-            <input class='chaipt-input' value="{{qrcode}}" adjust-position='true' bindinput='chaxuninput' placeholder="请输入12位查询码" placeholder-class='placeholder'></input>
+            <input class='chaipt-input' value="{{qrcode}}" adjust-position='true' bindinput='chaxuninput' placeholder="请输入12位查询码" placeholder-class='placeholder' bindconfirm="chaxun" ></input>
             <image bindtap='QR_code' class='wfr-chaipt-img' src='../../image/scaveng.svg'></image>
         </view>
         <view class='wfr-chaxun-tap' bindtap='chaxun'>立即查询</view>
@@ -27,17 +25,13 @@
         <!--<view class='wfr-line'>
                 <image class='wfr-line-img' src='../../image/resulrline.svg'></image>
             </view>-->
-        <view class='wfr-chaxun-float'>
+        <view class='wfr-chaxun-float' style='margin-top:10rpx'>
             <view class='wfr-chaxun-left'>查询用户:</view>
             <view class='wfr-chaxun-img'>
-                <view>
-                    <image src='{{object1.img_url}}'></image>
-                    <text class='wfr-chaxun-name1'>{{object1.nick_name}}</text>
-                </view>
-            </view>
+            <image width="64rpx" height="64rpx" style='margin-right:5rpx' src='{{object1.img_url}}'></image>{{object1.nick_name}}</view>
             <!-- 274112080015 -->
         </view>
-        <view class='wfr-chaxun-float'>
+        <view class='wfr-chaxun-float' >
             <view class='wfr-chaxun-left'>查询号码:</view>
             <view class='wfr-chaxun-img' bindtap="">{{object1.phone}}</view>
         </view>
@@ -55,16 +49,16 @@
         </view>
     </view>
 
-    
+
 </view>
 <view class='record' wx:if='{{newly.length}}'>
-        <view class='record-title'>最近查询记录</view>
-        <scroll-view  scroll-x="{{true}}" >
-            <view class='record-item' wx:for='{{newly}}'>
-                <image src='{{item.img_url}}' class='user-img'></image>
-                <view class='nick-name'>{{item.nick_name}}</view>
-                <view class='date'>{{item.time}}</view>
-            </view>
+    <view class='record-title'>最近查询记录</view>
+    <scroll-view scroll-x="{{true}}">
+        <view class='record-item' wx:for='{{newly}}'>
+            <image src='{{item.img_url}}' class='user-img'></image>
+            <view class='nick-name'>{{item.nick_name}}</view>
+            <view class='date'>{{item.time}}</view>
+        </view>
 
-        </scroll-view>
-    </view>
+    </scroll-view>
+</view>

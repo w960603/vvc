@@ -4,38 +4,59 @@
 <view>
     <view class="head">
         <view class="view_img">
-            <image class='oimg' src="../../image/my_back.jpg"></image>
+            <image class='oimg' src="/image/my_back.jpg"></image>
         </view>
         <view class="nav">
             <view class="logo">
                 <!-- <image src="../../image/logo.jpg"></image> -->
                 <!-- <open-data wx:if="{{userInfo!=''}}" type="userAvatarUrl" class="image"></open-data> -->
                 <!-- wx:else -->
-                <image  src="{{userInfo1.img_url}}"></image>
+                <image src="{{userInfo1.img_url?userInfo1.img_url:'/image/icon/none.svg'}}"></image>
             </view>
             <view>
                 <view class="meimei">所属团队:{{userInfo1.nick_name}}</view>
                 <view class="tuan">
-                    <image src="../../image/icon/level1.svg" wx:if='{{userInfo1.level==1}}'></image>
-                    <image src="../../image/icon/level2.svg" wx:elif='{{userInfo1.level==2}}'></image>
-                    <image src="../../image/icon/level3.svg" wx:elif='{{userInfo1.level==3}}'></image>
-                    <image src="../../image/icon/level10.svg" wx:elif='{{userInfo1.level==10}}'></image>
+                    <image src="/image/icon/level1.svg" wx:if='{{userInfo1.level==1}}'></image>
+                    <image src="/image/icon/level2.svg" wx:elif='{{userInfo1.level==2}}'></image>
+                    <image src="/image/icon/level3.svg" wx:elif='{{userInfo1.level==3}}'></image>
+                    <image src="/image/icon/level10.svg" wx:elif='{{userInfo1.level==10}}'></image>
                     <!-- <open-data wx:if="{{userInfo!=''}}" class="alex" type="userNickName"></open-data> -->
                     <!-- wx:else -->
-                    <view  class="alex">{{userInfo1.nick_name}}</view>
+                    <view class="alex">{{userInfo1.nick_name}}</view>
                     <text class="tuanzhang">{{userInfo1.level_text}}</text>
                 </view>
             </view>
             <view class="setting">
-                <image class='settingimage' src="../../image/icon/setting.svg"></image>
+                <image class='settingimage' src="/image/icon/setting.svg"></image>
             </view>
         </view>
     </view>
+
     <view class="content">
         <view class="order">
             <view wx:key="list" wx:for="{{orderList}}" class="{{index<4?'bd':''}} orderList" data-index="{{index}}" bindtap="currentIndex" wx:key="id">
                 <image class="{{item.id==5?'active' : ''}} on" src="{{item.list}}"></image>
                 <view class="name">{{item.name}}</view>
+            </view>
+        </view>
+        <view class='scan' bindtap='currentIndex' data-index='2'>
+            <view class='scan-content'>
+                <view class='con-title'>我的扫码率</view>
+                <view class="flex teamtwo">
+                    <progress class="progress" percent="{{user.num}}" activeColor='rgba(81,136,255,1)' stroke-width="14" color="#5188ff" />
+                    <text class="precent" style='color:rgba(81,136,255,1)'>{{user.num||0}}%</text>
+                </view>
+                <view class="flex proxy">
+                    <view class="number">代理数:
+                        <text class="text">{{user.num1?user.num1:'0'}}</text>
+                    </view>
+                    <view class="number">授权数:
+                        <text class="text">{{user.num2?user.num2:'0'}}</text>
+                    </view>
+                    <block>
+                        <text class="green dabiao">{{user.codemsg}}</text>
+                    </block>
+                </view>
             </view>
         </view>
         <view class="my">

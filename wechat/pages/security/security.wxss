@@ -160,28 +160,33 @@
     width: 64rpx;
     height: 64rpx;
     border-radius: 50%;
+    display:flex;
+
 }
 
 .wfr-chaxun-img {
-    width: 500rpx;
+    display:flex;
+    flex:9;
+    align-items: center;
     line-height:60rpx;
-    font-size: 30rpx;
+    font-size: 28rpx;
     color: #4a4a4a;
 }
 .wfr-chaxun-float {
+    padding:0 20rpx;
     display: flex;
     line-height: 70rpx;
-    justify-content:space-around;
+    justify-content: flex-start;
 }
 .wfr-chaxun-left {
     flex:3;
+    margin-right:10rpx;
     font-size: 28rpx;
-    color: rgba(155, 155, 155, 1);
     text-align:center;
-    /* 274112080015 */
+    color: rgba(155, 155, 155, 1);
 }
 .wfr-chaxun-img-red {
-    flex:8;
+    flex:9;
     display: inline;
     font-size: 30rpx;
     vertical-align: 15rpx;
@@ -197,6 +202,7 @@
     vertical-align: 20rpx;
     color: #4a4a4a;
     margin-left: 10rpx;
+    overflow:hidden;
 }
 .record{
     padding-top:120rpx;

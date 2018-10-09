@@ -330,6 +330,7 @@ color:#FCB62D;border:2rpx solid #FCB62D;border-radius:31rpx!important;
     width:100%;
     min-height: 250rpx;
     background:white;
+    padding:10rpx 0;
 }
 .sale_apply{
     width: 100%;
@@ -438,16 +439,15 @@ color:#FCB62D;border:2rpx solid #FCB62D;border-radius:31rpx!important;
     border-radius: 8rpx;
     margin: 0 26rpx 58rpx 26rpx;
     font-size: 28rpx;
-    padding: 24rpx 24rpx 0 24rpx;
+    padding: 24rpx 34rpx 0 24rpx;
 }
 
 .footer {
     width: 100%;
     height: 98rpx;
     background: rgba(255, 255, 255, 1);
-    position: absolute;
-    bottom:0;
-    right:0;
+    position: fixed;
+    bottom: 0;
 }
 
 
@@ -500,14 +500,12 @@ color:#FCB62D;border:2rpx solid #FCB62D;border-radius:31rpx!important;
 }
 
 .apply {
-    height: 768rpx;
     width: 100%;
     position: absolute;
     bottom: 0;
     z-index: 1000;
     background: white;
 }
-
 .apply_title {
     display: flex;
     justify-content: space-between;
@@ -527,7 +525,6 @@ label {
     justify-content: space-between;
     padding: 0 32rpx;
 }
-
 radio {
     border-radius: 50%;
     width: 32rpx; /* 最好是4的倍数，不然会不在中间 */
@@ -603,8 +600,7 @@ radio .wx-radio-input.wx-radio-input-checked::before {
     color:rgba(155,155,155,1);
     line-height:40rpx; 
 }
- .choice_type_text1{
-    width:198rpx!important;
+.choice_type_text1{
     font-size:24rpx!important;
 }
 .one_type{
@@ -617,12 +613,12 @@ radio .wx-radio-input.wx-radio-input-checked::before {
     opacity:0.5;
 }
 .modify_type{
-    width:72rpx;
+    width:60rpx;
     background:#4A90E2;
     box-shadow:0px 4rpx 8rpx 0rpx rgba(239,239,239,1),0px -2rpx 8rpx 0rpx rgba(239,239,239,1);
     border-radius:8rpx;
     text-align:center;
-    line-height: 64rpx;
+    line-height: 56rpx;
 }
 .modify_type .whitejia{
     width:28rpx;

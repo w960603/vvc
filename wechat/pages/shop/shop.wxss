@@ -59,7 +59,7 @@ page{
     width:100%;
     height:auto;
     background:rgba(239,239,239,1);
-     padding-bottom: 208rpx;
+     padding-bottom: 80rpx;
 }
 .wfr-yuan{
   width:32rpx;

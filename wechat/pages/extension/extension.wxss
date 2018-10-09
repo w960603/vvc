@@ -1,6 +1,6 @@
 .title{
     width:100%;
-    padding: 0 0 0 32rpx;
+    margin-left: 34rpx;
 }
 .title image{
     width:48rpx;
@@ -13,21 +13,15 @@
     background-size:100%;
 }
 .swiper-view{
-  margin: 0 auto!important;
+margin: 0 auto!important;
 display: flex;
 padding:40rpx 0;
 justify-content:center;
-/* align-items:Center; */
 }
 swiper {
   height: 575rpx;
 }
 .da{
-  /* height:300rpx; */
-  /* width:100%!important; */
-  /* display:inline-block; */
-  /* height: 90%; */
-  /* transform: scale(1.25);  */
   animation:myfirst 0.8s both;
 }
 
@@ -106,33 +100,33 @@ overflow:hidden;
     width: 100%;
     height:100%;
     background-image: -webkit-cross-fade(url("https://cdn.vvc.tw/a/images/kong.svg"),url("https://cdn.vvc.tw/a/images/goddess.svg"),40%);
-    background-size: 144% 112%;
+    background-size: 464rpx 365rpx;
     background-repeat: no-repeat;
-    background-position: 14% -172%; 
+    background-position: 120rpx -172%; 
 }
 .xiannv{
     width: 100%;
     height:100%;
     background-image: -webkit-cross-fade(url("https://cdn.vvc.tw/a/images/kong.svg"),url("https://cdn.vvc.tw/a/images/fairy.svg"),40%);
-    background-size: 144% 112%;
+    background-size: 464rpx 365rpx;
     background-repeat: no-repeat;
-    background-position: 14% -172%; 
+    background-position: 120rpx -172%; 
 }
 .dongshi{
     width: 100%;
     height:100%;
     background-image: -webkit-cross-fade(url("https://cdn.vvc.tw/a/images/kong.svg"),url("https://cdn.vvc.tw/a/images/director.svg"),40%) !important;
-    background-size: 144% 112%;
+    background-size: 464rpx 365rpx;
     background-repeat: no-repeat;
-    background-position: 14% -172%; 
+    background-position: 120rpx -172%; 
 }
 .tianshi{
     width: 100%;
     height:100%;
-    background-size: 144% 112%;
+    background-size: 464rpx 365rpx;
      background-image: -webkit-cross-fade(url("https://cdn.vvc.tw/a/images/kong.svg"),url("https://cdn.vvc.tw/a/images/angel.svg"),40%) !important;
     background-repeat: no-repeat;
-    background-position: 14% -172%; 
+    background-position: 120rpx -172%; 
 }
 .ka-float{
     width:86%;
@@ -176,46 +170,48 @@ overflow:hidden;
     height:50rpx;
     /* float: left; */
     background-image:url("https://cdn.vvc.tw/a/images/white_num.svg");
-    background-size:cover;
+    /* background-color: #08C299; */
+    /* margin:0 2rpx;   */
+    background-size:280rpx 44rpx; 
     background-repeat:no-repeat;
-    background-position:2% 0%;
+    /* background-position:2% 0%; */
     /* background-color: red; */
     opacity:0.9;
 }
 .ka_-{
-    background-position:-30% 0%;
+    background-position:20rpx 0rpx;
 
 }
 .ka_1{
 	background-position: -36rpx 0px;
 }
 .ka_2{
-	background-position: -62rpx 0%;
+	background-position: -64rpx 0rpx;
 }
 .ka_3{
-	background-position: -90rpx 0px;
+	background-position: -88rpx 0px;
 }
 .ka_4{
-	background-position: -112rpx 0px;
+	background-position: -114rpx 0px;
 }
 .ka_5{
-	background-position: -138rpx 0px;
+	background-position: -140rpx 0px;
 }
 .ka_6{
-	background-position: -162rpx 0px;
+	background-position: -165rpx 0px;
 }
 .ka_7{
-    background-position: -192rpx 0px;
+    background-position: -194rpx 0px;
 }
 .ka_8{
-	background-position: -214rpx 0px;
+	background-position: -218rpx 0px;
 }
 .ka_9{
-	background-position: -242rpx 0px;
+	background-position: -246rpx 0px;
 }
 
 .ka_0{
-	background-position: -12rpx 0px;
+	background-position: -10rpx 0px;
 }
 .dongshi .number {
       background-image:url("https://cdn.vvc.tw/a/images/gold_num.svg");

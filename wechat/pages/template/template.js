@@ -23,10 +23,15 @@ Component({
         sku_id: null,
         array:[],
         allnum:0,
+        iphonex:"",
+
+        bottom:null,
 
     },
     // 页面渲染完成
     attached: function() {
+        
+
         app.request({
             url: 'https://api.vvc.tw/dlxin/shop/goodsinfo',
             method: "POST",
@@ -80,6 +85,17 @@ Component({
                 }
             }
         });
+
+
+
+        if (app.globalData.model == 'iphonex') {
+            this.setData({ iphonex: "padding-bottom:80rpx", icon: 'bottom:74rpx' })
+            this.setData({ pdb: "padding-bottom:200rpx" })
+        } else {
+            this.setData({ iphonex: '' ,pdb:''})
+        }
+
+
     },
     methods: {
         wfrcancel(option) {

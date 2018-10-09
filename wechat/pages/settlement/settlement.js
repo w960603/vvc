@@ -56,6 +56,12 @@ Page({
       this.setData({ h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx" })
       this.setData({ fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx" })
 
+      if (app.globalData.model == 'iphonex') {
+          this.setData({ iphonex: "padding-bottom:60rpx", icon: 'bottom:74rpx' })
+      } else {
+          this.setData({ iphonex: '' })
+      }
+
     app.request({
     url: "https://api.vvc.tw/dlxin/shop/buy" ,
       method: "POST",
@@ -96,6 +102,10 @@ Page({
             },1000)
 
         }
+
+      },
+      fail:(res)=>{
+
 
       }
     })
@@ -142,12 +152,23 @@ Page({
                 wx.reLaunch({
                   url: '../success_pay/success_pay?money='+res.data.data.money,
                 })
+            }else{
+                fail: () => {
+                    wx.navigateTo({
+                        url: '../pages/order/order',
+                    })
+                }
             }
           wx.showToast({
             title: res.data.msg,
             icon: 'none',
             duration: 1000
           })
+        },
+        fail:()=>{
+            wx.navigateTo({
+                url: '../pages/order/order',
+            })
         }
       })
   },

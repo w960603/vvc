@@ -7,6 +7,7 @@ Page({
     data: {
         id: 668,
         movies: [],
+        content:[],
         title: '载入中...',
         price: '0',
         uv: '',
@@ -20,6 +21,7 @@ Page({
             ["", ""]
         ],
 
+        loaded:false,
         material: {
             cloth: '韩国VVC 夏季防晒外套 材质UV UPF50＋ 有效抵挡99％的紫外线，时尚百搭。'
         },
@@ -37,7 +39,10 @@ Page({
 
         img_index: null,
         img_show: false,
-        imgs_show: false
+        imgs_show: false,
+        iphonex:false,
+
+
     },
 
     // 滚动切换标签样式
@@ -46,6 +51,12 @@ Page({
             currentTab: e.detail.current
         });
         this.checkCor();
+    },
+    imgload:function(){
+        console.log("imgloaded")
+        this.setData({
+            loaded:true
+        })
     },
     // 点击标题切换当前页时改变样式
     swichNav: function(e) {
@@ -166,6 +177,7 @@ Page({
 
     },
     onLoad: function(option) {
+
         //适应ipx
         this.setData({
             h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx"
@@ -173,8 +185,43 @@ Page({
         this.setData({
             fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx"
         })
-        console.log(option)
-        this.data.wfrid = option.id
+        this.attached();
+
+        
+        this.data.wfrid = option.id;
+        if(app.globalData.goodslist){
+            var price = 0;
+
+            switch (app.globalData.userinfo.level) {
+                case 1:
+                    price = app.globalData.goodslist[option.index].mon4;
+                    break;
+                case 2:
+                    price = app.globalData.goodslist[option.index].mon3;
+                    break;
+                case 3:
+                    price = app.globalData.goodslist[option.index].mon2;
+                    break;
+                case 10:
+                    price = app.globalData.goodslist[option.index].mon1;
+                    break;
+                default:
+                    price = app.globalData.goodslist[option.index].mon4;
+                    break;
+            }
+
+            
+
+            this.setData({
+                movies: JSON.parse(app.globalData.goodslist[option.index].main_img),
+                price: price,
+                // content: JSON.parse(app.globalData.goodslist[option.index].content),
+            })
+
+        }
+        
+
+
 
         var that = this;
         that.setData({
@@ -187,27 +234,34 @@ Page({
                     clientWidth = res.windowWidth,
                     rpxR = 750 / clientWidth;
                 var calc = clientHeight * rpxR - 180;
-                console.log(calc)
+
                 that.setData({
                     winHeight: calc
                 });
             }
         });
-        this.get_detail(this.data.wfrid, option.img);
 
         var ids = this.data.wfrid;
 
 
     },
+    onShow:function(){
+
+        this.get_detail(this.data.wfrid);
+    },
+    // 苹果×的底部监听
+    attached() {
+        console.log(app.globalData.model,this.data.iphonex)
+        if (app.globalData.model == 'iphonex') {
+            this.setData({ iphonex: true, icon: 'bottom:74rpx' ,bottom:'padding-bottom:166rpx'})
+        } else {
+            this.setData({ iphonex: false, bottom: 'padding-bottom:98rpx'})
+        }
+        console.log(this.data.iphonex, 234234234)
+    },
     footerTap: app.footerTap,
 
-    get_detail(id,img) {
-        console.log(id,img);
-
-        // this.setData({
-        //     movies: {img}
-        // });
-
+    get_detail(id) {
 
         app.request({
             url: 'https://api.vvc.tw/dlxin/shop/goodsinfo/',
@@ -249,32 +303,11 @@ Page({
                         price: price
                     });
                     this.setData({
-                        movies: JSON.parse(res.data.data.goods.main_img)
+                        movies: JSON.parse(res.data.data.goods.main_img),
+                        // content: JSON.parse(res.data.data.goods.content)
                     });
 
-                    app.request({
-                        url: "https://api.vvc.tw/dlxin/shop/getdetail/",
-                        data: {
-                            id: id
-                        },
-                        success: (res) => {
-                            //   if(res.data.code){
-                            if ("data" in res.data) {
-                                this.setData({
-                                    parameterList: res.data.data.canshu
-                                })
-                                this.setData({
-                                    price_img: res.data.data.priceimage
-                                })
-                            }
-
-                            //   }
-
-                        }
-                    })
-
                 }
-
 
             }
         })

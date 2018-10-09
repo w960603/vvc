@@ -114,34 +114,27 @@ Page({
             },
             success: (res) => {
 
-                app.globalData.userinfo = res.data.data.userinfo;
-                app.globalData.token = res.data.data.token;
-
+                
                 if (res.data.code) {
-                    app.request({
-                        url: 'https://api.vvc.tw/dlxin/shop/goodslist',
+                    app.globalData.userinfo = res.data.data.userinfo;
+                    app.globalData.token = res.data.data.token;
 
-                        method: "POST",
-                        success: (res) => {
-                            console.log(res);
-                            if (res.data.code) {
-                                var datas = res.data.data.goods_list;
+                    app.globalData.goodslist = res.data.data.goods;
 
-                                app.globalData.goodslist = res.data.data.goods_list;
-                            }
+                    
                             wx.switchTab({
                                 url: '../home/home',
                             })
-
-                        }
+                    wx.cloud.callFunction({
+                        // 云函数名称
+                        name: 'getuserinfo',
+                        // 传给云函数的参数
+                        data: {
+                            cmd: "put",
+                            token: res.data.data.token
+                        },
                     })
-
-                    //   wx.showToast({
-                    //       title: '成功',
-                    //       icon: 'success',
-                    //       duration: 2000
-                    //   });
-
+                    
                     wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
@@ -232,6 +225,15 @@ Page({
                     })
                     app.globalData.userinfo = res.data.data.userinfo;
                     app.globalData.token = res.data.data.token;
+                    wx.cloud.callFunction({
+                        // 云函数名称
+                        name: 'getuserinfo',
+                        // 传给云函数的参数
+                        data: {
+                            cmd: "put",
+                            token: res.data.data.token
+                        },
+                    })
                 } else {
                     wx.showToast({
                         title: res.data.msg,

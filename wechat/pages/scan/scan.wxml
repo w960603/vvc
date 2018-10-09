@@ -12,7 +12,7 @@
             <view class="scan_pre">扫码率</view>
             <view class="flex">
                 <!-- <progress class="progress" show-info='{{hidden}}' strok-width="{{width}}rpx" bindchange="changewidth" color="#5188ff" active-mode='backwords' present="{{user.num}}"/> -->
-                <progress class="progress" percent="{{user.num}}"  stroke-width="12" color="#5188ff" />
+                <progress class="progress" percent="{{user.num}}" activeColor='rgba(81,136,255,1)' stroke-width="12" color="#5188ff" />
                 <text class="precent">{{user.num}}%</text>
             </view>
             <view class="flex proxy">
@@ -37,7 +37,7 @@
                     <text class="team_name">{{item.nick_name}}</text>
                 </view>
                 <view class="flex teamtwo">
-                    <progress class="progress" percent="{{item.num}}" stroke-width="12" color="#5188ff" />
+                    <progress class="progress" percent="{{item.num}}" activeColor='rgba(81,136,255,1)' stroke-width="12" color="#5188ff" />
                     <text class="precent">{{item.num}}%</text>
                 </view>
             </block>

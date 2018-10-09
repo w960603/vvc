@@ -28,9 +28,6 @@ Page({
         var year = newDate.getFullYear();
         var month = newDate.getMonth() + 1;
         var day = newDate.getDate();
-        // var h = newDate.getHours();
-        // var m = newDate.getMinutes();
-        // var s = newDate.getSeconds();
         if (month < 10) {
             month = '0' + month;
         };
@@ -41,17 +38,6 @@ Page({
         this.setData({
             [time]: time1
         })
-        // if (h < 10) {
-        //     h = '0' + h;
-        // };
-        // if (m < 10) {
-        //     m = '0' + m;
-        // };
-        // if (s < 10) {
-        //     s = '0' + s;
-        // };
-        // var time1 = year + "-" + month + "-" + day + " " + h + ":" + m + ":" + s;
-
     },
     onLoad: function (options) {
         //是否显示返回按钮

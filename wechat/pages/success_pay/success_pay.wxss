@@ -65,7 +65,7 @@ button{
     font-weight: 580;
 }
 .view button{
-    width:180rpx;
+    /* width:180rpx; */
     height:60rpx;
     border-radius:8rpx;
     margin:0 20rpx;

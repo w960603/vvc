@@ -6,7 +6,7 @@ Page({
      */
     data: {
         movies: [{
-                url: '../../image/swiper/one.jpg'
+            url: 'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/changku/image/vvc_1538101887603.jpg'
             },
             {
                 url: 'https://wangfurui.oss-cn-hangzhou.aliyuncs.com/image/vvc_1535528888601.jpg'
@@ -24,37 +24,46 @@ Page({
         arr: [],
         arrHight: [],
         scroll: "scroll-y",
-        userinfo: app.globalData.userinfo
+        userinfo: app.globalData.userinfo,
+
+        loaded: false,
+        margin: null
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function() {
-
+    onShow: function() {
+        if (app.globalData.model == 'iphonex') {
+            this.setData({
+                margin: 'margin-bottom:178rpx'
+            })
+        } else {
+            this.setData({
+                margin: 'margin-bottom:118rpx'
+            })
+        }
         wx.hideTabBar({
             success: function(res) {
-                
+
             },
             complete: function() {
                 console.log(1123212)
             }
         })
 
-        if (!!app.globalData.goodslist) {
-            this.setData({
-                oytarr: app.globalData.goodslist
-            })
-        } else {
+        // if (!!app.globalData.goodslist) {
+        //     this.setData({
+        //         oytarr: app.globalData.goodslist
+        //     })
+        // } else {
             app.request({
                 url: 'https://api.vvc.tw/dlxin/shop/goodslist',
                 method: "POST",
                 success: (res) => {
                     if (res.data.code == 1) {
-
                         this.setData({
                             oytarr: res.data.data.goods_list
                         })
-
                     } else {
                         wx.showToast({
                             title: res.data.msg,
@@ -62,28 +71,27 @@ Page({
                             duration: 1500
                         })
                     }
-
-
                 },
             })
-        }
+        // }
         this.setData({
             userinfo: app.globalData.userinfo
         })
+
+        // app.globel.data.sence += 1;
+        setTimeout(function() {
+            wx.hideToast()
+        }, 2500)
     },
-
-    imgload(e) {
-        e.currentTarget.dataset.img
-        // 以后 放轮播图，缓存第一张
-        // this.setData({
-        //     [ "img_da."+e.currentTarget.dataset.img.slice(-9,-4)]: e.currentTarget.dataset.img
-        // })
-
+    imgload() {
+        this.setData({
+            loaded: true
+        })
+        console.log(this.data.loaded)
     },
     imgList(e) {
-
         wx.navigateTo({
-            url: '../detail/detail?id=' + e.currentTarget.dataset.id + '&img=' + e.currentTarget.dataset.img
+            url: '../detail/detail?id=' + e.currentTarget.dataset.id + '&index=' + e.currentTarget.dataset.index
         })
     },
 
@@ -110,12 +118,12 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
-        // app.globel.data.sence += 1
-        setTimeout(function() {
-            wx.hideToast()
-        }, 2500)
-    },
+    // onShow: function() {
+    //     // app.globel.data.sence += 1
+    //     setTimeout(function() {
+    //         wx.hideToast()
+    //     }, 2500)
+    // },
 
     /**
      * 生命周期函数--监听页面隐藏

@@ -9,51 +9,11 @@ Page({
         h: '',
         fill: '',
         user: {
-            // img: '../../image/false.png',
-            // name: '王铁柱',
-            // num: '79',
-            // num1: 10,
-            // num2: 50
+          
         },
 
          team: [
-        //  }
-        //     img_url: '../../image/false.png',
-        //     num3: 65,
-        //     name2: '王翠花'
-        // }, {
-        //     img_url: '../../image/false.png',
-        //     num3: 55,
-        //     name2: '王翠花'
-        // }, {
-        //     img_url: '../../image/false.png',
-        //     num3: 75,
-        //     name2: '王翠花'
-        // }
-        ],
-        hair_log: [
-        //     {
-        //     goods_title: 'Earth',
-        //     username: '王大拿',
-        //     time: '2018-08-22 09:45:24',
-        //     status: 0,
-        //     nick_name: '王翠花',
-        //     num4: 600
-        // }, {
-        //     goods_title: 'Earth',
-        //     username: '王大拿',
-        //     time: '2018-08-22 09:45:24',
-        //     nick_name: '王翠花',
-        //     status: 1,
-        //     num4: 600
-        // }, {
-        //     goods_title: 'Earth',
-        //     username: '王大拿',
-        //     time: '2018-08-22 09:45:24',
-        //     status:1,
-        //     nick_name: '王翠花',
-        //     num4: 600
-        // }
+        
         ]
     },
     goback(){
@@ -89,6 +49,7 @@ Page({
                 this.setData({ hair_log: res.data.data.hair_log })
             }
         })
+        
     },
 
 

@@ -11,9 +11,7 @@ Page({
         transformX: 1,
         userInfo: {},
         btn_show: true,
-
-
-
+        
         canIUse: wx.canIUse('button.open-type.getUserInfo')
 
     },
@@ -38,14 +36,15 @@ Page({
             success: (res) => {
                 console.log(res)
                 if (res.authSetting['scope.userLocation']) {
-                    this.setData({
-                        btn_show: false
-                    })
+                    
                     console.log(this.data.btn_show, 32)
                     wx.getLocation({
                         type: 'wgs84',
                         success: (res) => {
-                            console.log(res)
+                            console.log(res);
+                            this.setData({
+                                btn_show: false
+                            })
                             app.globalData.latitude = res.latitude;
                             app.globalData.longitude = res.longitude;
 
@@ -66,7 +65,7 @@ Page({
                 }
             },
             fail(err) {
-                console.log('设置')
+                
                 this.setData({
                     btn_show: true
                 })
@@ -82,19 +81,23 @@ Page({
 
         wx.cloud.callFunction({
             // 云函数名称
-            name: 'test',
+            name: 'getuserinfo',
             // 传给云函数的参数
             data: {
-                a: 1,
-                b: 2,
+               cmd:"get"
             },
             success: function (res) {
-                console.log(res.result) // 3
+                console.log(res)
+                if(res.result.token){
+                    console.log(res.result.token)
+                    app.globalData.token = res.result.token;
+                    wx.switchTab({
+                        url: '../my/my',
+                    })
+                }
             },
             fail: console.error
         })
-
-
 
         wx.getLocation({
             type: 'wgs84',
@@ -110,21 +113,14 @@ Page({
             },
             fail: (err) => {
                 console.log(err);
-                wx.showToast({
-                    title: '初始化失败',
-                    icon: 'none',
-                    duration: 5000
-                })
+                // wx.showToast({
+                //     title: '初始化失败,请确认是否开启所需权限',
+                //     icon: 'none',
+                //     duration: 5000
+                // })
+                this.get_location()
             }
         })
-
-        this.get_location()
-
-        // setTimeout(() => {
-        //     this.setData({
-        //         btn_show: false
-        //     })
-        // }, 5000)
 
     },
 

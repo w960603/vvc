@@ -37,7 +37,7 @@
         <block>
             <view class="shipid" wx:for="{{ship.log}}" wx:for-item="item" wx:key="shipId" wx:for-index="index">
                 <view class="img">
-                    <image src="{{item.img_url?item.img_url:'../../image/icon/none.svg'}}" model='aspectFill'></image>
+                    <image src="{{item.img_url?item.img_url:'/image/icon/none.svg'}}" model='aspectFill'></image>
                 </view>
                 <view class="ship_list">
                     <view class="name">

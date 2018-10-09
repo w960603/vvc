@@ -14,7 +14,8 @@ Page({
         AcceptTime:'8-25',
         //适应ipx
         h: '',
-        fill: ''
+        fill: '',
+        margin:null
     },
     
     // 滚动切换标签样式
@@ -48,16 +49,24 @@ Page({
                     title: "删除订单成功",
                     
                   })
-
                     this.getorder()
+                    
                 }else{
                     wx.showToast({
                         title: res.data.msg,
                         icon:'none'
                     })
                 }
+            },
+            fail:()=>{
+                wx.showToast({
+                    title: "发生错误,请刷新重试!",
+                })
+                this.getorder()
             }
         })
+
+        
     },
    
 
@@ -81,6 +90,17 @@ Page({
     footerTap: app.footerTap,
     
     onLoad: function (res) {
+
+        if (app.globalData.model == 'iphonex') {
+            this.setData({
+                margin: 'margin-bottom:188rpx'
+            })
+        } else {
+            this.setData({
+                margin: 'margin-bottom:118rpx'
+            })
+        }
+
         wx.hideTabBar({
             success: function (res) {
                 console.log(11111)
@@ -136,14 +156,14 @@ Page({
             },
         })
         // 物流信息
-            app.request({
-                url: 'https://api.vvc.tw/dlxin/kdbird/getwuliu',
-                method: 'POST',
-                data: {
-                    order_id: 2147483647,
-                },
-                success:(res)=> {
-                    console.log(res,161)
+            // app.request({
+            //     url: 'https://api.vvc.tw/dlxin/kdbird/getwuliu',
+            //     method: 'POST',
+            //     data: {
+            //         order_id: 2147483647,
+            //     },
+            //     success:(res)=> {
+            //         console.log(res,161)
                     // for (var i = 0; i < res.data.data.Traces.length;i++ ){
                     //     i = res.data.data.Traces.length
                     //     console.log(i,168)
@@ -151,15 +171,19 @@ Page({
                     //         Traces: res.data.data.Traces[i]
                     //     })
                     // }
-                    this.setData({
-                        Traces: res.data.data.Traces
-                    })
+                    // if(res.data.code==1){
+                    //     this.setData({
+                    //         Traces: res.data.data.Traces
+                    //     })
+                    // }
+                    
                     
                     // this.setData({
                     //     AcceptTime: res.data.data.Traces.AcceptTime
                     // })
-                }
-            })
+                    
+            //     }
+            // })
     },
 
     order(e){
