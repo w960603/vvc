@@ -2,9 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '../views/index'
 
-import com2 from '../views/component2'
-import com3 from '../views/component3'
-import com4 from '../views/component4'
 
 /***ElectronicSurface页面组件**/
 
@@ -131,14 +128,14 @@ Vue.use(Router);
                        name:'tmallShip'
                    },
                    {
-                       path: '/com3',
-                       component: com3,
-                       name:'com3'
+                       path: '/tmallShip',
+                       component: tmallShip,
+                       name:'tmallShip'
                    },
                    {
-                       path: '/com4',
-                       component: com4,
-                       name:'com4'
+                       path: '/tmallShip',
+                       component: tmallShip,
+                       name:'tmallShip'
                    },
 
                    /***warehouse页面组件**/
