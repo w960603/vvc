@@ -1,8 +1,8 @@
 <view class="header" style='{{h}};background-color:{{color}}'>
     <image class='header-posi-img' src='../../image/icon/back.svg' bindtap="goback"></image>
-    <view class="order_list">{{title}}</view>
+    <view class="order_list" wx:if="{{custom_id == 1}}">团队订单</view>
+    <view class="order_list" wx:else>{{title}}</view>
     <image class='header-posi-img' src='../../image/icon/back.svg' style="opacity:0"></image>
-
     <slot ></slot>
 </view>
 <view style='{{fill}}'></view>

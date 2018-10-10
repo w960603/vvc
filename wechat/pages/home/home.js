@@ -90,8 +90,9 @@ Page({
         console.log(this.data.loaded)
     },
     imgList(e) {
+        console.log(e,"调到详情")
         wx.navigateTo({
-            url: '../detail/detail?id=' + e.currentTarget.dataset.id + '&index=' + e.currentTarget.dataset.index
+            url: '../detail/detail?id=' + e.currentTarget.dataset.id 
         })
     },
 

@@ -4,16 +4,16 @@
 <swiper class="swiper" indicator-dots='true' autoplay="true" interval="3000" duration="1000">
     <block wx:for="{{movies}}" wx:key="key" wx:for-item="item">
         <swiper-item wx:if='{{index==0&&!loaded}}'>
-            <image   lazy-load='true' src="{{item}}?x-oss-process=image/resize,w_200" mode="widthFix"></image>
+            <image lazy-load='true' src="{{item}}?x-oss-process=image/resize,w_200" mode="widthFix"></image>
         </swiper-item>
         <swiper-item wx:if='{{index==0}}'>
-            <image  lazy-load='true' bindload='imgload' src="{{item}}?x-oss-process=image/resize,w_1125" mode="widthFix"></image>
+            <image lazy-load='true' bindload='imgload' src="{{item}}?x-oss-process=image/resize,w_1125" mode="widthFix"></image>
         </swiper-item>
         <swiper-item wx:if='{{index>0}}'>
-            <image  lazy-load='true'  src="{{item}}?x-oss-process=image/resize,w_1125" mode="widthFix"></image>
+            <image lazy-load='true' src="{{item}}?x-oss-process=image/resize,w_1125" mode="widthFix"></image>
         </swiper-item>
     </block>
-        
+
 </swiper>
 <view class='detail-desc'>
     <view class="theme"> {{title}}</view>
@@ -39,10 +39,9 @@
                     <view>
                         <view class="store">详情</view>
                         <view class="commodity">Commodity display</view>
-
-                    </view>
-                    <view wx:if='content' wx:for="{{content}}" wx:key="key" wx:for-item="item">
-                        <image  lazy-load='true' src="{{item}}?x-oss-process=image/resize,w_1125" mode="widthFix"></image>
+                        <view wx:if='{{content.length}}' wx:for="{{content}}" wx:key="key" wx:for-item="item" style='font-size:0;'>
+                            <image lazy-load='true' style='width:100%' src="{{item}}?x-oss-process=image/resize,w_1125" mode="widthFix"></image>
+                        </view>
                     </view>
                 </view>
             </scroll-view>
@@ -91,33 +90,25 @@
                 </view>
             </scroll-view>
         </swiper-item>
+
     </swiper>
-</view>
-
-<!-- 加入购物车 -->
-<view class="{{iphonex?'addTocar1':'addTocar'}}" style='background-color:#fff;'>
-    <view class="go_car" bindtap='ShoppingCart'>
-        <image src="../../image/tabbar/shopping.svg"></image>
-        <view class='go_car_view'>购物车</view>
-        <view class='allshop-posi' wx:if="{{cartNum>=1}}">{{cartNum}}</view>
     </view>
-    <view class="add_car orangered" data-wfrid='{{wfrid}}' bindtap='wfrskuDetail'>加入购物车</view>
-    <view class="add_car red" bindtap='wfrskuDetail' data-wfrid='{{wfrid}}'>立即购买</view>
-</view>
+
+    <!-- 加入购物车 -->
+    <view class="{{iphonex?'addTocar1':'addTocar'}}" style='background-color:#fff;'>
+        <view class="go_car" bindtap='ShoppingCart'>
+            <image src="../../image/tabbar/shopping.svg"></image>
+            <view class='go_car_view'>购物车</view>
+            <view class='allshop-posi' wx:if="{{cartNum>=1}}">{{cartNum}}</view>
+        </view>
+        <view class="add_car orangered" data-wfrid='{{wfrid}}' bindtap='wfrskuDetail'>加入购物车</view>
+        <view class="add_car red" bindtap='wfrskuDetail' data-wfrid='{{wfrid}}'>立即购买</view>
+    </view>
 
 
-<my-component class="donghua" wx:if='{{isshow2}}' prop-wfrid="{{wfrid}}" isshow="{{isshow2}}" bindover="cartAdd" bindclosed="wfrskuDetail">
-</my-component>
+    <my-component class="donghua" wx:if='{{isshow2}}' prop-wfrid="{{wfrid}}" isshow="{{isshow2}}" bindover="cartAdd" bindclosed="wfrskuDetail">
+    </my-component>
 
 <view class='mask' catchtouchmove="true" wx:if='{{img_show}}' bindtap='closemask'>
     <button bindtap='save_image' class='save-btn'>保存到相册</button>
 </view>
-
-
-<!-- <view wx:if='{{imgs_show}}'>
-    <swiper>
-        <swiper-item>
-            <image src='{{item}}'></image>
-        </swiper-item>
-    </swiper>
-  </view> -->

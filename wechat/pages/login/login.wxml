@@ -4,13 +4,13 @@
             <!-- <cover-view class='content-posi'> -->
             <cover-image class='logo' style=' height:140rpx; width:244rpx;' src='https://wangfurui.oss-cn-hangzhou.aliyuncs.com/image/vvc_1535616329567.jpg'></cover-image>
             <cover-view class='wfr-text1'>VVC 董事后台系统</cover-view>
-            <cover-view class='denglu' bindtap='wfrAccount' wx:if='{{!btn_show}}'>
-                <button  class='mt'>账号登录</button>
-
+            <cover-view class='denglu'  wx:if='{{!btn_show}}'>
+                <button class='mt' bindtap='wfrAccount'>
+                    账号登录
+                </button>
             </cover-view>
             <cover-view class='denglu' wx:if='{{btn_show}}'>
                 <button class='mt' open-type='openSetting' bindopensetting='set_log'>账号登录</button>
-
             </cover-view>
 
             <cover-view class='phone1' bindtap='phonelogin'>手机登录</cover-view>

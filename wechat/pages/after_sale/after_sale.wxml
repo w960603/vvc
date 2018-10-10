@@ -19,39 +19,8 @@
             </view>
         </view>
         <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:89vh;">
-        
+            <!-- 处理中 -->
             <swiper-item style="overflow:scroll">
-               
-                <!-- 处理完成 -->
-                <view class='order-wrap'>
-                    <view class="order" wx:for="{{ orderCont }}" bindtap='show' data-list='{{item}}'>
-                        <view class="order_num border bdb" bindtap='order_num'>
-                            <text class="number">订单编号：{{item.number }}</text>
-                        </view>
-                        <view class="order_cont border bdb" bindtap='order_cont'>
-                            <image src="{{ item.goods_img  }}" class="order_img" mode='aspectFill'></image>
-                            <view class="description">
-                                <view class="title_price">
-                                    <view wx:for="{{item.goods_list}}" data-item="{{item}}">
-                                        <view class="title1">{{ item.name}}</view>
-                                        <view class="title1">数量{{ item.num }}</view>
-                                    </view>
-                                    <view class="title2">{{ item.time }}</view>
-                                </view>
-                            </view>
-                            <view class='state'>
-                                <block wx:if="{{item.status== 2}}">
-                                    <!-- <image src='../../image/icon/diliver.svg'></image> -->
-                                    <text class="circle green">处理完成</text>
-                                </block>
-                            </view>
-                        </view>
-                    </view>
-                </view>
-
-            </swiper-item>
-            <swiper-item style="overflow:scroll">
-                
                 <!-- 处理中 -->
                 <view class='order-wrap'>
                     <view class="order" wx:for="{{ orderCont }}" bindtap='show' data-list='{{item}}'>
@@ -59,12 +28,17 @@
                             <text class="number">订单编号：{{item.number }}</text>
                         </view>
                         <view class="order_cont border bdb" bindtap='order_cont'>
-                            <image src="{{  item.goods_img  }}" class="order_img" mode='aspectFill'></image>
+                            <view class="order_img" style='overflow:hidden' >
+                                <!-- <view wx:for="{{item.goods_list}}" data-item="{{item}}" style='background:#000000;'> -->
+                                    <image style='width:{{item.goods_list.length<5?50:33}}%;padding:2rpx;box-sizing:border-box' wx:if="{{index<9}}" wx:for="{{item.goods_list}}" wx:for-item="items"  src="{{items.goods_img}}?x-oss-process=image/resize,w_80" mode="widthFix" ></image>
+                                <!-- </view> -->
+                            </view> 
                             <view class="description">
                                 <view class="title_price">
                                     <view wx:for="{{item.goods_list}}" data-item="{{item}}">
-                                        <view class="title1">{{ item.name}}</view>
-                                        <view class="title1">数量{{ item.num }}</view>
+                                        <!-- <view class="title1" wx:if="item.order_goods != undefind">{{ item.order_goods}}<text style='margin-left:30rpx'>X{{item.num}}</text></view> -->
+                                        <view class="title1">{{ item.name}}<text style='margin-left:30rpx'>X{{item.num}}</text></view>
+                                        <!-- <view class="title1">数量：{{ item.num }}</view> -->
                                     </view>
                                     <view class="title2">{{ item.time }}</view>
                                 </view>
@@ -82,6 +56,44 @@
                     </view>
                 </view>
             </swiper-item>
+        
+            <!-- 处理完成 -->
+            <swiper-item style="overflow:scroll">
+               
+                <!-- 处理完成 -->
+                <view class='order-wrap'>
+                    <view class="order" wx:for="{{ orderCont }}" bindtap='show' data-list='{{item}}'>
+                        <view class="order_num border bdb" bindtap='order_num'>
+                            <text class="number">订单编号：{{item.number }}</text>
+                        </view>
+                        <view class="order_cont border bdb" bindtap='order_cont'>
+                            <view class="order_img" style='overflow:hidden' >
+                                <!-- <view wx:for="{{item.goods_list}}" data-item="{{item}}" style='background:#000000;'> -->
+                                    <image style='width:{{item.goods_list.length<5?50:33}}%;padding:2rpx;box-sizing:border-box' wx:if="{{index<9}}" wx:for="{{item.goods_list}}" wx:for-item="items"  src="{{items.goods_img}}?x-oss-process=image/resize,w_80" mode="widthFix" ></image>
+                                <!-- </view> -->
+                            </view> 
+                            <view class="description">
+                                <view class="title_price">
+                                    <view wx:for="{{item.goods_list}}" data-item="{{item}}">
+                                        <view class="title1">{{ item.name}} <text style='margin-left:30rpx'>X{{item.num}}</text></view>
+                                        <!-- <view class="title1">数量{{ item.num }}</view> -->
+                                    </view>
+                                    <view class="title2">{{ item.time }}</view>
+                                </view>
+                            </view>
+                            <view class='state'>
+                                <block wx:if="{{item.status== 2}}">
+                                    <!-- <image src='../../image/icon/diliver.svg'></image> -->
+                                    <text class="circle green">处理完成</text>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+            </swiper-item>
+
+            <!-- 售后申请 -->
             <swiper-item style="overflow:scroll">
                 <!-- 售后申请 -->
                 <view class='sale_apply'>
@@ -97,23 +109,25 @@
                                     <view>选择类型</view>
                                     <view>选择数量</view>
                                 </view>
-                                <view bindtap='show_list'>
-                                    <view class='modify_type' bindtap='choice_shop'>
-                                        <text class="whitejia">+</text>
-                                    </view>
+                                <view class="section">
+                                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{itemList}}">
+                                        <view class="picker">
+                                            <view class='modify_type'>
+                                                <text class="whitejia">+</text>
+                                            </view>
+                                        </view>
+                                    </picker>
                                 </view>
-                                  
                             </view>
-                            <view class='order_type1' wx:for="{{shop_type}}" wx:for-item="list">
+                            <view class='order_type1' wx:for="{{shop_type}}" wx:key="*this"  wx:for-item="list">
                                 <view class='choice_type'>
                                     <view class='choice_type_text1'>{{list.name}}</view>
-                                    <view class='choice_type_text2'>{{list.sku}}</view>
-                                    <view class='choice_type_text3'>{{list.num}}</view>
+                                    <view class='choice_type_text2' wx:if="{{list.sku != null && list.sku!= ''}}">{{list.sku}}</view>
+                                    <view class='choice_type_text2' wx:else>无</view>
+                                    <view class='choice_type_text3'><input type="number" bindinput='order_num' data-index='{{index}}' value='{{list.num}}'></input></view>
                                 </view>
                                 <view class='one_type'>
                                     <text class="blackjia" bindtap='deletelist' data-index='{{index}}'>✕</text>
-                                   
-                                   
                                 </view>
                             </view>
                         </view>
@@ -121,14 +135,14 @@
                             <view class="reason" bindtap='choseReason'>
                                 <view class="app_rea">申请原因</view>
                                 <view class="chose_reason">
-                                    <text wx:if="{{return_goods == ''}}">请选择申请原因</text>
+                                    <text wx:if="{{idx == null}}">请选择申请原因</text>
                                     <text wx:else>{{return_goods}}</text>
                                     <image src="../../image/icon/right.svg"></image>
                                 </view>
                             </view>
                             <view class="return_reason" style='{{bottom}}'>
                                 <view class="ret_rea">退换货理由</view>
-                                <textarea wx-if="{{currentTab == 2}}" class="textarea" placeholder='请描述申请售后的具体原因' bindblur='textareaInput'></textarea>
+                                <textarea wx-if="{{currentTab == 2}}" value='{{evaContent}}' class="textarea"  bindinput='textareaInput'></textarea>
                             </view>
                         </view> 
                     </view>
@@ -155,7 +169,7 @@
                     </view>
         </mask>
         <view class="footer" wx:if="{{currentTab == 2}}" style='{{iphonex}}'>
-            <input type="button" class="btn1" bindtap='comfirmRefer' adjust-position='true' value="提交" />
+            <view class="btn1" bindtap='comfirmRefer' adjust-position='true'>提交</view>
         </view>
     </view>
 </view>

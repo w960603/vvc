@@ -1,3 +1,4 @@
+<scroll-view style='height:100vh' scroll-y='true'>
 <view class="header" bindtap="goback" style='{{h}}'>
     <image src="../../image/icon/back.svg" class="back"></image>
     <text class="order_list">发货</text>
@@ -24,9 +25,9 @@
                 </view>
                 <view class="search_input">
                     <text class="get">收货</text>
-                    <image src="{{user.img_url?user.img_url:'../../image/icon/none.svg'}}" model='aspectFill'></image>
+                    <image src="{{user.img_url}}" style=' background:url("https://cdn.vvc.tw/a/images/none.svg")center/cover no-repeat' model='aspectFill'></image>
 
-                    <input type="search" class="search" adjust-position='true' bindtap='ship_search' disabled='true' placeholder='收货人' placeholder-class='placeholder' value='{{user.nick_name}}'></input>
+                    <input type="search" class="search" adjust-position='true' bindtap='ship_search' disabled='{{arr1!=="零售"}}' placeholder='收货人' placeholder-class='placeholder' value='{{user.nick_name}}'></input>
                     <image src="../../image/icon/search.svg" class="img_search"></image>
                 </view>
             </view>
@@ -37,7 +38,7 @@
         <block>
             <view class="shipid" wx:for="{{ship.log}}" wx:for-item="item" wx:key="shipId" wx:for-index="index">
                 <view class="img">
-                    <image src="{{item.img_url?item.img_url:'/image/icon/none.svg'}}" model='aspectFill'></image>
+                    <image src="{{item.img_url}}" style=' background:url("https://cdn.vvc.tw/a/images/none.svg")center/cover no-repeat' model='aspectFill'></image>
                 </view>
                 <view class="ship_list">
                     <view class="name">
@@ -59,4 +60,6 @@
         <image src="../../image/icon/scan_code.svg" bindtap="scan_click"></image>
     </view>
 </view>
+</scroll-view>
+
 <my-component wx:if='{{isshow3}}' pror-id="{{shipid}}" bindadduser='adduser' bindover='closeShip' bindclosed='close'></my-component>

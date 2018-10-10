@@ -1,6 +1,7 @@
 {
     "pages": [
-		"pages/blank/blank",
+        "pages/blank/blank",
+        "pages/security/security",
         "pages/login/login",
         "pages/extension/extension",
         "pages/home/home",
@@ -9,7 +10,6 @@
         "pages/management/management",
         "pages/authorization/authorization",
         "pages/ship/ship",
-        "pages/security/security",
         "pages/order/order",
         "pages/detail/detail",
         "pages/express/express",

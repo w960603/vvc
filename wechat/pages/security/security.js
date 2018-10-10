@@ -121,6 +121,7 @@ Page({
                 qrcode: result[0]
             })
         }
+
         if (!!app.globalData.userinfo) {
             this.setData({
                 btn_show: false,
@@ -138,20 +139,20 @@ Page({
                                 })
                             },
                             fail: (err) => {
-                                // console.log(err)
+                                this.setData({
+                                    btn_show: true
+                                })
                             }
                         })
                     }
                 },
                 fail(err) {
                     this.setData({
-                        btn_show: false
+                        btn_show: true
                     })
                 }
             })
         }
-
-
     },
     goback() {
         wx.switchTab({
@@ -174,7 +175,6 @@ Page({
             qrcode: e.detail.value,
 
         });
-        // console.log(this.data.chaNumber);
     },
     // 查询防伪号
 

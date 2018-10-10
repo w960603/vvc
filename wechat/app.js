@@ -36,14 +36,14 @@ App({
 
         wx.getSystemInfo({
             success: (res) => {
-console.log(res)
+                
                 let model = res.model.toLowerCase().replace(/\s/g, '')
                 if (model.indexOf('iphonex') > -1) {
                     this.globalData.model = 'iphonex'
                 }
 
                 this.globalData.statusBarHeight = res.statusBarHeight;
-                console.log(res.statusBarHeight)
+                
             }
         })
     },
@@ -109,7 +109,6 @@ console.log(res)
                 token: token,
                 sign: md5str,
                 timestamp: time,
-                // "Content-Type": "application/json",
             },
             success: (res) => {
                 if (res.data.code == 9527) {
@@ -136,15 +135,9 @@ console.log(res)
                 option.success(res)
             } ,
             fail:(err)=>{
-                console.log(err)
+                
             },
-            complete:(com)=>{
-                console.log(com)
-            }
         })
-
-        console.log('3432')
-
 
     },
 })

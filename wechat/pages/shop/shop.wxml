@@ -44,9 +44,7 @@
             </view>
             <!-- 列表开始 -->
             <view class='wfr-sku-content'>
-                <view class='wfr-sku' wx:for="{{item.child}}" wx:for-index="index1" wx:for-item="item1">
-
-            
+                <view class='wfr-sku' wx:for="{{item.child}}" wx:for-index="index1" wx:for-item="item1">           
                     <view  class='{{index1 == 0?"wfr-sku2":"wfr-sku1"}} {{index1 == item.child.length-1?"wfr-line":""}}'>
                         <view class='wfr-sku-mane'>{{list.cate[item1.cate_one].title}}</view>
                         <view class='wfr-sku-sku'  wx:if="{{list.cate[item1.cate_two]}}">{{list.cate[item1.cate_two].title}}</view>

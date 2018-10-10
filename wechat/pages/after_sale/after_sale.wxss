@@ -117,7 +117,19 @@ position:relative;
 .order_img{
     width:140rpx;
     height:140rpx;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    border:2rpx solid #cccccc;
+    /* flex-direction: row-reverse; */
+    justify-content: center;
+    align-items:center;
+    font-size: 0,
 }
+
+.order_img image:only-child{
+    flex:1!important;
+}
+
 .order_num{
     display: flex;
     justify-content: space-between;
@@ -147,17 +159,13 @@ position:relative;
 }
 .order_cont{
     display: flex;
-height:214rpx;
-align-items: center;
-
+/* height:214rpx; */
+    align-items: center;
 }
 .description{
-    width:343rpx;
+    width:366rpx;
     margin-left:24rpx;
     color: #9B9B9B;
-}
-.title_price{
-   height:140rpx;
 }
 .title1{
     font-size: 28rpx;
@@ -188,10 +196,10 @@ align-items: center;
     margin-bottom:8rpx;
 }
 .circle{
-font-size:28rpx!important;
-font-family:PingFang-SC-Medium;
-font-weight:normal;
-padding:10rpx 32rpx;
+    font-size:28rpx!important;
+    font-family:PingFang-SC-Medium;
+    font-weight:normal;
+    padding:10rpx 26rpx;
 }
 .red{
 color:#F0230C;border:2rpx solid #F0230C;border-radius:31rpx!important;
@@ -456,8 +464,9 @@ color:#FCB62D;border:2rpx solid #FCB62D;border-radius:31rpx!important;
     width: 276rpx;
     height: 98rpx;
     float:right;
+    line-height:98rpx;
     background: linear-gradient(90deg, rgba(255, 3, 3, 1) 0%, rgba(246, 73, 21, 1) 100%);
-    font-size: 32rpx;
+    font-size: 34rpx;
     font-family: PingFang-SC-Medium;
     font-weight: normal;
     color: rgba(255, 255, 255, 1);
@@ -585,15 +594,14 @@ radio .wx-radio-input.wx-radio-input-checked::before {
 }
 .choice_type view{
     width:112rpx;
-    height:40rpx;
     font-size:28rpx;
     font-family:PingFang-SC-Medium;
     font-weight:500;
     color:rgba(155,155,155,1);
-    line-height:40rpx; 
+    line-height:40rpx;
 }
 .choice_type_text1,.choice_type_text2,.choice_type_text3{
-    height:40rpx;
+    /* height:40rpx; */
     font-size:24rpx;
     font-family:PingFang-SC-Medium;
     font-weight:500;
@@ -601,7 +609,22 @@ radio .wx-radio-input.wx-radio-input-checked::before {
     line-height:40rpx; 
 }
 .choice_type_text1{
+    min-width:198rpx!important;
     font-size:24rpx!important;
+    overflow: hidden; 
+    text-overflow:ellipsis;
+    white-space: nowrap;
+
+}
+.choice_type_text1{
+    min-width:198rpx!important;
+    font-size:24rpx!important;
+    overflow: hidden; 
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.choice_type_text3 input{
+    background:#f1f1f1; 
 }
 .one_type{
     width:70rpx;

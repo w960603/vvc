@@ -10,7 +10,7 @@
         <view class="avator" wx:if='{{user.length}}'>
             <block wx:for="{{user}}" wx:for-item="item" wx:for-index="index" wx:if='{{index<5}}' >
                 <view class="avator_list" data-index='{{index}}' bindtap='adduser'>
-                    <image src="{{item.img_url?item.img_url:'../../image/icon/none.svg'}}"></image>
+                    <image src="{{item.img_url}}" style='background:url("https://cdn.vvc.tw/a/images/none.svg")center/cover no-repeat;border:1rpx solid #eee'></image>
                     <view class="theme">{{item.nick_name}}</view>
                 </view>
             </block>
@@ -20,7 +20,7 @@
             <view wx:for="{{user}}" wx:index="{{index}}" wx:key="index" data-index='{{index}}' wx:if='{{index<20}}' bindtap='adduser'>
                 <view class="message">
                     <view class="avator_list">
-                        <image src="{{item.img_url?item.img_url:'../../image/icon/none.svg'}}"></image>
+                        <image src="{{item.img_url}}" style='background: url("https://cdn.vvc.tw/a/images/none.svg")center/cover no-repeat;border:1rpx solid #eee'></image>
                         <view class="theme">{{item.shouquan?"已授权":"未授权"}}</view>
                     </view>
                     <view class="management">

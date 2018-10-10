@@ -43,10 +43,13 @@ Page({
             method:'POST',
 
             success:(res)=>{
-                console.log(res.data.data)
-                this.setData({user:res.data.data.user})
-                this.setData({ team: res.data.data.team })
-                this.setData({ hair_log: res.data.data.hair_log })
+                if(res.data.code==1){
+                    console.log(res.data.data)
+                    this.setData({ user: res.data.data.user })
+                    this.setData({ team: res.data.data.team })
+                    this.setData({ hair_log: res.data.data.hair_log })
+                }
+                
             }
         })
         

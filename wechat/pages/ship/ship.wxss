@@ -19,7 +19,9 @@
     padding: 0 32rpx;
     
 }
-
+::-webkit-scrollbar{
+    display: none
+}
 .white {
     opacity: 0;
 }

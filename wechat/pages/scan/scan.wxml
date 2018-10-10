@@ -6,7 +6,7 @@
         <!-- part1 -->
         <view style="border-bottom:16rpx solid #efefef;padding-left: 32rpx;">
             <view class="flex" style="padding-top:36rpx">
-                <image src="{{user.img}}" class="avatra"></image>
+                <image src="{{user.img}}" style='background:url("https://cdn.vvc.tw/a/images/none.svg")center/cover no-repeat' class="avatra"></image>
                 <text>{{user.nick_name}}</text>
             </view>
             <view class="scan_pre">扫码率</view>

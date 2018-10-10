@@ -136,7 +136,7 @@ Page({
       console.log("show")
       this.getorder()
     },
-
+    
     getorder(attr){
         app.request({
             url: 'https://api.vvc.tw/dlxin/order/orderlist',
@@ -144,13 +144,20 @@ Page({
             success: (res) => {
                 if (res.data.code) {
                     console.log(res)
+                    this.setData({ orderCont:[] })
                     for (var i = 0; i < res.data.data.length; i++) {
                         if (!/http/.test(res.data.data[i].goods_img)) {
                             res.data.data[i].goods_img = '../../image/icon/no_product.svg'
+
+                        }else{
+                            res.data.data[i].goods_img = res.data.data[i].goods_img +'?x-oss-process=image/resize,w_160'
+                        }
+                        if(i<10){
+                         this.setData({ ["orderCont["+i+"]"]: res.data.data[i] })
                         }
                     }
-                    this.setData({ orderCont: res.data.data })
-                    this.setData({ order_num: res.data.data })
+                    setTimeout(()=>{ this.setData({ ["orderCont"]: res.data.data})},2000)
+                    //this.setData({ order_num: res.data.data })
                 }
 
             },

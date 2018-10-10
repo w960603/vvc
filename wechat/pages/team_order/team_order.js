@@ -15,7 +15,8 @@ Page({
         //适应ipx
         h: '',
         fill: '',
-        margin: null
+        margin: null,
+        custom_id:1,
     },
 
     // 滚动切换标签样式
@@ -141,28 +142,30 @@ Page({
     getorder(attr) {
         console.log("我走啦",attr);
         app.request({
-            url: 'https://api.vvc.tw/suc/xhs/teamorderlist',
+            url: 'https://api.vvc.tw/dlxin/order/teamOrderList',
             method: 'POST',
             data:{
                 status: attr
             },
             success: (res) => {
                 if(res.data.code == 1){
-                    this.setData({ orderCont: res.data.data })
+                    this.setData({ orderCont: [] })
+                    for (var i = 0; i < res.data.data.length; i++) {
+                        if (!/http/.test(res.data.data[i].goods_img)) {
+                            res.data.data[i].goods_img = '../../image/icon/no_product.svg'
+
+                        } else {
+                            res.data.data[i].goods_img = res.data.data[i].goods_img + '?x-oss-process=image/resize,w_160'
+                        }
+                        if (i < 10) {
+                            this.setData({ ["orderCont[" + i + "]"]: res.data.data[i] })
+                        }
+                    }
+                    setTimeout(() => { this.setData({ ["orderCont"]: res.data.data }) }, 2000)
+                    //this.setData({ order_num: res.data.data })
+                }
                     console.log(res.data.data);
                 }
-                
-                // if (res.data.code) {
-                //     console.log(res)
-                //     for (var i = 0; i < res.data.data.length; i++) {
-                //         if (!/http/.test(res.data.data[i].goods_img)) {
-                //             res.data.data[i].goods_img = '../../image/icon/no_product.svg'
-                //         }
-                //     }
-                //     this.setData({ orderCont: res.data.data })
-                //     this.setData({ order_num: res.data.data })
-                // }
-            },
         })
         // 物流信息
         // app.request({

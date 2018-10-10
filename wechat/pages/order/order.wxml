@@ -19,7 +19,7 @@
                 <!-- 订单部分 -->
                 <!-- 全部订单 -->
                 <scroll-view class='order-wrap' scroll-y='true'>
-                    <view class="order" wx:for="{{ orderCont }}" wx:key='{{index}}'  wx:for-item="item" data-id='{{item.id}}'>
+                    <view class="order" wx:for="{{ orderCont }}" wx:key='unique'  wx:for-item="item" data-id='{{item.id}}'>
                         <view class="order_num" bindtap='order_num'>
                             <text class="number">订单编号：{{item.time }}</text>
                             <block wx:if="{{item.order_status== -1}}">
@@ -43,7 +43,7 @@
                         </view>
                         <view class="order_cont">
                             <view class="img">
-                                <image src="{{ item.goods_img}}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill'></image>
+                                <image src="{{ item.goods_img}}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill' bindload='onLazyLoad' lazy-load='true'></image>
                             </view>
                             <view class="description" data-id="{{item.id}}" bindtap='order'>
                                 <view class="title_price">
@@ -68,16 +68,7 @@
                                 <view class="time">   </view>
                                 <view class='cancel_order' bindtap='cancel_order' data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>
                             </view>
-                            <!-- <view class="logistics" bindtap='cancel_logistics' wx:if='{{item.order_status>2}}'>
-                                <view class="flex" style="color:#9B9B9B">
-                                    <view>最新物流</view>
-                                    <view>{{Traces.date}}</view>
-                                </view>
-                                <view class="flex1" style="color:#3998E0">
-                                    <view style="width:92rpx">{{Traces.time}}</view>
-                                    <view>{{Traces.AcceptStation}}</view>
-                                </view>
-                            </view> -->
+                            
                         </view>
                     </view>
                 </scroll-view>
@@ -86,14 +77,14 @@
                 <!-- 订单部分 -->
                 <!-- 已完成 -->
                 <view class='order-wrap'>
-                    <view class="order" wx:for="{{ orderCont }}" wx:key='item' wx:if="{{item.order_status>3}}">
+                    <view class="order" wx:for="{{ orderCont }}" wx:key='unique' wx:if="{{item.order_status>3}}">
                         <view class="order_num" bindtap='order_num'>
                             <text class="number">订单编号：{{item.time}}</text>
                             <text class="state" wx:if="{{item.order_status===5}}">已完成</text>
                         </view>
                         <view class="order_cont">
                             <view class="img">
-                                <image src="{{ item.goods_img }}" data-id="{{item.id}}" class="order_img" bindtap='order' mode='aspectFill'></image>
+                                <image src="{{ item.goods_img }}" data-id="{{item.id}}" class="order_img" bindtap='order' mode='aspectFill' lazy-load='true'></image>
                             </view>
                             <view class="description" bindtap='order' data-id="{{item.id}}">
                                 <view class="title_price">
@@ -119,16 +110,7 @@
                                 <view class="time">   </view>
                                 <view class='cancel_order' bindtap='cancel_order' data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>
                             </view>
-                            <!-- <view class="logistics" bindtap='cancel_logistics' wx:if='{{item.order_status>2}}'>
-                                <view class="flex" style="color:#9B9B9B">
-                                    <view>最新物流</view>
-                                    <view>{{Traces.date}}</view>
-                                </view>
-                                 <view class="flex1" style="color:#3998E0">
-                                    <view style="width:92rpx">{{Traces.time}}</view>
-                                    <view>{{Traces.AcceptStation}}</view>
-                                </view>
-                            </view> -->
+                            
                         </view>
 
                     </view>
@@ -140,7 +122,7 @@
                 <!-- 订单部分 -->
                 <!-- 未完成 -->
                 <view class='order-wrap'>
-                    <view class="order" wx:for="{{ orderCont }}" wx:key='item' wx:if="{{item.order_status<4}}">
+                    <view class="order" wx:for="{{ orderCont }}" wx:key='unique' wx:if="{{item.order_status<4}}">
                         <view class="order_num" bindtap='order_num'>
                             <text class="number">订单编号：{{item.time}}</text>
                             <text class="state" wx:if="{{item.order_status===-1}}">订单取消 </text>
@@ -151,7 +133,7 @@
                         </view>
                         <view class="order_cont">
                             <view class="img">
-                                <image src="{{ item.goods_img }}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill'></image>
+                                <image src="{{ item.goods_img }}"bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill' lazy-load='true'></image>
                             </view>
                             <view class="description" bindtap='order' data-id="{{item.id}}">
                                 <view class="title_price">
@@ -177,16 +159,7 @@
                                 <view class="time">   </view>
                                 <view class='cancel_order' bindtap='cancel_order' data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>
                             </view>
-                            <!-- <view class="logistics" bindtap='cancel_logistics' wx:if='{{item.order_status>2}}'>
-                                <view class="flex" style="color:#9B9B9B">
-                                    <view>最新物流</view>
-                                    <view>{{Traces.date}}</view>
-                                </view>
-                                <view class="flex1" style="color:#3998E0">
-                                    <view style="width:92rpx">{{Traces.time}}</view>
-                                    <view>{{Traces.AcceptStation}}</view>
-                                </view>
-                            </view> -->
+                           
                         </view>
                     </view>
                 </view>

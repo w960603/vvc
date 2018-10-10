@@ -32,11 +32,9 @@ Page({
         isshow2: false,
         wfrid: null,
         cartNum: null,
-
         //适应ipx
         h: '',
         fill: '',
-
         img_index: null,
         img_show: false,
         imgs_show: false,
@@ -165,11 +163,9 @@ Page({
 
 
     save_image(e) {
-        console.log(e)
         if (this.data.img_index) {
             this.save(this.data.movies[this.data.img_index], 1)
         } else {
-            console.log(2)
             for (var i = 0; i < this.data.movies.length; i++) {
                 this.save(this.data.movies[i])
             }
@@ -187,42 +183,37 @@ Page({
         })
         this.attached();
 
-        
         this.data.wfrid = option.id;
         if(app.globalData.goodslist){
             var price = 0;
-
+            
             switch (app.globalData.userinfo.level) {
                 case 1:
-                    price = app.globalData.goodslist[option.index].mon4;
+                    price = app.globalData.goodslist[option.id].mon4;
                     break;
                 case 2:
-                    price = app.globalData.goodslist[option.index].mon3;
+                    price = app.globalData.goodslist[option.id].mon3;
                     break;
                 case 3:
-                    price = app.globalData.goodslist[option.index].mon2;
+                    price = app.globalData.goodslist[option.id].mon2;
                     break;
                 case 10:
-                    price = app.globalData.goodslist[option.index].mon1;
+                    price = app.globalData.goodslist[option.id].mon1;
                     break;
                 default:
-                    price = app.globalData.goodslist[option.index].mon4;
+                    price = app.globalData.goodslist[option.id].mon4;
                     break;
             }
 
-            
 
             this.setData({
-                movies: JSON.parse(app.globalData.goodslist[option.index].main_img),
+                movies: JSON.parse(app.globalData.goodslist[option.id].main_img),
                 price: price,
-                // content: JSON.parse(app.globalData.goodslist[option.index].content),
+                content: JSON.parse(app.globalData.goodslist[option.id].content),
             })
 
         }
         
-
-
-
         var that = this;
         that.setData({
             wfrid: option.id
@@ -251,13 +242,13 @@ Page({
     },
     // 苹果×的底部监听
     attached() {
-        console.log(app.globalData.model,this.data.iphonex)
+        
         if (app.globalData.model == 'iphonex') {
             this.setData({ iphonex: true, icon: 'bottom:74rpx' ,bottom:'padding-bottom:166rpx'})
         } else {
             this.setData({ iphonex: false, bottom: 'padding-bottom:98rpx'})
         }
-        console.log(this.data.iphonex, 234234234)
+        
     },
     footerTap: app.footerTap,
 
@@ -271,6 +262,7 @@ Page({
             success: (res) => {
 
                 if (res.data.code) {
+                    console.log(res.data)
                     var price = 0;
                     this.setData({
                         cartNum: res.data.data.total_num
@@ -298,15 +290,34 @@ Page({
                             break;
                     }
 
-
                     this.setData({
                         price: price
                     });
                     this.setData({
                         movies: JSON.parse(res.data.data.goods.main_img),
-                        // content: JSON.parse(res.data.data.goods.content)
+                        content: JSON.parse(res.data.data.goods.content)
+                    });
+                    this.setData({
+                        order_detail: JSON.parse(res.data.data.goods.content)
                     });
 
+                    app.request({
+                        url: "https://api.vvc.tw/dlxin/shop/getdetail/",
+                        data: {
+                            id: id
+                        },
+                        success: (res) => {
+                            
+                            if ( res.data.data.code==1) {
+                                this.setData({
+                                    parameterList: res.data.data.canshu
+                                })
+                                this.setData({
+                                    price_img: res.data.data.priceimage
+                                })
+                            }
+                        }
+                    })
                 }
 
             }
@@ -347,13 +358,13 @@ Page({
         });
     },
     cartAdd(e) {
-        console.log(e)
+        
         this.setData({
             cartNum: e.detail
         });
     },
     ShoppingCart() {
-        console.log(11)
+        
         wx.switchTab({
             url: '../shop/shop',
         })

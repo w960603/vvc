@@ -60,10 +60,20 @@
             </view>
         </view>
         <view class="my">
-            <view class="myList" bindtap="indexclick" wx:for="{{ myList}}" wx:key="index" wx:for-index="index" data-index="{{index}}" wx:for-item="item">
-                <image class="{{item.id==8?'my_img' : 'red'}}" src="{{item.my_img}}"></image>
-                <view class="text">{{item.my_text}}</view>
-            </view>
+            <block wx:for="{{ myList}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+                <view class='myList' wx:if='{{item.bool}}'>
+                    <button open-type="contact" class=' button'>
+                        <image class='red' src="{{item.my_img}}"></image>
+                        <view class="text">{{item.my_text}}</view>
+                    </button>
+                </view>
+
+                <view class="myList" bindtap="indexclick" data-item="{{item}}" wx:else>
+                    <image class='red' src="{{item.my_img}}"></image>
+                    <view class="text">{{item.my_text}}</view>
+                </view>
+            </block>
         </view>
+
     </view>
 </view>

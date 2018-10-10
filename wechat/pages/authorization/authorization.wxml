@@ -1,6 +1,5 @@
 <view class='page'>
 
-
     <button class='userinfo-btn' wx:if='{{btn_show}}' bindgetuserinfo='getuserinfo' open-type="getUserInfo"></button>
 
 
@@ -36,7 +35,7 @@
             </view>
         </block>
         <block wx:else="{{msg}}" class="noth_mess"> 
-            <view class='wfr-result' style="color:rgba(215,215,215,1)">查询结果</view>
+            <view class='wfr-result' style="color:rgba(215,215,215,1);background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(255,255,255,1) 100%);">查询结果</view>
             <view class="nothing">
                 <image src="../../image/nothing.svg"></image>
             </view>

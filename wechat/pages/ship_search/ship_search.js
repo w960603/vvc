@@ -7,7 +7,8 @@ Component({
         isshow: {
             type: Boolean,
             value: null
-        }
+        },
+
     },
 
     /**
@@ -21,26 +22,15 @@ Component({
         status: true,
     },
     attached: function () {
-        // wx.showLoading({
-        //     title: '加载中',
-        //     mask:'true'
-        // })
-
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/getSubAddress',
+            url: 'https://api.vvc.tw/dlxin/user/search',
             methos: 'post',
             success: (res) => {
-
+                console.log(res)
                 this.setData({
-                    user: res.data.data
+                    user: res.data.data.user
                 })
-
-
-                setTimeout(function () {
-                    wx.hideLoading()
-                }, 1000)
             }
-
         })
 
     },
@@ -80,10 +70,10 @@ Component({
                 });
 
                 app.request({
-                    url: "https://api.vvc.tw/dlxin/user/getSubAddress",
+                    url: "https://api.vvc.tw/dlxin/user/search",
                     method: "POST",
                     data: {
-                        name: this.data.inputValue,
+                        nickName: this.data.inputValue,
                     },
                     success: (res) => {
 
@@ -93,7 +83,7 @@ Component({
                         if (res.data.code) {
 
                             this.setData({
-                                user: res.data.data
+                                user: res.data.data.user
                             })
 
 

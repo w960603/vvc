@@ -24,14 +24,10 @@ Component({
         array:[],
         allnum:0,
         iphonex:"",
-
         bottom:null,
-
     },
     // 页面渲染完成
     attached: function() {
-        
-
         app.request({
             url: 'https://api.vvc.tw/dlxin/shop/goodsinfo',
             method: "POST",
@@ -56,7 +52,6 @@ Component({
                     this.setData({ goods: res.data.data.goods});
                     this.data.cate = res.data.data.cate;
                     this.setData({ num : this.data.goods.spec})
-
 
                     for (var i in this.data.cate) {
                         this.data.size = {
@@ -106,7 +101,6 @@ Component({
                 sku_id: e.currentTarget.dataset.id
             });
 
-
             if (e.currentTarget.dataset.img && e.currentTarget.dataset.img != "") {
 
                 this.setData({
@@ -135,7 +129,6 @@ Component({
             var index = this.data.selected;
                 if (e.currentTarget.dataset.img && e.currentTarget.dataset.img != "") {
                     
-                  
                     this.setData({
                         ['shoplist.img']: (/http/.test(e.currentTarget.dataset.img)) ? e.target.dataset.img : (this.data.cate[index].thumb ? this.data.cate[index].thumb:this.data.goods.img),
                     })
