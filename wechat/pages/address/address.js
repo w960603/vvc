@@ -105,7 +105,7 @@ Page({
             method: 'post',
             success: (res) => {
 
-                if (res.data.code) {
+                if (res.data.code==1) {
                     this.setData({
                         address_lists: res.data.data
                     });

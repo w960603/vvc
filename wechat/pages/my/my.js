@@ -108,7 +108,7 @@ Page({
             
             method: "POST",
             success: (res) => {
-                if (res.data.code) {
+                if (res.data.code==1) {
 
                     app.globalData.userinfo = res.data.data;
                     this.setData({

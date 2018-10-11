@@ -39,8 +39,6 @@ Page({
         img_show: false,
         imgs_show: false,
         iphonex:false,
-
-
     },
 
     // 滚动切换标签样式
@@ -79,12 +77,7 @@ Page({
             })
         }
     },
-    show_imgs(e) {
-        console.log(e)
-    },
     show_save(e) {
-
-        console.log(e);
 
         wx.getSetting({
             success(res) {
@@ -183,7 +176,6 @@ Page({
         })
         this.attached();
 
-        this.data.wfrid = option.id;
         if(app.globalData.goodslist){
             var price = 0;
             
@@ -211,9 +203,10 @@ Page({
                 price: price,
                 content: JSON.parse(app.globalData.goodslist[option.id].content),
             })
-
         }
         
+        wx.setStorageSync('goods_id', option.id)
+
         var that = this;
         that.setData({
             wfrid: option.id
@@ -232,13 +225,11 @@ Page({
             }
         });
 
-        var ids = this.data.wfrid;
-
-
     },
     onShow:function(){
 
-        this.get_detail(this.data.wfrid);
+        this.get_detail();
+
     },
     // 苹果×的底部监听
     attached() {
@@ -248,11 +239,12 @@ Page({
         } else {
             this.setData({ iphonex: false, bottom: 'padding-bottom:98rpx'})
         }
-        
     },
     footerTap: app.footerTap,
 
-    get_detail(id) {
+    get_detail() {
+        
+let id = wx.getStorageSync('goods_id');
 
         app.request({
             url: 'https://api.vvc.tw/dlxin/shop/goodsinfo/',
@@ -261,8 +253,8 @@ Page({
             },
             success: (res) => {
 
-                if (res.data.code) {
-                    console.log(res.data)
+                if (res.data.code==1) {
+                    
                     var price = 0;
                     this.setData({
                         cartNum: res.data.data.total_num
@@ -304,7 +296,7 @@ Page({
                     app.request({
                         url: "https://api.vvc.tw/dlxin/shop/getdetail/",
                         data: {
-                            id: id
+                            goodsid: id
                         },
                         success: (res) => {
                             

@@ -112,13 +112,14 @@ App({
             },
             success: (res) => {
                 if (res.data.code == 9527) {
+                    
+                    wx.reLaunch({
+                        url: '/pages/login/login',
+                    });
                     wx.showToast({
                         title: '登录超时,请重新登录',
                         icon: 'none',
                         duration: 3000
-                    })
-                    wx.reLaunch({
-                        url: '/pages/login/login',
                     })
                     wx.cloud.callFunction({
                         // 云函数名称

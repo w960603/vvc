@@ -20,34 +20,34 @@
                 <!-- 全部订单 -->
                 <view class='order-wrap'>
                     <view class="order" wx:for="{{ orderCont }}" wx:for-item="item" data-id='{{item.id}}'>
-                        <view class="order_num" bindtap='order_num'>
+                        <view class="order_num" bindtap='order_num' wx:if="{{item.good_title != 'VVC代理押金'}}">
                             <text class="number">订单编号：{{item.time }}</text>
-                            <block wx:if="{{item.order_status== -1}}">
+                            <block wx:if="{{item.order_status== -1 && item.good_title != 'VVC代理押金'}}">
                                 <text class="state">订单取消</text>
                             </block>
-                            <block wx:elif="{{item.order_status== 1}}">
+                            <block wx:elif="{{item.order_status== 1 && item.good_title != 'VVC代理押金'}}">
                                 <text class="state">等待付款</text>
                             </block>
-                            <block wx:elif="{{item.order_status== 2}}">
+                            <block wx:elif="{{item.order_status== 2 && item.good_title != 'VVC代理押金'}}">
                                 <text class="state">订单确认</text>
                             </block>
-                            <block wx:elif="{{item.order_status== 3}}">
+                            <block wx:elif="{{item.order_status== 3 && item.good_title != 'VVC代理押金'}}">
                                 <text class="state">正在配货</text>
                             </block>
-                            <block wx:elif="{{item.order_status== 4}}">
+                            <block wx:elif="{{item.order_status== 4 && item.good_title != 'VVC代理押金'}}">
                                 <text class="state">配送中</text>
                             </block>
-                            <block wx:elif="{{item.order_status== 5}}">
+                            <block wx:elif="{{item.order_status== 5 && item.good_title != 'VVC代理押金'}}">
                                 <text class="state">已完成</text>
                             </block>
                         </view>
-                        <view class="order_cont">
+                        <view class="order_cont" wx:if="{{item.good_title != 'VVC代理押金'}}">
                             <view class="img">
                                 <image src="{{ item.img}}?x-oss-process=image/resize,w_160" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill'></image>
                             </view>
                             <view class="description" data-id="{{item.id}}" bindtap='order'>
                                 <view class="title_price">
-                                    <text class="title">{{ item.good_title != "代理押金"?item.good_title:"" }}</text>
+                                    <text class="title">{{ item.good_title}}</text>
                                     <text class="price">￥{{ item.order_money }}</text>
                                 </view>
                                 <view class="color_size">
@@ -63,7 +63,7 @@
                                 </view>
                             </view>
                         </view>
-                        <view class="background">
+                        <view class="background" wx:if="{{item.good_title != 'VVC代理押金'}}">
                             <!-- <view class='cancel'>
                                 <view class="time">   </view>
                                 <view class='cancel_order' bindtap='cancel_order' data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>
@@ -102,8 +102,8 @@
                             </view>
                             <view class="description" bindtap='order' data-id="{{item.id}}">
                                 <view class="title_price">
-                                    <text class="title">{{ item.good_title }}</text>
-                                    <text class="price">￥{{ item.order_money }}</text>
+                                    <text class="title" wx:if="{{item.good_title != 'VVC代理押金'}}">{{item.good_title}}</text>
+                                    <text class="price">￥{{item.order_money}}</text>
                                 </view>
                                 <view class="color_size">
                                     <text class="color">颜色:{{ item.color?item.color:'无' }}</text>
@@ -145,11 +145,11 @@
                 <!-- 已完成 -->
                 <view class='order-wrap'>
                     <view class="order" wx:for="{{ orderCont }}" wx:if="{{item.order_status>3}}">
-                        <view class="order_num" bindtap='order_num'>
+                        <view class="order_num" bindtap='order_num' wx:if="{{item.good_title != 'VVC代理押金'}}">
                             <text class="number">订单编号：{{item.time}}</text>
                             <text class="state" wx:if="{{item.order_status===5}}">已完成</text>
                         </view>
-                        <view class="order_cont">
+                        <view class="order_cont" wx:if="{{item.good_title != 'VVC代理押金'}}">
                             <view class="img">
                                 <image src="{{ item.img }}" data-id="{{item.id}}" class="order_img" bindtap='order' mode='aspectFill'></image>
                             </view>
@@ -173,7 +173,7 @@
 
                             </view>
                         </view>
-                        <view class="background">
+                        <view class="background" wx:if="{{item.good_title != 'VVC代理押金'}}">
                             <view class='cancel'>
                                 <view class="time">   </view>
                                 <view class='cancel_order' bindtap='cancel_order' data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>

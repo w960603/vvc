@@ -42,6 +42,10 @@ Page({
                                     k: res.data.data.k
                                 });
                                 this.getSetting();
+                            }else{
+                                wx.redirectTo({
+                                    url: '../security/security',
+                                });
                             }
                             return;
                         },
@@ -56,8 +60,6 @@ Page({
                 }
             }
         });
-
-
     },
     getuserinfo(e) {
         console.log(e)
@@ -89,9 +91,7 @@ Page({
                     // 已经授权，可以直接调用 getUserInfo 获取头像昵称
                     wx.getUserInfo({
                         success: (res) => {
-                            
-                            wx.hideToast()
-                            
+                            // wx.hideToast()
                             wx.request({
                                 url: 'https://api.vvc.tw/dlxin/index/wxcode',
                                 method: 'POST',

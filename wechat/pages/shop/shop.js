@@ -254,7 +254,7 @@ computePrice(index){
       url: 'https://api.vvc.tw/dlxin/shop/CartList',
       method: "POST",
       success: (res) => {
-        if(res.data.code){
+        if(res.data.code==1){
             this.setData({ list: res.data.data })
             console.log(this.data.list)
             if (res.data.data) {

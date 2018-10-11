@@ -19,6 +19,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+      wx.showLoading({
+          title: '加载中',
+      })
+
       this.setData({ id: options.id })
       console.log(this.data.id)
 
@@ -32,7 +37,7 @@ Page({
               id: this.data.id
           },
           success:(res)=>{
-              if(res.data.code){
+              if(res.data.code==1){
                   console.log(res)
                   this.setData({list:res.data.data});
               }
@@ -51,7 +56,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      wx.hideLoading()
   },
 
   /**

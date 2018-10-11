@@ -31,7 +31,7 @@ Page({
           method: "POST",
           success: (res) => {
               console.log(res);
-              if(res.data.code){
+              if(res.data.code==1){
                   this.setData({
                       oytarr: res.data.data.goods_list
                   })

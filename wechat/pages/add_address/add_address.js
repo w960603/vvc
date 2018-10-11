@@ -145,7 +145,7 @@ var region1 = 'region[' + 0 + ']',
             },
             success: (res) => {
                 console.log(res)
-                if (res.data.code) {
+                if (res.data.code==1) {
                     this.setData({
                         address_list: res.data.data
                     })
@@ -323,7 +323,7 @@ var datas = e.detail.value;
                 },
                 success: (res) => {
                     console.log(res);
-                    if (res.data.code) {
+                    if (res.data.code==1) {
                         wx.showToast({
                             title: '保存成功!',
                             icon: 'success',

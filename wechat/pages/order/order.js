@@ -44,7 +44,7 @@ Page({
             },
             success:(res)=>{
                 console.log(res)
-                if (res.data.code) {
+                if (res.data.code==1) {
                   wx.showToast({
                     title: "删除订单成功",
                     
@@ -142,12 +142,12 @@ Page({
             url: 'https://api.vvc.tw/dlxin/order/orderlist',
             method: 'POST',
             success: (res) => {
-                if (res.data.code) {
+                if (res.data.code==1) {
                     console.log(res)
                     this.setData({ orderCont:[] })
                     for (var i = 0; i < res.data.data.length; i++) {
                         if (!/http/.test(res.data.data[i].goods_img)) {
-                            res.data.data[i].goods_img = '../../image/icon/no_product.svg'
+                            res.data.data[i].goods_img = ''
 
                         }else{
                             res.data.data[i].goods_img = res.data.data[i].goods_img +'?x-oss-process=image/resize,w_160'

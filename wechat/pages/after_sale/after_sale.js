@@ -1,6 +1,5 @@
 const app = getApp();
 Page({
-
     /**
      * 页面的初始数据
      */
@@ -43,7 +42,7 @@ Page({
         this.setData({
             currentTab: e.detail.current
         });
-        console.log(this.data.currentTab);
+        
         this.checkCor();
     },
     // 点击标题切换当前页时改变样式
@@ -145,13 +144,12 @@ Page({
     footerTap: app.footerTap,
     //显示详情
     show(e) {
-        console.log(1)
         this.setData({
             status: true
         })
     },
-    bindPickerChange(e) {
 
+    bindPickerChange(e) {
         var nums = this.data.allorder_shop[e.detail.value];
         nums.max = nums.num
         nums.num = 1;
@@ -194,7 +192,11 @@ Page({
             delta: 1,
         })
     },
-
+    // 售后完成
+    after_sale(e) {
+        // e.currentTarget.dataset.index  //数组下标
+        console.log(this.data.orderCont[e.currentTarget.dataset.index]);
+    },
 
     apply_sale() {
         wx.navigateTo({

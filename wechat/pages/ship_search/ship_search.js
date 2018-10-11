@@ -17,18 +17,19 @@ Component({
     data: {
         recent_user: '最近用户',
         user: [],
-
+        log: [],
         activeOpacity: false,
         status: true,
     },
-    attached: function () {
+    attached: function() {
         app.request({
             url: 'https://api.vvc.tw/dlxin/user/search',
             methos: 'post',
             success: (res) => {
                 console.log(res)
                 this.setData({
-                    user: res.data.data.user
+                    user: res.data.data.user||null,
+                    log: res.data.data.log||null
                 })
             }
         })
@@ -46,8 +47,8 @@ Component({
 
         },
         adduser(e) {
-            console.log(e)
-            var tapeduser = this.data.user[e.currentTarget.dataset.index];
+            var tapeduser = e.currentTarget.dataset.item;
+            console.log(tapeduser)
 
             this.triggerEvent('adduser', tapeduser)
         },
@@ -73,19 +74,19 @@ Component({
                     url: "https://api.vvc.tw/dlxin/user/search",
                     method: "POST",
                     data: {
-                        nickName: this.data.inputValue,
+                        nickname: this.data.inputValue,
                     },
                     success: (res) => {
 
                         this.setData({
                             status: true
                         });
-                        if (res.data.code) {
+                        if (res.data.code == 1) {
 
                             this.setData({
-                                user: res.data.data.user
+                                user: res.data.data.user||null,
+                                log: res.data.data.log||null
                             })
-
 
                         }
 

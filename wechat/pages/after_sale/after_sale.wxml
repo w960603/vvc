@@ -23,11 +23,11 @@
             <swiper-item style="overflow:scroll">
                 <!-- 处理中 -->
                 <view class='order-wrap'>
-                    <view class="order" wx:for="{{ orderCont }}" bindtap='show' data-list='{{item}}'>
-                        <view class="order_num border bdb" bindtap='order_num'>
+                    <view class="order" wx:for="{{ orderCont }}" wx:key="list">
+                        <view class="order_num border bdb">
                             <text class="number">订单编号：{{item.number }}</text>
                         </view>
-                        <view class="order_cont border bdb" bindtap='order_cont'>
+                        <view class="order_cont border bdb">
                             <view class="order_img" style='overflow:hidden' >
                                 <!-- <view wx:for="{{item.goods_list}}" data-item="{{item}}" style='background:#000000;'> -->
                                     <image style='width:{{item.goods_list.length<5?50:33}}%;padding:2rpx;box-sizing:border-box' wx:if="{{index<9}}" wx:for="{{item.goods_list}}" wx:for-item="items"  src="{{items.goods_img}}?x-oss-process=image/resize,w_80" mode="widthFix" ></image>
@@ -37,21 +37,28 @@
                                 <view class="title_price">
                                     <view wx:for="{{item.goods_list}}" data-item="{{item}}">
                                         <!-- <view class="title1" wx:if="item.order_goods != undefind">{{ item.order_goods}}<text style='margin-left:30rpx'>X{{item.num}}</text></view> -->
-                                        <view class="title1">{{ item.name}}<text style='margin-left:30rpx'>X{{item.num}}</text></view>
+                                        <view class="title1">{{ item.name}}[{{item.color}}]<text style='margin-left:30rpx'>X{{item.num}}</text></view>
                                         <!-- <view class="title1">数量：{{ item.num }}</view> -->
                                     </view>
-                                    <view class="title2">{{ item.time }}</view>
+                                    <view class="title2">{{ item.time }} 
+                                        <text wx:if="{{item.status == 1}}" data-index="{{index}}" bindtap='after_sale'>申请售后</text>
+                                        <text wx:if="{{item.status == 2}}" >同意售后</text>
+                                        <text wx:if="{{item.status == 3}}">商品回仓中</text>
+                                        <text wx:if="{{item.status == 4}}">确认</text>
+                                        <text wx:if="{{item.status == 5}}">商品寄回</text>
+                                        <text wx:if="{{item.status == 6}}" >售后完成</text>
+                                        <text wx:if="{{item.status == -2}}">拒绝</text>
+                                    </view>
                                 </view>
                             </view>
-
-                            <view class='state'>
+                            <!-- <view class='state'>
                                 <block wx:if="{{item.status== 3}}">
                                     <text class="circle yellow">等待处理</text>
                                 </block>
                                 <block>
-                                    <view class="circle black">修改信息</view>
+                                    <view class="circle black">详情</view>
                                 </block>
-                            </view>
+                            </view> -->
                         </view>
                     </view>
                 </view>
@@ -62,7 +69,8 @@
                
                 <!-- 处理完成 -->
                 <view class='order-wrap'>
-                    <view class="order" wx:for="{{ orderCont }}" bindtap='show' data-list='{{item}}'>
+                <!-- 显示详情 bindtap='show' -->
+                    <view class="order" wx:for="{{ orderCont }}"  data-list='{{item}}'>
                         <view class="order_num border bdb" bindtap='order_num'>
                             <text class="number">订单编号：{{item.number }}</text>
                         </view>
@@ -78,15 +86,17 @@
                                         <view class="title1">{{ item.name}} <text style='margin-left:30rpx'>X{{item.num}}</text></view>
                                         <!-- <view class="title1">数量{{ item.num }}</view> -->
                                     </view>
-                                    <view class="title2">{{ item.time }}</view>
+                                    <view class="title2">{{ item.time }} 
+                                        <text wx:if="{{item.status == 6}}">售后完成</text>
+                                    </view>
                                 </view>
                             </view>
-                            <view class='state'>
+                            <!-- <view class='state'>
                                 <block wx:if="{{item.status== 2}}">
-                                    <!-- <image src='../../image/icon/diliver.svg'></image> -->
+                                     <image src='../../image/icon/diliver.svg'></image>
                                     <text class="circle green">处理完成</text>
                                 </block>
-                            </view>
+                            </view> -->
                         </view>
                     </view>
                 </view>
@@ -122,8 +132,7 @@
                             <view class='order_type1' wx:for="{{shop_type}}" wx:key="*this"  wx:for-item="list">
                                 <view class='choice_type'>
                                     <view class='choice_type_text1'>{{list.name}}</view>
-                                    <view class='choice_type_text2' wx:if="{{list.sku != null && list.sku!= ''}}">{{list.sku}}</view>
-                                    <view class='choice_type_text2' wx:else>无</view>
+                                    <view class='choice_type_text2'>{{list.color?list.color:"无"}}</view>
                                     <view class='choice_type_text3'><input type="number" bindinput='order_num' data-index='{{index}}' value='{{list.num}}'></input></view>
                                 </view>
                                 <view class='one_type'>
@@ -142,7 +151,7 @@
                             </view>
                             <view class="return_reason" style='{{bottom}}'>
                                 <view class="ret_rea">退换货理由</view>
-                                <textarea wx-if="{{currentTab == 2}}" value='{{evaContent}}' class="textarea"  bindinput='textareaInput'></textarea>
+                                <textarea wx:if='{{!isshow}}' wx-if="{{currentTab == 2}}" value='{{evaContent}}' class="textarea"  bindinput='textareaInput'></textarea>
                             </view>
                         </view> 
                     </view>

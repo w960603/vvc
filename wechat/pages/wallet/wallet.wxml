@@ -5,7 +5,6 @@
             <image bindtap='goback' class='wfr-title-img' src='../../image/icon/backwhite.svg'></image>
             <view class='wfr-mywallet'>我的钱包</view>
         </view>
-
         <view class='wfr-wallte-float'>
             <view class='wfr-wallte-left'>
                 <view class='wfr-Name'>用户昵称</view>
@@ -17,7 +16,6 @@
         </view>
         <view class='wfr-rmb'>
         <image class='wfr-content-img1' src='../../image/wallet/bg.svg' ></image>
-
             <view class='wfr-rmb-bg'>
                 <view class='wfr-wallet-rmb'>钱包</view>
                 <view class='wfr-RechargeRmb'>

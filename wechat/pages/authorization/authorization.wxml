@@ -17,8 +17,8 @@
             <image src="../../image/icon/securitybutton.svg"></image>
         </view>
         <view class='chaipt'>
-            <input class='chaipt-input' bindinput='chaxuninput' adjust-position='true' placeholder="请输入手机/微信/身份证查询" placeholder-class='placeholder'></input>
-            <!-- <image bindtap='QR_code' class='wfr-chaipt-img' src='../../image/Scaveng.svg'></image> -->
+            <input class='chaipt-input' bindinput='chaxuninput' adjust-position='true' placeholder="请输入手机/微信/身份证查询/平台" placeholder-class='placeholder'>
+            </input>
         </view>
         <view class='wfr-chaxun-tap' bindtap='chaxun'>立即查询</view>
     </view>

@@ -28,7 +28,7 @@ Component({
           url: 'https://api.vvc.tw/dlxin/user/getSubAddress',
             methos: 'post',
             success: (res) => {
-                if(res.data.code){
+                if(res.data.code==1){
                     
                     this.setData({
                         user: res.data.data
@@ -71,7 +71,7 @@ Component({
                     name: this.data.inputValue,
                 },
                 success:(res)=>{
-                    if(res.data.code){
+                    if(res.data.code==1){
                         this.setData({
                             user: res.data.data
                         })

@@ -34,7 +34,7 @@ Page({
             url: 'https://api.vvc.tw/dlxin/order/orderSendList',
             success: (res) => {
                 console.log(res)
-                if (res.data.code) {
+                if (res.data.code==1) {
                     var datas = res.data.data.sends_list
                     for (var i = 0; i < res.data.data.sends_list.length; i++) {
                         res.data.data.sends_list[i].goods_img = res.data.data.sends_list[i].goods_img ? res.data.data.sends_list[i].goods_img : '../../image/icon/no_product.svg'

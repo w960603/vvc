@@ -87,16 +87,18 @@ scroll-view{
 
 .avator {
     display: flex;
+    padding:0 20rpx;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     border-bottom: 1px solid lightgray;
 }
 
 .avator_list {
-    width: 100rpx;
+    width: 20%;
     margin:0 16rpx;
     height: 180rpx;
+    text-align: center;
     background: rgba(255, 255, 255, 1);
 }
 
@@ -116,7 +118,6 @@ scroll-view{
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 .message {
     width: 686rpx;
     /* height: 180rpx; */
@@ -125,7 +126,6 @@ scroll-view{
     display: flex;
     border-bottom: 1px solid lightgray;
 }
-
 .management {
     width: 500rpx;
     height: 96rpx;

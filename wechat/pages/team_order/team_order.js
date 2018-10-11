@@ -18,15 +18,11 @@ Page({
         margin: null,
         custom_id:1,
     },
-
     // 滚动切换标签样式
     switchTab: function (e) {
         console.log(e, e.detail.current);
         // var attr = e.detail.current
-        
-        this.setData({
-            currentTab: e.detail.current
-        });
+        this.setData({currentTab: e.detail.current});
         this.checkCor();
         this.getorder(e.detail.current)
     },
@@ -42,37 +38,7 @@ Page({
         };
         this.getorder(e.detail.cur);
     },
-    // cancel_order(e) {
-    //     console.log(e)
-    //     app.request({
-    //         url: 'https://api.vvc.tw/dlxin/order/delorder',
-    //         data: {
-    //             id: e.currentTarget.dataset.order.id
-    //         },
-    //         success: (res) => {
-    //             console.log(res)
-    //             if (res.data.code) {
-    //                 wx.showToast({
-    //                     title: "删除订单成功",
-
-    //                 })
-    //                 this.getorder()
-
-    //             } else {
-    //                 wx.showToast({
-    //                     title: res.data.msg,
-    //                     icon: 'none'
-    //                 })
-    //             }
-    //         },
-    //         fail: () => {
-    //             wx.showToast({
-    //                 title: "发生错误,请刷新重试!",
-    //             })
-    //             this.getorder()
-    //         }
-    //     })
-    // },
+    
     //判断当前滚动超过一屏时，设置tab标题滚动条。
     checkCor: function () {
         if (this.data.currentTab > 4) {
@@ -85,7 +51,6 @@ Page({
             })
         }
     },
-
     /**
      * 生命周期函数--监听页面加载
      */
@@ -103,16 +68,6 @@ Page({
                 margin: 'margin-bottom:118rpx'
             })
         }
-
-        // wx.hideTabBar({
-        //     success: function (res) {
-        //         console.log(11111)
-        //         console.log(res);
-        //     },
-        //     complete: function () {
-        //         console.log(1123212)
-        //     }
-        // })
 
         //适应ipx
         this.setData({ h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx" })
@@ -136,11 +91,10 @@ Page({
         this.getorder(0)
     },
     onShow: function () {
-        console.log("show")
-        // this.getorder(0)
+
     },
     getorder(attr) {
-        console.log("我走啦",attr);
+        
         app.request({
             url: 'https://api.vvc.tw/dlxin/order/teamOrderList',
             method: 'POST',
@@ -149,6 +103,7 @@ Page({
             },
             success: (res) => {
                 if(res.data.code == 1){
+                    console.log(123,res.data.data)
                     this.setData({ orderCont: [] })
                     for (var i = 0; i < res.data.data.length; i++) {
                         if (!/http/.test(res.data.data[i].goods_img)) {
@@ -158,42 +113,26 @@ Page({
                             res.data.data[i].goods_img = res.data.data[i].goods_img + '?x-oss-process=image/resize,w_160'
                         }
                         if (i < 10) {
+                            // console.log()
                             this.setData({ ["orderCont[" + i + "]"]: res.data.data[i] })
                         }
                     }
-                    setTimeout(() => { this.setData({ ["orderCont"]: res.data.data }) }, 2000)
-                    //this.setData({ order_num: res.data.data })
+                    // var team_order = [];
+                    setTimeout(() => {
+                        // for(var i = 0;i<res.data.data.length;i++){
+                        //     if (res.data.data[i].good_title != "VVC代理押金"){
+                                    
+                        //     }
+                        // }
+                        this.setData({ ["orderCont"]: res.data.data })
+                    }, 2000)
+                    
                 }
                     console.log(res.data.data);
                 }
         })
-        // 物流信息
-        // app.request({
-        //     url: 'https://api.vvc.tw/dlxin/kdbird/getwuliu',
-        //     method: 'POST',
-        //     data: {
-        //         order_id: 2147483647,
-        //     },
-        //     success: (res) => {
-        //         console.log(res, 161)
-        //         // for (var i = 0; i < res.data.data.Traces.length;i++ ){
-        //         //     i = res.data.data.Traces.length
-        //         //     console.log(i,168)
-        //         //     this.setData({
-        //         //         Traces: res.data.data.Traces[i]
-        //         //     })
-        //         // }
-        //         if (res.data.code == 1) {
-        //             this.setData({
-        //                 Traces: res.data.data.Traces
-        //             })
-        //         }
-        //         // this.setData({
-        //         //     AcceptTime: res.data.data.Traces.AcceptTime
-        //         // })
-
-        //     }
-        // })
+       
+       
     },
     order(e) {
         console.log(e)

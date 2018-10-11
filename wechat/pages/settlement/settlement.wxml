@@ -60,7 +60,7 @@
                         <view class='order-title'>
                             <view class='title1'>{{item.goods}}</view>
                         </view>
-                        <view class='type'>{{item.child[0].color}}
+                        <view class='type'>{{item.child[0].color||''}}
                             <text wx:if="{{item[0].size == null}}">均码</text>
                             <text wx:else>{{item.child[0].size}}</text>
                             <view class='num'>X{{item.child[0].num}}</view>

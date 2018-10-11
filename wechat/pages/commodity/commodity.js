@@ -47,7 +47,7 @@ Page({
             method: "POST",
             success:  (res)=> {
                 console.log(res);
-                if(res.data.code){
+                if(res.data.code==1){
                     var _sunscreen = [],
                         _sweat = [];
                     var datas = res.data.data.goods_list;

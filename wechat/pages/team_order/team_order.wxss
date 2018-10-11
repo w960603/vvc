@@ -160,6 +160,8 @@ page {
 .img image {
     width: 160rpx;
     height: 160rpx;
+    background-image:url("https://cdn.vvc.tw/a/images/no_product.svg"); 
+    background-size:cover;
 }
 
 .title_price {

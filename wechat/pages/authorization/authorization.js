@@ -186,8 +186,8 @@ Page({
           method: 'post',
           data:data,
             success: (res) => {
-                console.log(res.data.data)
-                if (res.data.code) {
+                
+                if (res.data.code==1) {
                     this.setData({
                       obj: res.data.data
                     });

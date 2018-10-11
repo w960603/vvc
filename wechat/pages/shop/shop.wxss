@@ -51,6 +51,8 @@ page{
 .shop-null-img{
   width:482rpx;
   height:416rpx;
+  background:url("https://cdn.vvc.tw/a/images/shopnull.svg");
+  background-size: cover;   
 }
 .order-wrap{
     background:none;
