@@ -39,5 +39,6 @@
             <view class='shouquan shouquan2' wx:elif="{{infos.shouquan==0}}" bindtap='goto2'>未授权</view>
             <!-- <view class='shouquan shouquan3' wx:elif="{{infos.username==null}}" bindtap='goto2'>未注册</view> -->
     </view>
+    <button bindtap='upgrade' wx:if='{{(infos.shouquan==0||!infos.username)&&infos.shouquan==1}}'>升级</button>
     <button wx:if='{{(infos.shouquan==0||!infos.username)&&infos.shouquan!=1}}' bindtap='submit'>提交保证金</button>
 </view>

@@ -21,7 +21,7 @@
                 <scroll-view class='order-wrap' scroll-y='true'>
                     <view class="order" wx:for="{{ orderCont }}" wx:key='unique'  wx:for-item="item" data-id='{{item.id}}'>
                         <view class="order_num" bindtap='order_num'>
-                            <text class="number">订单编号：{{item.time }}</text>
+                            <text class="number">订单编号：{{item.order_number }}</text>
                             <block wx:if="{{item.order_status== -1}}">
                                 <text class="state">订单取消</text>
                             </block>
@@ -52,7 +52,7 @@
                                 </view>
                                 <view class="color_size">
                                     <text class="color">颜色:{{ item.color?item.color:'无' }}</text>
-                                    <text class="size">尺寸:{{ item.size?item.size:'无' }}</text>
+                                    <text class="size" wx:if="{{item.size}}">尺寸:{{item.size}}</text>
                                 </view>
                                 <view class="title_price">
                                     <view class="address_phone">
@@ -79,7 +79,7 @@
                 <view class='order-wrap'>
                     <view class="order" wx:for="{{ orderCont }}" wx:key='unique' wx:if="{{item.order_status>3}}">
                         <view class="order_num" bindtap='order_num'>
-                            <text class="number">订单编号：{{item.time}}</text>
+                            <text class="number">订单编号：{{item.order_number}}</text>
                             <text class="state" wx:if="{{item.order_status===5}}">已完成</text>
                         </view>
                         <view class="order_cont">
@@ -93,7 +93,7 @@
                                 </view>
                                 <view class="color_size">
                                     <text class="color">颜色:{{ item.color?item.color:'无' }}</text>
-                                    <text class="size">尺寸:{{ item.size?item.size:'无' }}</text>
+                                    <text class="size" wx:if="{{item.size != null}}">尺寸:{{item.size}}</text>
                                 </view>
                                 <view class="title_price">
                                     <view class="address_phone">
@@ -142,7 +142,7 @@
                                 </view>
                                 <view class="color_size">
                                     <text class="color">颜色:{{ item.color?item.color:'无' }}</text>
-                                    <text class="size">尺寸:{{ item.size?item.size:'无' }}</text>
+                                    <text class="size" wx:if="{{item.size != null}}">尺寸:{{item.size}}</text>
                                 </view>
                                 <view class="title_price">
                                     <view class="address_phone">

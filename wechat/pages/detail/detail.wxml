@@ -1,4 +1,4 @@
-<header title='详情页'></header>
+<header title='商品详情'></header>
 
 <!-- 轮播图 -->
 <swiper class="swiper" indicator-dots='true' autoplay="true" interval="3000" duration="1000">
@@ -15,11 +15,22 @@
     </block>
 
 </swiper>
-<view class='detail-desc'>
-    <view class="theme"> {{title}}</view>
-    <view class="describe">
-        <text class="uv">{{ uv }}</text>
-        <text class="price">¥{{ price }}.00</text>
+<view class="describe">
+    <view class='detail-desc'>
+        <view class="theme"> {{title}}</view>
+        <view class="uv">{{ uv }}</view>
+        <view class="price">¥{{ price }}.00</view>
+    </view>
+    <!-- 圆形进度条 -->
+    <view class='progress_box' >
+        <view class="scan">商品扫码率</view>
+        <canvas class="progress_bg" canvas-id="canvasProgressbg"> </canvas>
+         <view class="progress_text">
+             {{ratio}}.0%
+        </view>
+        <canvas  class="progress_canvas" canvas-id="canvasProgress"> </canvas>
+       
+       <!-- <view>{{isshow2}}</view> -->
     </view>
 </view>
 <!-- 商品区域 -->
@@ -92,22 +103,22 @@
         </swiper-item>
 
     </swiper>
+</view>
+
+<!-- 加入购物车 -->
+<view class="{{iphonex?'addTocar1':'addTocar'}}" style='background-color:#fff;'>
+    <view class="go_car" bindtap='ShoppingCart'>
+        <image src="../../image/tabbar/shopping.svg"></image>
+        <view class='go_car_view'>购物车</view>
+        <view class='allshop-posi' wx:if="{{cartNum>=1}}">{{cartNum}}</view>
     </view>
-
-    <!-- 加入购物车 -->
-    <view class="{{iphonex?'addTocar1':'addTocar'}}" style='background-color:#fff;'>
-        <view class="go_car" bindtap='ShoppingCart'>
-            <image src="../../image/tabbar/shopping.svg"></image>
-            <view class='go_car_view'>购物车</view>
-            <view class='allshop-posi' wx:if="{{cartNum>=1}}">{{cartNum}}</view>
-        </view>
-        <view class="add_car orangered" data-wfrid='{{wfrid}}' bindtap='wfrskuDetail'>加入购物车</view>
-        <view class="add_car red" bindtap='wfrskuDetail' data-wfrid='{{wfrid}}'>立即购买</view>
-    </view>
+    <view class="add_car orangered" data-wfrid='{{wfrid}}' bindtap='wfrskuDetail'>加入购物车</view>
+    <view class="add_car red" bindtap='wfrskuDetail' data-wfrid='{{wfrid}}'>立即购买</view>
+</view>
 
 
-    <my-component class="donghua" wx:if='{{isshow2}}' prop-wfrid="{{wfrid}}" isshow="{{isshow2}}" bindover="cartAdd" bindclosed="wfrskuDetail">
-    </my-component>
+<my-component class="donghua" wx:if='{{isshow2}}' prop-wfrid="{{wfrid}}" isshow="{{isshow2}}" bindover="cartAdd" bindclosed="wfrskuDetail">
+</my-component>
 
 <view class='mask' catchtouchmove="true" wx:if='{{img_show}}' bindtap='closemask'>
     <button bindtap='save_image' class='save-btn'>保存到相册</button>

@@ -1,6 +1,8 @@
 <view class="header" style='{{h}};background-color:{{color}}'>
     <image class='header-posi-img' src='../../image/icon/back.svg' bindtap="goback"></image>
     <view class="order_list" wx:if="{{custom_id == 1}}">团队订单</view>
+    <view class='order_list' wx:elif="{{titles == '我的授权'}}">我的授权</view>    
+    <view class="order_list" wx:elif="{{shop_id == 2}}">退货信息</view>
     <view class="order_list" wx:else>{{title}}</view>
     <image class='header-posi-img' src='../../image/icon/back.svg' style="opacity:0"></image>
     <slot ></slot>

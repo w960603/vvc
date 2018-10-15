@@ -43,9 +43,12 @@ Page({
       this.setData({ h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx" })
       this.setData({ fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx" })
      
-     this.qingqiu()
+     
       this.setData({user:app.globalData.userinfo})
     // console.log(app.globalData.userinfo)
+  },
+  onShow:function(){
+      this.qingqiu()
   },
 qingqiu(){
     app.request({
@@ -61,8 +64,6 @@ qingqiu(){
                     ["str"]: str1.split(""),
                     reg_code: str1
                 });
-
-
                 console.log(this.data.str);
             }
         }
@@ -76,7 +77,6 @@ qingqiu(){
               note:this.data.note
           },
           success:(res)=>{
-              
               if(res.data.code==1){
                   this.qingqiu()
                   wx.showToast({
@@ -138,8 +138,9 @@ qingqiu(){
             nick_name: infos.nick_name,
             level: infos.level,
             money: infos.money,
-            lvl: null,
+            lvl: infos.lvl,
             shouquan : infos.shouquan,
+            id:infos.id
         }
 
         wx.navigateTo({

@@ -35,6 +35,11 @@ Page({
                 url: '../wallet/wallet'
             },
             {
+                my_img: "../../image/icon/ten.svg",
+                my_text: "我的授权",
+                url: '../auth_sub/auth_sub'
+            },
+            {
                 my_img: "../../image/icon/two.svg",
                 my_text: "我的推广码",
                 url: '../extension/extension'
@@ -91,17 +96,7 @@ Page({
             }
         })
 
-        app.request({
-            url: 'https://api.vvc.tw/dlxin/user/hairInfo',
-            method: 'POST',
-            success: (res) => {
-                if(res.data.data&&res.data.code==1){
-                    this.setData({ user: res.data.data.user })
-                    this.setData({ team: res.data.data.team })
-                    this.setData({ hair_log: res.data.data.hair_log })
-                }
-            }
-        })
+        
 
         app.request({
             url: 'https://api.vvc.tw/dlxin/user/userinfo',
@@ -114,15 +109,24 @@ Page({
                     this.setData({
                         userInfo: res.data.data
                     })
-
                     this.setData({
                         userInfo1: res.data.data
                     })
-
-
                 }
-
             },
+        })
+    },
+    onShow:function(){
+        app.request({
+            url: 'https://api.vvc.tw/dlxin/user/hairInfo',
+            method: 'POST',
+            success: (res) => {
+                if (res.data.data && res.data.code == 1) {
+                    this.setData({ user: res.data.data.user })
+                    this.setData({ team: res.data.data.team })
+                    this.setData({ hair_log: res.data.data.hair_log })
+                }
+            }
         })
     },
     /**
@@ -152,10 +156,7 @@ Page({
                     if (res.data.code == 1) {
 
                         app.globalData.flag = true;
-                        wx.reLaunch({
-
-                            url: '../login/login'
-                        });
+                    
                         wx.reLaunch({
                             url: '/pages/login/login',
                         })
@@ -176,11 +177,7 @@ Page({
             wx.navigateTo({
                 url: '../team_order/team_order'
             })
-            // wx.showToast({
-            //     title: '暂未开放',
-            //     icon: 'none',
-            //     duration: 2000
-            // })
+         
         }
         if (index == 1) {
             console.log(123)
@@ -194,9 +191,6 @@ Page({
             })
         }
         if (index == 3) {
-            // wx.navigateTo({
-            //     url: '../scan/scan'
-            // })
             wx.showToast({
                 title: '无需排单',
                 icon: 'none',
@@ -209,7 +203,5 @@ Page({
                 url: '../after_sale/after_sale?index=' + num
             })
         }
-
     },
-
 })

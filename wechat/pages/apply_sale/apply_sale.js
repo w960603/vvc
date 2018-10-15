@@ -48,11 +48,10 @@ Page({
         })
         this.setData({
             fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx"
-        })
-
+        });
     },
     //返回上一页
-    goback() {
+    goback(){
         wx.navigateBack({
             delta: 1
         })
@@ -146,7 +145,6 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-
     },
 
     /**

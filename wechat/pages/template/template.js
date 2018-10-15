@@ -9,6 +9,10 @@ Component({
             type: Boolean,
             value: null,
         },
+        isshow3:{
+            type:Boolean,
+            value:""
+        }
 
     },
     data: {
@@ -36,7 +40,6 @@ Component({
             },
             success: (res) => {
 
-                console.log(res.data)
                 if (res.data.code == 1) {
 
                     let price = 99999;
@@ -77,9 +80,7 @@ Component({
                         })
                         break;
                     }
-
-                    console.log(price, 44)
-
+                    
                     this.setData({
                         shoplist: {
                             img: this.data.goods.img,
@@ -117,6 +118,7 @@ Component({
     methods: {
         wfrcancel(option) {
             this.triggerEvent('closed')
+            // this.setData({isshow3:true})
         },
         wfrclicksku(e) {
             this.setData({

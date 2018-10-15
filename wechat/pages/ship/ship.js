@@ -18,7 +18,9 @@ Page({
         h: '',
         fill: '',
         qrcode: '',
-        express:'',
+        express: '',
+
+        isRetail: false
 
     },
     bindPickerChange: function(e) {
@@ -36,7 +38,7 @@ Page({
             methos: 'post',
             success: (res) => {
 
-                if (res.data.code==1) {
+                if (res.data.code == 1) {
                     this.setData({
                         user: res.data.data,
                     })
@@ -54,9 +56,13 @@ Page({
     },
     ship_search(e) {
         if (this.data.arr1 === '零售') {
-            // console.log("零售")
+            this.setData({
+                isRetail: true,
+                isshow3: false
+            })
         } else {
             this.setData({
+                isRetail: false,
                 isshow3: true
             });
         }
@@ -95,19 +101,19 @@ Page({
             }
         })
     },
-    input_number:function(e){
+    input_number: function(e) {
         this.setData({
-            express:e.detail.value
+            express: e.detail.value
         });
     },
-    search(){
-        
+    search() {
+
         wx.showToast({
             title: '请扫描防伪码',
         })
     },
 
-    request_record(data,callback){
+    request_record(data, callback) {
         app.request({
             url: 'https://api.vvc.tw/dlxin/user/hair',
             data: data,
@@ -115,13 +121,14 @@ Page({
                 if (res.data.code == 1) {
                     // this.setData({ ship: res.data.data })
 
-                    callback||callback();
+                    callback && callback(res);
 
                     wx.showToast({
                         title: res.data.msg,
                         icon: 'success',
                         duration: 2000
                     })
+                    
                     const innerAudioContext = wx.createInnerAudioContext()
                     innerAudioContext.autoplay = true
                     innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&ctp=1&vol=15&tok=24.6be9789b8520e2550ef52f03672dbd4c.2592000.1541409606.282335-14254401'
@@ -129,11 +136,11 @@ Page({
 
                     })
 
-                } else {
+                } else if(res.data.code==0){
                     const innerAudioContext = wx.createInnerAudioContext()
                     innerAudioContext.autoplay = true
                     innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&vol=15&ctp=1&tok=24.6be9789b8520e2550ef52f03672dbd4c.2592000.1541409606.282335-14254401'
-                    innerAudioContext.onPlay(() => { })
+                    innerAudioContext.onPlay(() => {})
                     wx.showToast({
                         title: res.data.msg,
                         icon: 'none',
@@ -147,47 +154,48 @@ Page({
     scan_click: function() {
         var that = this;
         var show;
-        console.log(22222,this.data.user.id);
-        if (this.data.user||this.data.express) {
+        
+        if (this.data.user || this.data.express) {
             wx.scanCode({
                 success: (res) => {
                     this.show = "--result:" + res.result + "--scanType:" + res.scanType + "--charSet:" + res.charSet + "--path:" + res.path;
-                    this.setData({ qrcode: res.result.match(/(\d{8,13})/)[1] });
+                    this.setData({
+                        qrcode: res.result.match(/(\d{8,13})/)[1]
+                    });
                     let datas = null;
-                    console.log(1);
-                    if (this.data.isshow3){
-                        console.log(2);
+                    
+                    if (this.data.isRetail) {
+                        // console.log('选了零售')
+                        datas = {
+                            nick_name: this.data.express,
+                            qr: this.data.qrcode,
+                            type: 2
+                        }
+                    } else {
+                        // console.log("没选零售");
                         datas = {
                             img_url: this.data.user.img_url,
                             h_id: this.data.user.id,
                             nick_name: this.data.user.nick_name,
                             qr: this.data.qrcode
                         }
-                    }else{
-                        console.log(3);
-                        console.log(this.data.express);
-                        datas = {
-                            h_id: this.data.user.id,
-                            // nick_name:this.data.express,
-                            nick_name: this.data.user.nick_name,
-                            qr:this.data.qrcode,
-                            type:2
-                        }
                     }
 
                     this.request_record(
                         datas,
-                        function(){
-                            return(
-                                this.setData({
-                                    ["ship.log"]: res.data.data.log,
-                                    ["ship.goods"]: res.data.data.goods
-                                })
-                            )
+                        (res)=> {
+                            
+                            this.setData({
+                                ["ship.log"]: res.data.data.log,
+                                ["ship.goods"]: res.data.data.goods,
+                                express:''
+                            })
+                            
+                                
                         }
-                        
+
                     )
-                    
+
                     that.setData({
                         show: this.show
                     })

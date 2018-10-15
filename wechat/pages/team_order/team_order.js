@@ -17,6 +17,8 @@ Page({
         fill: '',
         margin: null,
         custom_id:1,
+        finish_orders:[],
+        no_finishs:[]
     },
     // 滚动切换标签样式
     switchTab: function (e) {
@@ -24,7 +26,7 @@ Page({
         // var attr = e.detail.current
         this.setData({currentTab: e.detail.current});
         this.checkCor();
-        this.getorder(e.detail.current)
+        // this.getorder(e.detail.current)
     },
     // 点击标题切换当前页时改变样式
     swichNav: function (e) {
@@ -36,7 +38,7 @@ Page({
                 currentTab: cur
             })
         };
-        this.getorder(e.detail.cur);
+        // this.getorder(e.detail.cur);
     },
     
     //判断当前滚动超过一屏时，设置tab标题滚动条。
@@ -88,23 +90,27 @@ Page({
             }
         });
 
-        this.getorder(0)
+        this.getorder();
     },
     onShow: function () {
 
     },
-    getorder(attr) {
-        
+    getorder() {
         app.request({
             url: 'https://api.vvc.tw/dlxin/order/teamOrderList',
             method: 'POST',
-            data:{
-                status: attr
-            },
+            // data:{
+            //     status: attr
+            // },
             success: (res) => {
                 if(res.data.code == 1){
                     console.log(123,res.data.data)
                     this.setData({ orderCont: [] })
+
+                    //未完成 
+                    var finish_order = [];
+                    var on_finish = [];
+
                     for (var i = 0; i < res.data.data.length; i++) {
                         if (!/http/.test(res.data.data[i].goods_img)) {
                             res.data.data[i].goods_img = '../../image/icon/no_product.svg'
@@ -116,19 +122,37 @@ Page({
                             // console.log()
                             this.setData({ ["orderCont[" + i + "]"]: res.data.data[i] })
                         }
+
+                        if (res.data.data[i].order_status == 5){
+                            finish_order.push(res.data.data[i]);
+                        }else{
+                            on_finish.push(res.data.data[i]);
+                        }
                     }
                     // var team_order = [];
-                    setTimeout(() => {
+                    // setTimeout(() => {
                         // for(var i = 0;i<res.data.data.length;i++){
                         //     if (res.data.data[i].good_title != "VVC代理押金"){
                                     
                         //     }
                         // }
-                        this.setData({ ["orderCont"]: res.data.data })
-                    }, 2000)
+
+                        // 全部订单
+                        this.setData({ orderCont: res.data.data });
+
+                        console.log(111,this.data.orderCont)
+                        // 未完成订单
+                    this.setData({ ["no_finishs"]: on_finish});
+                        console.log(222,this.data.no_finishs)
+
+                        // 完成订单
+
+                    this.setData({ ["finish_orders"]: finish_order });
+                        console.log(333,this.data.finish_orders)
+                    // }, 2000) 
                     
                 }
-                    console.log(res.data.data);
+                // console.log("我走啦",this.data.orderCont);
                 }
         })
        

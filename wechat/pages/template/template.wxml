@@ -13,7 +13,7 @@
                 <image class='wfr-cancel-img' src='../../image/icon/cancel.svg'></image>
             </view>
         </view>
-        <view class='wfr-sku'>
+        <view class='wfr-sku' wx:if='{{shoplist.sku}}'>
             <view class='wfr-sku-color'>分类</view>
             <view class='wfr-color'>
                 <text wx:for="{{shoplist.sku}}" wx:for-index="index" wx:for-item="item" data-img='{{item.thumb}}' data-id="{{index}}" class='{{index==selected? "wfr-change-sku1":"wfr-change-sku"}} {{item.delete == 0? "":"wfr-change-sku-delete"}} {{item.deleted}}'  bindtap='wfrclicksku'>{{item.title}}</text>

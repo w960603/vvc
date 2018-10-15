@@ -228,7 +228,7 @@ page {
     width: 100%;
     justify-content: flex-start;
     align-items: center;
-    padding: 32rpx 0rpx 32rpx 32rpx;
+    padding: 32rpx 0rpx 32rpx 0;
 }
 
 .order-img {
@@ -241,6 +241,7 @@ page {
     width: 216rpx;
     height: 216rpx;
     margin-right: 14rpx;
+    margin-left:32rpx;
 }
 .list-detail {
     width: 80%;
@@ -287,7 +288,7 @@ page {
 .wfr-clearboth {
     width: 100%;
     overflow: hidden;
-    padding-left: 30rpx;
+    /* padding-left: 30rpx; */
     background: rgba(255, 255, 255, 1);
     box-shadow: 0px 2px 0px 0px rgba(239, 239, 239, 1), 0px -2px 0px 0px rgba(239, 239, 239, 1);
 }
@@ -297,6 +298,7 @@ page {
     font-size: 28rpx;
     color: rgba(74, 74, 74, 1);
     margin-right: 20rpx;
+    padding-left: 30rpx; 
 }
 
 .wfr-footer-right {

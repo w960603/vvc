@@ -32,6 +32,7 @@ Page({
                         [4]: { name: "中通3", shiping: "ZTO3", id: 4},
                      }
                 },
+      freight:"",
   },
   /**
    * 生命周期函数--监听页面加载
@@ -88,13 +89,13 @@ console.log(options);
 
         }
     });
-
     //请求运费
     app.request({
         url:"https://api.vvc.tw/suc/freight/getFreightMoney",
         method:"POST",
         success:(res)=>{
-            console.log("222222",res);
+            console.log("222222", res.data.data.freight);
+            this.setData({ freight: res.data.data.freight});
         }
     })
   },
@@ -113,7 +114,7 @@ console.log(options);
             url: '../address/address?back=true',
         })
     }
-  },
+    },
     express_type(e){
         this.setData({ isshow: !this.data.isshow});
         if (typeof e.detail=="number"){
@@ -123,7 +124,19 @@ console.log(options);
 
     // 订购商品
   purchase() {
-    //   console.log(this.data.express.menu[2].name);
+    //   console.log(this.data.express.menu[2].name);//默认值
+
+    //   console.log(this.data.express.menu[this.data.express.checked].name);//修改之后的值
+
+    // console.log(this.data.express.checked);
+      var express_type = "" 
+      if (this.data.express.checked == 2){
+          express_type = this.data.express.menu[2].shiping;
+        }else{
+          express_type = this.data.express.menu[this.data.express.checked].shiping
+        }
+      console.log('kkkk',express_type);
+
       app.request({
           url:"https://api.vvc.tw/dlxin/order/onOrder",
         mothod:"POST",
@@ -156,7 +169,6 @@ console.log(options);
         }
       })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

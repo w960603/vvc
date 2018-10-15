@@ -18,6 +18,14 @@ Component({
             type: Number, // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
             value: '' // 属性初始值（可选），如果未指定则会根据类型选择一个
         },
+        titles:{
+            type:String,
+            value:""
+        },
+        shop_id:{
+            type:Number,
+            value:""
+        }
     },
 
     //适应ipx
@@ -31,7 +39,7 @@ Component({
     },
     attached() {
         console.log(111);
-        // console.log("这是一个自定义",this.data.custom_id);
+        console.log("这是一个自定义", this.data.shop_id);
         //适应ipx
         this.setData({
             h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx"

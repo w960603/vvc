@@ -1,0 +1,107 @@
+<view class='con'>
+    <heads shop_id="{{shop_id}}"></heads>
+    <view>
+        <view style='background:rgba(255,255,255,1)'>
+            <view style='width:100%;border-bottom:1px solid #eee;box-shadow:0px -2px 0px 0px rgba(239,239,239,1);'>
+                <view class='shop_list'>
+                    <view class='shop_left1'>退货商品：</view>
+                    <view class='shop_right1'>提交时间：{{shopInfo.time}}</view>
+                </view>
+            </view>
+            <view class='shop_type'>
+                <view clas wx:for="{{shopInfo.goods_list}}" wx:for-item="item" wx:for-index="{{index}}">
+                    <view class='one_shop'>
+                        <view class='shop_left'>{{item.name}}</view>
+                        <view class='meddel'>{{item.color}}</view>
+                        <view class='shop_right'>X{{item.num}}</view>
+                    </view>
+                </view>
+                <view class='result'>
+                    <view>
+                        处理结果：
+                        <text wx:if="{{shopInfo.status == 1}}">申请售后</text>
+                        <text wx:if="{{shopInfo.status == 2}}">同意售后</text>
+                        <text wx:if="{{shopInfo.status == 3}}">商品回仓中</text>
+                        <text wx:if="{{shopInfo.status == 4}}">确认</text>
+                        <text wx:if="{{shopInfo.status == 5}}">商品寄回</text>
+                        <text wx:if="{{shopInfo.status == -2}}">拒绝</text>
+                    </view>
+                </view>
+                <view style="width:100;text-align:center;color:rgba(74,74,74,1);font-size:28rpx;line-height:40rpx;font-weight:600; padding:10rpx 0;">快递单号</view>
+                <view class='messageboard'>
+                    <input class='input1' bindinput='ipt_danhao' placeholder='请输入快递单号（必填）'></input>
+                </view>
+            </view>
+        </view>
+        <view style='margin:24rpx 0;min-height:120rpx;background:white;'>
+            <view style="position:relative;min-height:120rpx;background:white;">
+                    <view class='address'>
+                            <view class='address_left'>寄回地址</view>    
+                            <view class='address_right' bindtap='chioce_address'>
+                                <view class='address_right1'>
+                                    <view wx:if="{{one_address != null }}" class='qqqq'>{{one_address.full_address}}</view> 
+                                    <text wx:else style='display:inline-block; vertical-align:5rpx;'>请选择换货寄回地址</text> 
+                                    <image class='{{isshow?"donghua":"donghua1"}}' src='../../image/icon/tiaozhuan.svg'></image>
+                                </view>
+                            </view>
+                    </view>
+                    <view class='add_dizhi' wx:if="{{isshow}}">
+                        <view  wx:for="{{userinfo_add}}" wx:for-item="list" data-index='{{index}}' bindtap='chioce'>{{list.full_address}}</view>
+                    </view>
+            </view>
+        </view>
+        <view class='cangku'>售后仓库地址</view>
+        <view style='width:100%'>
+            <view class='vvc_address'>
+                <view class='vvc_address_view1'>VVC售后部 15657959092 </view>
+                <view class='vvc_address_view2'>浙江省金华市永康市长城北湖170号VVC仓库2楼</view>
+            </view>
+        </view>
+        <view class='shop_jilu'>交流记录</view>
+        <view class='shop_bg'>
+            <view wx:for="{{shopInfo.duihua}}" wx:for-item="item">
+                <view class='shop_bg_view1' wx:if="{{item.userid == shopInfo.uid}}">
+                    <view style='width:100%;min-height:70rpx;overflow:hidden;'>
+                        <view class='shop_bg_view1_img1'>
+                            <image src="{{images?images:'/image/icon/none.svg'}}"></image>
+                        </view>
+                        <view class='shop_bg_view1_img2'>
+                            <view class='text1'>{{shopInfo.nick_name}}</view>
+                            <view class='text2'>{{item.time}}</view>
+                        </view>
+                    </view>
+                    <view style='font-size:24rpx;font-family:PingFang-SC-Medium;font-weight:500;color:rgba(74,74,74,1);line-height:34rpx;'>{{item.message}}</view>
+                </view>
+                <view class='shop_bg_view2' wx:else>
+                    <view style='width:100%;min-height:70rpx;overflow:hidden;'>
+                        <view class='shop_bg_view1_img4'>
+                            <image src='{{item.img?item.img:"/image/icon/none.svg"}}'></image>
+                        </view>
+                        <view class='shop_bg_view1_img3'>
+                            <view class='text3'>
+                                <view>客服</view>
+                            </view>
+                            <view class='text2'>{{item.time}}</view>
+                        </view>
+                    </view>
+                    <view style='font-size:24rpx;font-family:PingFang-SC-Medium;font-weight:500;color:rgba(74,74,74,1);line-height:34rpx;'>
+                        <view style="float:right;writing-mode:lr-tb|tb-rl">{{item.message}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style='width:100%;height:426rpx;background:white;margin-bottom:32rpx;'>
+            <view style='line-height:94rpx;padding-left:40rpx;font-size:36rpx;font-weight:600;color:rgba(74,74,74,1);'> 补充原因</view>
+            <view class='ipt_content'>
+                <textarea class='tear' bindinput='tear_val' placeholder='请描述申请售后的具体原因'></textarea>
+            </view>
+        </view>
+        <view class='footer' style='{{iphonex}}'>
+            <view class='footer-image'>
+                <image src='https://cdn.vvc.tw/a/images/vvc_logo.svg'></image>
+                <text>联系客服</text>
+            </view>
+            <view class='submit' bindtap="submit">提交</view>
+        </view>
+    </view>
+</view>

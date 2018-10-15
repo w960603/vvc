@@ -7,10 +7,11 @@ Page({
     data: {
         id: 668,
         movies: [],
-        content:[],
+        content: [],
         title: '载入中...',
         price: '0',
-        uv: '',
+        uv: 'UV UPF50＋ 有效抵挡99％的紫外',
+        ratio:'',
         price_img: '',
         img_green: [],
         winHeight: "", //窗口高度
@@ -20,8 +21,7 @@ Page({
             ["", ""],
             ["", ""]
         ],
-
-        loaded:false,
+        loaded: false,
         material: {
             cloth: '韩国VVC 夏季防晒外套 材质UV UPF50＋ 有效抵挡99％的紫外线，时尚百搭。'
         },
@@ -30,6 +30,7 @@ Page({
             material_img: ''
         }],
         isshow2: false,
+        isshow3:true,
         wfrid: null,
         cartNum: null,
         //适应ipx
@@ -38,7 +39,11 @@ Page({
         img_index: null,
         img_show: false,
         imgs_show: false,
-        iphonex:false,
+        iphonex: false,
+        // 圆形进度条
+        progress_txt: '0.0%',
+        count: 0, // 设置 计数器 初始为0
+        countTimer: null // 设置 定时器 初始为null
     },
 
     // 滚动切换标签样式
@@ -48,10 +53,10 @@ Page({
         });
         this.checkCor();
     },
-    imgload:function(){
+    imgload: function() {
         console.log("imgloaded")
         this.setData({
-            loaded:true
+            loaded: true
         })
     },
     // 点击标题切换当前页时改变样式
@@ -81,7 +86,7 @@ Page({
 
         wx.getSetting({
             success(res) {
-                if (!res.authSetting['scope.writePhotosAlbum']){
+                if (!res.authSetting['scope.writePhotosAlbum']) {
                     wx.authorize({
                         scope: 'scope.writePhotosAlbum',
                         success() {
@@ -116,11 +121,7 @@ Page({
                     success: (res) => {
 
                         console.log(res)
-                        // wx.getClipboardData({
-                        //     success:  (res)=> {
-                        //         console.log(res) // data
-                        //     }
-                        // })
+                     
                     }
                 })
                 //图片保存到本地
@@ -167,6 +168,7 @@ Page({
     },
     onLoad: function(option) {
 
+console.log(option.id)
         //适应ipx
         this.setData({
             h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx"
@@ -176,9 +178,9 @@ Page({
         })
         this.attached();
 
-        if(app.globalData.goodslist){
+        if (app.globalData.goodslist) {
             var price = 0;
-            
+
             switch (app.globalData.userinfo.level) {
                 case 1:
                     price = app.globalData.goodslist[option.id].mon4;
@@ -197,14 +199,14 @@ Page({
                     break;
             }
 
-
+            console.log(app.globalData.goodslist[option.id].content)
             this.setData({
                 movies: JSON.parse(app.globalData.goodslist[option.id].main_img),
                 price: price,
-                content: JSON.parse(app.globalData.goodslist[option.id].content),
+                content: !!app.globalData.goodslist[option.id].content&& JSON.parse(app.globalData.goodslist[option.id].content),
             })
         }
-        
+
         wx.setStorageSync('goods_id', option.id)
 
         var that = this;
@@ -226,35 +228,42 @@ Page({
         });
 
     },
-    onShow:function(){
+    onShow: function() {
 
         this.get_detail();
 
     },
     // 苹果×的底部监听
     attached() {
-        
+
         if (app.globalData.model == 'iphonex') {
-            this.setData({ iphonex: true, icon: 'bottom:74rpx' ,bottom:'padding-bottom:166rpx'})
+            this.setData({
+                iphonex: true,
+                icon: 'bottom:74rpx',
+                bottom: 'padding-bottom:166rpx'
+            })
         } else {
-            this.setData({ iphonex: false, bottom: 'padding-bottom:98rpx'})
+            this.setData({
+                iphonex: false,
+                bottom: 'padding-bottom:98rpx'
+            })
         }
     },
     footerTap: app.footerTap,
 
     get_detail() {
-        
-let id = wx.getStorageSync('goods_id');
+
+        // let id = wx.getStorageSync('goods_id');
 
         app.request({
             url: 'https://api.vvc.tw/dlxin/shop/goodsinfo/',
             data: {
-                goodsid: id
+                goodsid: this.data.wfrid
             },
             success: (res) => {
 
-                if (res.data.code==1) {
-                    
+                if (res.data.code == 1) {
+
                     var price = 0;
                     this.setData({
                         cartNum: res.data.data.total_num
@@ -263,6 +272,10 @@ let id = wx.getStorageSync('goods_id');
                     this.setData({
                         title: res.data.data.goods.title
                     });
+                    console.log("我走啦",res.data.data.ratio);
+                    this.setData({
+                        ratio:res.data.data.ratio
+                    })
 
                     switch (app.globalData.userinfo.level) {
                         case 1:
@@ -283,24 +296,20 @@ let id = wx.getStorageSync('goods_id');
                     }
 
                     this.setData({
-                        price: price
-                    });
-                    this.setData({
+                        price: price,
                         movies: JSON.parse(res.data.data.goods.main_img),
-                        content: JSON.parse(res.data.data.goods.content)
-                    });
-                    this.setData({
-                        order_detail: JSON.parse(res.data.data.goods.content)
+                        content: !!res.data.data.goods.content&&JSON.parse(res.data.data.goods.content),
                     });
 
+                    //获取参数
                     app.request({
                         url: "https://api.vvc.tw/dlxin/shop/getdetail/",
                         data: {
-                            goodsid: id
+                            id: this.data.wfrid
                         },
                         success: (res) => {
-                            
-                            if ( res.data.data.code==1) {
+
+                            if (res.data.data.code == 1) {
                                 this.setData({
                                     parameterList: res.data.data.canshu
                                 })
@@ -348,18 +357,57 @@ let id = wx.getStorageSync('goods_id');
         this.setData({
             isshow2: !this.data.isshow2
         });
+        // console.log(11);
     },
     cartAdd(e) {
-        
         this.setData({
             cartNum: e.detail
         });
     },
     ShoppingCart() {
-        
         wx.switchTab({
             url: '../shop/shop',
         })
-    }
+    },
+    drawCircle: function (step) {
+
+        var context = wx.createCanvasContext('canvasProgress');
+        context.setLineWidth(6);
+        context.setStrokeStyle('lightgray');
+        context.setLineCap('round')
+        context.beginPath();
+        context.arc(52, 50, 25, 0, 2 * Math.PI, false);
+        context.stroke();
+
+        context.setLineWidth(6);
+        context.setStrokeStyle('#5188FF');
+        context.setLineCap('round')
+        context.beginPath();
+        context.arc(52, 50, 25, -Math.PI / 2, step * Math.PI - Math.PI / 2, false);
+        context.stroke();
+        context.draw()
+    },
+
+    countInterval: function(){
+        console.log("kkkkk",this.data.ratio)
+        let per = this.data.ratio;
+        // 设置倒计时 定时器 每100毫秒执行一次，计数器count+1 ,耗时6秒绘一圈
+        this.countTimer = setInterval(() => {
+            if (this.data.count <= 10) {
+                this.drawCircle(this.data.count / (10 / (per * 2)))
+                this.data.count++;
+            } else {
+                this.setData({
+                    ratio: this.data.ratio
+                });
+                clearInterval(this.countTimer);
+            }
+        }, 100)
+    },
+    onReady: function () {
+        this.drawCircle(2)
+        this.countInterval()
+
+    },
 
 })

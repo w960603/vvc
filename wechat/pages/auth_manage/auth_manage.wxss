@@ -45,16 +45,7 @@ color:rgba(255,255,255,1);
 line-height:50rpx;
 }
 /* 导航 */
-.nav{
-    height:102rpx;
-    line-height:102rpx;
-  text-align: center;
 
-font-size:32rpx;
-font-family:PingFang-SC-Medium;
-font-weight:normal;
-color:rgba(215,175,133,1);
-}
 /* 内容 */
 .content{
     margin:0 48rpx;
@@ -79,14 +70,7 @@ margin-bottom: 22rpx;
 font-size:28rpx;
 padding-left:32rpx;
 }
-/* .placeholder{
-padding-left:32rpx;
-font-size:28rpx;
-font-family:PingFang-SC-Medium;
-font-weight:normal;
-color:rgba(149,160,182,1);
 
-} */
 .btn{
     width:574rpx;
     margin:0 auto;

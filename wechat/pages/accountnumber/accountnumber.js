@@ -23,7 +23,7 @@ Page({
      */
     onLoad: function(options) {
         var username = wx.getStorageSync('username');
-        console.log(username)
+        
         if (!username) {
             this.setData({
                 first: true
@@ -114,17 +114,17 @@ Page({
             },
             success: (res) => {
 
-                
-                if (res.data.code==1) {
+                if (res.data.code == 1) {
                     app.globalData.userinfo = res.data.data.userinfo;
                     app.globalData.token = res.data.data.token;
 
                     app.globalData.goodslist = res.data.data.goods;
 
-                    
-                            wx.switchTab({
-                                url: '../home/home',
-                            })
+                    wx.hideToast();
+
+                    wx.switchTab({
+                        url: '../home/home',
+                    })
                     wx.cloud.callFunction({
                         // 云函数名称
                         name: 'getuserinfo',
@@ -134,7 +134,7 @@ Page({
                             token: res.data.data.token
                         },
                     })
-                    
+
                     wx.showToast({
                         title: res.data.msg,
                         icon: 'none',

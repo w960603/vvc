@@ -81,7 +81,7 @@
     </view>
     <view class='wfr-clearboth'>
         <view class='wfr-footer-left'>配送运费</view>
-        <view class='wfr-footer-right'>实收
+        <view class='wfr-footer-right'>{{}}
             <image class='wfr-footer-img' src='../../image/icon/tiaozhuan.svg'></image>
         </view>
     </view>

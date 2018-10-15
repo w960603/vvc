@@ -6,7 +6,7 @@ Page({
      */
     data: {
         movies: [{
-            url: 'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/changku/image/vvc_1538101887603.jpg'
+                url: 'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/changku/image/vvc_1538101887603.jpg'
             },
             {
                 url: 'https://wangfurui.oss-cn-hangzhou.aliyuncs.com/image/vvc_1535528888601.jpg'
@@ -18,7 +18,6 @@ Page({
                 url: 'https://wangfurui.oss-cn-hangzhou.aliyuncs.com/image/vvc_1535531265304.jpg'
             }
         ],
-        img_big: {},
         oytarr: [],
         clientHeight: 0,
         arr: [],
@@ -56,23 +55,23 @@ Page({
         //         oytarr: app.globalData.goodslist
         //     })
         // } else {
-            app.request({
-                url: 'https://api.vvc.tw/dlxin/shop/goodslist',
-                method: "POST",
-                success: (res) => {
-                    if (res.data.code == 1) {
-                        this.setData({
-                            oytarr: res.data.data.goods_list
-                        })
-                    } else {
-                        wx.showToast({
-                            title: res.data.msg,
-                            icon: 'none',
-                            duration: 1500
-                        })
-                    }
-                },
-            })
+        app.request({
+            url: 'https://api.vvc.tw/dlxin/shop/goodslist',
+            method: "POST",
+            success: (res) => {
+                if (res.data.code == 1) {
+                    this.setData({
+                        oytarr: res.data.data.goods_list
+                    })
+                } else {
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                        duration: 1500
+                    })
+                }
+            },
+        })
         // }
         this.setData({
             userinfo: app.globalData.userinfo
@@ -90,9 +89,9 @@ Page({
         console.log(this.data.loaded)
     },
     imgList(e) {
-        console.log(e,"调到详情")
+        console.log(e, "调到详情")
         wx.navigateTo({
-            url: '../detail/detail?id=' + e.currentTarget.dataset.id 
+            url: '../detail/detail?id=' + e.currentTarget.dataset.id
         })
     },
 

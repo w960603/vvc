@@ -37,36 +37,44 @@ Page({
     },
     cancel_order(e){
         console.log(e)
-        app.request({
-            url:'https://api.vvc.tw/dlxin/order/delorder',
-            data:{
-                id:e.currentTarget.dataset.order.id
-            },
+        wx.showModal({
+            title: '取消订单',
+            content: '确认取消订单吗?',
             success:(res)=>{
-                console.log(res)
-                if (res.data.code==1) {
-                  wx.showToast({
-                    title: "删除订单成功",
-                    
-                  })
-                    this.getorder()
-                    
-                }else{
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon:'none'
+                if(res.confirm){
+                    app.request({
+                        url: 'https://api.vvc.tw/dlxin/order/delorder',
+                        data: {
+                            id: e.currentTarget.dataset.order.id
+                        },
+                        success: (res) => {
+                            console.log(res)
+                            if (res.data.code == 1) {
+                                wx.showToast({
+                                    title: "删除订单成功",
+
+                                })
+                                this.getorder()
+
+                            } else {
+                                wx.showToast({
+                                    title: res.data.msg,
+                                    icon: 'none'
+                                })
+                            }
+                        },
+                        fail: () => {
+                            wx.showToast({
+                                title: "发生错误,请刷新重试!",
+                            })
+                            this.getorder()
+                        }
                     })
+                }else{
+
                 }
-            },
-            fail:()=>{
-                wx.showToast({
-                    title: "发生错误,请刷新重试!",
-                })
-                this.getorder()
             }
         })
-
-        
     },
    
 
@@ -155,9 +163,9 @@ Page({
                         if(i<10){
                          this.setData({ ["orderCont["+i+"]"]: res.data.data[i] })
                         }
+                        
                     }
-                    setTimeout(()=>{ this.setData({ ["orderCont"]: res.data.data})},2000)
-                    //this.setData({ order_num: res.data.data })
+                    setTimeout(()=>{this.setData({ ["orderCont"]: res.data.data})},2000)   
                 }
 
             },

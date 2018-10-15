@@ -42,6 +42,4 @@
             <view class="message">{{msg}}</view>
         </block>
     </view>
-    
-
 </view>

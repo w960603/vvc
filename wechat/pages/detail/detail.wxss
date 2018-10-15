@@ -73,10 +73,10 @@
 }
 
 .detail-desc {
-    height: 142rpx;
+    height: 172rpx;
     /* line-height:60rpx; */
     background: rgba(255, 255, 255, 1);
-    border-bottom: 1rpx solid lightgray;
+  
     padding-left: 32rpx;
 }
 
@@ -84,6 +84,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1rpx solid lightgray;
 }
 
 .uv {
@@ -403,3 +404,60 @@
 .red {
     background: #fe0b13;
 }
+/* 圆形进度条 */
+.scan{
+font-size:24rpx;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(74,74,74,1);
+line-height:34rpx;
+position:absolute;
+top:6rpx;
+left:52rpx;
+
+}
+/* pages/progress/progress.wxss */
+
+.progress_box{
+  position: relative;
+  width:200rpx;
+  height: 200rpx;  
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+  /* background-color: #eee; */
+}
+.progress_bg{
+  position: absolute;
+    width:180rpx;
+  height: 180rpx; 
+}
+.progress_canvas{ 
+  width:180rpx;
+  height: 180rpx; 
+} 
+.progress_text{ 
+  position: absolute; 
+ left:82rpx;
+ top:92rpx;
+  font-size: 24rpx;
+}
+/* .progress_info{   
+  font-size: 24rpx;
+  padding-left: 16rpx;
+  letter-spacing: 2rpx
+}  */
+
+/* .cir{ 
+ display: inline-block; 
+
+}  
+.top{ 
+ position:relative;
+} 
+.cc{  
+ font-size:20rpx;
+ position:absolute;
+ top:86rpx;
+right:64rpx;
+}  */

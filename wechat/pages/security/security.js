@@ -254,13 +254,17 @@ Page({
         wx.scanCode({
             onlyFromCamera: true,
             success: (res) => {
-                var reg2 = /([\d]{8,12})/;
-                var str2 = res.result;
-                var result = str2.match(reg2);
-                this.setData({
-                    qrcode: result[0]
-                })
-                this.chaxun();
+                console.log(res)
+                if(res.result&&/vvc/i.test(res.result)){
+                    var reg2 = /([\d]{8,12})/;
+                    var str2 = res.result;
+                    var result = str2.match(reg2);
+                    this.setData({
+                        qrcode: result[0]
+                    })
+                    this.chaxun();
+                }
+                
             }
         });
     },

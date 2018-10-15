@@ -20,6 +20,7 @@
         "pages/my/my",
         "pages/order_detail/order_detail",
         "pages/add_address/add_address",
+        "pages/team_order/team_order",
         "pages/after_sale/after_sale",
         "pages/settlement/settlement",
         "pages/ship_detail/ship_detail",
@@ -37,7 +38,7 @@
         "navigationStyle": "custom",
         "navigationBarTextStyle": "rgba(0,0,0,0)"
     },
-    "cloud":true,
+    "cloud": true,
     "tabBar": {
         "color": "rgba(0,0,0,0)",
         "borderStyle": "white",
