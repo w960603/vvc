@@ -44,9 +44,9 @@ Page({
   },
 
 chioce_address(e){
-    console.log(11);
-    this.setData({ isshow:!this.data.isshow});
-
+    // if (this.data.shopInfo.address  == null){
+        this.setData({ isshow: !this.data.isshow });
+    // }
 },
 timestampToTime(timestamp) {
         var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
@@ -89,16 +89,28 @@ chioce(e){
         // console.log(this.data.tear_value); //多好文本输入框内容
         // console.log(this.data.shopInfo.id);//id
         // console.log(this.data.one_address.full_address)//地址
-        if (this.data.tear_value != null && this.data.one_address.full_address && this.data.shopInfo.id != null){
+
+        if (this.data.tear_value != null  && this.data.shopInfo.id != null){
+            var   data= {
+                id: this.data.shopInfo.id,
+                bcyy: this.data.tear_value,     
+            }
+            if (this.data.shopInfo.status == 2 && this.data.one_address && this.data.ipt_ordernum){
+                data.thdz=this.data.one_address.id
+                data.danhao=this.data.ipt_ordernum
+            }else{
+                wx.showToast({
+                    title: '请选择地址快递单',
+                    duration: 2000
+                })
+                return
+
+            }
+
             app.request({
                 url:"https://api.vvc.tw/dlxin/order/returnGoodsTrue",
                 method:"POST",
-                data:{
-                    id: this.data.shopInfo.id,
-                    danhao: this.data.ipt_ordernum,
-                    bcyy: this.data.tear_value,
-                    thdz: this.data.one_address.id
-                },
+                data:data,
                 success:(res)=>{
                     console.log(res)
                     if(res.data.code == 1){
@@ -108,11 +120,18 @@ chioce(e){
                         });
                         wx.navigateBack({});
                     }
+                },
+                fail:(res)=>{
+                    wx.showToast({
+                        title: res.msg,
+                        icon:none,
+                        duration: 2000
+                    });
                 }
             })
         }else{
             wx.showToast({
-                title: '把内容填写完整',
+                title: '请填写留言',
                 duration: 2000
             })
         }

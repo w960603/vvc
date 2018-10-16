@@ -134,6 +134,9 @@ Page({
     wfrAccount() {
         wx.navigateTo({
             url: '../accountnumber/accountnumber?id=1',
+            complete:function(com){
+                console.log(com)
+            }
         })
     },
     phonelogin() {

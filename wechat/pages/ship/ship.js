@@ -12,7 +12,7 @@ Page({
         id: null,
         shipid: null,
         activeOpacity: false,
-        // showView: (options.showView == "true" ? true : false),
+        
 
         //适应ipx
         h: '',
@@ -20,7 +20,9 @@ Page({
         qrcode: '',
         express: '',
 
-        isRetail: false
+        isRetail: false,
+        scaned:false,
+        focus
 
     },
     bindPickerChange: function(e) {
@@ -31,7 +33,13 @@ Page({
             arr1: this.data.array[e.detail.value]
         })
     },
-
+    submit(e){
+        console.log(e)
+    },
+    blur(e){
+        console.log(e)
+        
+    },
     attached: function() {
         app.request({
             url: 'https://api.vvc.tw/dlxin/user/getSubAddress',
@@ -74,7 +82,6 @@ Page({
         })
     },
     adduser(e) {
-        console.log(e)
         this.setData({
             user: e.detail,
             isshow3: false

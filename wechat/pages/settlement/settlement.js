@@ -90,14 +90,16 @@ console.log(options);
         }
     });
     //请求运费
-    app.request({
-        url:"https://api.vvc.tw/suc/freight/getFreightMoney",
-        method:"POST",
-        success:(res)=>{
-            console.log("222222", res.data.data.freight);
-            this.setData({ freight: res.data.data.freight});
-        }
-    })
+    // app.request({
+    //     url:"https://api.vvc.tw/suc/freight/getFreightMoney",
+    //     method:"POST",
+    //     success:(res)=>{
+    //         if(res.data.code==1){
+    //             console.log("222222", res.data.data.freight);
+    //             this.setData({ freight: res.data.data.freight});
+    //         }
+    //     }
+    // })
   },
   goback(){
       

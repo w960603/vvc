@@ -37,7 +37,10 @@ Page({
         shop_type:[],
         infos:[],
         idx:null,
-        server_finish:[]
+        // 售后完成
+        server_finish:[],
+        // 处理中
+        processing:[],
 
     },
     switchTab: function (e) {
@@ -74,6 +77,24 @@ Page({
     searchInput(e){
         if (e.detail.value){
             console.log(e.detail.value);
+            // arr.indexOf(find, start);
+            // console.log(this.data.processing);//显示的处理中的数组
+            // var order_str = this.data.processing.indexOf(e.detail.value,0);
+            var arrs = []
+            for (var i = 0; i < this.data.processing.length;i++ ){
+                // if (this.data.processing[i])
+                // if (this.data.processing[i].goods_list.indexOf(e.detail.value) != -1 ){
+                //     console.log("我走啦",)
+                // }
+                    
+                for (var j = 0; j < this.data.processing[i].goods_list.length;j++){
+                    if (e.detail.value == this.data.processing[i].goods_list[j]){
+                        arrs.push(this.data.processing[i]);
+                    }
+                }
+            }
+            console.log("我走啦",arrs);
+
         }else{
             wx.showToast({
                 title: '请输入内容',
@@ -102,7 +123,7 @@ Page({
             this.setData({ bottom: "margin-bottom:170rpx", icon: 'bottom:74rpx' })
         } else {
             this.setData({ bottom: "margin-bottom:98rpx", icon: 'bottom:74rpx' })
-            this.setData({ iphonex: '' })
+            this.setData({ iphonex:''})
         }
         var that = this;
         // 高度自适应
@@ -118,57 +139,9 @@ Page({
                 });
             }
         });
-        app.request({
-            url: 'https://api.vvc.tw/dlxin/order/returnGoodsList',
-            method: 'POST',
-            success: (res) => {
-                console.log(res)
-                if (res.data.data.list){
-                for (var i = 0; i < res.data.data.list.length; i++) {
-                    var img = res.data.data.list[i];
-                    img.goods_img = /http/.test(img.goods_img) ? img.goods_img : '../../image/icon/no_product.svg'
-                }
-                this.setData({
-                    orderCont: res.data.data.list
-                })
-                this.setData({
-                    goods_list: res.data.data.list.goods_list
-                })
-                }
-            }
-        });
-        app.request({
-            url: "https://api.vvc.tw/dlxin/order/returnGoodsView",
-            method: "POST",
-            success: (res) => {
-                console.log("asdasd",res.data.data)
-                // 售后未完成的数据
-                var arr = [];
-                var arrs = [];
 
-                // 售后完成时的数据finish
-                var finish = []
-                for (var i in res.data.data){
-                    if (res.data.data[i].name != "VVC代理押金" && i != "option" && res.data.data[i].status != 4  ){
-                        var obj = res.data.data[i].name + "[" + res.data.data[i].color + "]"
-                        arr.push(obj);
-                        arrs.push( res.data.data[i]);
-                    } else if (res.data.data[i].name != "VVC代理押金" && i != "option"){
-                       
-                        finish.push(res.data.data[i]);
-                    };
-                    
-                };
-                // console.log("我走啦", finish)
-                this.setData({ server_finish: finish})
-                this.setData({ itemList: arr});
-                this.setData({ "allorder_shop": arrs});
-
-
-                console.log(this.data.allorder_shop);
-            }
-        })
     },
+  
     footerTap: app.footerTap,
     //显示详情
     show(e) {
@@ -222,8 +195,10 @@ Page({
     },
     // 售后完成
     after_sale(e) {
+        console.log(e.currentTarget.dataset.index);
+        console.log(this.data.processing[e.currentTarget.dataset.index].id);
         wx.navigateTo({
-            url: "../refunds/refunds?id=" + this.data.orderCont[e.currentTarget.dataset.index].id,
+            url: "../refunds/refunds?id=" + this.data.processing[e.currentTarget.dataset.index].id,
         })
     },
 
@@ -359,7 +334,63 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        app.request({
+            url: 'https://api.vvc.tw/dlxin/order/returnGoodsList',
+            method: 'POST',
+            success: (res) => {
+                console.log(res)
+                if (res.data.data.list) {
 
+                    var arr =[]
+                    var arr1 = []
+                    for (var i = 0; i < res.data.data.list.length; i++) {
+                        if (res.data.data.list[i].status < 5 && res.data.data.list[i].status > 0){
+                            arr.push(res.data.data.list[i]);
+                        } else if (res.data.data.list[i].status > 4 || res.data.data.list[i].status == -2){
+                            arr1.push(res.data.data.list[i]);                            
+                        }
+                    }
+                    this.setData({
+                        processing: arr
+                    })
+                    this.setData({
+                        server_finish:arr1
+                    })
+                    this.setData({
+                        goods_list: res.data.data.list.goods_list
+                    })
+                }
+            }
+        });
+        app.request({
+            url: "https://api.vvc.tw/dlxin/order/returnGoodsView",
+            method: "POST",
+            success: (res) => {
+                console.log("asdasd", res.data.data)
+                // 售后未完成的数据
+                var arr = [];
+                var arrs = [];
+
+                // 售后完成时的数据finish
+                var finish = []
+                for (var i in res.data.data) {
+                    
+                    if (res.data.data[i].name != "VVC代理押金" && i != "option") {
+                        var obj = res.data.data[i].name + "[" + res.data.data[i].color + "]"
+                        arr.push(obj);
+                        arrs.push(res.data.data[i]);
+                    } 
+
+                };
+                // console.log("我走啦", finish)
+                
+                this.setData({ itemList: arr });
+                this.setData({ "allorder_shop": arrs });
+
+
+                console.log(this.data.allorder_shop);
+            }
+        })
     },
 
     /**

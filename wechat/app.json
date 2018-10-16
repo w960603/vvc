@@ -18,6 +18,7 @@
         "pages/scan/scan",
         "pages/address/address",
         "pages/my/my",
+        "pages/refunds/refunds",
         "pages/order_detail/order_detail",
         "pages/add_address/add_address",
         "pages/team_order/team_order",

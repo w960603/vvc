@@ -15,93 +15,89 @@
             </scroll-view>
             <view wx:if="{{currentTab < 2 }}" class="search_input">
                 <icon type="search" size="20" color="gray" style="width:32rpx;height:32rpx" />
-                <input type="search" value="{{order}}" placeholder='商品名称/商品编号/订单编号' bindblur='searchInput' bindconfirm="onShow"/>
+                <!-- /订单编号 -->
+                <input type="search" value="{{order}}" placeholder='商品名称/商品编号' bindblur='searchInput' bindconfirm="onShow" />
             </view>
         </view>
 
-        
+
         <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:77vh;">
             <!-- 处理中 -->
             <swiper-item style="overflow:scroll">
                 <!-- 处理中 -->
-                <view class='order-wrap' wx:if="{{orderCont.length > 1}}">
-                    <view class="order" wx:for="{{ orderCont }}" wx:key="list">
-                        <view class="order_num border bdb">
-                            <text class="number">订单编号：{{item.number }}</text>
-                        </view>
-                        <view class="order_cont border bdb">
-                            <view class="order_img" style='overflow:hidden' >
-                                <!-- <view wx:for="{{item.goods_list}}" data-item="{{item}}" style='background:#000000;'> -->
-                                    <image style='width:{{item.goods_list.length<5?50:33}}%;padding:2rpx;box-sizing:border-box' wx:if="{{index<9}}" wx:for="{{item.goods_list}}" wx:for-item="items"  src="{{items.goods_img}}?x-oss-process=image/resize,w_80" mode="widthFix" ></image>
-                                <!-- </view> -->
-                            </view> 
-                            <view class="description">
-                                <view class="title_price">
-                                    <view wx:for="{{item.goods_list}}" data-item="{{item}}">
-                                        <!-- <view class="title1" wx:if="item.order_goods != undefind">{{ item.order_goods}}<text style='margin-left:30rpx'>X{{item.num}}</text></view> -->
-                                        <view class="title1">{{ item.name}}[{{item.color}}]<text style='margin-left:30rpx'>X{{item.num}}</text></view>
-                                        <!-- <view class="title1">数量：{{ item.num }}</view> -->
-                                    </view>
-                                    <view class="title2">{{ item.time }} 
-                                    <!-- 1申请退货 2同意退货 3商品回仓中 4退货完成 5仓库返回 6拒绝退货 7二次申请 8拒绝 -->
-                                        <text wx:if="{{item.status == 1}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>申请退货</text>
-                                        <text wx:if="{{item.status == 2}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>同意退货</text>
-                                        <text wx:if="{{item.status == 3}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>商品回仓中</text>
-                                        <!-- <text wx:if="{{item.status == 4}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>确认</text> -->
-                                        <text wx:if="{{item.status == 5}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>仓库返回</text>
-                                        <text wx:if="{{item.status == 6}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>拒绝退货</text>
-                                        <text wx:if="{{item.status == 7}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>二次申请</text>
-                                        <text wx:if="{{item.status == 8}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>拒绝</text>
+                <view class='order-wrap' wx:if="{{processing.length > 1}}">
+                    <view wx:for="{{ processing }}" wx:key="list">
+                        <view style='background:#fff; margin-bottom:10rpx;' class="order">
+
+                            <view class="order_num border bdb">
+                                <text class="number">订单编号：{{item.number }}</text>
+                            </view>
+                            <view class="order_cont border bdb">
+                                <view class="order_img" style='overflow:hidden'>
+                                    <image style='width:{{item.goods_list.length<5?50:33}}%;padding:2rpx;box-sizing:border-box' wx:if="{{index<9}}" wx:for="{{item.goods_list}}" wx:for-item="items" src="{{items.goods_img}}?x-oss-process=image/resize,w_80" mode="widthFix"></image>
+                                </view>
+                                <view class="description">
+                                    <view class="title_price">
+                                        <view wx:for="{{item.goods_list}}" data-item="{{item}}">
+                                            <view class="title1">{{ item.name}}[{{item.color}}]
+                                                <text style='margin-left:30rpx'>X{{item.num}}</text>
+                                            </view>
+                                        </view>
+                                        <view class="title2">
+                                            <view>{{ item.time }} </view>
+                                            <text style="background:#07d;" wx:if="{{item.status == 1}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>申请退货</text>
+                                            <text style="background:#07d;" wx:if="{{item.status == 2}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>同意退货</text>
+                                            <text wx:if="{{item.status == 3}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>商品回仓</text>
+                                            <text wx:if="{{item.status == 4}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>收到货物</text>
+                                            <!-- <text wx:if="{{item.status == 5}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>仓库返回</text> -->
+                                            <!-- <text wx:if="{{item.status == 6}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>拒绝退货</text> -->
+                                            <!-- <text wx:if="{{item.status == 7}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>二次申请</text> -->
+                                            <!-- <text wx:if="{{item.status == -2}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>拒绝</text> -->
+                                            <!-- <text wx:if="{{item.status == -3}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>拒绝</text> -->
+                                        </view>
                                     </view>
                                 </view>
                             </view>
-                            <!-- <view class='state'>
-                                <block wx:if="{{item.status== 3}}">
-                                    <text class="circle yellow">等待处理</text>
-                                </block>
-                                <block>
-                                    <view class="circle black">详情</view>
-                                </block>
-                            </view> -->
                         </view>
                     </view>
                 </view>
                 <view wx:else class='order-wrap1'></view>
             </swiper-item>
-        
+
             <!-- 处理完成 -->
             <swiper-item style="overflow:scroll">
-               
                 <!-- 处理完成 -->
                 <view class='order-wrap' wx:if="{{server_finish.length > 1}}">
-                <!-- 显示详情 bindtap='show' -->
-                    <view class="order" wx:for="{{ server_finish }}"  data-list='{{item}}'>
-                        <view class="order_num border bdb" bindtap='order_num'>
-                            <text class="number">订单编号：{{item.number }}</text>
-                        </view>
-                        <view class="order_cont border bdb" bindtap='order_cont'>
-                            <view class="order_img" style='overflow:hidden' >
-                                <!-- <view wx:for="{{item.goods_list}}" data-item="{{item}}" style='background:#000000;'> -->
-                                    <image style='width:{{item.goods_list.length<5?50:33}}%;padding:2rpx;box-sizing:border-box' wx:if="{{index<9}}" wx:for="{{item.goods_list}}" wx:for-item="items"  src="{{items.goods_img}}?x-oss-process=image/resize,w_80" mode="widthFix" ></image>
-                                <!-- </view> -->
-                            </view> 
-                            <view class="description">
-                                <view class="title_price">
-                                    <view wx:for="{{item.goods_list}}" data-item="{{item}}">
-                                        <view class="title1">{{ item.name}} <text style='margin-left:30rpx'>X{{item.num}}</text></view>
-                                        <!-- <view class="title1">数量{{ item.num }}</view> -->
-                                    </view>
-                                    <view class="title2">{{ item.time }} 
-                                        <text wx:if="{{item.status == 6}}">售后完成</text>
+                    <!-- 显示详情 bindtap='show' -->
+                    <view  wx:for="{{ server_finish }}" data-list='{{item}}'>
+                        <view style='background:#fff; margin-bottom:10rpx;' class="order">
+                            <view class="order_num border bdb" bindtap='order_num'>
+                                <text class="number">订单编号：{{item.number }}</text>
+                            </view>
+                            <view class="order_cont border bdb" bindtap='order_cont'>
+                                <view class="order_img" style='overflow:hidden'>
+                                    <image style='width:{{item.goods_list.length<5?50:33}}%;padding:2rpx;box-sizing:border-box' wx:if="{{index<9}}" wx:for="{{item.goods_list}}" wx:for-item="items" src="{{items.goods_img}}?x-oss-process=image/resize,w_80" mode="widthFix"></image>
+                                    <!-- </view> -->
+                                </view>
+                                <view class="description">
+                                    <view class="title_price">
+                                        <view wx:for="{{item.goods_list}}" data-item="{{item}}">
+                                            <view class="title1">{{ item.name}}
+                                                <text style='margin-left:30rpx'>X{{item.num}}</text>
+                                            </view>
+                                            <!-- <view class="title1">数量{{ item.num }}</view> -->
+                                        </view>
+                                        <view class="title2">
+                                            <view>{{ item.time }} </view>
+
+                                            <!-- <view></view> -->
+                                            <text wx:if="{{item.status == 6}}">售后完成</text>
+                                            <text wx:if="{{item.status == -2}}">售后拒绝</text>
+                                            <text style="background:#07d;" wx:if="{{item.status == 5}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>仓库寄回</text>
+                                        </view>
                                     </view>
                                 </view>
                             </view>
-                            <!-- <view class='state'>
-                                <block wx:if="{{item.status== 2}}">
-                                     <image src='../../image/icon/diliver.svg'></image>
-                                    <text class="circle green">处理完成</text>
-                                </block>
-                            </view> -->
                         </view>
                     </view>
                 </view>
@@ -109,9 +105,9 @@
 
             </swiper-item>
 
-            <!-- 售后申请 -->
+            <!-- 申请售后 -->
             <swiper-item style="overflow:scroll">
-                <!-- 售后申请 -->
+                <!-- 申请售后 -->
                 <view class='sale_apply'>
                     <view class="nav2">
                         <view class='detailed_list'>
@@ -135,11 +131,13 @@
                                     </picker>
                                 </view>
                             </view>
-                            <view class='order_type1' wx:for="{{shop_type}}" wx:key="*this"  wx:for-item="list">
+                            <view class='order_type1' wx:for="{{shop_type}}" wx:key="*this" wx:for-item="list">
                                 <view class='choice_type'>
                                     <view class='choice_type_text1'>{{list.name}}</view>
                                     <view class='choice_type_text2'>{{list.color?list.color:"无"}}</view>
-                                    <view class='choice_type_text3'><input type="number" bindinput='order_num' data-index='{{index}}' value='{{list.num}}'></input></view>
+                                    <view class='choice_type_text3'>
+                                        <input type="number" bindinput='order_num' data-index='{{index}}' value='{{list.num}}'></input>
+                                    </view>
                                 </view>
                                 <view class='one_type'>
                                     <text class="blackjia" bindtap='deletelist' data-index='{{index}}'>✕</text>
@@ -157,9 +155,9 @@
                             </view>
                             <view class="return_reason" style='{{bottom}}'>
                                 <view class="ret_rea">退换货理由</view>
-                                <textarea wx:if='{{!isshow}}' wx-if="{{currentTab == 2}}" value='{{evaContent}}' class="textarea"  bindinput='textareaInput'></textarea>
+                                <textarea maxlength="-1" cursor-spacing="120" wx:if='{{!isshow}}' wx-if="{{currentTab == 2}}" value='{{evaContent}}' class="textarea" bindinput='textareaInput'></textarea>
                             </view>
-                        </view> 
+                        </view>
                     </view>
                 </view>
                 <!-- 弹出层 -->
@@ -168,20 +166,20 @@
         </swiper>
 
         <mask class="mask" wx:if='{{isshow}}'>
-                    <view class="apply">
-                        <view class="apply_title">
-                            <image src="../../image/icon/close.svg" class="close" style="opacity:0" />
-                            <text>申请原因</text>
-                            <image src="../../image/icon/close.svg" class="close" bindtap='close1' />
-                        </view>
-                        <radio-group bindchange="radioChange" wx:for="{{array}}" wx:for-items="{{array}}" data-index='{{index}}'>
-                            <label class="radio_groun">
-                                {{item.value}}
-                                <radio checked='{{item.checked}}' class="radio" color='#fff' />
-                            </label>
-                        </radio-group>
-                        <button class="btn" bindtap='confirm'>确认</button>
-                    </view>
+            <view class="apply">
+                <view class="apply_title">
+                    <image src="../../image/icon/close.svg" class="close" style="opacity:0" />
+                    <text>申请原因</text>
+                    <image src="../../image/icon/close.svg" class="close" bindtap='close1' />
+                </view>
+                <radio-group bindchange="radioChange" wx:for="{{array}}" wx:for-items="{{array}}" data-index='{{index}}'>
+                    <label class="radio_groun">
+                        {{item.value}}
+                        <radio checked='{{item.checked}}' class="radio" color='#fff' />
+                    </label>
+                </radio-group>
+                <button class="btn" bindtap='confirm'>确认</button>
+            </view>
         </mask>
         <view class="footer" wx:if="{{currentTab == 2}}" style='{{iphonex}}'>
             <view class="btn1" bindtap='comfirmRefer' adjust-position='true'>提交</view>

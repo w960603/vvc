@@ -117,7 +117,8 @@ App({
                         url: '/pages/login/login',
                     });
                     wx.showToast({
-                        title: '登录超时,请重新登录',
+                        // title: '登录超时,请重新登录',
+                        title: res.data.msg,
                         icon: 'none',
                         duration: 3000
                     })

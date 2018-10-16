@@ -119,7 +119,8 @@ page {
 
 .tag{
     display:inline-block;
-    height:30rpx;
+    line-height: 30rpx;
+    /* height:30rpx; */
     min-width:40rpx;
     margin-right:20rpx;
     padding:0 26rpx;

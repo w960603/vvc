@@ -40,7 +40,57 @@ Page({
         };
         // this.getorder(e.detail.cur);
     },
-    
+    // 搜索订单
+    searchInput(e){
+        console.log(this.data.currentTab)
+
+        // if (this.data.currentTab == 0){
+            this.search(e.detail.value);
+        // }else if (this.data.currentTab == 1){
+            // this.search(e.detail.value);
+        // }else if(this.data.currentTab == 2){
+            // this.search(e.detail.value);
+        // }
+    },
+    // 搜索
+    search(contents){
+        app.request({
+            url: 'https://api.vvc.tw/dlxin/order/teamOrderList',
+            method: 'POST',
+            data:{content: contents},
+            success: (res) => {
+                let allorder = [];
+                let finish_order = [];
+                let on_finish = [];
+                // console.log(,res.data.data);
+                for( var i = 0;i<res.data.data.length;i++){
+                    if (this.data.currentTab == 0){
+                        allorder.push(res.data.data[i])
+                    } else if (this.data.currentTab == 1 && res.data.data[i].order_status != 5){
+                        on_finish.push(res.data.data[i]);
+                    } else if (this.data.currentTab == 2 && res.data.data[i].order_status == 5){
+                        finish_order.push(res.data.data[i]);
+                    }
+                };
+                // 全部订单
+                if (this.data.currentTab == 0){
+                    this.setData({ ["orderCont"]: allorder });
+                    console.log(1111, this.data.orderCont)
+                }
+                // 未完成订单
+                if (this.data.currentTab == 1){
+                    this.setData({ ["no_finishs"]: on_finish });
+                    // console.log(222, this.data.no_finishs)
+                }
+
+                // 完成订单
+                if (this.data.currentTab == 2) {
+                    this.setData({ ["finish_orders"]: finish_order });
+                    // console.log(333, this.data.finish_orders)
+                }
+            }
+        })
+    },
     //判断当前滚动超过一屏时，设置tab标题滚动条。
     checkCor: function () {
         if (this.data.currentTab > 4) {
@@ -96,6 +146,7 @@ Page({
 
     },
     getorder() {
+
         app.request({
             url: 'https://api.vvc.tw/dlxin/order/teamOrderList',
             method: 'POST',
@@ -140,15 +191,15 @@ Page({
                         // 全部订单
                         this.setData({ orderCont: res.data.data });
 
-                        console.log(111,this.data.orderCont)
+                        // console.log(111,this.data.orderCont)
                         // 未完成订单
                     this.setData({ ["no_finishs"]: on_finish});
-                        console.log(222,this.data.no_finishs)
+                        // console.log(222,this.data.no_finishs)
 
                         // 完成订单
 
                     this.setData({ ["finish_orders"]: finish_order });
-                        console.log(333,this.data.finish_orders)
+                        // console.log(333,this.data.finish_orders)
                     // }, 2000) 
                     
                 }

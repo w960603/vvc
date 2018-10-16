@@ -31,7 +31,6 @@ Page({
                             if (res.data.code == 2) {
                                 wx.redirectTo({
                                     url: '../login/login',
-
                                 });
                             } else if (res.data.code == 3) {
                                 wx.redirectTo({
@@ -50,7 +49,7 @@ Page({
                             return;
                         },
                         fail:(err)=>{
-                            console.log(err)
+                            
                             this.getSetting();
                             wx.redirectTo({
                                 url: '../login/login',
@@ -62,7 +61,7 @@ Page({
         });
     },
     getuserinfo(e) {
-        console.log(e)
+        
         if (e.detail.userInfo) {
             // wx.showToast({
             //     title: '登录成功',
@@ -74,7 +73,7 @@ Page({
             })
             this.getSetting()
         } else {
-            console.log(222)
+            
             wx.showToast({
                 title: '获取用户失败,请允许授权!',
                 icon: "none",
@@ -86,7 +85,7 @@ Page({
     getSetting() {
         wx.getSetting({
             success: (res) => {
-                console.log(res)
+                
                 if (res.authSetting['scope.userInfo']) {
                     // 已经授权，可以直接调用 getUserInfo 获取头像昵称
                     wx.getUserInfo({

@@ -56,7 +56,7 @@
                                 </view>
                                 <view class="title_price">
                                     <view class="address_phone">
-                                        <view class="address">地址：{{ item.address?item.address:'' }}</view>
+                                        <view class="address" wx:if='{{!!item.address}}'>地址：{{ item.address }}</view>
                                         <view class="phone">{{item.name?item.name:'姓名无'}} {{item.phone?item.phone:'手机无' }}</view>
                                     </view>
                                     <view class="much">X{{item.order_num}}</view>

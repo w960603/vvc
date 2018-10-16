@@ -117,15 +117,13 @@ qingqiu(){
     },
     goto1(e){
        
-        
-        console.log(getCurrentPages()[getCurrentPages().length-1].route)
         wx.showLoading({
             title: '跳转中',
         })
         
         wx.navigateTo({
           
-            url: '../management/management?info=' + e.currentTarget.dataset.info,
+            url: '../management/management?info=' + e.currentTarget.dataset.info+"&&backable="+true,
             success:()=>{
                 wx.hideLoading()
             }

@@ -1,7 +1,7 @@
 <view class="header" style='{{h}};background-color:{{color}}'>
-    <image class='header-posi-img' src='../../image/icon/author_back.svg' bindtap="goback"></image>
+    <image class='header-posi-img' wx:if='{{backable}}' src='../../image/icon/author_back.svg' bindtap="goback"></image>
     <view class="order_list">账号注册</view>
-    <image class='header-posi-img' src='../../image/icon/back.svg' style="opacity:0"></image>
+    <image class='header-posi-img' wx:if='{{backable}}'  src='../../image/icon/back.svg' style="opacity:0"></image>
 
     <slot ></slot>
 </view>

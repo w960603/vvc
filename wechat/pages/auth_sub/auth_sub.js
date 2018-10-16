@@ -5,7 +5,18 @@ Page({
         //适应ipx
         h: '',
         fill: '',
-        info:{},
+        info: {
+            truename: '',
+            phone: '',
+            wechat: '',
+            passport: '',
+            manage_tel: '',
+            dianpu: '',
+            alibaba: '',
+            wechat_pay: '',
+            bank_name: '',
+            card_name: '',
+            card_num: ''},
         titles:"我的授权",
         hidden:true,
         reg_code:'',
@@ -25,6 +36,7 @@ Page({
         app.request({
             url: 'https://api.vvc.tw/dlxin/user/updateauthinfo',
             method:'post',
+            data: this.data.info,
             success:(res)=>{
                 console.log(res,95)
                 var msg;

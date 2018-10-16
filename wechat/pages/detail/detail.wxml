@@ -22,13 +22,13 @@
         <view class="price">¥{{ price }}.00</view>
     </view>
     <!-- 圆形进度条 -->
-    <view class='progress_box' >
+    <view class='progress_box'>
         <view class="scan">商品扫码率</view>
-        <canvas class="progress_bg" canvas-id="canvasProgressbg"> </canvas>
+     <view style='width:0px;height:0px;'><canvas class="progress_bg" canvas-id="canvasProgressbg" wx:if='{{isshow4}}'> </canvas></view>
          <view class="progress_text">
-             {{ratio}}.0%
+             {{ratio}}%
         </view>
-        <canvas  class="progress_canvas" canvas-id="canvasProgress"> </canvas>
+        <canvas  class="progress_canvas" canvas-id="canvasProgress" wx:if='{{!isshow2}}'> </canvas>
        
        <!-- <view>{{isshow2}}</view> -->
     </view>
@@ -106,14 +106,14 @@
 </view>
 
 <!-- 加入购物车 -->
-<view class="{{iphonex?'addTocar1':'addTocar'}}" style='background-color:#fff;'>
+<view class="{{iphonex?'addTocar1':'addTocar'}}" style='background-color:#fff;' wx:if='{{status}}'>
     <view class="go_car" bindtap='ShoppingCart'>
         <image src="../../image/tabbar/shopping.svg"></image>
         <view class='go_car_view'>购物车</view>
         <view class='allshop-posi' wx:if="{{cartNum>=1}}">{{cartNum}}</view>
     </view>
-    <view class="add_car orangered" data-wfrid='{{wfrid}}' bindtap='wfrskuDetail'>加入购物车</view>
-    <view class="add_car red" bindtap='wfrskuDetail' data-wfrid='{{wfrid}}'>立即购买</view>
+    <view class="add_car,{{ is_onorder==1?'orangered':'gray' }}" data-wfrid='{{wfrid}}' bindtap='wfrskuDetail'>加入购物车</view>
+    <view class="add_car,{{ is_onorder==1?'red':'gray' }}"  bindtap="wfrskuDetail" data-wfrid='{{wfrid}}'>立即购买</view>
 </view>
 
 

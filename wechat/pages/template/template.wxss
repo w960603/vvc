@@ -223,7 +223,7 @@
 
 .wfr-change-sku2{
    display: inline-block;
-  width:100rpx; 
+  /* width:100rpx;  */
   height:58rpx;
   line-height: 58rpx;
   padding: 0 10rpx;
@@ -242,7 +242,7 @@
 .wfr-change-sku3{
    padding: 0 10rpx;
   display: inline-block;
-  width:100rpx; 
+  /* width:100rpx;  */
   height:58rpx;
   line-height: 58rpx;
   color:rgba(74,74,74,1);
@@ -256,7 +256,7 @@
 .wfr-change-sku-delete{
    padding: 0 16rpx;
   display: inline-block;
-  width:100rpx; 
+  /* width:100rpx;  */
   height:58rpx;
   line-height: 58rpx;
   

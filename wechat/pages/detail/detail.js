@@ -10,8 +10,9 @@ Page({
         content: [],
         title: '载入中...',
         price: '0',
-        uv: 'UV UPF50＋ 有效抵挡99％的紫外',
+        uv: 'UV UPF50＋ 有效抵挡99％的紫外线',
         ratio:'',
+        is_onorder:'',
         price_img: '',
         img_green: [],
         winHeight: "", //窗口高度
@@ -31,8 +32,11 @@ Page({
         }],
         isshow2: false,
         isshow3:true,
+        // hidden:false,
         wfrid: null,
         cartNum: null,
+
+        status:true,
         //适应ipx
         h: '',
         fill: '',
@@ -40,8 +44,9 @@ Page({
         img_show: false,
         imgs_show: false,
         iphonex: false,
+        isshow4:true,
         // 圆形进度条
-        progress_txt: '0.0%',
+        // progress_txt: '60.0%',
         count: 0, // 设置 计数器 初始为0
         countTimer: null // 设置 定时器 初始为null
     },
@@ -168,6 +173,12 @@ Page({
     },
     onLoad: function(option) {
 
+       
+// setTimeout(()=>{
+//     this.setData({ status:true})
+// },1000)
+
+
 console.log(option.id)
         //适应ipx
         this.setData({
@@ -231,6 +242,7 @@ console.log(option.id)
     onShow: function() {
 
         this.get_detail();
+        // console.log("我走啦", this.data.isshow2)
 
     },
     // 苹果×的底部监听
@@ -266,16 +278,15 @@ console.log(option.id)
 
                     var price = 0;
                     this.setData({
-                        cartNum: res.data.data.total_num
+                        cartNum: res.data.data.total_num,
+                        ratio:res.data.data.ratio,
+                        is_onorder: res.data.data.is_onorder
                     });
-
+                  
                     this.setData({
                         title: res.data.data.goods.title
                     });
                     console.log("我走啦",res.data.data.ratio);
-                    this.setData({
-                        ratio:res.data.data.ratio
-                    })
 
                     switch (app.globalData.userinfo.level) {
                         case 1:
@@ -301,6 +312,8 @@ console.log(option.id)
                         content: !!res.data.data.goods.content&&JSON.parse(res.data.data.goods.content),
                     });
 
+                    this.drawCircle(this.data.ratio*2/100);
+                    this.countInterval()
                     //获取参数
                     app.request({
                         url: "https://api.vvc.tw/dlxin/shop/getdetail/",
@@ -353,10 +366,31 @@ console.log(option.id)
 
     // 加购物车
     wfrskuDetail(e) {
+        // console.log("123456");
+        // this.setData({isshow4:!this.data.isshow4});
+        
+        // console.log("123456",this.data.isshow4);
         this.data.wfrid = e.currentTarget.dataset.wfrid
-        this.setData({
-            isshow2: !this.data.isshow2
-        });
+        if (this.data.is_onorder==1){
+            this.setData({
+                isshow2: !this.data.isshow2,
+                // hidden:true
+            });
+            console.log(this.data.ratio)
+            this.drawCircle(this.data.ratio*2/100);
+            // this.drawCircle(2)
+           
+        } else {
+            wx.showToast({
+                title: '扫码率低于50%',
+                icon: 'none',
+                image: '',
+                duration: 1000,
+                mask:true
+           
+            })
+        }
+       
         // console.log(11);
     },
     cartAdd(e) {
@@ -369,6 +403,7 @@ console.log(option.id)
             url: '../shop/shop',
         })
     },
+    // 商品扫码率
     drawCircle: function (step) {
 
         var context = wx.createCanvasContext('canvasProgress');
@@ -384,29 +419,42 @@ console.log(option.id)
         context.setLineCap('round')
         context.beginPath();
         context.arc(52, 50, 25, -Math.PI / 2, step * Math.PI - Math.PI / 2, false);
+        
         context.stroke();
-        context.draw()
+        context.draw();
     },
 
     countInterval: function(){
-        console.log("kkkkk",this.data.ratio)
-        let per = this.data.ratio;
+
+        // console.log("kkkkk",this.data.ratio）
+
+        let per = this.data.ratio/100;
         // 设置倒计时 定时器 每100毫秒执行一次，计数器count+1 ,耗时6秒绘一圈
         this.countTimer = setInterval(() => {
             if (this.data.count <= 10) {
                 this.drawCircle(this.data.count / (10 / (per * 2)))
                 this.data.count++;
             } else {
-                this.setData({
-                    ratio: this.data.ratio
-                });
+                setTimeout(()=>{
+                    this.setData({
+                        ratio: this.data.ratio
+                    })
+                },500)
                 clearInterval(this.countTimer);
             }
         }, 100)
     },
+    // scan:function(){
+    //     if (this.data.ratio < 0.5) {
+    //         console.log(this.data.ratio)
+    //         this.setData({ status: false })
+    //     } else {
+    //         this.setData({ status: true })
+    //     }
+    // },
     onReady: function () {
-        this.drawCircle(2)
-        this.countInterval()
+        // this.countInterval()
+     
 
     },
 

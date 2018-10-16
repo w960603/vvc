@@ -18,7 +18,8 @@
                         </picker>
                     </view>
                 </view>
-                <view class="bianhao">{{qrcode}}</view>
+                <input class="bianhao" maxlength='12'  value='{{qrcode}}' placeholder='' style='font-size:88rpx;width:100%;text-align:center;height:124rpx;line-height: 124rpx;' bindconfirm='submit' bindblur='blur'></input>
+                
                 <view class="store">
                     <view>商品：{{ship.goods.goods_title?ship.goods.goods_title:''}}</view>
                     <view>数量：{{ship.goods.num?ship.goods.num:''}}</view>

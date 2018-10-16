@@ -10,7 +10,7 @@
     <image src='../../image/icon/bg_img.svg' class='head-img'></image>
     <view class='main'>
         <!-- 第一部分 -->
-        <view class="part-1 part" style="margin-top:32rpx">
+        <view class="part-1 part" style="margin-top:52rpx">
             <view class='title main-title'>
                 <image src='../../image/icon/none.svg' class='avator'></image>
                 <view>
@@ -70,19 +70,24 @@
                 <input type="number" placeholder='卡号' adjust-position='true' class="input" value="{{info.card_num}}" bindblur='inputed' />
             </view>
         </view>
+         <view class="acc_infor" >您的授权已经提交，请联系客服进行审核后方可，查看或者下载自己的授权！</view>
+        
+    </view>
         <!-- 底部 -->
-        <view class="acc_infor">您的授权已经提交，请联系客服进行审核后方可，查看或者下载自己的授权！</view>
-        <view class="auth_sub">
+       
+        <view class="auth_sub"  >
             <image src="../../image/icon/auth_sub.svg"></image>
             <text bindtap='showAlbum'>我的授权</text>
-            <view  class="btn" bindtap="orderMeeting">确认</view>
+            <view  class="btn" bindtap="orderMeeting">提交</view>
         </view>
-    </view>
+          <view style="height:166rpx;width:100%;"></view>
+        
+    
     <!-- 弹窗 -->
     <view class="mask" hidden="{{hidden}}">
         <view class="box">
             <image class="reg_code" src="https://api.vvc.tw/dlxin/user/authImg?reg_code={{info.reg_code}}"></image>
-            <view class="album" bindtap="close">确定</view>
+            <view class="album" bindtap="close">保存</view>
         </view>
     </view>
 </view>

@@ -25,13 +25,20 @@ Page({
           password1:'',
       },
 
-      status: true
+      status: true,
+      backable:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+if(!!app.globalData.token){
+    this.setData({ backable: true })
+}else{
+    this.setData({backable:false})
+}
+          
 
       this.setData({ ['infoList.join_code']: options.info})
 
@@ -74,7 +81,7 @@ Page({
     inputed(e){
         this.data.infoList[e.currentTarget.dataset.info] = e.detail.value
         this.setData({infoList:this.data.infoList});
-        console.log(this.data.infoList)
+        
     },
 
     checkpwd(e){
@@ -127,5 +134,7 @@ Page({
   onReachBottom: function () {
 
   },
+onShareAppMessage(){
 
+}
 })

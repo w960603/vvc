@@ -124,15 +124,14 @@ page {
 }
 .messageboard{
     width:100%;
-    line-height:120rpx;
+    /* line-height:120rpx; */
     background:rgba(246,246,246,1);
-    text-align:center;
+    
 }
 .messageboard .input1{
     display:inline-block;
-    width:308rpx;
+    width:100%;
     font-size:28rpx;
-    min-height:40rpx;
     font-family:PingFang-SC-Medium;
     font-weight:500;
     color:rgba(155,155,155,1);
@@ -255,7 +254,7 @@ page {
 }
 .shop_bg{
     width:100%;
-    min-height:370rpx;
+    min-height:100rpx;
     background:white;
     padding:16rpx 0;
     margin-bottom:20rpx;
@@ -272,7 +271,7 @@ page {
 }
 .shop_bg_view2{
     width:640rpx;
-    height:132rpx;
+    min-height:98rpx;
     background:rgba(255,255,255,1);
     box-shadow:0px 4rpx 8rpx 0px rgba(239,239,239,1),0px -2rpx 8rpx 0px rgba(239,239,239,1);
     border-radius:8rpx;
@@ -359,6 +358,8 @@ page {
     background:rgba(255,255,255,1);
     box-shadow:0px 2px 0px 0px rgba(239,239,239,1);
     overflow:hidden;
+    position: fixed;
+    bottom:0;
 }
 .footer-image{
     width:474rpx;

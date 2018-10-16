@@ -2,6 +2,5 @@
 <view>
     Produced by VVC
 </view>
-<!-- <view style='width:100vw;height:100vh;opacity:0;position:fixed;top:0;left:0;z-index:10'  bindtap='goto1'></view> -->
 
 <button style='width:100vw;height:100vh;position:fixed;top:0;left:0;z-index:11;opacity:0;'  wx:if='{{btn_show}}' bindgetuserinfo='getuserinfo' open-type="getUserInfo"></button>

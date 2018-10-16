@@ -108,15 +108,27 @@ button {
     padding: 0 12rpx;
     /* margin-top:8rpx; */
     min-width:50rpx;
+    max-width:100rpx;
     text-align: center;
     line-height: 36rpx;
+    height:36rpx;
     background-color: #5188ff;
     font-size: 20rpx;
     color: #fff;
-    border-radius: 50rpx;
+    border-radius: 20rpx;
+}
+.tag:nth-child(2){
+    margin-left:8rpx;
 }
 
+.green{
+    background-color:#08C299;
+}
+.red{
+    background-color:#FF3851
+}
 .path {
+    flex:1;
     font-size: 28rpx;
     color: #9b9b9b;
     line-height: 36rpx;

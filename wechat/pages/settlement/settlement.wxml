@@ -4,7 +4,6 @@
         <image class='title-img' src='../../image/icon/backfff.svg' bindtap='goback'></image>
         结算订单</view>
     <view class='wfr-local' bindtap='goto' data-back='true'>
-    
         <view wx:if="{{wfrobj.address == null}}" class='require'>请先添加地址</view>
         <view wx:else class='wfr-local-left'>
             <image class='wfr-local-img' src='../../image/icon/local.svg'></image>
@@ -87,8 +86,8 @@
     </view>
     <view class='wfr-Remarks'>
         <!-- <text style='display: inline-block;text-indent:100rpx;width:50%;'>53632</text> -->
-        <text>备注:</text>
-        <textarea wx:if="{{!isshow}}" class='wfr-Remarks-textarea'  placeholder='输入备注信息（备注颜色无效，请单拍!）'></textarea>
+        <view>备注:</view>
+        <textarea cursor-spacing='80' maxlength="-1" wx:if="{{!isshow}}" class='wfr-Remarks-textarea'  placeholder='输入备注信息（备注颜色无效，请单拍!）'></textarea>
     </view>
     <!-- 购买 -->
     <view class='wfr-footer' style='{{iphonex}}'>

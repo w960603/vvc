@@ -385,31 +385,28 @@ page {
 }
 
 /* 备注 */
-
 .wfr-Remarks{
     width:100%;
-    height:170rpx;
+    min-height:170rpx;
     background:white;
     margin-top:4rpx;
     display:flex;
     justify-content:space-around;
     margin-bottom:70rpx;
+    /* padding-top:12rpx; */
 }
-.wfr-Remarks text{
+.wfr-Remarks view{
     width:15%;    
     color:#4A4A4A;
     font-size:28rpx;
     text-align:center;
-    margin-top:28rpx;
-
+    margin-top:12rpx; 
 }
 .wfr-Remarks-textarea{
-    height:100%;
+    height:200rpx;
     width:85%;
     font-size:28rpx;
-    margin-top:35rpx;
-    /* position:relative;
-    z-index:-10; */
+    padding-right:20rpx;
 }
 .wfr-Remarks-textarea1{
     display: none;

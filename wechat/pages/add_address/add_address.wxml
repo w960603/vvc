@@ -37,7 +37,7 @@
     <view class="write_address">
         <image src="../../image/envelope.svg" class="envelope"></image>
             <view class="intelligent">智能填写地址</view>
-            <textarea class="textarea" type="text" placeholder="请粘贴文本，例：张三，15312345688，浙江省杭州市 西湖区123号" data-name='{{add_address}}' adjust-position='true' show-confirm-bar='false' bindblur='copytext' value='{{textfield}}' ></textarea>
+            <textarea class="textarea" cursor-spacing='80' maxlength='-1'  type="text" placeholder="请粘贴文本，例：张三，15312345688，浙江省杭州市 西湖区123号" data-name='{{add_address}}' adjust-position='true' show-confirm-bar='false' bindblur='copytext' value='{{textfield}}' ></textarea>
             
     </view>
     <view class='set '>

@@ -16,7 +16,8 @@
         </scroll-view>
         <view class="search_input">
             <icon type="search" size="20" color="gray" style="width:32rpx;height:32rpx" />
-            <input type="search"  placeholder='团体人员/商品名称/订单编号' bindblur='searchInput' bindconfirm="onShow"/>
+            <!-- /订单编号 -->
+            <input type="search"  placeholder='团队人员/商品名称' bindblur='searchInput' bindconfirm="onShow"/>
         </view>
         <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:100vh  ; z-index:0">
             <swiper-item style="overflow:scroll">
@@ -83,7 +84,7 @@
                                 </view>
                             </view> -->
                         </view>
-                    </view>
+                    </view> 
                 </view>
                 <view class='order-wrap1' wx:else></view>
             </swiper-item>
