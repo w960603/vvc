@@ -442,7 +442,7 @@ left:52rpx;
 } 
 .progress_text{ 
   position: absolute; 
- left:76rpx;
+ left:78rpx;
  top:92rpx;
   font-size: 24rpx;
 }

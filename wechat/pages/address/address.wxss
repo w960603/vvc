@@ -61,7 +61,7 @@ button {
 .content-left {
     position: relative;
     left: 0;
-    float: left;
+    /* float: left; */
     display: flex;
     width: 687rpx;
     height: 108rpx;
@@ -86,10 +86,18 @@ button {
     margin-right: 30rpx;
 }
 
+.glabo_bind{
+    width:100rpx;
+    /* min-height:108rpx; */
+    line-height: 108rpx;
+    overflow:hidden;
+}
 .content .edit {
+    float:right;
+}
+.edit-image{
     width: 32rpx;
     height: 32rpx;
-    margin-left:20rpx;
 }
 
 .bottom{
@@ -234,9 +242,6 @@ button {
     box-shadow: 0 16rpx 24rpx #ff0504;
 }
 
-.edit{
-    float:right;
-}
 /* 代理地址 */
 
 .people {

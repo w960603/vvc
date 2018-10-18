@@ -104,6 +104,19 @@ Page({
                                 },
                                  success:res=>{
                                     //  console.log(res)
+                                    if(res.data.code==1){
+                                        wx.showToast({
+                                            title: '升级成功',
+                                            duration:2000,
+                                        })
+                                        setTimeout(()=>{
+                                            wx.navigateBack({
+
+                                            })
+                                        },1500)
+                                        
+                                    }
+                                    
                                  }
                             })
                         }

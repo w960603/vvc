@@ -152,7 +152,89 @@ page {
 }
 .number{
     color:#4a4a4a;
+    display:inline-block;
 }
 .remark{
     min-height:174rpx;
+}
+
+/* 弹出层 */
+.mask{
+    background:rgba(0,0,0, 0.45);
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    padding-top:356rpx;
+    z-index:999;
+    width:750rpx;
+    height:100%;
+    /* overflow:scroll; */
+}
+.order_status{
+    text-align:center;
+    font-size:16px;
+    font-weight:400;
+    color:rgba(34,144,239,1);
+    line-height: 60rpx;
+}
+
+.order_num{
+    text-align:center;
+    font-size:16px;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(155,155,155,1);
+    /* height: 30rpx; */
+    padding-bottom:10rpx;
+    border-bottom:2rpx solid #eee;
+}
+.addressinfo{
+    border:1rpx solid #eee;
+    overflow-y:scroll; 
+    padding: 20rpx 0;
+}
+.addressjilu{
+    font-size:28rpx;
+    font-weight:500;
+    color:rgba(155,155,155,1);
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-height:70rpx;
+    line-height:35rpx;
+    margin: 10rpx 0;
+}
+.addressjilu-time{
+    font-size:24rpx;
+    line-height:44rpx;
+    color:rgba(155,155,155,1);
+    padding-bottom:6rpx;
+}
+/* 时间线 */
+.time-line{
+    border-left:4rpx solid #D7D7D7;
+    margin: 0 30rpx;
+    display:flex;
+    padding-left:30rpx;
+    
+}
+.line1{
+    display:inline-block;
+    width:10rpx;
+    height:10rpx;
+    background:#D7D7D7;
+    border-radius: 50%;
+    position:absolute;
+    left:-35rpx;
+    top:16rpx;
+    z-index:10;
+}
+.time-line:first-child view> .line1{
+    width:19rpx;
+    height:19rpx;
+    background:rgb(250, 60, 60);
+    border-radius: 50%;
+    border:4rpx solid rgb(255, 174, 81);
+    left:-44rpx;
 }

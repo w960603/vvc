@@ -7,16 +7,35 @@ Page({
   data: {
 
   },
+    onShow() {
+        wx.showShareMenu({
+            withShareTicket: true
+        })
 
+        app.data.webShowed = true;
+    },
+    onShareAppMessage() {
+        return {
+            title: '分享标题',
+            path: '/pages/index/index' // 分享出去后打开的页面地址
+        }
+    },
 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     this.setData({
 
-     })
+      wx.setNavigationBarColor({
+          frontColor: '#ffffff',
+          backgroundColor: '#333',
+          animation: {
+              duration: 400,
+              timingFunc: 'easeIn'
+          }
+      })
+  
   },
 
   /**
@@ -30,7 +49,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+     
+        //   var app = getApp();
+        //   app.data.webShowed = true;//标记已经显示过web-view页了
+      
   },
 
   /**

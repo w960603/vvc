@@ -34,5 +34,5 @@
         <input placeholder='请输入支付宝相对应的真实姓名' adjust-position='true' placeholder-class='placeholder' value="{{infoList.truename}}" bindblur='inputed' data-info='truename'></input>
         <input placeholder='请输入手机/快速联系方式' adjust-position='true' placeholder-class='placeholder' value="{{infoList.phone}}" bindblur='inputed' data-info='phone'></input>
     </view>
-    <button bindtap='confirm'>确认</button>
+    <button bindgetuserinfo='getuserinfo' open-type="getUserInfo">确认</button>
 </view>

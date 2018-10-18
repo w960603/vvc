@@ -20,10 +20,10 @@
             <input type="search"  placeholder='团队人员/商品名称' bindblur='searchInput' bindconfirm="onShow"/>
         </view>
         <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:100vh  ; z-index:0">
-            <swiper-item style="overflow:scroll">
+            <swiper-item style="overflow:scroll" >
                 <!-- 订单部分 -->
                 <!-- 全部订单 -->
-                <view class='order-wrap' wx:if="{{orderCont.length >1}}">
+                <scroll-view scroll-y="true" class='order-wrap' wx:if="{{orderCont.length >1}}">
                     <view class="order" wx:for="{{ orderCont }}" wx:for-item="item" data-id='{{item.id}}'>
                         <view class="order_num" bindtap='order_num' wx:if="{{item.good_title != 'VVC代理押金'}}">
                             <text class="number">订单编号：{{item.time }}</text>
@@ -57,7 +57,7 @@
                                 </view>
                                 <view class="color_size">
                                     <text class="color">颜色:{{ item.color?item.color:'无' }}</text>
-                                    <text class="size" wx:if="{{tem.size}}">尺寸:{{ iitem.size}}</text>
+                                    <text class="size" wx:if="{{tem.size}}">尺寸:{{ item.size}}</text>
                                 </view>
                                 <view class="title_price">
                                     <view class="address_phone">
@@ -85,14 +85,14 @@
                             </view> -->
                         </view>
                     </view> 
-                </view>
+                </scroll-view>
                 <view class='order-wrap1' wx:else></view>
             </swiper-item>
             
             <swiper-item style="overflow:scroll">
                 <!-- 订单部分 -->
                 <!-- 未完成 -->
-                <view class='order-wrap' wx:if="{{no_finishs.length >1}}">
+                <scroll-view scroll-y="true" class='order-wrap' wx:if="{{no_finishs.length >1}}">
                     <view class="order" wx:for="{{ no_finishs }}" >
                         <view class="order_num" bindtap='order_num'>
                             <text class="number">订单编号：{{item.time}}</text>
@@ -143,7 +143,7 @@
                             </view> -->
                         <!-- </view> -->
                     </view>
-                </view>
+                </scroll-view>
                 <view class='order-wrap1' wx:else></view>
 
             </swiper-item>
@@ -151,7 +151,7 @@
             <swiper-item style="overflow:scroll">
                 <!-- 订单部分 -->
                 <!-- 已完成 -->
-                <view class='order-wrap' wx:if="{{finish_orders.length >1}}">
+                <scroll-view scroll-y="true" class='order-wrap' wx:if="{{finish_orders.length >1}}">
                     <!-- <view class='ship-null' wx:if="{{item == null}}">
                         <image class='ship-null-img' src='../../image/icon/ship_null.svg'></image>
                     </view> -->
@@ -200,7 +200,7 @@
                             </view> -->
                         </view>
                     </view>
-                </view>
+                </scroll-view>
                 <view class='order-wrap1' wx:else></view>
 
             </swiper-item>

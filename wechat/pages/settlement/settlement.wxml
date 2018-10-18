@@ -1,4 +1,4 @@
-<!-- 订单结算页面 -->
+ <!-- 订单结算页面 -->
 <view class='content'>
     <view class='title' style='{{h}}'>
         <image class='title-img' src='../../image/icon/backfff.svg' bindtap='goback'></image>

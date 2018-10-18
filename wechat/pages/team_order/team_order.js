@@ -32,7 +32,7 @@ Page({
     swichNav: function (e) {
         var cur = e.target.dataset.current;
         console.log(e,cur);
-        if (this.data.currentTaB == cur) { return false; }
+        if (this.data.currentTab == cur) { return false; }
         else {
             this.setData({
                 currentTab: cur
@@ -206,8 +206,6 @@ Page({
                 // console.log("我走啦",this.data.orderCont);
                 }
         })
-       
-       
     },
     order(e) {
         console.log(e)

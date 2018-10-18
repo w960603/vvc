@@ -18,7 +18,7 @@
 <view class="describe">
     <view class='detail-desc'>
         <view class="theme"> {{title}}</view>
-        <view class="uv">{{ uv }}</view>
+        <view class="uv">{{ desc }}</view>
         <view class="price">¥{{ price }}.00</view>
     </view>
     <!-- 圆形进度条 -->

@@ -20,7 +20,8 @@ Page({
         titles:"我的授权",
         hidden:true,
         reg_code:'',
-        img:''
+        img:'',
+        iphonex: '',
     },
     goback() {
         wx.navigateBack();
@@ -94,15 +95,9 @@ Page({
         this.setData({ fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx" });
 
         if (app.globalData.model == 'iphonex') {
-            this.setData({
-                margin: 'margin-bottom:188rpx',
-                bottom: 'bottom:188rpx'
-            })
+            this.setData({ iphonex: "padding-bottom:60rpx", icon: 'bottom:74rpx' });
         } else {
-            this.setData({
-                margin: 'margin-bottom:118rpx',
-                bottom: 'bottom:118rpx'
-            })
+            this.setData({ iphonex: '' })
         }
 
 

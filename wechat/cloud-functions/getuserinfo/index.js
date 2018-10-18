@@ -51,6 +51,7 @@ exports.main = async(event, context) => {
                 return (new Date().getTime() - token.data[0].time)
             }
         }
+        
         return {
             token: null
         }

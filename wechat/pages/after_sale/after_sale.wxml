@@ -25,7 +25,7 @@
             <!-- 处理中 -->
             <swiper-item style="overflow:scroll">
                 <!-- 处理中 -->
-                <view class='order-wrap' wx:if="{{processing.length > 1}}">
+                <scroll-view scroll-y="true" class='order-wrap' wx:if="{{processing.length > 1}}">
                     <view wx:for="{{ processing }}" wx:key="list">
                         <view style='background:#fff; margin-bottom:10rpx;' class="order">
 
@@ -60,14 +60,14 @@
                             </view>
                         </view>
                     </view>
-                </view>
+                </scroll-view>
                 <view wx:else class='order-wrap1'></view>
             </swiper-item>
 
             <!-- 处理完成 -->
             <swiper-item style="overflow:scroll">
                 <!-- 处理完成 -->
-                <view class='order-wrap' wx:if="{{server_finish.length > 1}}">
+                <scroll-view scroll-y="true" class='order-wrap' wx:if="{{server_finish.length > 1}}">
                     <!-- 显示详情 bindtap='show' -->
                     <view  wx:for="{{ server_finish }}" data-list='{{item}}'>
                         <view style='background:#fff; margin-bottom:10rpx;' class="order">
@@ -100,7 +100,7 @@
                             </view>
                         </view>
                     </view>
-                </view>
+                </scroll-view>
                 <view wx:else class='order-wrap1'></view>
 
             </swiper-item>

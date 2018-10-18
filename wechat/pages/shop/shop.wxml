@@ -8,7 +8,7 @@
 
     <view style='{{fill}}'></view>
     <view class='shop-null' wx:if="{{list == null}}">
-        <image class='shop-null-img' src='../../image/icon/shopnull.svg'></image>
+        <image class='shop-null-img' ></image>
     </view>
     <view class='wfr-content ' style='{{margin}}'>
         <!-- 循环购物车 -->

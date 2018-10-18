@@ -34,8 +34,10 @@
     width:100vw;
 
 }
+
+
 .main{
-    padding:32rpx 48rpx;
+    padding:32rpx 48rpx 80rpx 48rpx;
 }
 
 .title{

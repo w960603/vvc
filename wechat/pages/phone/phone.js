@@ -177,7 +177,6 @@ Page({
             }
         })
 
-
         this.t = setTimeout(
             () => {
                 wx.hideToast()

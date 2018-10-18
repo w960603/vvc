@@ -46,10 +46,10 @@
     </swiper>
     <view class='footer'>
         <view class='footer-cycle {{item.nick_name?"":"inuse"}}' wx:for="{{ka_obj.lie}}" wx:for-item="item">
-            <view class='footer-img ' bindtap='goto1' bindlongpress='copy' data-item='{{item}}' data-info="{{item.joincode}}">
+            <view class='footer-img ' bindtap='goto1' data-item='{{item}}' data-info="{{item.joincode}}">
                 <image  src='{{!!item.img_url?item.img_url:"../../image/icon/none.svg"}}'></image>
             </view>
-            <view class='footer-con' bindtap='goto1' bindlongpress='copy' data-item='{{item}}' data-info="{{item.joincode}}">
+            <view class='footer-con' bindtap='goto1' data-item='{{item}}' data-info="{{item.joincode}}">
                 <view class='footer-con-text1 '>{{item.nick_name?item.nick_name:"未注册"}}{{item.level?" ("+item.level+")":""}}</view>
                 <view class='footer-con-text2'>{{item.joincode}}</view>
             </view>

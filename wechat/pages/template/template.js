@@ -65,6 +65,7 @@ Component({
                     this.setData({
                         goods: res.data.data.goods
                     });
+
                     this.data.cate = res.data.data.cate;
                     this.setData({
                         num: this.data.goods.spec
@@ -225,14 +226,14 @@ Component({
         add_Shopping_Cart() {
             var data = {
                 goods_id: this.data.goods.id,
-                cate_one: this.data.selected,
+                cate_one: this.data.selected||null,
                 num: this.data.num,
             }
             if (this.data.selected1 > 1) {
                 data.cate_two = parseInt(this.data.selected1);
             } else {
-
-                if ("child" in this.data.cate[this.data.selected] > 0 && this.data.selected1 < 1) {
+                console.log(this.data.cate,this.data.selected1)
+                if (this.data.cate&&"child" in this.data.cate[this.data.selected] > 0 && this.data.selected1 < 1) {
                     wx.showToast({
                         title: "请选择分类",
                         icon: 'none',
@@ -263,12 +264,12 @@ Component({
                     duration: 1500
                 })
             }
-
+            
             console.log(this.data.num)
             var obj = {
                 goods_id: this.data.goods.id,
-                cate_one: this.data.selected,
-                cate_two: this.data.selected1,
+                cate_one: this.data.selected||null,
+                cate_two: this.data.selected1||null,
                 num: this.data.num,
             }
 

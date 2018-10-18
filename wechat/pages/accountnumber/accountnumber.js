@@ -15,7 +15,9 @@ Page({
         password1: "",
 
         first: true,
-        active: true
+        active: true,
+
+        status:true
     },
 
     /**
@@ -96,66 +98,70 @@ Page({
     // 账号登录
     tijiao: function() {
         console.log(this.data.userName);
-        wx.showToast({
-            title: '登陆中',
-            icon: 'loading',
-            duration: 5000
-        });
-        wx.request({
-            method: "POST",
-            url: 'https://api.vvc.tw/dlxin/index/login',
-            data: {
-                username: this.data.userName,
-                password: this.data.password,
-                y: app.globalData.latitude,
-                x: app.globalData.longitude
-                // y: 50,
-                // x: 30
-            },
-            success: (res) => {
+        if(this.data.status){
+            this.data.status = false
+            wx.showToast({
+                title: '登陆中',
+                icon: 'loading',
+                duration: 5000
+            });
+            wx.request({
+                method: "POST",
+                url: 'https://api.vvc.tw/dlxin/index/login',
+                data: {
+                    username: this.data.userName,
+                    password: this.data.password,
+                    y: app.globalData.latitude,
+                    x: app.globalData.longitude
+                    // y: 50,
+                    // x: 30
+                },
+                success: (res) => {
+                        this.data.status = true
+                    if (res.data.code == 1) {
+                        app.globalData.userinfo = res.data.data.userinfo;
+                        app.globalData.token = res.data.data.token;
 
-                if (res.data.code == 1) {
-                    app.globalData.userinfo = res.data.data.userinfo;
-                    app.globalData.token = res.data.data.token;
+                        app.globalData.goodslist = res.data.data.goods;
 
-                    app.globalData.goodslist = res.data.data.goods;
+                        wx.hideToast();
 
-                    wx.hideToast();
+                        wx.switchTab({
+                            url: '../home/home',
+                        })
+                        wx.cloud.callFunction({
+                            // 云函数名称
+                            name: 'getuserinfo',
+                            // 传给云函数的参数
+                            data: {
+                                cmd: "put",
+                                token: res.data.data.token
+                            },
+                        })
 
-                    wx.switchTab({
-                        url: '../home/home',
-                    })
-                    wx.cloud.callFunction({
-                        // 云函数名称
-                        name: 'getuserinfo',
-                        // 传给云函数的参数
-                        data: {
-                            cmd: "put",
-                            token: res.data.data.token
-                        },
-                    })
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 5000
+                        })
 
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 5000
-                    })
+                        wx.setStorage({
+                            key: 'username',
+                            data: this.data.userName,
+                        })
 
-                    wx.setStorage({
-                        key: 'username',
-                        data: this.data.userName,
-                    })
+                    } else {
+                        wx.showToast({
+                            title: res.data.msg,
+                            icon: 'none',
+                            duration: 5000
+                        })
+                    }
 
-                } else {
-                    wx.showToast({
-                        title: res.data.msg,
-                        icon: 'none',
-                        duration: 5000
-                    })
-                }
-
-            },
-        })
+                },
+            })
+        }
+        
     },
 
     // 获取验证码

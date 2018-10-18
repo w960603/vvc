@@ -18,7 +18,8 @@
                         </picker>
                     </view>
                 </view>
-                <input class="bianhao" maxlength='12'  value='{{qrcode}}' placeholder='' style='font-size:88rpx;width:100%;text-align:center;height:124rpx;line-height: 124rpx;' bindconfirm='submit' bindblur='blur'></input>
+                <input
+                 class="bianhao" maxlength='12'  value='{{qrcode}}' placeholder='' style='font-size:88rpx;width:100%;text-align:center;height:124rpx;line-height: 124rpx;' bindinput='submit' bindconfirm='submit' bindblur='blur'></input>
                 
                 <view class="store">
                     <view>商品：{{ship.goods.goods_title?ship.goods.goods_title:''}}</view>
@@ -28,7 +29,7 @@
                     <text class="get">收货</text>
                     <image src="{{user.img_url||''}}" style=' background:url("https://cdn.vvc.tw/a/images/none.svg") center center/cover no-repeat' model='aspectFill'></image>
 
-                    <input type="search" bindinput='input_number' class="search" adjust-position='true' bindtap='ship_search' disabled='{{arr1!=="零售"}}' placeholder='收货人/快递单号' placeholder-class='placeholder' value='{{user.nick_name}}'></input>
+                    <input type="search" bindinput='input_number' class="search" adjust-position='true' bindtap='ship_search' disabled='true' placeholder='收货人' placeholder-class='placeholder' value='{{user.nick_name}}'></input>
                     <image src="../../image/icon/search.svg" class="img_search" bindtap='search'></image>
                 </view>
             </view>

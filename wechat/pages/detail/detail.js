@@ -8,9 +8,9 @@ Page({
         id: 668,
         movies: [],
         content: [],
-        title: '载入中...',
+        title: '',
         price: '0',
-        uv: 'UV UPF50＋ 有效抵挡99％的紫外线',
+        desc: 'UV UPF50＋ 有效抵挡99％的紫外线',
         ratio:'',
         is_onorder:'',
         price_img: '',
@@ -119,14 +119,12 @@ Page({
         wx.downloadFile({
             url: url,
             success: (res) => {
-                console.log(res);
+                
                 //保存文字到剪贴板
                 wx.setClipboardData({
                     data: this.data.material.cloth,
                     success: (res) => {
-
                         console.log(res)
-                     
                     }
                 })
                 //图片保存到本地
@@ -154,14 +152,19 @@ Page({
                         this.setData({
                             img_show: false
                         })
+                    },
+                    complete:()=>{
+                        wx.hideLoading()
                     }
                 })
             }
         })
     },
 
-
     save_image(e) {
+        wx.showLoading({
+            title: '保存中',
+        })
         if (this.data.img_index) {
             this.save(this.data.movies[this.data.img_index], 1)
         } else {
@@ -172,14 +175,6 @@ Page({
 
     },
     onLoad: function(option) {
-
-       
-// setTimeout(()=>{
-//     this.setData({ status:true})
-// },1000)
-
-
-console.log(option.id)
         //适应ipx
         this.setData({
             h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx"
@@ -210,11 +205,11 @@ console.log(option.id)
                     break;
             }
 
-            console.log(app.globalData.goodslist[option.id].content)
             this.setData({
-                movies: JSON.parse(app.globalData.goodslist[option.id].main_img),
+                movies: !!app.globalData.goodslist[option.id].main_img && JSON.parse(app.globalData.goodslist[option.id].main_img) || app.globalData.goodslist[option.id].main_img,
                 price: price,
                 content: !!app.globalData.goodslist[option.id].content&& JSON.parse(app.globalData.goodslist[option.id].content),
+                desc: app.globalData.goodslist[option.id].description
             })
         }
 
@@ -308,12 +303,13 @@ console.log(option.id)
 
                     this.setData({
                         price: price,
-                        movies: JSON.parse(res.data.data.goods.main_img),
+                        movies: (!!res.data.data.goods.main_img && JSON.parse(res.data.data.goods.main_img)) || [res.data.data.goods.img],
                         content: !!res.data.data.goods.content&&JSON.parse(res.data.data.goods.content),
+                        desc: res.data.data.goods.description
                     });
-
-                    this.drawCircle(this.data.ratio*2/100);
+                    this.drawCircle(this.data.ratio * 2 / 100);
                     this.countInterval()
+                    
                     //获取参数
                     app.request({
                         url: "https://api.vvc.tw/dlxin/shop/getdetail/",
@@ -378,7 +374,7 @@ console.log(option.id)
             });
             console.log(this.data.ratio)
             this.drawCircle(this.data.ratio*2/100);
-            // this.drawCircle(2)
+         
            
         } else {
             wx.showToast({
@@ -444,18 +440,12 @@ console.log(option.id)
             }
         }, 100)
     },
-    // scan:function(){
-    //     if (this.data.ratio < 0.5) {
-    //         console.log(this.data.ratio)
-    //         this.setData({ status: false })
-    //     } else {
-    //         this.setData({ status: true })
-    //     }
-    // },
+  
     onReady: function () {
         // this.countInterval()
      
-
+        
+        // this.countInterval()
     },
 
 })

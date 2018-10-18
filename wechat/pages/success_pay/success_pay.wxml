@@ -1,5 +1,4 @@
 <view class='title' style='{{h}}'>
-    <image src='../../image/icon/back.svg'  bindtap='navigateBack'></image>
     <view>支付成功</view>
 </view>
 <view style='{{fill}}'></view>

@@ -91,6 +91,7 @@ Page({
                     wx.getUserInfo({
                         success: (res) => {
                             // wx.hideToast()
+                            console.log(res,'blank')
                             wx.request({
                                 url: 'https://api.vvc.tw/dlxin/index/wxcode',
                                 method: 'POST',

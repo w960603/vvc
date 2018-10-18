@@ -12,17 +12,18 @@ Page({
         id: null,
         shipid: null,
         activeOpacity: false,
-        
+
 
         //适应ipx
         h: '',
         fill: '',
         qrcode: '',
         express: '',
-
         isRetail: false,
-        scaned:false,
-        focus
+        scaned: false,
+        focus: true
+
+
 
     },
     bindPickerChange: function(e) {
@@ -33,12 +34,34 @@ Page({
             arr1: this.data.array[e.detail.value]
         })
     },
-    submit(e){
+    submit(e) {
         console.log(e)
+        // this.data.qrcode = e.detail.value
+        // this.setData({
+        //     qrcode: ''
+        // })
     },
-    blur(e){
-        console.log(e)
-        
+    blur(e) {
+        // console.log(this.data.focus)
+        // this.setData({
+        //     focus: false,
+        // })
+
+        // this.request_record({
+        //     img_url: this.data.user.img_url,
+        //     h_id: this.data.user.id,
+        //     nick_name: this.data.user.nick_name,
+        //     qr: this.data.qrcode
+        // }, (res) => {
+
+        //     this.setData({
+        //         ["ship.log"]: res.data.data.log,
+        //         ["ship.goods"]: res.data.data.goods,
+        //         express: '',
+        //         // focus: true
+        //     })
+        // })
+
     },
     attached: function() {
         app.request({
@@ -62,18 +85,11 @@ Page({
             url: "../my/my",
         })
     },
+
     ship_search(e) {
-        if (this.data.arr1 === '零售') {
-            this.setData({
-                isRetail: true,
-                isshow3: false
-            })
-        } else {
-            this.setData({
-                isRetail: false,
-                isshow3: true
-            });
-        }
+        this.setData({
+            isshow3: true
+        });
     },
     close(e) {
         this.data.shipid = e.currentTarget.dataset.shipid
@@ -135,7 +151,7 @@ Page({
                         icon: 'success',
                         duration: 2000
                     })
-                    
+
                     const innerAudioContext = wx.createInnerAudioContext()
                     innerAudioContext.autoplay = true
                     innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&ctp=1&vol=15&tok=24.6be9789b8520e2550ef52f03672dbd4c.2592000.1541409606.282335-14254401'
@@ -143,7 +159,7 @@ Page({
 
                     })
 
-                } else if(res.data.code==0){
+                } else if (res.data.code == 0) {
                     const innerAudioContext = wx.createInnerAudioContext()
                     innerAudioContext.autoplay = true
                     innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&vol=15&ctp=1&tok=24.6be9789b8520e2550ef52f03672dbd4c.2592000.1541409606.282335-14254401'
@@ -160,74 +176,94 @@ Page({
     },
     scan_click: function() {
         var that = this;
-        var show;
         
-        if (this.data.user || this.data.express) {
-            wx.scanCode({
-                success: (res) => {
-                    this.show = "--result:" + res.result + "--scanType:" + res.scanType + "--charSet:" + res.charSet + "--path:" + res.path;
+
+        wx.scanCode({
+            success: (su) => {
+
+                let datas = null;
+
+                if (!/http/.test(su.result)) {
+                     console.log('选了零售')
+
                     this.setData({
-                        qrcode: res.result.match(/(\d{8,13})/)[1]
-                    });
-                    let datas = null;
+                        express:su.result,
+                        isRetail:true,
+                        ['user.nick_name']:su.result,
+                        arr1:'零售'
+                    })
+
                     
-                    if (this.data.isRetail) {
-                        // console.log('选了零售')
+                } else {
+                    this.setData({
+                        qrcode: su.result.match(/(\d{8,13})/)[1]
+                    });
+                    if(this.data.isRetail){
                         datas = {
                             nick_name: this.data.express,
                             qr: this.data.qrcode,
                             type: 2
                         }
-                    } else {
-                        // console.log("没选零售");
+                        this.request_record(
+                            datas,
+                            (res) => {
+                                if (res.data.code === 1) {
+                                    this.setData({
+                                        ["ship.log"]: res.data.data.log,
+                                        ["ship.goods"]: res.data.data.goods,
+                                        ['user.nick_name']: su.result,
+                                        arr1: '零售',
+                                    });
+
+                                }
+
+                            }
+                        )
+                    }else{
+                         console.log("没选零售");
+                        this.show = "--result:" + su.result + "--scanType:" + su.scanType + "--charSet:" + su.charSet + "--path:" + su.path;
+
+                        console.log(this.show)
+                        
                         datas = {
                             img_url: this.data.user.img_url,
                             h_id: this.data.user.id,
                             nick_name: this.data.user.nick_name,
                             qr: this.data.qrcode
-                        }
+                        };
+                        this.request_record(
+                            datas,
+                            (res) => {
+                                if (res.data.code == 1) {
+                                    this.setData({
+                                        ["ship.log"]: res.data.data.log,
+                                        ["ship.goods"]: res.data.data.goods,
+                                        isRetail:false
+                                    })
+
+                                }
+
+                            }
+                        )
                     }
-
-                    this.request_record(
-                        datas,
-                        (res)=> {
-                            
-                            this.setData({
-                                ["ship.log"]: res.data.data.log,
-                                ["ship.goods"]: res.data.data.goods,
-                                express:''
-                            })
-                            
-                                
-                        }
-
-                    )
-
-                    that.setData({
-                        show: this.show
-                    })
-                    wx.showToast({
-                        title: '扫描成功',
-                        icon: 'success',
-                        duration: 1000
-                    })
-
-                },
-                fail: (res) => {
-                    wx.showToast({
-                        title: '扫描失败',
-                        icon: 'none',
-                        duration: 2000
-                    })
+ 
                 }
-            })
-        } else {
-            wx.showToast({
-                title: '请先选择收货人',
-                icon: 'none',
-                duration: 4000
-            })
-        }
+
+                wx.showToast({
+                    title: '扫描成功',
+                    icon: 'success',
+                    duration: 1000
+                })
+
+            },
+            fail: (res) => {
+                wx.showToast({
+                    title: '扫描失败',
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        })
 
     }
 })

@@ -1,11 +1,12 @@
 {
     "pages": [
+        "pages/login/login",
         "pages/blank/blank",
         "pages/security/security",
-        "pages/login/login",
         "pages/extension/extension",
         "pages/home/home",
         "pages/agency_tutorials/agency_tutorials",
+        "pages/auth_sub/auth_sub",
         "pages/management-child1/management-child1",
         "pages/management/management",
         "pages/authorization/authorization",

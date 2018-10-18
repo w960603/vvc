@@ -11,13 +11,13 @@ Page({
         transformX: 1,
         userInfo: {},
         btn_show: true,
-        
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
+      
+        canIUse: wx.canIUse('cover-view')
 
     },
 
     set_log(e) {
-        console.log(e);
+        console.log(e)
         if (e.detail.authSetting['scope.userLocation'] == true) {
             this.get_location()
         } else {
@@ -30,7 +30,21 @@ Page({
             })
         }
     },
+    auth(){
 
+        // console.log("这是需要授权的按钮")
+        if (!wx.canIUse("openSetting")){
+            this.setData({
+                btn_show:false
+            })
+        }
+        
+        this.setData({
+            canIUse: wx.canIUse("openSetting")
+        })
+        
+
+    },
     get_location() {
         wx.getSetting({
             success: (res) => {
@@ -77,27 +91,40 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-       
+       console.log('login页面')
 
-        wx.cloud.callFunction({
-            // 云函数名称
-            name: 'getuserinfo',
-            // 传给云函数的参数
-            data: {
-               cmd:"get"
-            },
-            success: function (res) {
-                console.log(res)
-                if(res.result.token){
-                    console.log(res.result.token)
-                    app.globalData.token = res.result.token;
-                    wx.switchTab({
-                        url: '../my/my',
-                    })
-                }
-            },
-            fail: console.error
-        })
+        if (!wx.canIUse('cover-view')) {
+
+            console.log('no')
+            wx.redirectTo({
+                url: '../accountnumber/accountnumber?id=1',
+            })
+
+        }else{
+
+            console.log('yes')
+            wx.cloud.callFunction({
+                // 云函数名称
+                name: 'getuserinfo',
+                // 传给云函数的参数
+                data: {
+                    cmd: "get"
+                },
+                success: function (res) {
+                    console.log(res)
+                    if (res.result.token) {
+                        console.log(res.result.token)
+                        app.globalData.token = res.result.token;
+                        wx.switchTab({
+                            url: '../my/my',
+                        })
+                    }
+                },
+                fail: console.error
+            })
+        }
+
+        
 
         wx.getLocation({
             type: 'wgs84',

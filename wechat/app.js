@@ -1,52 +1,68 @@
 //app.js
 
 import md5 from 'utils/md5.js';
-wx.cloud.init();
 var requestTask;
+if(wx.canIUse('cover-view')){
+wx.cloud.init();
+}
+
 App({
+  
     onLaunch: function() {
 
         //获取地理位置
 
         // 展示本地存储能力
-        const updateManager = wx.getUpdateManager()
+        if (wx.canIUse('getUpdateManager')) {
 
-        updateManager.onCheckForUpdate((res) => {
-            //   console.log(res.hasUpdate)
-        })
+            const updateManager = wx.getUpdateManager()
 
-        updateManager.onUpdateReady(() => {
-            wx.showModal({
-                title: '更新提示',
-                content: '新版本已经准备好，是否重启应用？',
+            updateManager.onCheckForUpdate((res) => {
+                //   console.log(res.hasUpdate)
+            })
+
+            updateManager.onUpdateReady(() => {
+                wx.showModal({
+                    title: '更新提示',
+                    content: '新版本已经准备好，是否重启应用？',
+                    success: (res) => {
+                        if (res.confirm) {
+                            updateManager.applyUpdate()
+                        }
+                    },
+
+                })
+            }), updateManager.onUpdateFailed(() => {
+                wx.showModal({
+                    title: '更新提示',
+                    content: '新版本下载失败',
+                    showCancel: false
+                })
+            });
+
+            
+        }
+        if(wx.canIUse('getSystemInfo')){
+            wx.getSystemInfo({
                 success: (res) => {
-                    if (res.confirm) {
-                        updateManager.applyUpdate()
+
+                    let model = res.model.toLowerCase().replace(/\s/g, '')
+                    if (model.indexOf('iphonex') > -1) {
+                        this.globalData.model = 'iphonex'
                     }
-                },
 
-            })
-        }), updateManager.onUpdateFailed(() => {
-            wx.showModal({
-                title: '更新提示',
-                content: '新版本下载失败',
-                showCancel: false
-            })
-        });
+                    this.globalData.statusBarHeight = res.statusBarHeight;
 
-        wx.getSystemInfo({
-            success: (res) => {
-                
-                let model = res.model.toLowerCase().replace(/\s/g, '')
-                if (model.indexOf('iphonex') > -1) {
-                    this.globalData.model = 'iphonex'
                 }
+            })
+        }
+        
 
-                this.globalData.statusBarHeight = res.statusBarHeight;
-                
-            }
-        })
+
+
+
     },
+
 
 
     globalData: {
@@ -68,7 +84,7 @@ App({
         margin: null,
         padding: null,
         bottom: null,
-        iphonex:''
+        iphonex: ''
     },
 
     has_token() {
@@ -112,7 +128,7 @@ App({
             },
             success: (res) => {
                 if (res.data.code == 9527) {
-                    
+
                     wx.reLaunch({
                         url: '/pages/login/login',
                     });
@@ -130,14 +146,14 @@ App({
                             cmd: "del"
                         },
                     })
-                    
+
                     return
                 }
 
                 option.success(res)
-            } ,
-            fail:(err)=>{
-                
+            },
+            fail: (err) => {
+
             },
         })
 

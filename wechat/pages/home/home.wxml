@@ -18,6 +18,10 @@
     </view>
     <view class="list" >
         <view class="img_list" bindtap='imgList' data-id="{{item.id}}" wx:key='index' wx:for="{{oytarr}}" wx:for-index="index" wx:for-item="item">
+        <view class='huohao'>
+        {{item.id}}
+        <view class='child'></view>
+        </view>
             <image src="{{item.img}}?x-oss-process=image/resize,w_332" class="img" lazy-load='true'  data-img='{{item.img}}'></image>
             <view class="commentary">
                 <view class="theme">{{item.title}}</view>

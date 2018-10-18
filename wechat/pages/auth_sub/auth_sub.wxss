@@ -122,14 +122,25 @@ padding-left:20rpx;
     width:100%;
     background:white;
     z-index:999;
-    padding-bottom: 68rpx;
+    /* padding-bottom: 68rpx; */
 }
-.auth_sub image{
+.auth_sub1{
+    display:flex;
+    justify-content:flex-end;
+    align-items: center;
+    border-top:1px solid rgba(239,239,239,1);
+    position:fixed;
+    bottom:0rpx;
+    width:100%;
+    background:white;
+    z-index:999;
+}
+.img_auth{
     width:36rpx;
     height:36rpx;
     margin-left:8rpx;
 }
-.auth_sub text{
+.text_auth{
     font-size:32rpx;
     font-family:PingFang-SC-Medium;
     font-weight:500;

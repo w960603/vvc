@@ -1,5 +1,4 @@
 const app = getApp();
-const innerAudioContext = wx.createInnerAudioContext()
 Page({
 
     /**
@@ -238,7 +237,8 @@ Page({
                             newly: null
                         })
                     }
-                    
+
+                    const innerAudioContext = wx.createInnerAudioContext();
                     innerAudioContext.autoplay = true
                     innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&ctp=1&vol=15&tok=24.6be9789b8520e2550ef52f03672dbd4c.2592000.1541409606.282335-14254401';
                     

@@ -35,7 +35,7 @@ button{
     font-size: 36rpx;
     color:#4A4A4A;
     line-height: 88rpx;
-    transform:translateX(-24rpx);
+    
     vertical-align: top;
 }
 
