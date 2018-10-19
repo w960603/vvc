@@ -62,6 +62,7 @@ Page({
                             method: "POST",
                             data: {
                                 type: 3,
+                                phoneInfo: JSON.stringify(app.globalData.systemInfo),
                                 t: this.obj.t,
                                 image: "https://oss1.vvc.tw/" + bianliang,
                             },

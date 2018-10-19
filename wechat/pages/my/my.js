@@ -177,13 +177,18 @@ Page({
             wx.navigateTo({
                 url: '../team_order/team_order'
             })
-         
         }
         if (index == 1) {
             console.log(123)
             wx.navigateTo({
                 url: '../ship_detail/ship_detail'
             })
+
+            // wx.showToast({
+            //     title: '暂未开放',
+            //     icon:'none',
+            //     duration:3000
+            // })
         }
         if (index == 2) {
             wx.navigateTo({

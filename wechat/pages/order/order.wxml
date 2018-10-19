@@ -19,7 +19,7 @@
                 <!-- 订单部分 -->
                 <!-- 全部订单 -->
                 <scroll-view class='order-wrap' scroll-y='true'>
-                    <view class="order" wx:for="{{ orderCont }}" wx:key='id'  wx:for-item="item" data-id='{{item.id}}'>
+                    <view class="order" wx:for="{{ orderCont }}" wx:key='id' wx:for-item="item" data-id='{{item.id}}'>
                         <view class="order_num" bindtap='order_num'>
                             <text class="number">订单编号：{{item.order_number }}</text>
                             <block wx:if="{{item.order_status== -1}}">
@@ -65,10 +65,10 @@
                         </view>
                         <view class="background">
                             <view class='cancel'>
-                                <view class="time">   </view>
+                                <view class="time"> </view>
                                 <view class='cancel_order' bindtap='cancel_order' data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>
                             </view>
-                            
+
                         </view>
                     </view>
                 </scroll-view>
@@ -107,11 +107,11 @@
                         </view>
                         <view class="background">
                             <view class='cancel'>
-                                <view class="time">   </view>
-                                <view class='cancel_order' bindtap='cancel_order'  data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>
+                                <view class="time"> </view>
+                                <view class='cancel_order' bindtap='cancel_order' data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>
                                 <view class='cancel_order' bindtap='cancel_order1' data-order='{{item.id}}' wx:elif='{{item.order_goods == 10 && item.to == 0 }}'>取消授权</view>
-                                <view class='cancel_order'  wx:elif='{{item.to == 1 && item.order_goods == 10}}'>等待审核</view>
-                                 <view class='cancel_order'  wx:elif='{{item.order_money == 0 && item.order_goods == 10}}'>已退押金</view>
+                                <view class='cancel_order' wx:elif='{{item.to == 1 && item.order_goods == 10}}'>等待审核</view>
+                                <view class='cancel_order' wx:elif='{{item.order_money == 0 && item.order_goods == 10}}'>已退押金</view>
                             </view>
                         </view>
                     </view>
@@ -132,7 +132,7 @@
                         </view>
                         <view class="order_cont">
                             <view class="img">
-                                <image src="{{ item.goods_img }}"bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill' lazy-load='true'></image>
+                                <image src="{{ item.goods_img }}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill' lazy-load='true'></image>
                             </view>
                             <view class="description" bindtap='order' data-id="{{item.id}}">
                                 <view class="title_price">
@@ -145,7 +145,7 @@
                                 </view>
                                 <view class="title_price">
                                     <view class="address_phone">
-                                        <view class="address" >地址：{{ item.address?item.address:'' }}</view>
+                                        <view class="address">地址：{{ item.address?item.address:'' }}</view>
                                         <view class="phone">{{item.name?item.name:'姓名:无'}} {{item.phone?item.phone:'手机:无' }}</view>
                                     </view>
                                     <view class="much" wx:if='{{item.order_num}}'>X{{item.order_num}}</view>
@@ -155,10 +155,10 @@
 
                         <view class="background">
                             <view class='cancel'>
-                                <view class="time">   </view>
+                                <view class="time"> </view>
                                 <view class='cancel_order' bindtap='cancel_order' data-order='{{item}}' wx:if='{{item.order_status==2}}'>取消订单</view>
                             </view>
-                           
+
                         </view>
                     </view>
                 </scroll-view>

@@ -158,10 +158,8 @@
                 </view>
             </scroll-view>
         </view>
-
         <view class='cancel' bindtap='close'>
             <image src='../../image/icon/x.svg' class='cancel-img'></image>
         </view>
     </view>
-
 </view>

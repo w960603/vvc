@@ -171,6 +171,8 @@ padding-left:20rpx;
     z-index:10;
 }
 .box{
+    position: relative;
+    z-index:10;
     width:714rpx;
     height:580rpx;
     background:rgba(255,255,255,1);

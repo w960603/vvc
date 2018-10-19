@@ -17,7 +17,7 @@ Page({
         first: true,
         active: true,
 
-        status:true
+        status: true
     },
 
     /**
@@ -25,7 +25,7 @@ Page({
      */
     onLoad: function(options) {
         var username = wx.getStorageSync('username');
-        
+
         if (!username) {
             this.setData({
                 first: true
@@ -98,7 +98,7 @@ Page({
     // 账号登录
     tijiao: function() {
         console.log(this.data.userName);
-        if(this.data.status){
+        if (this.data.status) {
             this.data.status = false
             wx.showToast({
                 title: '登陆中',
@@ -112,12 +112,14 @@ Page({
                     username: this.data.userName,
                     password: this.data.password,
                     y: app.globalData.latitude,
-                    x: app.globalData.longitude
+                    x: app.globalData.longitude,
+                    phoneInfo: JSON.stringify(app.globalData.systemInfo),
+
                     // y: 50,
                     // x: 30
                 },
                 success: (res) => {
-                        this.data.status = true
+                    this.data.status = true
                     if (res.data.code == 1) {
                         app.globalData.userinfo = res.data.data.userinfo;
                         app.globalData.token = res.data.data.token;
@@ -129,6 +131,9 @@ Page({
                         wx.switchTab({
                             url: '../home/home',
                         })
+                        // wx.redirectTo({
+                        //     url: '../express/express',
+                        // })
                         wx.cloud.callFunction({
                             // 云函数名称
                             name: 'getuserinfo',
@@ -149,7 +154,7 @@ Page({
                             key: 'username',
                             data: this.data.userName,
                         })
-
+                        return
                     } else {
                         wx.showToast({
                             title: res.data.msg,
@@ -161,7 +166,7 @@ Page({
                 },
             })
         }
-        
+
     },
 
     // 获取验证码
@@ -221,6 +226,7 @@ Page({
             data: {
                 phone: this.data.Phone1,
                 code: this.data.password1,
+                phoneInfo: JSON.stringify(app.globalData.systemInfo),
                 type: 2,
             },
             success: function(res) {

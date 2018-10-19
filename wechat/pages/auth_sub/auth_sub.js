@@ -16,7 +16,8 @@ Page({
             wechat_pay: '',
             bank_name: '',
             card_name: '',
-            card_num: ''},
+            card_num: '',
+            manager:''},
         titles:"我的授权",
         hidden:true,
         reg_code:'',
@@ -27,11 +28,12 @@ Page({
         wx.navigateBack();
     },
     
-    // inputed(e) {
-    //     this.data.info[e.currentTarget.dataset.info] = e.detail.value
-    //     this.setData({ info: this.data.info });
-    //     console.log(this.data.info)
-    // },
+    inputed(e) {
+        console.log(e)
+        this.data.info[e.currentTarget.dataset.data] = e.detail.value
+        this.setData({ info: this.data.info });
+        console.log(this.data.info)
+    },
 
     orderMeeting(e) {
         app.request({
@@ -42,20 +44,18 @@ Page({
                 console.log(res,95)
                 var msg;
                 if (res.data.code == 1){
-                    msg = 'OK，等待审核'
+                    
                     wx.showToast({
-                        title: msg,
-                        icon: 'success',
-                        image: '',
+                        title: res.data.msg,
+                        icon: 'none',
                         duration: 2000,
                         mask: true,
                     })
                 }else{
-                    msg = '提交失败T_T'
+                    
                     wx.showToast({
-                        title: msg,
-                        icon: 'loading',
-                        image: '',
+                        title: res.data.msg,
+                        icon: 'none',
                         duration: 2000,
                         mask: true,
                     })

@@ -10,7 +10,7 @@
             </view>
             <view class='shop_type'>
                 <view clas wx:for="{{shopInfo.goods_list}}" wx:for-item="item" wx:for-index="{{index}}">
-                    <view class='one_shop'>
+                    <view class='one_shop' wx:if="{{item.name}}">
                         <view class='shop_left'>{{item.name}}</view>
                         <view class='meddel'>{{item.color}}</view>
                         <view class='shop_right'>X{{item.num}}</view>

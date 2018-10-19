@@ -19,55 +19,55 @@
                 </view>
             </view>
             <view class="theme">姓名:
-                <input type="text" placeholder='姓名' adjust-position='true' class="input" value="{{info.truename}}" v-model="{{truename}}" bindblur='inputed' />
+                <input type="text" placeholder='姓名' adjust-position='true' class="input" value="{{info.truename}}" data-data='truename' bindinput='inputed' />
             </view>
             <view class="theme">手机:
-                <input type="number" placeholder='手机' adjust-position='true' class="input" value="{{info.phone}}" bindblur='inputed' />
+                <input type="number" placeholder='手机' adjust-position='true' class="input" value="{{info.phone}}" data-data='phone' bindinput='inputed' />
             </view>
             <view class="theme">微信:
-                <input type="text" placeholder='微信' adjust-position='true' class="input" value="{{info.wechat}}" bindblur='wechatInput' />
+                <input type="text" placeholder='微信' adjust-position='true' class="input" value="{{info.wechat}}" data-data='wechat' bindinput='wechatInput' />
             </view>
             <view class="theme">身份证:
-                <input type="text" placeholder='身份证' adjust-position='true' class="input" value="{{info.passport}}" bindblur='inputed' />
+                <input type="text" placeholder='身份证' adjust-position='true' class="input" value="{{info.passport}}" data-data='passport' bindinput='inputed' />
             </view>
         </view>
         <!-- 第二部分 -->
         <view class="part-2 part">
             <view class="acc_infor">收货地址有问题，我们优先找到负责人</view>
             <view class="theme">管理姓名:
-                <input type="text" placeholder='管理姓名'  adjust-position='true' class="input" value="{{info.manager}}" bindblur='inputed' />
+                <input type="text" placeholder='管理姓名'  adjust-position='true' class="input" value="{{info.manager}}" data-data='manager' bindinput='inputed' />
             </view>
             <view class="theme">管理电话:
-                <input type="number" placeholder='管理电话' adjust-position='true' class="input" value="{{info.manager_tel}}" bindblur='inputed' />
+                <input type="number" placeholder='管理电话' adjust-position='true' class="input" value="{{info.manager_tel}}" data-data='manager_tel' bindinput='inputed' />
             </view>
         </view>
         <!-- 第三部分 -->
         <view class="part-3 part">
             <view class="acc_infor">有淘宝店铺的董事，请输入淘宝/阿里店铺名称，我们将针对控价进行部分保护</view>
             <view class="theme">淘宝:
-                <input type="text" placeholder='淘宝店铺'  adjust-position='true' class="input" value="{{info.dianpu}}" bindblur='inputed' />
+                <input type="text" placeholder='淘宝店铺'  adjust-position='true' class="input" value="{{info.dianpu}}" data-data='dianpu' bindinput='inputed' />
             </view>
             <view class="theme">阿里巴巴:
-                <input type="text" placeholder='阿里巴巴店铺' adjust-position='true' class="input" value="{{info.alibaba}}" bindblur='inputed' />
+                <input type="text" placeholder='阿里巴巴店铺' adjust-position='true' class="input" value="{{info.alibaba}}" data-data='alibaba' bindinput='inputed' />
             </view>
         </view>
         <!-- 第四部分 -->
         <view class="part-4 part">
             <view class="acc_infor">返利佣金接受模式/一个董事只能修改一次，请认真填写</view>
             <view class="theme">支付宝:
-                <input type="text" placeholder='支付宝' class="input" adjust-position='true' value="{{info.alipay}}" bindblur='inputed' />
+                <input type="text" placeholder='支付宝' class="input" adjust-position='true' value="{{info.alipay}}" data-data='alipay' bindinput='inputed' />
             </view>
             <view class="theme">微信支付:
-                <input type="text" placeholder='微信支付' adjust-position='true' class="input" value="{{info.wechat_pay}}" bindblur='inputed' />
+                <input type="text" placeholder='微信支付' adjust-position='true' class="input" value="{{info.wechat_pay}}" data-data='wechat_pay' bindinput='inputed' />
             </view>
             <view class="theme">开户行:
-                <input type="text" placeholder='开户行' adjust-position='true' class="input" value="{{info.bank_name}}" bindblur='inputed' />
+                <input type="text" placeholder='开户行' adjust-position='true' class="input" value="{{info.bank_name}}" data-data='bank_name' bindinput='inputed' />
             </view>
             <view class="theme">姓名:
-                <input type="text" placeholder='姓名' adjust-position='true' class="input" value="{{info.card_name}}" bindblur='inputed' />
+                <input type="text" placeholder='姓名' adjust-position='true' class="input" value="{{info.card_name}}" data-data='card_name' bindinput='inputed' />
             </view>
             <view class="theme">卡号:
-                <input type="number" placeholder='卡号' adjust-position='true' class="input" value="{{info.card_num}}" bindblur='inputed' />
+                <input type="number" placeholder='卡号' adjust-position='true' class="input" value="{{info.card_num}}" data-data='card_num' bindinput='inputed' />
             </view>
         </view>
          <view class="acc_infor" >您的授权已经提交，请联系客服进行审核后方可，查看或者下载自己的授权！</view>
@@ -85,9 +85,10 @@
     
     <!-- 弹窗 -->
     <view class="mask" hidden="{{hidden}}">
+    <view class='mask' bindtap="close"></view>
         <view class="box">
             <image class="reg_code" src="https://api.vvc.tw/dlxin/user/authImg?reg_code={{info.reg_code}}"></image>
-            <view class="album" bindtap="close">保存</view>
+            <view class="album">保存</view>
         </view>
     </view>
 </view>

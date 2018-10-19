@@ -290,6 +290,8 @@ Page({
                             title: '申请成功',
                             duration: 1200
                         })
+
+
                         // console.log(this.data.evaContent, this.data.shop_type, this.data.idx);
                     }
                 }
@@ -338,7 +340,7 @@ Page({
             url: 'https://api.vvc.tw/dlxin/order/returnGoodsList',
             method: 'POST',
             success: (res) => {
-                console.log(res)
+                // console.log(res)
                 if (res.data.data.list) {
 
                     var arr =[]
@@ -346,6 +348,7 @@ Page({
                     for (var i = 0; i < res.data.data.list.length; i++) {
                         if (res.data.data.list[i].status < 5 && res.data.data.list[i].status > 0){
                             arr.push(res.data.data.list[i]);
+                            // console.log(res.data.data.list[i])
                         } else if (res.data.data.list[i].status > 4 || res.data.data.list[i].status == -2){
                             arr1.push(res.data.data.list[i]);                            
                         }
@@ -353,12 +356,15 @@ Page({
                     this.setData({
                         processing: arr
                     })
+                    console.log(this.data.processing);
+
                     this.setData({
                         server_finish:arr1
                     })
-                    this.setData({
-                        goods_list: res.data.data.list.goods_list
-                    })
+                    // console.log(res.data.data.list.goods_list)
+                    // this.setData({
+                    //     goods_list: res.data.data.list.goods_list
+                    // })
                 }
             }
         });
@@ -366,7 +372,7 @@ Page({
             url: "https://api.vvc.tw/dlxin/order/returnGoodsView",
             method: "POST",
             success: (res) => {
-                console.log("asdasd", res.data.data)
+                // console.log("asdasd", res.data.data)
                 // 售后未完成的数据
                 var arr = [];
                 var arrs = [];
@@ -388,7 +394,7 @@ Page({
                 this.setData({ "allorder_shop": arrs });
 
 
-                console.log(this.data.allorder_shop);
+                // console.log(this.data.allorder_shop);
             }
         })
     },

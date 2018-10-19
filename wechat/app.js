@@ -56,7 +56,12 @@ App({
                 }
             })
         }
-        
+        wx.getSystemInfo({
+            complete:(res)=>{
+                console.log(res)
+                this.globalData.systemInfo = res
+            }
+        })
 
 
 
@@ -84,7 +89,8 @@ App({
         margin: null,
         padding: null,
         bottom: null,
-        iphonex: ''
+        iphonex: '',
+        systemInfo:null
     },
 
     has_token() {
