@@ -219,6 +219,10 @@ page {
 }
 
 .address_phone {
+    width:406rpx;
+    overflow: hidden;
+    /* text-overflow: ellipsis;
+    white-space: nowrap; */
 }
 
 .address {
@@ -226,6 +230,9 @@ page {
     font-family: PingFangSC-Regular;
     color: rgba(155, 155, 155, 1);
     line-height: 40prx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .phone {

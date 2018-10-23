@@ -30,7 +30,14 @@
             </view>
         </view>
         <view class='wfr-number' style='{{pdb}}'>
-            <view class='wfr-num'>数量</view>
+            <view class='wfr-num'>
+            <view class='num'>
+                数量
+            </view>
+            <view class='box' wx:if='{{goods.box_limit}}'>
+                箱起
+            </view>
+            </view>
             <view class='wfr-click-num'>
                 <view class='wfr-text4'  bindtap='reduce'>-</view>
                 <input value="{{num}}" bindinput='wfrnumipt' adjust-position='true'></input>

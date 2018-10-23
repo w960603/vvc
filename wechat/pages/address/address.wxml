@@ -15,7 +15,7 @@
                         <view class='tag' wx:if='{{item.type==0}}'>仓库</view>
                         <view class='tag' wx:elif='{{item.type==1}}'>家</view>
                         <view class='tag' wx:elif='{{item.type==2}}'>公司</view>
-                        <view class='tag {{item.auth?"green":"red"}}'>{{item.auth?"已认证":"未认证"}}</view>
+                        <view class='tag {{item.auth==1?"green":"red"}}'>{{item.auth==0?'未认证':(item.auth==1?'已认证':'未通过')}}</view>
                         <view class='path'>{{item.full_address}}</view>
                     </view>
 

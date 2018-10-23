@@ -1,0 +1,48 @@
+<header title="用户充值" color='rgba(0,0,0,0)' white='white'>
+</header>
+<view class='page'>
+    <view class='content' style="background:#F96C5D">
+        <image class="posi-qr-bg" src='/image/top_up.svg'></image>
+    </view>
+    <view class="earth_img">
+    <image src="{{infos.img_url}}" style='background:url("https://cdn.vvc.tw/a/images/none.svg") center center/cover no-repeat; border:1px solid #eee'></image>
+    </view>
+    <view class="name">{{infos.nick_name}}</view>
+
+    <view class="father">
+        <view class="much_money">
+            <view class="payment">充值金额</view>
+            <input type="text" bindinput='money' placeholder='请输入充值金额' placeholder-class='placeholder'></input>
+        </view>
+        <view class="brother"></view>
+    </view>
+    <view style="padding:60rpx 0 90rpx 0;">
+        <button class="btn" bindtap='selectimg'>立刻充值</button>
+    </view>
+    <view class="part-2">
+        <view class="record">账单记录</view>
+        <view class="recent_income">
+            <view class="grey">
+                <view class="recent">近期充值</view>
+                <view class="income" >¥{{charged}}.00</view>
+            </view>
+            <!-- <view class="grey">
+                <view class="recent">近期支出</view>
+                <view class="income">{{earth.out}}</view>
+            </view> -->
+        </view>
+    </view>
+    <view class="list" wx:for="{{billList}}" wx:for-item="item" wx:key="key">
+        <image src="{{infos.img_url}}" class="avatar" style='background:url("https://cdn.vvc.tw/a/images/none.svg") center center/cover no-repeat; border:1px solid #eee'></image>
+        <view class="billList">
+            <view class="bill">
+                <view class="user">{{item.attribute_columns[2][1]}}</view>
+                <view class="account">Transfer accounts</view>
+            </view>
+            <view class="bill">
+                <view class="user">+ {{item.attribute_columns[3][1]}}.00</view>
+                <view class="account" style="text-align:right">{{item.primary_key[0][1]}}</view>
+            </view>
+        </view>
+    </view>
+</view>

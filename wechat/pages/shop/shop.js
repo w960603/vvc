@@ -129,23 +129,26 @@ Page({
     computePrice(index) {
         var totalPrice = 0; //总价
         var num = 0; //件数
-        for (var i in this.data.list.cart) {
-            if (this.data.list.cart[i].isshow) {
-                for (let j = 0; j < this.data.list.cart[i].child.length; j++) {
-                    totalPrice += this.data.list.cart[i].child[j].price * this.data.list.cart[i].child[j].num
-                    this.setData({
-                        allnum: parseInt(this.data.list.cart[i].child[j].num)
-                    })
-                    num = parseInt(num) + Math.ceil(parseInt(this.data.list.cart[i].child[j].num) / parseInt(this.data.list.goods[i].spec));
+        if(this.data.list){
+            for (var i in this.data.list.cart) {
+                if (this.data.list.cart[i].isshow) {
+                    for (let j = 0; j < this.data.list.cart[i].child.length; j++) {
+                        totalPrice += this.data.list.cart[i].child[j].price * this.data.list.cart[i].child[j].num
+                        this.setData({
+                            allnum: parseInt(this.data.list.cart[i].child[j].num)
+                        })
+                        num = parseInt(num) + Math.ceil(parseInt(this.data.list.cart[i].child[j].num) / parseInt(this.data.list.goods[i].spec));
+                    }
                 }
             }
+            this.setData({
+                totalPrice: totalPrice
+            });
+            this.setData({
+                num: num
+            })
         }
-        this.setData({
-            totalPrice: totalPrice
-        });
-        this.setData({
-            num: num
-        })
+        
     },
 
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375px" height="320px" viewBox="0 0 375 320" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#F65C51" offset="0%"></stop>
+            <stop stop-color="#FB7867" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="375" height="320"></rect>
+        <path d="M375,96 C289.45842,107.141197 226.95842,130.756229 187.5,166.845096 C148.04158,202.933962 85.5415796,224.208526 0,230.668786 L0,324.162884 L375,324.162884" id="path-4"></path>
+        <filter x="-1.9%" y="-3.9%" width="103.7%" height="106.1%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.851323342   0 0 0 0 0.259700076   0 0 0 0 0.221530833  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M375,96 C289.45842,107.141197 226.95842,130.756229 187.5,166.845096 C148.04158,202.933962 85.5415796,224.208526 0,230.668786 L0,324.162884 L375,324.162884" id="path-6"></path>
+        <filter x="-1.9%" y="-3.9%" width="103.7%" height="106.1%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="0" dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.851323342   0 0 0 0 0.259700076   0 0 0 0 0.221530833  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="充值界面">
+            <g id="Rectangle-2">
+                <g id="Group-7">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Mask" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                    <g id="Path-5" opacity="0.096484375" fill-rule="nonzero" mask="url(#mask-3)">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                        <use fill="#FFFFFF" xlink:href="#path-4"></use>
+                    </g>
+                    <g id="Path-5" opacity="0.096484375" fill-rule="nonzero" mask="url(#mask-3)" transform="translate(187.500000, 210.081442) scale(-1, 1) translate(-187.500000, -210.081442) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                        <use fill="#FFFFFF" xlink:href="#path-6"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

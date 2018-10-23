@@ -159,23 +159,36 @@ Page({
         console.log(this.data.infos,e.detail.value);
         this.setData({ ["shop_type"]: this.data.infos });
     },
+
+    
     // 获取商品数量
     order_num(e){
         console.log(e.detail.value>this.data.shop_type[e.currentTarget.dataset.index].max);//数组下标
+        console.log(e.detail.value);
+        console.log(this.data.shop_type[e.currentTarget.dataset.index].max);
         if (Number(e.detail.value) > this.data.shop_type[e.currentTarget.dataset.index].max){
             wx.showToast({
                 title: '数量过多',
                 duration: 1200
             })
             this.data.shop_type[e.currentTarget.dataset.index].num = this.data.shop_type[e.currentTarget.dataset.index].max;
-        } else if (e.detail.value > 0){
-            this.data.shop_type[e.currentTarget.dataset.index].num = e.detail.value
-        
-        }else{
-            this.data.shop_type[e.currentTarget.dataset.index].num = 1
+
+        } else{
+            // console.log
+
+            if (e.detail.value > 0){
+                this.data.shop_type[e.currentTarget.dataset.index].num = e.detail.value
+            }else{
+                this.data.shop_type[e.currentTarget.dataset.index].num = 1
+                return;
+            }
         }
         this.setData({ shop_type: this.data.shop_type });
     },
+
+
+
+
     // 删除商品
     deletelist(e){
         // console.log(e.currentTarget.dataset.index);

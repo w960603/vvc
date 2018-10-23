@@ -53,8 +53,8 @@
                 <view class='footer-con-text1 '>{{item.nick_name?item.nick_name:"未注册"}}{{item.level?" ("+item.level+")":""}}</view>
                 <view class='footer-con-text2'>{{item.joincode}}</view>
             </view>
-            <view class='shouquan shouquan1' wx:if="{{item.shouquan==1}}" bindtap='goto2' data-info="{{item}}">已授权</view>
-            <view class='shouquan shouquan2' wx:if="{{item.shouquan==0}}" bindtap='goto2' data-info="{{item}}">未授权</view>
+            <view class='shouquan shouquan1' wx:if="{{item.shouquan==1||item.level=='董事'}}" bindtap='goto2' data-info="{{item}}">已授权</view>
+            <view class='shouquan shouquan2' wx:if="{{item.shouquan==0&&item.level!='董事'}}" bindtap='goto2' data-info="{{item}}">未授权</view>
             <!-- <view class='shouquan shouquan3' wx:elif="{{item.username==null}}" bindtap='goto2' data-info="{{item}}">未激活</view> -->
         </view>
     </view>

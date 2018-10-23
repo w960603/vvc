@@ -2,9 +2,9 @@
 <tabbar selected='0'></tabbar>
 
 
-<scroll-view scroll-y style='{{margin}};z-index:0'>
+<scroll-view scroll-y style='{{margin}};z-index:0;height:90vh'>
     <!-- 轮播图 -->
-    <swiper class="swiper" indicator-dots='true' autoplay="true" circular interval="3000" duration="1000">    
+    <swiper class="swiper" indicator-dots='true' autoplay="true" circular interval="3000" duration="1000">
         <block wx:for="{{movies}}" wx:key='item' wx:for-item="item">
             <swiper-item>
                 <image src="{{item.url}}" class="slide-image" bindload='imgload' mode="aspectFill"></image>
@@ -13,16 +13,16 @@
     </swiper>
     <!-- 导航内容 -->
     <view class="hot_produce">
-        <view class="hot" >· 热销产品 · </view>
+        <view class="hot">· 热销产品 · </view>
         <view class="produce">HOT PRODUCTS</view>
     </view>
-    <view class="list" >
+    <view class="list">
         <view class="img_list" bindtap='imgList' data-id="{{item.id}}" wx:key='index' wx:for="{{oytarr}}" wx:for-index="index" wx:for-item="item">
-        <view class='huohao'>
-        {{item.id}}
-        <view class='child'></view>
-        </view>
-            <image src="{{item.img}}?x-oss-process=image/resize,w_332" class="img" lazy-load='true'  data-img='{{item.img}}'></image>
+            <view class='huohao'>
+                {{item.id}}
+                <view class='child'></view>
+            </view>
+            <image src="{{item.img}}?x-oss-process=image/resize,w_332" class="img" lazy-load='true' data-img='{{item.img}}'></image>
             <view class="commentary">
                 <view class="theme">{{item.title}}</view>
                 <view class="price" wx:if='{{userinfo.level>3}}'>￥{{item.mon1}}.00</view>
@@ -33,7 +33,17 @@
             </view>
         </view>
     </view>
-    <view wx:if="{{false}}" >
-    <image wx:for="{{img_da}}" src='{{item}}?x-oss-process=image/resize,w_1125' wx:key='index' wx:for-item="item"></image>
+    <view wx:if="{{false}}">
+        <image wx:for="{{img_da}}" src='{{item}}?x-oss-process=image/resize,w_1125' wx:key='index' wx:for-item="item"></image>
     </view>
 </scroll-view>
+
+<swiper class='guide' wx:if='{{showguide}}' bindtouchmove='touch'>
+    <swiper-item wx:for='{{guide_imglist}}'>
+        <image lazy-load='{{true}}' src='{{item}}' class='guide-img' mode='widthFix'></image>
+        <block wx:if='{{index===guide_imglist.length-1}}'>
+            <button bindtap='hideguide' class='ikonw'>我知道了</button>
+        </block>
+    </swiper-item>
+
+</swiper>

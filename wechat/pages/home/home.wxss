@@ -1,8 +1,10 @@
 /* pages/home/home.wxss */
-page{
+
+page {
     height: 100%;
-    width:100%;
+    width: 100%;
 }
+
 .swiper {
     width: 750rpx;
     height: 440rpx;
@@ -25,8 +27,8 @@ page{
     position: absolute;
     top: 0rpx;
     left: 12rpx;
-    width:30px;
-    padding:3px;
+    width: 30px;
+    padding: 3px;
     font-size: 14px;
     color: #646464;
     line-height: 15px;
@@ -35,19 +37,21 @@ page{
     opacity: 0.75;
     /* box-sizing:border-box; */
 }
-.child{
-    display:block;
-    position:absolute;
-    bottom:-9px;
-    left:0;
-    width:36px;
-    border:18px solid transparent;
+
+.child {
+    display: block;
+    position: absolute;
+    bottom: -9px;
+    left: 0;
+    width: 36px;
+    border: 18px solid transparent;
     border-top: 0 solid rgba(255, 255, 255, 1);
-    border-bottom:9px solid transparent;
-    border-left:18px solid rgba(255, 255, 255, 1);
-    border-right:18px solid rgba(255, 255, 255, 1);
-    box-sizing:border-box
+    border-bottom: 9px solid transparent;
+    border-left: 18px solid rgba(255, 255, 255, 1);
+    border-right: 18px solid rgba(255, 255, 255, 1);
+    box-sizing: border-box;
 }
+
 .hot_produce .hot {
     font-size: 36rpx;
     font-family: PingFang-SC-Medium;
@@ -134,4 +138,31 @@ page{
 .wfr-list {
     width: 50%;
     display: inline-block;
+}
+
+.guide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .8);
+    vertical-align: center;
+}
+
+.ikonw {
+    display: inline-block;
+    position: absolute;
+    bottom: 30rpx;
+    right: 30rpx;
+}
+
+swiper-item {
+    display: flex;
+    align-items: center;
+}
+
+.guide-img {
+    width: 100%;
 }

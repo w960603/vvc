@@ -11,8 +11,7 @@ Page({
         h: '',
         fill: '',
 
-        item: '',
-
+        item: '天使',
         itemList: ['天使', '仙女', '女神'],
 
         itemList2: [],
@@ -33,6 +32,10 @@ Page({
             infos: JSON.parse(options.info)
         })
 
+        this.setData({
+            ['infos.lvl']:1
+        })
+
         //适应ipx
         this.setData({
             h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx"
@@ -43,6 +46,11 @@ Page({
     },
     goback() {
         wx.navigateBack();
+    },
+    charge(){
+        wx.navigateTo({
+            url: '../top_up/top_up?infos='+JSON.stringify(this.data.infos),
+        })
     },
     show_list() {
         wx.showActionSheet({
@@ -87,9 +95,11 @@ Page({
 
                     if (this.data.infos.level === '天使' && this.data.upgradeLevel === '女神') {
 
-                        this.data.chajia = 400
+                        this.data.chajia = 1900
 
-                    } else {
+                    } else if (this.data.infos.level === '仙女' && this.data.upgradeLevel === '女神'){
+                        this.data.chajia = 1700
+                    } else if (this.data.infos.level === '天使' && this.data.upgradeLevel === 'xiannv'){
                         this.data.chajia = 200
                     }
                     wx.showModal({

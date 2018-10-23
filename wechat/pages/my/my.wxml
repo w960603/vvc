@@ -11,19 +11,19 @@
                 <!-- <image src="../../image/logo.jpg"></image> -->
                 <!-- <open-data wx:if="{{userInfo!=''}}" type="userAvatarUrl" class="image"></open-data> -->
                 <!-- wx:else -->
-                <image src="{{userInfo1.img_url?userInfo1.img_url:'/image/icon/none.svg'}}"></image>
+                <image src="{{userInfo.img_url?userInfo1.img_url:'/image/icon/none.svg'}}"></image>
             </view>
             <view>
-                <view class="meimei">所属团队:{{userInfo1.nick_name}}</view>
+                <view class="meimei">所属团队:{{userInfo.shangji||userInfo.nick_name}}</view>
                 <view class="tuan">
-                    <image src="/image/icon/level1.svg" wx:if='{{userInfo1.level==1}}'></image>
-                    <image src="/image/icon/level2.svg" wx:elif='{{userInfo1.level==2}}'></image>
-                    <image src="/image/icon/level3.svg" wx:elif='{{userInfo1.level==3}}'></image>
-                    <image src="/image/icon/level10.svg" wx:elif='{{userInfo1.level==10}}'></image>
+                    <image src="/image/icon/level1.svg" wx:if='{{userInfo.level==1}}'></image>
+                    <image src="/image/icon/level2.svg" wx:elif='{{userInfo.level==2}}'></image>
+                    <image src="/image/icon/level3.svg" wx:elif='{{userInfo.level==3}}'></image>
+                    <image src="/image/icon/level10.svg" wx:elif='{{userInfo.level==10}}'></image>
                     <!-- <open-data wx:if="{{userInfo!=''}}" class="alex" type="userNickName"></open-data> -->
                     <!-- wx:else -->
-                    <view class="alex">{{userInfo1.nick_name}}</view>
-                    <text class="tuanzhang">{{userInfo1.level_text}}</text>
+                    <view class="alex">{{userInfo.nick_name}}</view>
+                    <text class="tuanzhang">{{userInfo.level_text}}</text>
                 </view>
             </view>
             <view class="setting">

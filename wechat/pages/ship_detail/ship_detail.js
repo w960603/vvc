@@ -16,6 +16,8 @@ Page({
 
         orderCont: [],
         express_detail: [],
+
+        ceiling:''
     },
 
     // 滚动切换标签样式
@@ -56,6 +58,10 @@ Page({
     
     onLoad: function(options) {
         
+        this.setData({
+            ceiling:app.globalData.userinfo.ceiling
+        })
+
         app.request({
             url: 'https://api.vvc.tw/dlxin/order/orderSendList',
             success: (res) => {
@@ -96,12 +102,18 @@ Page({
         })
         
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/logistics',
+            url: 'https://api.vvc.tw/dlxin/order/logisticsList',
             success: (res) => {
                 console.log(res)
                 if (res.data.code == 1) {
+                    let datas = res.data.data;
+                    for (var i = 0; i < datas.length;i++){
+                        datas[i].send_text = datas[i].send_text.replace(/(\n+)/g,'\n');
+                        
+                    }
+
                     this.setData({
-                        orderCont:res.data.data
+                        orderCont:datas
                     })
                     
                 }

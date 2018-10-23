@@ -47,7 +47,7 @@ Page({
             {
                 my_img: "../../image/icon/three.svg",
                 my_text: "团队管理",
-                url:'my'
+                url:'../team/team'
             },
             {
                 my_img: "../../image/icon/four.svg",
@@ -104,7 +104,6 @@ Page({
             method: "POST",
             success: (res) => {
                 if (res.data.code==1) {
-
                     app.globalData.userinfo = res.data.data;
                     this.setData({
                         userInfo: res.data.data

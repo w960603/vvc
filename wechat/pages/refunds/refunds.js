@@ -86,27 +86,32 @@ chioce(e){
 //提交
     submit(e){
         // console.log(this.data.ipt_ordernum); //订单号
-        // console.log(this.data.tear_value); //多好文本输入框内容
+        console.log(this.data.tear_value); //多好文本输入框内容
         // console.log(this.data.shopInfo.id);//id
         // console.log(this.data.one_address.full_address)//地址
 
         if (this.data.tear_value != null  && this.data.shopInfo.id != null){
-            var   data= {
+            var data= {
                 id: this.data.shopInfo.id,
                 bcyy: this.data.tear_value,     
             }
-            if (this.data.shopInfo.status == 2 && this.data.one_address && this.data.ipt_ordernum){
-                data.thdz=this.data.one_address.id
-                data.danhao=this.data.ipt_ordernum
-            }else{
-                wx.showToast({
-                    title: '请选择地址快递单',
-                    duration: 2000
-                })
-                return
+            console.log(this.data.ipt_ordernum);
+            console.log(this.data.one_address);
+            console.log(this.data.shopInfo.status);
 
+            if (this.data.shopInfo.status == 2 ){
+                if(this.data.one_address && this.data.ipt_ordernum){
+                    data.thdz=this.data.one_address.id
+                    data.danhao=this.data.ipt_ordernum
+                }else{
+                    wx:wx.showToast({
+                        title: '请填留言或地址',
+                        icon: 'none',
+                        duration: 2000,
+                    })
+                }
+        
             }
-
             app.request({
                 url:"https://api.vvc.tw/dlxin/order/returnGoodsTrue",
                 method:"POST",

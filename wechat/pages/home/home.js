@@ -26,7 +26,23 @@ Page({
         userinfo: app.globalData.userinfo,
 
         loaded: false,
-        margin: null
+        margin: null,
+
+        showguide:false,
+        guide_imglist:[
+            'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/dlxin/jiaocheng/img/107110097236652162.png',
+            'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/dlxin/jiaocheng/img/136375709681069952.png',
+            'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/dlxin/jiaocheng/img/457465883708244454.png',
+        ],
+    },
+    touch(e){
+        console.log(e)
+        e.prevenDefault();
+    },
+    hideguide(){
+        this.setData({
+            showguide:false
+        })
     },
     /**
      * 生命周期函数--监听页面加载
@@ -118,12 +134,28 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
-    // onShow: function() {
-    //     // app.globel.data.sence += 1
-    //     setTimeout(function() {
-    //         wx.hideToast()
-    //     }, 2500)
-    // },
+    onLoad: function(option) {
+        
+        wx.getStorage({
+            key: 'count',
+            success: (res)=> {
+                console.log(res)
+                if (res.data&&res.data < 3) {
+                    this.setData({
+                        showguide: true
+                    })
+                } else {
+                    this.setData({
+                        showguide: false
+                    })
+                }
+            },
+        })
+        
+        setTimeout(function() {
+            wx.hideToast()
+        }, 2500)
+    },
 
     /**
      * 生命周期函数--监听页面隐藏

@@ -19,7 +19,8 @@
                     </view>
                 </view>
                 <input
-                 class="bianhao" maxlength='12'  value='{{qrcode}}' placeholder='' style='font-size:88rpx;width:100%;text-align:center;height:124rpx;line-height: 124rpx;' bindinput='submit' bindconfirm='submit' bindblur='blur'></input>
+                 class="bianhao" maxlength='12'  value='{{qrcode}}' placeholder='' style='font-size:88rpx;width:100%;text-align:center;height:124rpx;line-height: 124rpx;' bindconfirm='submit' bindblur='blur'>
+                 </input>
                 
                 <view class="store">
                     <view>商品：{{ship.goods.goods_title?ship.goods.goods_title:''}}</view>

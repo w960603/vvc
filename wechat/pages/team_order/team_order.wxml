@@ -1,7 +1,5 @@
 <!--pages/Order/Order.wxml-->
-
 <tabbar selected='1'></tabbar>
-
 <view style="backgeound:#EFEFEF">
     <view class="header" style='{{h}}'>
         <header custom_id="{{custom_id}}"></header>
@@ -23,7 +21,7 @@
             <swiper-item style="overflow:scroll" >
                 <!-- 订单部分 -->
                 <!-- 全部订单 -->
-                <scroll-view scroll-y="true" class='order-wrap' wx:if="{{orderCont.length >1}}">
+                <scroll-view scroll-y="true" class='order-wrap' wx:if="{{orderCont.length >0}}">
                     <view class="order" wx:for="{{ orderCont }}" wx:for-item="item" data-id='{{item.id}}'>
                         <view class="order_num" bindtap='order_num' wx:if="{{item.good_title != 'VVC代理押金'}}">
                             <text class="number">订单编号：{{item.time }}</text>
@@ -92,7 +90,7 @@
             <swiper-item style="overflow:scroll">
                 <!-- 订单部分 -->
                 <!-- 未完成 -->
-                <scroll-view scroll-y="true" class='order-wrap' wx:if="{{no_finishs.length >1}}">
+                <scroll-view scroll-y="true" class='order-wrap' wx:if="{{no_finishs.length >0}}">
                     <view class="order" wx:for="{{ no_finishs }}" >
                         <view class="order_num" bindtap='order_num'>
                             <text class="number">订单编号：{{item.time}}</text>
@@ -151,7 +149,7 @@
             <swiper-item style="overflow:scroll">
                 <!-- 订单部分 -->
                 <!-- 已完成 -->
-                <scroll-view scroll-y="true" class='order-wrap' wx:if="{{finish_orders.length >1}}">
+                <scroll-view scroll-y="true" class='order-wrap' wx:if="{{finish_orders.length >0}}">
                     <!-- <view class='ship-null' wx:if="{{item == null}}">
                         <image class='ship-null-img' src='../../image/icon/ship_null.svg'></image>
                     </view> -->
@@ -164,7 +162,7 @@
                             <view class="img">
                                 <image src="{{ item.img }}" data-id="{{item.id}}" class="order_img" bindtap='order' mode='aspectFill'></image>
                             </view>
-                            <view class="description" bindtap='order' data-id="{{item.id}}">
+                            <view class="description1" bindtap='order' data-id="{{item.id}}">
                                <view class="title_price">
                                     <text class="title">{{ item.good_title }}</text>
                                     <text class="price">￥{{ item.order_money }}</text>

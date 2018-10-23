@@ -65,8 +65,6 @@ Page({
 
     },
     getPhone: function(e) {
-
-
         this.setData({
             userName: e.detail.value
         });
@@ -78,22 +76,18 @@ Page({
     },
 
     getPhone1: function(e) {
-        // console.log(e.detail.value)
         this.setData({
             Phone1: e.detail.value
         });
     },
     getpossword1: function(e) {
-        // console.log(e.detail.value )
         this.setData({
             password1: e.detail.value
         });
     },
 
     backpage: function() {
-        wx.navigateBack({
-
-        })
+        wx.navigateBack()
     },
     // 账号登录
     tijiao: function() {
@@ -127,7 +121,10 @@ Page({
                         app.globalData.goodslist = res.data.data.goods;
 
                         wx.hideToast();
-
+                        wx.setStorage({
+                            key: 'count',
+                            data: res.data.data.count,
+                        })
                         wx.switchTab({
                             url: '../home/home',
                         })

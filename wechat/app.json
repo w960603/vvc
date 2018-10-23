@@ -10,6 +10,7 @@
         "pages/management-child1/management-child1",
         "pages/management/management",
         "pages/authorization/authorization",
+        "pages/top_up/top_up",
         "pages/ship/ship",
         "pages/order/order",
         "pages/detail/detail",
@@ -31,7 +32,8 @@
         "pages/proxy_address/proxy_address",
         "pages/commodity/commodity",
         "pages/accountnumber/accountnumber",
-        "pages/phone/phone"
+        "pages/phone/phone",
+        "pages/team/team"
     ],
     "window": {
         "backgroundTextStyle": "light",

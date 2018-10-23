@@ -203,7 +203,11 @@ sale_content {
     /* width:366rpx; */
     /* margin-left: 24rpx; */
     color: #9b9b9b;
-    width:500rpx;
+    width:520rpx;
+}
+.description1 {
+    color: #9b9b9b;
+    width:520rpx;
 }
 .title1 {
     font-size: 28rpx;
@@ -695,7 +699,7 @@ radio .wx-radio-input.wx-radio-input-checked::before {
 
 .choice_type view {
     width: 125rpx;
-    font-size: 28rpx;
+    font-size: 24rpx;
     font-family: PingFang-SC-Medium;
     font-weight: 500;
     color: rgba(155, 155, 155, 1);

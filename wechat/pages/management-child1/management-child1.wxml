@@ -24,7 +24,7 @@
         <view>费用：</view>
         <view class='text' wx:if='{{infos.lvl==1}}'>100.00</view>
         <view class='text' wx:elif='{{infos.lvl==2}}'>300.00</view>
-        <view class='text' wx:elif='{{infos.lvl==3}}'>500.00</view>
+        <view class='text' wx:elif='{{infos.lvl==3}}'>2000.00</view>
     </view>
     <view class='title level' wx:if='{{infos.level!="董事"&&infos.shouquan!=1}}'>
         <!-- <view>请选择级别</view> -->
@@ -39,6 +39,8 @@
             <view class='shouquan shouquan2' wx:elif="{{infos.shouquan==0}}" bindtap='goto2'>未授权</view>
             <!-- <view class='shouquan shouquan3' wx:elif="{{infos.username==null}}" bindtap='goto2'>未注册</view> -->
     </view>
-    <button bindtap='upgrade' wx:if='{{(infos.shouquan==0||!infos.username)&&infos.shouquan==1}}'>升级</button>
+    <button bindtap='upgrade' wx:if='{{infos.shouquan==0||!infos.level=="董事"}}'>升级</button>
+    <button bindtap='charge' wx:if='{{(infos.shouquan==0||!infos.username)&&infos.shouquan==1}}'>充值</button>
     <button wx:if='{{(infos.shouquan==0||!infos.username)&&infos.shouquan!=1}}' bindtap='submit'>提交保证金</button>
+    
 </view>

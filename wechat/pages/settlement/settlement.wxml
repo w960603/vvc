@@ -80,7 +80,8 @@
     </view>
     <view class='wfr-clearboth'>
         <view class='wfr-footer-left'>配送运费</view>
-        <view class='wfr-footer-right'>{{}}
+        <view class='wfr-footer-right'>
+        <!-- {{freight}}元 -->
             <image class='wfr-footer-img' src='../../image/icon/tiaozhuan.svg'></image>
         </view>
     </view>

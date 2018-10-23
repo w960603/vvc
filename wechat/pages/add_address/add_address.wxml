@@ -46,7 +46,7 @@
     </view>
 </view>
 <button class='save' bindtap='save'>
-    保存并使用
+    提交审核
 </button>
 <button class='child-save save'></button>
 

@@ -12,7 +12,17 @@
             <!-- 出库模式 -->
             <scroll-view class='order-wrap' scroll-y='true'>
                 <view class="lists" current="{{currentTab}}" wx:for='{{list}}' wx:key='send-id' duration="300" bindchange="switchTab">
-                    <view class='left'>
+
+                    <view class='left' wx:if='{{ceiling}}'>
+                        <view class='img'>
+                            <image src='{{item.img}}' style='background:url("https://cdn.vvc.tw/a/images/no_product.svg") center/cover no-repeat'></image>
+                        </view>
+                        <view class='content fl-col'>
+                            <view class='title fz-28 cor-4a bd'>{{item.title}}</view>
+                            <view class='time fz-24 cor-9b mt-28'>{{item.fahuo}}</view>
+                        </view>
+                    </view>
+                    <view class='left' wx:else>
                         <view class='img'>
                             <image src='{{item.goods_img}}' style='background:url("https://cdn.vvc.tw/a/images/no_product.svg") center/cover no-repeat'></image>
                         </view>
@@ -21,7 +31,18 @@
                             <view class='time fz-24 cor-9b mt-28'>{{item.time}}</view>
                         </view>
                     </view>
-                    <view class='desc fl-col'>
+
+                    <view class='desc fl-col' wx:if='{{ceiling>10}}'>
+                        <view class='fz-28'>
+                            <text class=' cor-9b'>昵称: </text>
+                            <text class='num cor-4a'>{{item.nick_name}}</text>
+                        </view>
+                        <view class='fz-28 mt-28'>
+                            <text class=' cor-9b'>数量: </text>
+                            <text class='num cor-4a'>{{item.tongji}}</text>
+                        </view>
+                    </view>
+                    <view class='desc fl-col' wx:else>
                         <view class='fz-28'>
                             <text class=' cor-9b'>出库: </text>
                             <text class='num cor-4a'>{{item.send_num}}</text>
@@ -32,6 +53,7 @@
                         </view>
                     </view>
                 </view>
+
             </scroll-view>
 
         </swiper-item>
@@ -63,7 +85,7 @@
                             <image src="{{ item.img }}" class="order_img" style='background:url("https://cdn.vvc.tw/a/images/no_product.svg") center/cover no-repeat'></image>
                             <view class="description">
                                 <view class="title_price">
-                                    <text class="title">{{ item.title }}</text>
+                                    <text class="title">{{ item.send_text }}</text>
                                 </view>
                                 <view class="color_size">
                                     <image src='../../image/icon/circle.svg' class='icon'></image>
@@ -82,39 +104,39 @@
 
 
     </swiper>
-    
+
 </view>
 <view class='detail-wrap' wx:if='{{status}}'>
-        <view class='express-pop'>
-            <view class='content'>
-                <view class='detail-top'>
-                    <view style='color:#2290EF'>已签收</view>
-                    <view>订单号码: 20180822131315252</view>
-                </view>
-                <scroll-view class='express_detail' scroll-y>
-                    <view class='list' wx:for='{{express_detail}}'>
-                        <view class=' circel'>
-                            <block wx:if='{{index==0}}'>
-                                <image src='../../image/icon/circle.svg' class='icon'></image>
+    <view class='express-pop'>
+        <view class='content'>
+            <view class='detail-top'>
+                <view style='color:#2290EF'>已签收</view>
+                <view>订单号码: 20180822131315252</view>
+            </view>
+            <scroll-view class='express_detail' scroll-y>
+                <view class='list' wx:for='{{express_detail}}'>
+                    <view class=' circel'>
+                        <block wx:if='{{index==0}}'>
+                            <image src='../../image/icon/circle.svg' class='icon'></image>
 
-                            </block>
-                            <block wx:else>
-                                <view class='spot'></view>
-                            </block>
-                        </view>
-                        <view class='list-right'>
-                            <view>福建省厦门市思明区前埔路168号乐凡销售部</view>
-                            <view>
-                                2018-08-22 09:48:45
-                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class='spot'></view>
+                        </block>
+                    </view>
+                    <view class='list-right'>
+                        <view>福建省厦门市思明区前埔路168号乐凡销售部</view>
+                        <view>
+                            2018-08-22 09:48:45
                         </view>
                     </view>
-                </scroll-view>
-            </view>
-
-            <view class='cancel' bindtap='close'>
-                <image src='../../image/icon/x.svg' class='cancel-img'></image>
-            </view>
+                </view>
+            </scroll-view>
         </view>
 
+        <view class='cancel' bindtap='close'>
+            <image src='../../image/icon/x.svg' class='cancel-img'></image>
+        </view>
     </view>
+
+</view>

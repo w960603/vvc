@@ -31,19 +31,19 @@ Page({
       this.setData({ h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx" })
       this.setData({ fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx" })
 
-      app.request({
-        url: 'https://api.vvc.tw/dlxin/shop/goodslist',
-          method: "POST",
-          success: (res) => {
-              console.log(res);
-              if(res.data.code==1){
-                  this.setData({
-                      oytarr: res.data.data.goods_list
-                  })
+    wx.getStorage({
+        key: 'log',
+        success: (res) =>{
+            console.log(res.data)
+            this.setData({
+                oytarr: res.data
+            })
+            
+        },
+    })
+                  
 
-              }
-          },
-      })
+       
   },
     go_home(){
         console.log(2)

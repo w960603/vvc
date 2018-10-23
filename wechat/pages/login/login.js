@@ -91,10 +91,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-       console.log('login页面')
-
         if (!wx.canIUse('cover-view')) {
-
             console.log('no')
             wx.redirectTo({
                 url: '../accountnumber/accountnumber?id=1',
@@ -102,7 +99,6 @@ Page({
 
         }else{
 
-            console.log('yes')
             wx.cloud.callFunction({
                 // 云函数名称
                 name: 'getuserinfo',
@@ -111,20 +107,19 @@ Page({
                     cmd: "get"
                 },
                 success: function (res) {
-                    console.log(res)
                     if (res.result.token) {
                         console.log(res.result.token)
                         app.globalData.token = res.result.token;
                         wx.switchTab({
                             url: '../my/my',
                         })
+                        // wx.redirectTo({
+                        //     url: '../team/team',
+                        // })
                     }
                 },
-                fail: console.error
             })
         }
-
-        
 
         wx.getLocation({
             type: 'wgs84',
@@ -139,12 +134,7 @@ Page({
                 })
             },
             fail: (err) => {
-                console.log(err);
-                // wx.showToast({
-                //     title: '初始化失败,请确认是否开启所需权限',
-                //     icon: 'none',
-                //     duration: 5000
-                // })
+               
                 this.get_location()
             }
         })
@@ -196,14 +186,14 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function() {
-        wx.stopAccelerometer();
+        
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-        wx.stopAccelerometer();
+        
     },
 
     /**

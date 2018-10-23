@@ -209,11 +209,14 @@ Component({
 
             } else {
                 //不是整箱，提示
-                wx.showToast({
-                    title: "不是整箱",
-                    icon: 'none',
-                    duration: 500
-                })
+                if(this.data.goods.box_limit){
+                    wx.showToast({
+                        title: "不是整箱",
+                        icon: 'none',
+                        duration: 500
+                    })
+                }
+                
             }
         },
 

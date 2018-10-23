@@ -1,10 +1,13 @@
-<view class="header" style='{{h}};background-color:{{color}}'>
-    <image class='header-posi-img' src='../../image/icon/back.svg' bindtap="goback"></image>
+<view class="header" style='{{h}};background-color:{{color}};' >
+
+<image class='header-posi-img' wx:if='{{white=="white"}}' src='/image/icon/backwhite.svg' bindtap='goback'></image>
+    <image class='header-posi-img' bindtap='goback' wx:else src='/image/icon/back.svg'></image>
     <view class="order_list" wx:if="{{custom_id == 1}}">团队订单</view>
     <view class='order_list' wx:elif="{{titles == '我的授权'}}">我的授权</view>    
     <view class="order_list" wx:elif="{{shop_id == 2}}">退货信息</view>
-    <view class="order_list" wx:else>{{title}}</view>
-    <image class='header-posi-img' src='../../image/icon/back.svg' style="opacity:0"></image>
+    <view class="order_list" wx:elif="{{top_id == 3}}">用户充值</view>
+    <view class="order_list" wx:else style='color:{{white}}'>{{title}}</view>
+    <image class='header-posi-img' src='/image/icon/backwhite.svg' style="opacity:0"></image>
     <slot ></slot>
 </view>
 <view style='{{fill}}'></view>

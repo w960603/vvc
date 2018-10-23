@@ -158,7 +158,7 @@ progress{
 }
 
 .tuanzhang {
-    width: 48rpx;
+
     height: 34rpx;
     font-size: 24rpx;
     font-family: PingFang-SC-Medium;

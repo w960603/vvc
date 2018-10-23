@@ -41,9 +41,11 @@ Page({
             }
         }
     },
+
     /**
      * 生命周期函数--监听页面加载
      */
+
     onLoad: function(options) {
         wx.showLoading({
             title: '加载中',
@@ -115,16 +117,16 @@ Page({
             }
         });
         //请求运费
-        // app.request({
-        //     url:"https://api.vvc.tw/suc/freight/getFreightMoney",
-        //     method:"POST",
-        //     success:(res)=>{
-        //         if(res.data.code==1){
-        //             console.log("222222", res.data.data.freight);
-        //             this.setData({ freight: res.data.data.freight});
-        //         }
-        //     }
-        // })
+        app.request({
+            url:"https://api.vvc.tw/suc/freight/getFreightMoney2",
+            method:"POST",
+            success:(res)=>{
+                if(res.data.code==1){
+                    console.log("222222", res.data.data.freight);
+                    this.setData({ freight: res.data.data.freight});
+                }
+            }
+        })
     },
     goback() {
         wx.navigateBack();
@@ -172,8 +174,13 @@ Page({
                 address: this.data.wfraddress.id,
             },
             success: function(res) {
+                
 
                 if (res.data.code == 1) {
+                    wx.setStorage({
+                        key: 'log',
+                        data: res.data.data.log,
+                    })
                     wx.redirectTo({
                         url: '../success_pay/success_pay?money=' + res.data.data.money+"&&info="+res.data.msg,
                     })

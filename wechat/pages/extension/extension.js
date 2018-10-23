@@ -120,9 +120,20 @@ qingqiu(){
         wx.showLoading({
             title: '跳转中',
         })
-        
+
+        let infos = e.currentTarget.dataset.item;
+        console.log(infos)
+        let info = {
+            joincode: infos.joincode,
+            nick_name: infos.nick_name,
+            username:infos.username,
+            level: infos.level,
+            id: infos.id,
+        };
+
         wx.navigateTo({
-          
+            
+
             url: '../management/management?info=' + e.currentTarget.dataset.info+"&&backable="+true,
             success:()=>{
                 wx.hideLoading()
@@ -138,7 +149,8 @@ qingqiu(){
             money: infos.money,
             lvl: infos.lvl,
             shouquan : infos.shouquan,
-            id:infos.id
+            id: infos.id,
+            img_url: infos.img_url
         }
 
         wx.navigateTo({

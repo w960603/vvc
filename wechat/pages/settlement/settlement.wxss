@@ -407,6 +407,7 @@ page {
     width:85%;
     font-size:28rpx;
     padding-right:20rpx;
+    /* padding-top:12rpx; */
 }
 .wfr-Remarks-textarea1{
     display: none;

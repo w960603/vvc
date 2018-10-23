@@ -36,10 +36,65 @@ Page({
     },
     submit(e) {
         console.log(e)
-        // this.data.qrcode = e.detail.value
-        // this.setData({
-        //     qrcode: ''
-        // })
+        
+        let datas;
+        if(e.detail.value.length==8){
+            if (this.data.arr == '零售') {
+                datas = {
+                    nick_name: this.data.express,
+                    qr: this.data.qrcode,
+                    type: 2
+                };
+                this.request_record(
+                    datas,
+                    (res) => {
+                        if (res.data.code === 1) {
+                            this.setData({
+                                ["ship.log"]: res.data.data.log,
+                                ["ship.goods"]: res.data.data.goods,
+                                ['user.nick_name']: e.detail.value,
+                                arr1: '零售',
+                            });
+
+                        }
+
+                    }
+                )
+            }else{
+                datas = {
+                    img_url: this.data.user.img_url,
+                    h_id: this.data.user.id,
+                    nick_name: this.data.user.nick_name,
+                    qr: e.detail.value
+                };
+                this.request_record(
+                    datas,
+                    (res) => {
+                        if (res.data.code == 1) {
+                            this.setData({
+                                ["ship.log"]: res.data.data.log,
+                                ["ship.goods"]: res.data.data.goods,
+                                isRetail: false
+                            })
+
+                        }
+
+                    }
+                )
+            }
+
+        } else if (e.detail.value.length === 12 || e.detail.value.length === 16){
+
+            
+            this.setData({
+                express:e.detail.value,
+                isRetail: true,
+                ['user.nick_name']: e.detail.value,
+                arr1: '零售'
+            })
+           
+            
+        }
     },
     blur(e) {
         // console.log(this.data.focus)
@@ -123,7 +178,10 @@ Page({
                 })
             }
         })
+
     },
+    
+
     input_number: function(e) {
         this.setData({
             express: e.detail.value
@@ -192,7 +250,6 @@ Page({
                         ['user.nick_name']:su.result,
                         arr1:'零售'
                     })
-
                     
                 } else {
                     this.setData({

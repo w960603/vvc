@@ -205,7 +205,12 @@ page {
     flex-direction: column;
     justify-content: space-between;
 }
-
+/* .description1 {
+    width: 498rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+} */
 .img {
     /* padding-top:28rpx; */
     padding-right: 24rpx;

@@ -57,6 +57,11 @@ Page({
       wx.navigateBack({
       })
   },
+    top_up(){
+        wx.navigateTo({
+            url:'../top_up/top_up',
+        })
+    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -41,7 +41,28 @@
                                 <text class="state">已完成</text>
                             </block>
                         </view>
-                        <view class="order_cont">
+
+                        <view class="order_cont" wx:if='{{item.order_goods==10}}'>
+                            <view class="img">
+                                <image src="{{ item.img_url}}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill' bindload='onLazyLoad' lazy-load='true' style=' background:url("https://cdn.vvc.tw/a/images/none.svg") center center/cover no-repeat;'></image>
+                            </view>
+                            <view class="description" data-id="{{item.id}}" bindtap='order'>
+                                <view class="title_price">
+                                    <text class="title">{{ item.goods_title||' ' }}</text>
+                                    <text class="price">￥{{ item.order_money }}</text>
+                                </view>
+                                <view class="color_size">
+                                    <text class="color">等级:{{ item.color?item.color:'无' }}</text>
+                                </view>
+                                <view class="title_price">
+                                    <view class="address_phone">
+                                        <view class="address" wx:if='{{!!item.knick_name}}'>昵称：{{ item.knick_name }}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+
+                        <view class="order_cont" wx:else>
                             <view class="img">
                                 <image src="{{ item.goods_img}}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill' bindload='onLazyLoad' lazy-load='true'></image>
                             </view>
@@ -51,7 +72,7 @@
                                     <text class="price">￥{{ item.order_money }}</text>
                                 </view>
                                 <view class="color_size">
-                                    <text class="color">颜色:{{ item.color?item.color:'无' }}</text>
+                                    <text class="color">分类:{{ item.color?item.color:'无' }}</text>
                                     <text class="size" wx:if="{{item.size}}">尺寸:{{item.size}}</text>
                                 </view>
                                 <view class="title_price">
@@ -82,27 +103,46 @@
                             <text class="number">订单编号：{{item.order_number}}</text>
                             <text class="state" wx:if="{{item.order_status===5}}">已完成</text>
                         </view>
-                        <view class="order_cont">
+<view class="order_cont" wx:if='{{item.order_goods==10}}'>
                             <view class="img">
-                                <image src="{{ item.goods_img }}" data-id="{{item.id}}" class="order_img" bindtap='order' mode='aspectFill' lazy-load='true'></image>
+                                <image src="{{ item.img_url}}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill' bindload='onLazyLoad' lazy-load='true' style=' background:url("https://cdn.vvc.tw/a/images/none.svg") center center/cover no-repeat;'></image>
                             </view>
-                            <view class="description" bindtap='order' data-id="{{item.id}}">
+                            <view class="description" data-id="{{item.id}}" bindtap='order'>
                                 <view class="title_price">
-                                    <text class="title">{{ item.goods_title }}</text>
+                                    <text class="title">{{ item.goods_title||' ' }}</text>
                                     <text class="price">￥{{ item.order_money }}</text>
                                 </view>
                                 <view class="color_size">
-                                    <text class="color">颜色:{{ item.color?item.color:'无' }}</text>
-                                    <text class="size" wx:if="{{item.size != null}}">尺寸:{{item.size}}</text>
+                                    <text class="color">等级:{{ item.color?item.color:'无' }}</text>
                                 </view>
                                 <view class="title_price">
                                     <view class="address_phone">
-                                        <view class="address">地址：{{ item.address?item.address:'' }}</view>
+                                        <view class="address" wx:if='{{!!item.knick_name}}'>昵称：{{ item.knick_name }}</view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+
+                        <view class="order_cont"wx:else>
+                            <view class="img">
+                                <image src="{{ item.goods_img}}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill' bindload='onLazyLoad' lazy-load='true'></image>
+                            </view>
+                            <view class="description" data-id="{{item.id}}" bindtap='order'>
+                                <view class="title_price">
+                                    <text class="title">{{ item.goods_title||' ' }}</text>
+                                    <text class="price">￥{{ item.order_money }}</text>
+                                </view>
+                                <view class="color_size">
+                                    <text class="color">分类:{{ item.color?item.color:'无' }}</text>
+                                    <text class="size" wx:if="{{item.size}}">尺寸:{{item.size}}</text>
+                                </view>
+                                <view class="title_price">
+                                    <view class="address_phone">
+                                        <view class="address" wx:if='{{!!item.address}}'>地址：{{ item.address }}</view>
                                         <view class="phone">{{item.name?item.name:'姓名无'}} {{item.phone?item.phone:'手机无' }}</view>
                                     </view>
-                                    <view class="much" wx:if='{{item.order_num}}'>X{{item.order_num}}</view>
+                                    <view class="much">X{{item.order_num}}</view>
                                 </view>
-
                             </view>
                         </view>
                         <view class="background">
@@ -130,25 +170,46 @@
                             <text class="state" wx:elif="{{item.order_status===3}}">正在配货</text>
                             <text class="state" wx:elif="{{item.order_status===4}}">配送中</text>
                         </view>
-                        <view class="order_cont">
+
+<view class="order_cont" wx:if='{{item.order_goods==10}}'>
                             <view class="img">
-                                <image src="{{ item.goods_img }}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill' lazy-load='true'></image>
+                                <image src="{{ item.img_url}}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill' bindload='onLazyLoad' lazy-load='true' style=' background:url("https://cdn.vvc.tw/a/images/none.svg") center center/cover no-repeat;'></image>
                             </view>
-                            <view class="description" bindtap='order' data-id="{{item.id}}">
+                            <view class="description" data-id="{{item.id}}" bindtap='order'>
                                 <view class="title_price">
-                                    <text class="title">{{ item.goods_title }}</text>
+                                    <text class="title">{{ item.goods_title||' ' }}</text>
                                     <text class="price">￥{{ item.order_money }}</text>
                                 </view>
                                 <view class="color_size">
-                                    <text class="color">分类:{{ item.color?item.color:'' }}</text>
-                                    <text class="size" wx:if="{{item.size != null}}">尺寸:{{item.size}}</text>
+                                    <text class="color">等级:{{ item.color?item.color:'无' }}</text>
                                 </view>
                                 <view class="title_price">
                                     <view class="address_phone">
-                                        <view class="address">地址：{{ item.address?item.address:'' }}</view>
-                                        <view class="phone">{{item.name?item.name:'姓名:无'}} {{item.phone?item.phone:'手机:无' }}</view>
+                                        <view class="address" wx:if='{{!!item.knick_name}}'>昵称：{{ item.knick_name }}</view>
                                     </view>
-                                    <view class="much" wx:if='{{item.order_num}}'>X{{item.order_num}}</view>
+                                </view>
+                            </view>
+                        </view>
+
+                        <view class="order_cont"wx:else>
+                            <view class="img">
+                                <image src="{{ item.goods_img}}" bindtap='order' data-id="{{item.id}}" class="order_img" mode='aspectFill' bindload='onLazyLoad' lazy-load='true'></image>
+                            </view>
+                            <view class="description" data-id="{{item.id}}" bindtap='order'>
+                                <view class="title_price">
+                                    <text class="title">{{ item.goods_title||' ' }}</text>
+                                    <text class="price">￥{{ item.order_money }}</text>
+                                </view>
+                                <view class="color_size">
+                                    <text class="color">分类:{{ item.color?item.color:'无' }}</text>
+                                    <text class="size" wx:if="{{item.size}}">尺寸:{{item.size}}</text>
+                                </view>
+                                <view class="title_price">
+                                    <view class="address_phone">
+                                        <view class="address" wx:if='{{!!item.address}}'>地址：{{ item.address }}</view>
+                                        <view class="phone">{{item.name?item.name:'姓名无'}} {{item.phone?item.phone:'手机无' }}</view>
+                                    </view>
+                                    <view class="much">X{{item.order_num}}</view>
                                 </view>
                             </view>
                         </view>
