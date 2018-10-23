@@ -1,20 +1,35 @@
 <template>
     <div id="app">
-        <div class="layui-form-item">
-            <div class="layui-row search">
-                <input type="search" name="password" required lay-verify="required" placeholder="姓名" autocomplete="off" class="layui-input"/>
-                <input type="search" name="password" required lay-verify="required" placeholder="账号" autocomplete="off" class="layui-input"/>
-                <input type="search" name="password" required lay-verify="required" placeholder="邮箱" autocomplete="off" class="layui-input"/>
-                <input type="search" name="password" required lay-verify="required" placeholder="手机" autocomplete="off" class="layui-input"/>
-                <button class="layui-btn layui-btn-normal">搜索</button>
-            </div>
+        <div class="form-item">
+            <!--<div class="layui-row search">-->
+                <!--<input type="search" name="password" required lay-verify="required" placeholder="姓名" autocomplete="off" class="layui-input"/>-->
+                <!--<input type="search" name="password" required lay-verify="required" placeholder="账号" autocomplete="off" class="layui-input"/>-->
+                <!--<input type="search" name="password" required lay-verify="required" placeholder="邮箱" autocomplete="off" class="layui-input"/>-->
+                <!--<input type="search" name="password" required lay-verify="required" placeholder="手机" autocomplete="off" class="layui-input"/>-->
+                <!--<button class="layui-btn layui-btn-normal">搜索</button>-->
+            <!--</div>-->
+            <a-input-search
+                placeholder="input search text"
+                style="width: 200px"
+                @search="onSearch"
+            />
+            <a-input-search
+                placeholder="input search text"
+                style="width: 200px"
+                @search="onSearch"
+            />
+            <a-input-search
+                placeholder="input search text"
+                style="width: 200px"
+                @search="onSearch"
+            />
 
         </div>
         <div class="flex">
             <div>
-                <button class="layui-btn layui-btn-warm  layui-btn-sm"> <i class="layui-icon">&#xe608;</i> 添加</button>
-                <button class="layui-btn layui-btn-danger  layui-btn-sm">禁用</button>
-                <button class="layui-btn layui-btn layui-bg-cyan  layui-btn-sm">恢复</button>
+                <a-button style="color:lightgreen">添加</a-button>
+                <a-button style="color:red">禁用</a-button>
+                <a-button style="color:orange">恢复</a-button>
             </div>
             <div>共有数据:<strong>{{pro_title.length}}</strong>条</div>
         </div>
@@ -46,11 +61,11 @@
             <tr v-for="(col,index) in pro_title">
                 <td> <input type="checkbox" name="" title="单选" lay-skin="primary" @click="item.select=!item.select"></td>
                 <td v-for="row in sub_title">{{row.en}}</td>
-                <td><button class="layui-btn layui-btn-danger  layui-btn-xs">禁用</button>
-                    <button class="layui-btn layui-btn-primary layui-btn-xs">
+                <td><button class="btn red">禁用</button>
+                    <button class="btn ">
                         <i class="layui-icon">&#xe642;</i>
                     </button>
-                    <button class="layui-btn layui-btn-normal  layui-btn-xs">修改密码</button>
+                    <button class="btn">修改密码</button>
                 </td>
             </tr>
             </tbody>
@@ -98,6 +113,9 @@
                     url:'',
 
                 })
+            },
+            onSearch (value) {
+                console.log(value)
             },
 
         },

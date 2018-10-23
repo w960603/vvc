@@ -10,7 +10,7 @@
             <div>共有数据:<strong>{{operationList.length}}</strong>条</div>
         </div>
         <table class="layui-table">
-            <group>
+            <col-group>
                 <tr>
                     <col width="80">
                     <col width="80">
@@ -20,7 +20,7 @@
                     <col width="120">
                     <col width="100">
                 </tr>
-            </group>
+            </col-group>
             <thead>
             <th v-for="(row,index) in logon_log" >
                 {{row.cn}}
@@ -30,7 +30,7 @@
             <tbody>
             <tr v-for="(col,index) in operationList">
                 <td v-for="row in logon_log">{{col[row.en]}}</td>
-                <td><button class="layui-btn layui-bg-green  layui-btn-xs">详情</button>
+                <td><button class="">详情</button>
                 </td>
             </tr>
             </tbody>

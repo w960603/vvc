@@ -38,34 +38,36 @@
         </table>
         <div class="wrap" v-show="isShow">
             <div id="order-list">
-                <table>
-                    <colgroup>
-                        <col width="250">
-                        <col width="250">
-                        <col width="150">
-                        <col width="80">
-                        <col width="100">
-                        <col width="100">
-                        <col width="100">
-                    </colgroup>
-                    <thead class="jdshop_thead">
-                        <th v-for="row in sub_title">
-                            {{row.cn}}
-                        </th>
-                        <th>SKU简称</th>
-                    </thead>
-                    <tbody>
-                    <tr v-for="(col,index) in order_list">
-                        <td v-for="row in sub_title">{{col[row.en]}}</td>
-                        <!--:change="cedited(edit)"-->
-                        <!--v-if="col[index].skuName? vuls = 1111 :vuls = ''"-->
-                        <td ><textarea type="text" :class="col.error" class="text2" value="vuls"  placeholder="例：斗篷披风 果绿色 均码..."   @keyup='edited($event,index)' ></textarea></td>
-                    </tr>
-                    </tbody>
-                </table>
-                <!--<div class="edit" ><input type="text" class="text2" v-model="edit" @keyup.esc='cancelEdit(list)'  @focus='editBefore(edit)' @keyup.13='edited'/></div>-->
-                <button class="button" @click="close">关闭</button>
-                <button class="button" style="background: #1E9FFF"  @click="ajax_sku()">提交</button>
+                <div style="width:100%;min-height:100%;">
+                    <table>
+                        <colgroup>
+                            <col width="250">
+                            <col width="250">
+                            <col width="150">
+                            <col width="80">
+                            <col width="100">
+                            <col width="100">
+                            <col width="100">
+                        </colgroup>
+                        <thead class="jdshop_thead">
+                            <th v-for="row in sub_title">
+                                {{row.cn}}
+                            </th>
+                            <th>SKU简称</th>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(col,index) in order_list">
+                            <td v-for="row in sub_title">{{col[row.en]}}</td>
+                            <!--:change="cedited(edit)"-->
+                            <!--v-if="col[index].skuName? vuls = 1111 :vuls = ''"-->
+                            <td ><textarea type="text" :class="col.error" class="text2" value="vuls"  placeholder="例：斗篷披风 果绿色 均码..."   @keyup='edited($event,index)' ></textarea></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!--<div class="edit" ><input type="text" class="text2" v-model="edit" @keyup.esc='cancelEdit(list)'  @focus='editBefore(edit)' @keyup.13='edited'/></div>-->
+                    <button class="button" @click="close">关闭</button>
+                    <button class="button" style="background: #1E9FFF"  @click="ajax_sku()">提交</button>
+                </div>
             </div>
         </div>
     </div>
@@ -201,11 +203,9 @@
                     },
                     success: (res) => {
                         console.log(res,282);
-
                         if (res.code) {
                             console.log(res.data);
                             this.order_list = res.data;
-
                             // this.customerInfo = this.order_list.consigneeInfo
                         }
                         // console.log(JSON.parse(res));
@@ -233,10 +233,7 @@
                         success:(res)=>{
                             console.log(res, 322);
                             layer.msg('修改成功！');
-                            this.close()
-
-
-
+                            this.close();
                         }
                     })
                 }else{
@@ -272,18 +269,21 @@
     table,thead,table tr th, table tr td {
         border:1px solid #e6e6e6;
         padding: 10px;
+        margin: 0 auto;
     }
     #order-list {
         position: relative;
         width: 60%;
         top: 50%;
-        left: 56%;
+        height: 70%;
+        left: 55%;
         padding: 30px;
         background-color: #fff;
         color: #000;
         font-size: 15px;
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
+        overflow-y: scroll;
     }
     .obtain_btn{
         padding:10px 15px;

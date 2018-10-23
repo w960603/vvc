@@ -57,7 +57,9 @@
 
             </a-layout-header>
             <a-layout-content :style="{ margin: ' 16px', background: '#fff', minHeight: '280px' }">
+
                 <router-view></router-view>
+
             </a-layout-content>
             <a-layout-footer :style="{minHeight:'60px',maxHeight:'60px',lineHeight:'60px',padding:0, textAlign:'center', backgroundColor:'#fff'}">
             <span>Produced by VVC</span>
@@ -109,7 +111,7 @@
                                 children:[
                                     {
                                         name: '天猫',
-                                        url:'/com3'
+                                        url:'/modify_sku'
                                     },
                                     {
                                         name: '天猫商品',
@@ -131,6 +133,11 @@
                                         key:1,
                                     },
                                     {
+                                        name:"订单详情",
+                                        url:"/orderdetail",
+                                        key:2,
+                                    },
+                                    {
                                         name: '京东商品',
                                         url:'/JDshop',
                                         key:1,
@@ -147,11 +154,6 @@
                               name:"小红书",
                                 children:[
                                     {
-                                        name:"小红书打印",
-                                        url:"/red_book_printing",
-                                        key:1
-                                    },
-                                    {
                                         name:"小红书商品",
                                         url:"/red_book_goods",
                                         key:1
@@ -160,13 +162,18 @@
                                         name:"小红书订单搜索",
                                         url:"/red_book_search",
                                         key:1
+                                    },
+                                    {
+                                        name:"修改短语",
+                                        url:"/generativephrase",
+                                        key:1
                                     }
                                 ],
                                 key:1
                             },
                             {
                                 name: '拼团',
-                                url:'/com3',
+                                url:'/modify_sku',
                                 key:1,
                             },
                             {
@@ -193,22 +200,22 @@
                             },
                             {
                                 name:'库存类目',
-                                url:'/com3',
+                                url:'/modify_sku',
                                 key:3,
                             },
                             {
                                 name:'商品列表',
-                                url:"/com4" ,
+                                url:"/modify_sku" ,
                                 key:4,
                             },
                             {
                                 name:'sku',
-                                url:'/com3',
+                                url:'/modify_sku',
                                 key:5,
                             },
                             {
-                                name:'分仓管理',
-                                url:'/commodity',
+                                name:'地址管理',
+                                url:'/address',
                                 key:5,
                             },
                         ]
@@ -223,21 +230,21 @@
                                 url:'/commodity',
                                 key:2,
                             },
-                            {
-                                name:'供应商分类',
-                                url:'/com3',
-                                key:3,
-                            },
-                            {
-                                name:'供应商添加删除',
-                                url:"/com4" ,
-                                key:4,
-                            },
-                            {
-                                name:'供应商半成品入库',
-                                url:'/com3',
-                                key:5,
-                            },
+                            // {
+                            //     name:'供应商分类',
+                            //     url:'/modify_sku',
+                            //     key:3,
+                            // },
+                            // {
+                            //     name:'供应商添加删除',
+                            //     url:"/modify_sku" ,
+                            //     key:4,
+                            // },
+                            // {
+                            //     name:'供应商半成品入库',
+                            //     url:'/modify_sku',
+                            //     key:5,
+                            // },
                             {
                                 name:'半成品实时监控',
                                 url:'/commodity',
@@ -256,18 +263,18 @@
                                 key:2,
                             },
                             {
-                                name:'大货售后',
-                                url:'/com3',
+                                name:'退押金',
+                                url:'/deposit',
                                 key:3,
                             },
                             {
                                 name:'电商售后',
-                                url:"/com4" ,
+                                url:"/modify_sku" ,
                                 key:4,
                             },
                             {
                                 name:'在途监控',
-                                url:'/com3',
+                                url:'/modify_sku',
                                 key:5,
                             },
                             {
@@ -289,8 +296,13 @@
                             },
                             {
                                 name:'用量监控',
-                                url:'/com3',
+                                url:'/modify_sku',
                                 key:3,
+                            },
+                            {
+                                name: '运费',
+                                url:'/freight',
+                                key:1,
                             },
                             {
                                 name:'天猫面单',
@@ -320,8 +332,23 @@
                                 key:2,
                             },
                             {
+                                name:'查看日志',
+                                url:'/logs',
+                                key:2,
+                            },
+                            {
+                                name:'人脸注册',
+                                url:'/ai',
+                                key:2,
+                            },
+                            {
+                                name:'用户登录日志',
+                                url:'/userlog',
+                                key:2,
+                            },
+                            {
                                 name:'用户管理',
-                                url:'/user_manage',
+                                url:'/ai',
                                 key:3,
                             },
                             {

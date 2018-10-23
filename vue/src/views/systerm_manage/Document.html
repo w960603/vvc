@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://api.vvc.tw/bil/ai.html -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./Document_files/jquery.js.下载"></script>
+    <title>Document</title>
+</head>
+<body style="">
+
+<form action="http://api.vvc.tw/bil/ai.html">
+    用户名：<input type="text" id="name" value="" data-id="">
+    <ul id="ul">
+    </ul>
+    手机号：<input type="text" id="phone" value="" data-id="">
+    图片: <input type="text" id="img" name="image"><br>
+
+    <input id="file" type="file" name="file">
+</form>
+<button id="button">上传</button>
+
+<input type="button" id="save" value="保存手机号"><br>
+<input type="button" id="save2" value="注册人脸头像">
+
+
+<script>
+
+    $("#button").on("click", function () {
+        upload({
+            el: "#file",
+//                 getUrl:"https://hz.vvc.tw/get.php",
+//                 postUrl:"https://hzoss1.vvc.tw",
+//                 fileType:'Ai'
+//                imagePath:'C:\\fakepath\\对账单@2x.svg'
+        });
+
+    });
+
+    function upload(option) {
+        var getUrl = option.getUrl ? option.getUrl : "https://api.vvc.tw/dlxin/index/getoss";
+        var postUrl = option.postUrl ? option.postUrl : "https://cdn.vvc.tw";
+        console.log(getUrl, postUrl);
+        var fileName = option.fileType ? option.fileType : 'vvc';
+        $.ajax({
+            url: getUrl,
+            type: "get",
+            success: (res) => {
+                console.log(res);
+                var responent = JSON.parse(res);
+                console.log(responent, responent.timestamp);
+                console.log($(option.el)[0].files[0]);
+                var file = option.el ? $(option.el)[0].files[0] : option.imagePath;
+                var date = new Date().getTime();
+                console.log(responent, date);
+                var datas = new FormData();
+                datas.set('policy', responent.policy);
+                datas.set('OSSAccessKeyId', responent.accessid);
+                datas.set('Signature', responent.signature);
+                datas.set('key', responent.dir + fileName + "_" + date + "_" + responent.timestamp + ".jpg");
+                datas.set('file', file);
+                $.ajax({
+                    url: postUrl,
+                    data: datas,
+                    type: 'post',
+                    dataType: 'json',
+                    async: false,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function () {
+                        console.log("https://cdn.vvc.tw/" + responent.dir + fileName + "_" + date + '_' + responent.timestamp + ".jpg");
+                        $("#img").val("https://cdn.vvc.tw/" + responent.dir + fileName + "_" + date + '_' + responent.timestamp + ".jpg");
+
+                    }
+                })
+            }
+        });
+    }
+
+    $(function () {
+        $("#name").blur(function () {
+            var name = $("#name").val();
+            $.ajax({
+                url: '/dlxin/Userloginshezhiedit/userinfo',
+                type: 'get',
+                data: {name: name},
+                dataType: 'json',
+                success: function (data) {
+                    var str = '';
+                    if (data.code == 1) {
+                        var len = data.data.length;
+                        for (let i = 0; i < len; i++) {
+                            str += `<li value="${data.data[i].id}" onclick="list(${data.data[i].id},'${data.data[i].username}' ,'${data.data[i].phone}')">nickname:${data.data[i].nick_name} -- 'username:${data.data[i].username}' -- phone:${data.data[i].phone}</li>`;
+                        }
+                        $("#ul").html(str);
+                    }
+                }
+            })
+        })
+    })
+
+    function list(id, username, phone) {
+        $("#name").val(username);
+        $("#phone").val(phone);
+        $("#name").attr('data-id', id);
+        $("#ul").find("li").remove();
+    }
+
+    $("#save").on('click', function () {
+        $.ajax({
+            url: '/dlxin/Userloginshezhiedit/useredit'
+        })
+    })
+    $("#save").on('click', function () {
+        var id = $("#name").attr('data-id');
+        var phone = $("#phone").val();
+        $.ajax({
+            url: '/dlxin/Userloginshezhiedit/useredit',
+            data: {id: id, phone: phone},
+            type: 'post',
+            dataType: "json",
+            success: function (data) {
+                alert(data.msg)
+            }
+        })
+    })
+    $("#save2").on('click', function () {
+        var id = $("#name").attr('data-id');
+        var img = $("#img").val();
+        $.ajax({
+            url: '/dlxin/Userloginshezhiedit/userai',
+            data: {id: id, image: img},
+            type: 'post',
+            dataType: "json",
+            success: function (data) {
+                alert(data.msg)
+            }
+        })
+    })
+
+</script>
+
+
+</body>
+</html>

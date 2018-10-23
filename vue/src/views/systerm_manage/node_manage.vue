@@ -8,7 +8,7 @@
     <a-tree
         checkable
         showLine
-        showIcon="true"
+        showIcon
         @expand="onExpand"
         :expandedKeys="expandedKeys"
         :autoExpandParent="autoExpandParent"

@@ -13,7 +13,7 @@
             <div>共有数据:<strong>{{loginList.length}}</strong>条</div>
         </div>
         <table class="layui-table">
-            <group>
+            <col-group>
                 <tr>
                     <col width="40">
                     <col width="100">
@@ -24,7 +24,7 @@
                     <col width="100">
                     <col width="120">
                 </tr>
-            </group>
+            </col-group>
             <thead>
             <th><input type="checkbox" id="quan" title="全选" lay-skin="primary" @click="checkAll($event)"></th>
             <th v-for="(row,index) in logon_log" :key="index">

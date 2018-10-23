@@ -4,12 +4,13 @@
             <div class="row m-15">
                 <div class="col-md-4">
                     <h4 class="bold ">{{items.title}}</h4>
-                    <img :src="items.img" alt="商品图"  width="200">
+                    <img :src="items.img" alt="商品图" width="200">
                 </div>
                 <div class="col-md-6">
-                    <h5 class="h4 bold"  >价格表</h5>
+                    <h5 class="h4 bold">价格表</h5>
                     <div class="img-thumbnail">
-                        <img :src="items.priceimage"  width="300" class="" style="min-width:300px;min-height:200px;" alt="价格表">
+                        <img :src="items.priceimage" width="300" class="" style="min-width:300px;min-height:200px;"
+                             alt="价格表">
                     </div>
                 </div>
             </div>
@@ -43,7 +44,7 @@
                         <input id="upload-file" type="file" style="display: none;">
                         <button class="btn btn-primary" @click="getPrice('#upload-file')">上传并预览</button>
                     </div>
-                    <a-button type="primary" class="center-block m-15" @click="post" >提交保存</a-button>
+                    <a-button type="primary" class="center-block m-15" @click="post">提交保存</a-button>
                 </form>
                 <div class="col-md-6 bd ">
                     <h5 class="h4 bold">商品详情</h5>
@@ -60,20 +61,21 @@
                     <div class="col-md-12 m-15" style="background-color: #eee;">
 
                         <ul style="max-height:800px;min-height:400px;overflow: auto;width:100%;">
-                            <li class="drag" style="height:300px; font-size: 0;" v-for="arr in dragImg">
-                                <img draggable="true" @dragstart.stop="drag(arr)"
+                            <li class="drag" style="height:300px; font-size: 0;" v-for="(arr,index) in dragImg" :key="index">
+                                <img draggable="true"
+                                     @dragstart.stop="drag(arr,index)"
                                      :data-img="arr"
                                      class="draged-img"
                                      @dragover="allowDrop"
-                                     @drop="drop(arr)"
-                                     style="height: 100%" :src="arr.img" alt=""
+                                     @drop="drop(arr,index)"
+                                     style="height: 100%" :src="arr" alt=""
                                      :index="arr.index">
                             </li>
                         </ul>
                     </div>
 
                     <!--<button >提交保存</button>-->
-                    <a-button type="primary" class="center-block m-15" @click="submitImg" >提交保存</a-button>
+                    <a-button type="primary" class="center-block m-15" @click="submitImg">提交保存</a-button>
                 </div>
 
             </div>
@@ -95,7 +97,7 @@
                     title: '',
                     img: null,
                     canshu: [
-                        ["商品编号", ],
+                        ["商品编号",],
                         ["", ""],
                         ["", ""],
                         ["", ""],
@@ -112,44 +114,48 @@
                         ["", '']
                     ],
                 },
-                ids:642,
-                priceimage:null,
+                ids: 642,
+                priceimage: null,
                 imgs: [],
-                draged: null,
-                droped: null
+                draged: {
+                    item:null,
+                    index:null
+                },
+                droped: {
+                    item:null,
+                    index:null
+                }
             }
         },
         created() {
-
             this.myclick();
             this.getinfo(642)
         },
 
         computed: {
             dragImg() {
-                console.log(this.imgs);
-                if (this.imgs.length) {
-                    this.imgs.sort(function (a, b) {
-                        return a.index - b.index
-                    });
-                    console.log(this.imgs);
-                    return this.imgs
-                }
-
+                return this.imgs
             }
         },
         methods: {
             addImg() {
                 this.imgs.push({img: this.uploadedImage, index: this.imgs.length + 1})
             },
-            drag(arr) {
-                this.draged = arr
+            drag(arr, index) {
 
+                this.draged.item = arr;
+                this.draged.index = index
             },
-            drop(arr) {
-                this.droped = arr;
-                [this.droped.index, this.draged.index] = [this.draged.index, this.droped.index]
+            drop(arr, index) {
+                this.droped.item = arr;
+                this.droped.index = index;
 
+                console.log(this.draged.item,this.draged.index);
+                console.log(this.droped.item,this.droped.index);
+                this.imgs[this.droped.index] = this.draged.item;
+                this.imgs[this.draged.index] = this.droped.item;
+                console.log(this.imgs);
+                this.$forceUpdate()
             },
             allowDrop(ev) {
                 ev.preventDefault();
@@ -175,31 +181,31 @@
             post: function () {
                 console.log(this.items);
                 $.ajax({
-                        url: 'https://api.vvc.tw/suc/goods/orderDetail/?id=' + this.items.goodid,
-                        type:'post',
-                        data:{
-                            data:JSON.stringify(this.items)
-                        } ,
-                        success: (res) => {
-                            if (res.code===1){
-                                this.$message.info("更新成功");
-                            }else{
-                                this.$mssage.info('更新失败')
-                            }
-                        }
-                    })
-            },
-            submitImg(){
-                $.ajax({
-                    url:'https://api.vvc.tw/suc/goods/updateImg',
-                    type:'post',
-                    data:{
-                        id:this.ids,
-                        data:JSON.stringify(this.imgs)
+                    url: 'https://api.vvc.tw/suc/goods/orderDetail/?id=' + this.items.goodid,
+                    type: 'post',
+                    data: {
+                        data: JSON.stringify(this.items)
                     },
-                    success:(res)=>{
+                    success: (res) => {
+                        if (res.code === 1) {
+                            this.$message.info("更新成功");
+                        } else {
+                            this.$mssage.info('更新失败')
+                        }
+                    }
+                })
+            },
+            submitImg() {
+                $.ajax({
+                    url: 'https://api.vvc.tw/suc/goods/updateImg',
+                    type: 'post',
+                    data: {
+                        id: this.ids,
+                        data: JSON.stringify(this.imgs)
+                    },
+                    success: (res) => {
                         // if (res.code==1){
-                            this.$message.info(res.msg);
+                        this.$message.info(res.msg);
                         // }
                     }
                 })
@@ -207,7 +213,7 @@
             getinfo(e) {
                 this.ids = e.path ? e.path[0].value : e;
                 this.items.goodid = this.ids;
-                console.log(e,this.ids,this.items.goodid);
+                console.log(e, this.ids, this.items.goodid);
                 $.ajax({
                     type: "post",
                     url: 'https://api.vvc.tw/suc/goods/getDetail/?id=' + this.ids,
@@ -215,13 +221,13 @@
                         console.log(resp);
                         if (resp.code === 0) {
                             this.items.canshu = this.itemss.canshu;
-                            this.items.priceimage=null;
+                            this.items.priceimage = null;
                             this.isshow = true;
                             console.log(this.isshow, 1111);
                         } else {
                             this.items = resp.data;
                             this.isshow = false;
-                            console.log(this.items,resp.data);
+                            console.log(this.items, resp.data);
                         }
                         $.ajax({
                             type: "post",
@@ -230,11 +236,16 @@
                                 id: this.ids,
                             },
                             success: (res) => {
-                                if(res.code===1){
-                                    this.items.img = res.data[0].img?res.data[0].img:null;
-                                    this.items.title = res.data[0].title?res.data[0].title:null;
-                                    this.imgs = res.data[0].content?res.data[0].content:[]
-                                }else{
+                                if (res.code === 1) {
+                                    this.items.img = res.data[0].img ? res.data[0].img : null;
+                                    this.items.title = res.data[0].title ? res.data[0].title : null;
+
+                                    const content = res.data[0].content;
+
+                                    this.imgs = [];
+
+                                    this.imgs = res.data[0].content ? res.data[0].content : []
+                                } else {
                                     this.items.img = null;
                                     this.items.title = null;
                                     this.imgs = []
@@ -332,14 +343,17 @@
     .m-15 {
         margin: 15px auto
     }
-.bd{
-    border:1px solid #ddd;
-}
-.center-block{
-    display: block;
-    margin-left:auto;
-    margin-right:auto;
-}
+
+    .bd {
+        border: 1px solid #ddd;
+    }
+
+    .center-block {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     #app {
         width: 93%;
         min-height: 100%;
