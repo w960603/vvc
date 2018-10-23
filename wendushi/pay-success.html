@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>支付成功</title>
+		<link href="css/common.css" rel="stylesheet" type="text/css" />
+		<!--<link href="css/main.css" rel="stylesheet" type="text/css" />-->
+		<link href="font/iconfont.css" rel="stylesheet">
+		<script src="js/adapt.js"></script>
+		<script src='js/jquery.js' type="text/javascript"></script>
+		<script src='js/main.js' type="text/javascript"></script>
+		<style>
+			/*头部*/
+			body{
+				background:#F4F4F4;
+			}
+			.content{
+				background:white;
+			}
+			.input {
+				display: flex;
+				justify-content: space-between;
+				margin: 0 auto;
+				width: 100%;
+				/*padding-top:44px;*/
+				line-height: 44px;
+				border-bottom: 1px solid lightgray;
+			}
+			
+			.icon-next {
+				color: #9B9B9B;
+			}
+			/*第一部分*/
+			
+			.part-1 {}
+			
+			.part-img {
+				width: 60px;
+				height: 60px;
+				margin: 0 auto;
+				padding-top: 38px;
+			}
+			
+			.name {
+				text-align: center;
+				color: #228EEC;
+				line-height: 25px;
+				font-size: 18px;
+				margin: 20px auto;
+				
+			}
+			.rest{
+				font-size:20px;
+				font-weight:600;
+				color:rgba(74,74,74,1);
+				line-height:24px;
+				text-align: center;
+			}
+			
+			/*第二部分*/
+			
+			.part-2 {
+				display:flex;
+				justify-content: space-between;
+				margin:26px 87px;
+				padding-bottom:37px;
+			}
+			.part-2 a{
+				width:90px;
+				height:30px;
+				text-align: center;
+				line-height:30px;
+				border-radius:4px;
+				border:1px solid rgba(74,74,74,1);
+				font-size:14px;
+			}
+			
+	
+		</style>
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="input">
+				<i class="iconfont icon-next" style="margin-left: 16px;"></i>
+				<span class="shop_list">支付成功</span>
+				<i class="iconfont icon-next" style="opacity: 0;"></i>
+			</div>
+		</header>
+		<section class="content">
+			<div class="part-1">
+				<div class="part-img">
+					<img class="pay-success" src="img/pay-success.png">
+				</div>
+				<div class="name">
+					支付成功
+				</div>
+				<p class="rest">¥1,234,258.00</p>
+
+				<div class="part-2">
+					<a href="order.html">查看订单</a>
+					<a href="index.html">返回首页</a>
+				</div>
+			</div>
+
+		</section>
+	</body>
+
+</html>

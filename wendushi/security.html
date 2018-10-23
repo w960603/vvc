@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>防伪查询</title>
+		<link href="css/common.css" rel="stylesheet" type="text/css" />
+		<!--<link href="css/main.css" rel="stylesheet" type="text/css" />-->
+		<link href="font/iconfont.css" rel="stylesheet">
+		<script src="js/adapt.js"></script>
+		<script src='js/jquery.js' type="text/javascript"></script>
+		<script src='js/main.js' type="text/javascript"></script>
+		<script src="layer/layer.js"></script>
+		<style>
+			/*头部*/
+			
+			.input {
+				display: flex;
+				justify-content: space-between;
+				margin: 0 auto;
+				width: 100%;
+				/*padding-top:44px;*/
+				line-height: 44px;
+				border-bottom: 1px solid lightgray;
+			}
+			
+			.icon-next {
+				color: #9B9B9B;
+			}
+			/*第一部分*/
+			
+			.part-1 {}
+			
+			.part-img {
+				width: 140px;
+				height: 44px;
+				margin: 0 auto;
+				padding-top: 40px;
+			}
+			
+			.name {
+				text-align: center;
+				color: rgba(74, 74, 74, 1);
+				line-height: 20px;
+				font-size: 14px;
+				margin: 14px auto;
+			}
+			
+			.part-input {
+				width: 298px;
+				border-radius: 2px;
+				border: 1px solid rgba(151, 151, 151, 1);
+				margin: 0 auto;
+			}
+			
+			.part-input input {
+				padding-left: 8px;
+				width: 298px;
+				height: 42px;
+				outline: none;
+			}
+			/*第二部分*/
+			
+			.part-2 {
+				/*width:187px;
+				line-height:42px;*/
+				margin: 28px auto;
+				text-align: center;
+			}
+			
+			.part-2 button {
+				background: linear-gradient(270deg, rgba(255, 198, 45, 1) 0%, rgba(255, 153, 21, 1) 100%);
+				border: none;
+				color: white;
+				font-size: 16px;
+				width: 187px;
+				line-height: 42px;
+				border-radius: 4px;
+			}
+			/*查询结果*/
+			
+			.search {
+				padding-left: 27px;
+				margin-top: 48px;
+				display: none;
+			}
+			
+			.grey {
+				font-size: 14px;
+				font-family: PingFang-SC-Medium;
+				font-weight: 500;
+				color: #9B9B9B;
+				line-height: 32px;
+			}
+			
+			.tel {
+				color: #4A4A4A;
+			}
+			
+			.time {
+				color: #4A4A4A;
+			}
+			
+			.result {
+				color: #D0021B;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="input">
+				<i class="iconfont icon-next" style="margin-left: 16px;"></i>
+				<span class="shop_list">防伪查询</span>
+				<i class="iconfont icon-next" style="opacity: 0;"></i>
+			</div>
+		</header>
+		<section class="content">
+			<div class="part-1">
+				<div class="part-img">
+					<img class="logo" src="img/logo.png">
+				</div>
+				<div class="name">
+					温度师防伪查询
+				</div>
+
+				<div class="part-input">
+					<input type="search" placeholder="请输入防伪码" required="required" id="number">
+				</div>
+			</div>
+
+			<div class="part-2">
+				<button id="search">点击查询</button>
+			</div>
+		</section>
+		<!--查询结果-->
+		<div class="search">
+			<p class="grey">查询号码：<span class="tel">123456789012</span></p>
+			<p class="grey">查询时间：<span class="time">2018-08-22 09:4</span></p>
+			<p class="grey">查询结果：<span class="result">未找到您所查询的验证码，谨防假货！</span></p>
+		</div>
+
+		<script>
+			function getDate() {
+				var newDate = new Date();
+				var timeStamp = newDate.getTime(); //获取时间戳
+				var year = newDate.getFullYear();
+				var month = newDate.getMonth() + 1;
+				var day = newDate.getDate();
+				var h = newDate.getHours();
+				var m = newDate.getMinutes();
+				var s = newDate.getSeconds();
+				if(month < 10) {
+					month = '0' + month;
+				};
+				if(day < 10) {
+					day = '0' + day;
+				};
+				if(h < 10) {
+					h = '0' + h;
+				};
+				if(m < 10) {
+					m = '0' + m;
+				};
+				if(s < 10) {
+					s = '0' + s;
+				};
+				return time1 = year + "-" + month + "-" + day + " " + h + ":" + m + ":" + s;
+
+			}
+
+			getDate()
+
+			$(function() {
+
+				$("#search").click(function() {
+					var number = $("#number").val().trim()
+					if(number == "") {
+						layer.tips('请输入12位防伪码！', "#number", {
+							tips: 3
+						});
+					} else {
+						$(".search").show()
+						console.log(123)
+						var text = $("#number").val()
+						$(".time").text(time1)
+						$(".tel").text(text)
+					}
+
+				})
+			})
+		</script>
+	</body>
+
+</html>

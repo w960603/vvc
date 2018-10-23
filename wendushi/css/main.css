@@ -1,0 +1,190 @@
+	@font-face { 
+		font-family: KaiTi;
+		src: url('SIMKAI.TTF');}
+    a{text-decoration: none;cursor:pointer;color:black;}
+	li{list-style: none;}
+	.gray{
+		position: absolute;
+	    height: 100%;
+	    width: 100%;
+	    left: 0px;
+	    top: 0px;
+	    z-index: 1001;}
+	.brother{
+		background-color: #000;
+	    opacity: 0.5;
+	    height: 100%;
+	    width: 100%;
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	    z-index: 0;
+	}
+	.gift{
+		z-index: 1;
+		position: relative;
+		width: 80%;
+		height: 50%;
+		margin: 6rem auto;
+	}
+	.gift img{
+		width:100%;
+		height:100%;
+		
+	}
+	.submit{
+		border-radius: 0.3rem;
+		color: #DB483C;
+		padding: 0.5rem 2rem;
+		display: flex;
+		margin: 4rem auto;
+		background: #FEE325;
+		border: none;
+		font-size: 1.5rem;
+		position: relative;
+				}
+	/*第一部分*/
+	#box{margin-top: -3rem;}
+	.part-1{
+		text-align:center;
+		width:100%;
+		background:#143246;
+		overflow: hidden;
+		color:white;
+		}
+	.part-1 .logo{
+		width: 4rem;
+    	height: 4rem;
+    	margin:1rem auto;
+	}
+	.part-1 .logo img{
+		width: 100%;
+	}
+	.turn1{
+		width:100%;
+		margin-top:1rem;
+	}
+	.turn{
+		width:150rem;
+		height:14rem;
+		position:relative;
+	}
+	.turn img{
+		width:100%;
+		height:100%;
+		border-radius:1rem;
+	}
+	.childImg{
+		width: calc(100vw);
+		height:100%;
+		float: left;
+	}
+	.part-1 .zero{
+		display:inline-block;
+		width:0.5rem;
+		height:0.5rem;
+		border-radius:50%;
+		background:gray;
+		position:relative;
+		top: -2rem;
+		left: 0rem;
+		border:none;
+	}
+	.part-1 .blue{
+		background:#63b8ff;
+		border:1px solid white;
+	}
+	.price{
+		display:flex;
+		justify-content: space-around;
+		text-align: left;
+		line-height: 3.5rem;
+		margin-bottom:1rem;
+	}
+	.price h3{
+		width:7rem;
+	}
+	.price .line{
+		width:0.1rem;
+		height:4rem;
+		background:whitesmoke;
+	}
+	.depostied{
+		position: absolute;
+		left: 106px;
+		text-align: center;
+		border-radius: 0.5rem;
+		height: 5rem;
+		width: 10rem;
+		line-height: 2.5rem;
+		border: 1px solid lightgray;
+		background: white;
+		font-size: 1.2rem;
+		top: 21rem;
+	}
+	.icon-wanchenggouxuan2 {
+		color:green;
+		font-size: 1.5rem!important;
+	}
+	/*第二部分*/
+	.part-2{
+		padding-bottom: 1rem;
+	}
+	.part-2 ul{
+		display:flex;
+		flex-wrap:wrap;
+		justify-content: center;
+	}
+	.part-2 li{
+		width: 33.3%;
+		text-align: center;
+		border: 1px solid whitesmoke;
+		box-sizing: border-box;
+	}
+	.part-2 li p{padding-bottom:0.5rem;font-family: KaiTi;}
+	.part-2 li:hover{
+		background:cornflowerblue;
+	}
+	.part-2 img{
+		width: 3rem;
+    	height: 3rem;
+    	padding: 0.2rem;
+	}
+	li p{
+		font-size: 1.2rem;
+	}
+	/*第三部分*/
+	.part-3{
+		position:absolute;
+		bottom:0;
+		border-top:1px solid lightgray;
+		width:100%;
+		z-index: 1;
+		height:5rem;
+		line-height: 2rem;
+	}
+	#first{
+		font-size: 1rem;
+	}
+	.part-3 ul{
+		display:flex;
+		flex-wrap:wrap;
+		justify-content: center;
+	}
+	.part-3 li{
+		flex:1;
+		text-align: center;
+		margin: 0.5rem;
+	}
+	.part-3 li i{
+		font-size: 2.5rem;
+	}
+	.part-3 li .icon-shouye{
+		font-size: 3rem;
+	}
+	.part-4{
+		height:7%;
+	}
+	.red{
+		color:red;
+	}

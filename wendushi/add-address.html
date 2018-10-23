@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>添加地址</title>
+		<link href="css/common.css" rel="stylesheet" type="text/css" />
+		<!--<link href="css/main.css" rel="stylesheet" type="text/css" />-->
+		<link href="font/iconfont.css" rel="stylesheet">
+		<script src="js/adapt.js"></script>
+		<script src='js/jquery.js' type="text/javascript"></script>
+		<script src='js/main.js' type="text/javascript"></script>
+		<style>
+			/*头部*/
+			
+			.input {
+				display: flex;
+				justify-content: space-between;
+				margin: 0 auto;
+				width: 100%;
+				/*padding-top:44px;*/
+				line-height: 44px;
+				border-bottom: 1px solid lightgray;
+			}
+			
+			.icon-next {
+				color: #9B9B9B;
+			}
+			/*第一部分*/
+			
+			.list {
+				padding: 0 16px;
+				line-height: 49px;
+				font-size: 14px;
+				background: rgba(255, 255, 255, 1);
+				border-bottom: 1px solid #D7D7D7;
+			}
+			
+			.list input {
+				border: none;
+				outline: none;
+				height: 25px;
+				width: 254px;
+			}
+			/*第二部分*/
+			
+			.part-2 {
+				display: flex;
+				padding: 16px;
+				background: white;
+				line-height: 16px;
+				border-bottom: 1px solid lightgray;
+			}
+			
+			.detail_address {
+				height: 48px;
+				width: 70px;
+				font-size: 14px;
+				color: rgba(74, 74, 74, 1);
+			}
+			
+			textarea {
+				background: white;
+				height: 48px;
+				width: calc(100% - 70px);
+				border-bottom: 1px solid lightgray;
+				border: none;
+				outline: none;
+			}
+			/*设为默认*/
+			
+			.switch {
+				display: flex;
+				padding: 27px 16px;
+				justify-content: space-between;
+				line-height: 30px;
+			}
+			
+			.testswitch {
+				position: relative;
+				float: left;
+				width: 80px;
+				margin: 0;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+			}
+			
+			.testswitch-checkbox {
+				display: none;
+			}
+			
+			.testswitch-label {
+				display: block;
+				overflow: hidden;
+				cursor: pointer;
+				border: 2px solid #999999;
+				border-radius: 20px;
+			}
+			
+			.testswitch-inner {
+				display: block;
+				width: 200%;
+				margin-left: -100%;
+				transition: margin 0.3s ease-in 0s;
+			}
+			
+			.testswitch-inner::before,
+			.testswitch-inner::after {
+				display: block;
+				float: right;
+				width: 50%;
+				height: 30px;
+				padding: 0;
+				line-height: 30px;
+				font-size: 14px;
+				color: white;
+				font-family: Trebuchet, Arial, sans-serif;
+				font-weight: bold;
+				box-sizing: border-box;
+			}
+			
+			.testswitch-inner::after {
+				content: attr(data-on);
+				padding-left: 10px;
+				background-color: #00e500;
+				color: #FFFFFF;
+			}
+			
+			.testswitch-inner::before {
+				content: attr(data-off);
+				padding-right: 10px;
+				background-color: #EEEEEE;
+				color: #999999;
+				text-align: right;
+			}
+			
+			.testswitch-switch {
+				position: absolute;
+				display: block;
+				width: 22px;
+				height: 22px;
+				margin: 4px;
+				background: #FFFFFF;
+				top: 0;
+				bottom: 0;
+				right: 46px;
+				border: 2px solid #999999;
+				border-radius: 20px;
+				transition: all 0.3s ease-in 0s;
+			}
+			
+			.testswitch-checkbox:checked+.testswitch-label .testswitch-inner {
+				margin-left: 0;
+			}
+			
+			.testswitch-checkbox:checked+.testswitch-label .testswitch-switch {
+				right: 0px;
+			}
+			/*第三部分*/
+			
+			.part-3 {
+				position: fixed;
+				bottom: 136px;
+				left: 0;
+				right: 0;
+				width: 233px;
+				line-height: 46px;
+				background: linear-gradient(270deg, rgba(255, 198, 45, 1) 0%, rgba(255, 153, 21, 1) 100%);
+				border-radius: 23px;
+				margin: 0 auto;
+				text-align: center;
+				font-size: 18px;
+				color: white;
+			}
+		
+		</style>
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="input">
+				<i class="iconfont icon-next" style="margin-left: 16px;"></i>
+				<span class="shop_list">地址管理</span>
+				<i class="iconfont icon-next" style="opacity: 0;"></i>
+			</div>
+		</header>
+		<section class="content">
+			<div class="list">收货人：<input type="text" /></div>
+			<div class="list">手机号码：<input type="number" /></div>
+			<div class="list">所在地址：<input type="text" /></div>
+			<div class="part-2">
+				<label class="detail_address">详细地址:</label>
+				<textarea placeholder="街道、楼牌号等"></textarea>
+			</div>
+			<div class="switch">
+				<p>设为默认</p>
+				<div class="testswitch">
+					<input class="testswitch-checkbox" id="onoffswitch" type="checkbox">
+					<label class="testswitch-label" for="onoffswitch">
+						<span class="testswitch-inner" data-on="YES" data-off="NO"></span>
+						<span class="testswitch-switch"></span>
+					</label>
+				</div>
+
+			</div>
+			<div class="part-3">
+				<span>保存并使用</span>
+			</div>
+		</section>
+		<script>
+			$(document).ready(function() {
+				$("#onoffswitch").on('click', function() {
+					clickSwitch()
+				});
+
+				var clickSwitch = function() {
+					if($("#onoffswitch").is(':checked')) {
+						console.log("在ON的状态下");
+					} else {
+						console.log("在OFF的状态下");
+					}
+				};
+			});
+		</script>
+	</body>
+
+</html>

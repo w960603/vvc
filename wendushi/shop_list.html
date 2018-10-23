@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>商品列表</title>
+		<link href="css/common.css" rel="stylesheet" type="text/css" />
+		<!--<link href="css/main.css" rel="stylesheet" type="text/css" />-->
+		<link href="font/iconfont.css" rel="stylesheet">
+		<script src="js/adapt.js"></script>
+		<script src='js/jquery.js' type="text/javascript"></script>
+		<script src='js/main.js' type="text/javascript"></script>
+		<script>
+			var width = window.screen.width;
+			var fixedW = 375;
+			var scale = width / fixedW;
+			var meta = document.createElement('meta');
+			meta.setAttribute('name', 'viewport');
+			meta.setAttribute('content', 'width=' + fixedW + ',user-scalable=no,initial-scale=' + acale + ',maximum-scale=' + scale + ',minimum-scale=' + scale);
+			document.head.appendChild(meta);
+		</script>
+		<style>
+			/*头部*/
+			
+			.input {
+				width: 375px;
+				height: 44px;
+				text-align: center;
+				border-bottom: 1px solid lightgray;
+			}
+			
+			.shop_list {
+				font-weight: 500;
+				color: rgba(74, 74, 74, 1);
+				line-height: 44px;
+			}
+			/*第一部分*/
+			
+			.part-1 {
+				margin: 0 16px 14px 16px;
+			}
+			
+			.cuplist {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				width: 344px;
+				margin: 14px auto;
+				padding-top: 16px;
+			}
+			
+			.cuplist li {
+				width: 169px;
+				height: 169px;
+				margin-bottom: 6px;
+				text-align: center;
+				background: #FFFFFF;
+				border-radius: 4px;
+				box-shadow: 0px -1px 4px 0px rgba(237, 237, 237, 1), 0px 2px 4px 0px rgba(237, 237, 237, 1);
+			}
+			
+			.cuplist li img {
+				width: 120px;
+				height: 120px;
+				padding-top:8px;
+			}
+			
+			.jiaoban {
+				font-size: 12px;
+				font-weight: 500;
+				color: rgba(155, 155, 155, 1);
+				line-height: 20px;
+			}
+			
+			.price {
+				font-size: 10px;
+				font-weight: 500;
+				color: rgba(208, 2, 27, 1);
+				line-height: 14px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="header">
+			<div class="input">
+				<p class="shop_list">商品列表</p>
+			</div>
+		</header>
+		<section class="content">
+			<!--人气推荐-->
+			<div class="part-1">
+				<ul class="cuplist">
+					<li><a href="detail.html"><img src="img/cup.jpg">
+						<p class="jiaoban">搅拌机（带研磨功能）</p>
+						<p class="price">¥ 400.00</p>
+					</a>
+					</li>
+						<li><a href="detail.html"><img src="img/cup.jpg">
+						<p class="jiaoban">搅拌机（带研磨功能）</p>
+						<p class="price">¥ 400.00</p>
+					</a>
+					</li>
+						<li><a href="detail.html"><img src="img/cup.jpg">
+						<p class="jiaoban">搅拌机（带研磨功能）</p>
+						<p class="price">¥ 400.00</p>
+					</a>
+					</li>
+						<li><a href="detail.html"><img src="img/cup.jpg">
+						<p class="jiaoban">搅拌机（带研磨功能）</p>
+						<p class="price">¥ 400.00</p>
+					</a>
+					</li>
+						<li><a href="detail.html"><img src="img/cup.jpg">
+						<p class="jiaoban">搅拌机（带研磨功能）</p>
+						<p class="price">¥ 400.00</p>
+					</a>
+					</li>
+						<li><a href="detail.html"><img src="img/cup.jpg">
+						<p class="jiaoban">搅拌机（带研磨功能）</p>
+						<p class="price">¥ 400.00</p>
+					</a>
+					</li>
+						<li><a href="detail.html"><img src="img/cup.jpg">
+						<p class="jiaoban">搅拌机（带研磨功能）</p>
+						<p class="price">¥ 400.00</p>
+					</a>
+					</li>
+						<li><a href="detail.html"><img src="img/cup.jpg">
+						<p class="jiaoban">搅拌机（带研磨功能）</p>
+						<p class="price">¥ 400.00</p>
+					</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<script>
+		</script>
+		<!--尾部开始-->
+		<div class="footer">
+			<ul>
+				<li><a href="index.html">
+					<div class="iconpar">
+						<i class="iconfont icon-shouye1"></i>
+					</div>
+					<p>首页</p>
+					</a>
+				</li>
+				<li><a href="order.html">
+					<div class="iconpar">
+						<i class="iconfont icon-dingdanliebiao"></i>
+					</div>
+					<p class="gray">订单列表</p>
+					</a>
+				</li>
+				<li><a href="shop_list.html">
+					<div class="iconpar">
+						<i class="iconfont icon-shangpinliebiao"></i>
+					</div>
+					<p class="gray">商品列表</p>
+					</a>
+				</li>
+				<li><a href="my.html">
+					<div class="iconpar">
+						<i class="iconfont icon-wode"></i>
+					</div>
+					<p>我的</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

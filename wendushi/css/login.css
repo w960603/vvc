@@ -1,0 +1,119 @@
+html{
+	font-size:16px;
+	}
+	body{
+	  font-family:"Microsoft Yahei","Helvetica Neue";
+    	color: #FFFFFF;
+    	-webkit-font-smoothing: antialiased;
+    	}
+    a{
+    	text-decoration: none;
+		cursor:pointer;
+		color:grey;
+	}
+	*{
+		padding:0;margin:0;
+	}
+	.back{
+		position:absolute;
+		z-index: -1;
+		width:100%;
+		height:100%;
+	}
+    #box{
+    	width:100%;
+    	height:100%;
+    	margin:auto;
+		text-align: center;
+		position:relative;
+		z-index:1;
+    }
+	.first{
+		text-align:center;
+		}
+	.first img{
+		width:4rem;
+		height:4rem;
+		margin-top: 2rem;
+		}
+	.first p{
+		font-size:1rem;
+	}
+	.sign{
+		font-size: 1.5rem;
+    	text-align: center;
+	}
+	.change-login{
+		width: 20rem;
+	    margin: 0 auto; 
+	    display: flex;
+	    justify-content: space-around;
+	    font-size: 1.3rem;
+	    color: grey;
+	}
+	.change-login .account{
+		color: #6495ED;
+	}
+	.change-login p{
+		cursor: pointer;
+	}
+	.p-input-post{
+		position: relative;
+		padding: 0.4rem 0;
+	    height: 3.5rem;
+	    box-sizing: border-box;
+	    border-bottom: 1px solid #e5e5e5;
+	    width: 15rem;
+	    margin: 3rem auto;
+	    line-height: 3.5rem;
+	    }
+	 input{
+		outline: none;
+		border: none;
+		z-index: 5;
+		position: relative;
+		top: 0rem;
+		width: 13rem;
+		background-color: transparent;
+		font-size: 1rem;
+		color: white;
+	    }
+ 
+	.r-forget-cl{
+		width: 20rem;
+	    margin: 0 auto 1rem;
+	    display: flex;
+	    justify-content: space-around;
+	    font-size: 1rem;
+	    padding:1rem 0;
+	    color: grey;
+	}
+	.lang-btn{
+		text-align: center;
+		padding:0.7rem 5rem;
+		background:#c40a13;
+		border-radius:2.5rem;
+		margin:1.5rem 0;
+		color:white;
+		font-size: 1rem;
+		border: none;
+	}
+	.error{
+		color:red;
+		font-size:1rem;
+		display:none;
+	}
+	.full{
+		color:red;
+		font-size:1rem;
+		display:none;
+	}
+	.y{
+		color:grey;
+	}
+	select{opacity:0.5;padding:5px;background:#143246;color:whitesmoke;}
+	.banben{
+	margin-left:16rem;
+	margin-top:3rem;
+	font-size:1rem;
+	}

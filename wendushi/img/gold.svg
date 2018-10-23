@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375px" height="210px" viewBox="0 0 375 210" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 3@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="53.3087145%" x2="100%" y2="53.3087145%" id="linearGradient-1">
+            <stop stop-color="#FF9815" offset="0%"></stop>
+            <stop stop-color="#FFC92F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的钱包" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <path d="M0,166.170329 C41.8850514,195.057038 104.475335,209.500392 187.77085,209.500392 C271.066366,209.500392 333.656649,195.057038 375.5417,166.170329 L375.5417,-55.9776787 L0,-50.4431521 L0,166.170329 Z" id="Path-3"></path>
+        </g>
+    </g>
+</svg>
