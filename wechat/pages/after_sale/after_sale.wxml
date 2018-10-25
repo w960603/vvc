@@ -49,12 +49,11 @@
                                             <view class='text1' style="border:2rpx solid rgba(8,194,153,1); letter-spacing:2rpx;color:rgba(8,194,153,1);" wx:if="{{item.status == 2}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>同意退货</view>
                                             <view class='text1' style="border:2rpx solid rgba(251,167,3,1); letter-spacing:2rpx;color:rgba(251,167,3,1);" wx:if="{{item.status == 3}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>商品回仓</view>
                                             <view class='text1' wx:if="{{item.status == 4}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>收到货物</view>
-                                            <!-- <text wx:if="{{item.status == 5}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>仓库返回</text> -->
-                                            <!-- <text wx:if="{{item.status == 6}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>拒绝退货</text> -->
-                                            <!-- <text wx:if="{{item.status == 7}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>二次申请</text> -->
-                                            <!-- <text wx:if="{{item.status == -2}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>拒绝</text> -->
-                                            <!-- <text wx:if="{{item.status == -3}}" data-index="{{index}}" data-status="{{item.status}}" bindtap='after_sale'>拒绝</text> -->
+                                           
                                         </view>
+                                        <view class="title1" wx:if='{{item.danhao}}'>
+                                                快递单号:{{item.danhao}}
+                                           </view>
                                     </view>
                                 </view>
                             </view>
@@ -181,7 +180,11 @@
             </view>
         </mask>
         <view class="footer" wx:if="{{currentTab == 2}}" style='{{iphonex}}'>
-            <view class="btn1" bindtap='comfirmRefer' adjust-position='true'>提交</view>
+            <view class='footer-image'>
+                <image src='https://cdn.vvc.tw/a/images/vvc_logo.svg'></image>
+                <text>联系客服</text>
+            </view>
+            <view class="submit" bindtap='submit' >提交</view>
         </view>
     </view>
 </view>

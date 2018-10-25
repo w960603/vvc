@@ -2,7 +2,7 @@
 <view class="header" style='{{h}}'>
     <image class='header-posi-img' src='/image/icon/backwhite.svg' bindtap="goback"></image>
     <view class='order_list'>
-        购物车
+        团队管理
     </view>
     <image class='header-posi-img' src='/image/icon/back.svg' style='opacity:0'></image>
 </view>
@@ -36,7 +36,7 @@
     <scroll-view scroll-y='{{true}}' style='height:70vh;padding-left:24rpx;box-shadow:0px 6px 18px 0px rgba(235,236,237,1),0px 0px 10px 0px rgba(232,235,237,1);border-radius:4px;'>
         <view class='list' wx:for='{{response.back}}' bindtap='search' data-id='{{item.id}}'>
             <view class='img-sm'>
-                <image lazy-load='{{true}}' style='width:100%;height:100%;background:url("https://cdn.vvc.tw/a/images/none.svg") center center/cover no-repeat ;border:1px solid #eee' src='{{item.img_url}}' mode='widthFix'></image>
+                <image lazy-load='{{true}}' style='width:100%;height:100%;background:url("https://cdn.vvc.tw/a/images/none.svg") center center/cover no-repeat ;' src='{{item.img_url}}' mode='widthFix'></image>
             </view>
             <view>
                 <view class='name fz-32'>{{item.nick_name}}</view>

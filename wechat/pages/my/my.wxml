@@ -54,7 +54,7 @@
                         <text class="text">{{user.num2?user.num2:'0'}}</text>
                     </view>
                     <block>
-                        <text class="green dabiao">{{user.codemsg}}</text>
+                        <text class="weidabiao dabiao">{{user.codemsg}}</text>
                     </block>
                 </view>
             </view>

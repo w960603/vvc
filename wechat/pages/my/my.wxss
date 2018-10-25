@@ -99,9 +99,9 @@ progress{
     border: 2rpx solid rgba(8, 194, 153, 1);
 }
 
-.red{
+.weidabiao{
     color: #D0021B;
-    border:#D0021B
+    border:2rpx solid #D0021B
 }
 /* 修改 */
 

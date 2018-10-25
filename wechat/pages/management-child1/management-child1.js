@@ -20,7 +20,8 @@ Page({
 
         selected: true,
 
-        num: null
+        num: null,
+        level:''
     },
 
     /**
@@ -32,8 +33,11 @@ Page({
             infos: JSON.parse(options.info)
         })
 
+
         this.setData({
-            ['infos.lvl']:1
+            ['infos.lvl']:1,
+            level:app.globalData.userinfo.level,
+            item:this.data.infos.level||'天使'
         })
 
         //适应ipx

@@ -125,6 +125,9 @@ Page({
                             key: 'count',
                             data: res.data.data.count,
                         })
+
+                        app.globalData.has_show = false;
+
                         wx.switchTab({
                             url: '../home/home',
                         })
@@ -163,7 +166,6 @@ Page({
                 },
             })
         }
-
     },
 
     // 获取验证码
@@ -206,9 +208,6 @@ Page({
                             clearInterval(timer);
                         }
                     }, 1000)
-
-
-
                 }
             }
         })

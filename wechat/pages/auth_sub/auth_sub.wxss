@@ -97,7 +97,7 @@ margin-bottom: 32rpx;
 
 }
 .acc_infor{
-width:644rpx;
+width:635rpx;
 font-size:24rpx;
 font-family:PingFang-SC-Medium;
 font-weight:500;

@@ -23,7 +23,7 @@
                     <text class="text">{{user.num2?user.num2:'0'}}</text>
                 </view>
                 <block>
-                    <text class="green">{{user.codemsg}}</text>
+                    <text class="red">{{user.codemsg}}</text>
                 </block>
             </view>
         </view>

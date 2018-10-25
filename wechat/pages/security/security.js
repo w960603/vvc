@@ -84,7 +84,8 @@ Page({
         })
     },
     onLoad: function(options) {
-
+        console.log(app.tok)
+        app.getToken()
 
         /************用户验证*************/
         // 登陆过就不用获取微信
@@ -244,7 +245,6 @@ Page({
                     
                 }
             }
-
 
         })
     },

@@ -42,8 +42,7 @@
     <swiper-item wx:for='{{guide_imglist}}'>
         <image lazy-load='{{true}}' src='{{item}}' class='guide-img' mode='widthFix'></image>
         <block wx:if='{{index===guide_imglist.length-1}}'>
-            <button bindtap='hideguide' class='ikonw'>我知道了</button>
+            <button bindtap='hideguide' plain='{{false}}' class='ikonw'>我知道了</button>
         </block>
     </swiper-item>
-
 </swiper>

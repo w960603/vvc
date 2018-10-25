@@ -14,7 +14,7 @@ Page({
         //适应ipx
         h: '',
         fill: '',
-        backable:null
+        backable: null
 
     },
     navigateBack() {
@@ -45,16 +45,16 @@ Page({
     //设为默认
     set_default(e) {
         console.log(e.currentTarget.dataset.index);
-        
+
         app.request({
             url: 'https://api.vvc.tw/dlxin/user/userupdateaddress',
             method: 'post',
             data: {
                 id: this.data.address_lists[e.currentTarget.dataset.index].id,
                 default: 1,
-                form_type:1
+                form_type: 1
             },
-            success:(res)=>{
+            success: (res) => {
                 this.request_address()
             }
         })
@@ -105,7 +105,7 @@ Page({
             method: 'post',
             success: (res) => {
 
-                if (res.data.code==1) {
+                if (res.data.code == 1) {
                     this.setData({
                         address_lists: res.data.data
                     });
@@ -120,17 +120,17 @@ Page({
             isshow1: !this.data.isshow1
         })
     },
-  navigateback1(){
-    wx.navigateBack();
-  },
- // 选择收货地址
+    navigateback1() {
+        wx.navigateBack();
+    },
+    // 选择收货地址
     choiceaddress(e) {
         // console.log(11)
         // console.log(e.currentTarget.dataset.item);
         var Modifyaddress = e.currentTarget.dataset.item
         console.log(Modifyaddress);
 
-        if (this.data.backable){
+        if (this.data.backable) {
             this.navigateBack1
             var pages = getCurrentPages();
             var currPage = pages[pages.length - 1]; // 当前页面
@@ -149,18 +149,18 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
 
         console.log(options.back)
 
-        if (options.back){
+        if (options.back) {
             this.setData({ backable: options.back })
             console.log(this.data.backable)
         }
 
         //适应ipx
         this.setData({
-            h: 'padding-top:' + app.globalData.statusBarHeight * 2+ "rpx"
+            h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx"
         })
         this.setData({
             fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx"

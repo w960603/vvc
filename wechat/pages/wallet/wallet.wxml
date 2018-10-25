@@ -19,11 +19,11 @@
             <view class='wfr-rmb-bg'>
                 <view class='wfr-wallet-rmb'>钱包</view>
                 <view class='wfr-RechargeRmb'>
-                    <text class='wfr-wallet-text1' bindtap='top_up'>充值金额</text>
+                    <text class='wfr-wallet-text1'>充值金额</text>
                     <text class='wfr-wallet-text2'>{{userinfo.money}}</text>
                 </view>
                 <view class='wfr-balance'>
-                    <view class='wfr-wallet-text1'>账户金额</view>
+                    <view class='wfr-wallet-text1'>账户余额</view>
                     <view class='wfr-wallet-text2'wx:if='{{userinfo.surplar}}'>{{userinfo.surplar}}</view>
                 </view>
             </view>

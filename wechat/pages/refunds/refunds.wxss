@@ -371,6 +371,7 @@ page {
 .footer-image image{
     width:48rpx;
     height:28rpx;
+    margin-right:6rpx;
 }
 .submit{
     width:276rpx;

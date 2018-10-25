@@ -28,6 +28,7 @@ Page({
         loaded: false,
         margin: null,
 
+        
         showguide:false,
         guide_imglist:[
             'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/dlxin/jiaocheng/img/107110097236652162.png',
@@ -136,21 +137,26 @@ Page({
      */
     onLoad: function(option) {
         
-        wx.getStorage({
-            key: 'count',
-            success: (res)=> {
-                console.log(res)
-                if (res.data&&res.data < 3) {
-                    this.setData({
-                        showguide: true
-                    })
-                } else {
-                    this.setData({
-                        showguide: false
-                    })
-                }
-            },
-        })
+        if(!app.globalData.has_show){
+            app.globalData.has_show = true;
+            
+            wx.getStorage({
+                key: 'count',
+                success: (res) => {
+                    console.log(res)
+                    if ((res.data || res.data == 0) && res.data < 3) {
+                        this.setData({
+                            showguide: true
+                        })
+                    } else {
+                        this.setData({
+                            showguide: false
+                        })
+                    }
+                },
+            })
+        }
+        
         
         setTimeout(function() {
             wx.hideToast()

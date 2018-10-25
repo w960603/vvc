@@ -127,6 +127,9 @@ scroll-view{
     width:104rpx;
     height:104rpx;
     margin-right:24rpx;
+    border-radius:3rpx;
+    box-shadow:1px 1px 4px rgba(127,127,127,.27);
+    overflow:hidden;
 }
 .name{
     height:44rpx;
