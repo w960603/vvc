@@ -348,7 +348,7 @@
                             },
                             {
                                 name:'用户管理',
-                                url:'/ai',
+                                url:'/user_manage',
                                 key:3,
                             },
                             {

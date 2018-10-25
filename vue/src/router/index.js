@@ -11,6 +11,7 @@ import freight from '../views/ElectronicSurface/freight'
 import commodity from '../views/warehouse/commodity'
 import diyige from '../views/warehouse/diyige'
 /***Administration页面组件**/
+
 import aftersalesurvey from '../views/Administration/aftersalesurvey'
 import deposit from '../views/Administration/deposit'
 import address from '../views/Administration/address'
@@ -52,6 +53,7 @@ import logon_log from '../views/systerm_manage/logon_log'
 import logs from '../views/systerm_manage/logs'
 import userlog from '../views/systerm_manage/userlog'
 import ai from '../views/systerm_manage/ai'
+import userinfo from '../views/systerm_manage/userinfo'
 /**
     import diyige from '../views/warehouse/diyige'
     import ordertype from '../views/warehouse/ordertype'
@@ -64,6 +66,7 @@ Vue.use(Router);
                path: '/',
                component: index,
                name:'index',
+
                children: [
                    /***home页面组件**/
                    {
@@ -203,6 +206,20 @@ Vue.use(Router);
                    },
                    /***systerm_manage页面组件**/
                    {
+                       path: '/user_manage',
+                       component: user_manage,
+                       name:'user_manage',
+                       children:[
+
+                       ]
+                   },
+                   {
+                       path: 'userinfo',
+                       component: userinfo,
+                       name:'userinfo',
+                       props:true
+                   },
+                   {
                        path:'/node_manage',
                        component:node_manage,
                        name:'node_manage'
@@ -232,7 +249,6 @@ Vue.use(Router);
                        component:ai,
                        name:"ai"
                    },
-
                    {
                        path:"logon_log",
                        component:logon_log,
@@ -243,6 +259,7 @@ Vue.use(Router);
                        component: userlog,
                        name:'userlog'
                    },
+
                    /***home页面组件**/
                    {
                        path:'/jdorder',

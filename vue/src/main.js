@@ -9,13 +9,11 @@ import router from './router'
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
-Vue.use(VueAxios, axios)
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
 
-
-//使用antd和jq
 Vue.use(Antd);
 
 

@@ -1,23 +1,28 @@
 <template>
     <div id="app">
-        <div class="layui-form layui-col-space30 form">
-            <div class="layui-form-item layui-col-md6">
-                <label class="layui-form-label">搜索</label>
-                <div class="layui-input-block">
-                    <input type="text" name="title" required v-model="order_name"  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+        <div>
+            <div style="margin-top:30px">
+                <div>
+                    <label>搜索</label>
+                    <input style="border: 1px solid #cccccc;width: 300px;height: 30px;padding-left:5px " type="text" name="title" required v-model="order_name"   placeholder="请输入标题" autocomplete="off">
                 </div>
             </div>
-            <div class="layui-btn-container layui-col-md6">
-                <button class="layui-btn" @click="sku_show = false">全部商品</button>
-                <button class="layui-btn layui-btn-warm"   @click="num_click()">发货列表</button>
-                <button class="layui-btn layui-btn-normal"   @click="show_member = !show_member">显示分类</button>
-                <button class="layui-btn layui-btn-danger" @click="update()">刷新</button>
-
+            <div style="margin: 20px 0">
+                <button  class="btn1" @click="sku_show = false">全部商品</button>
+                <button  class="btn2" @click="num_click()">发货列表</button>
+                <button  class="btn3" @click="show_member = !show_member">显示分类</button>
+                <button  class="btn4" @click="update()">刷新</button>
             </div>
         </div>
-        <table v-if="!sku_show" class="layui-table" layui-even>
+        <table v-if="!sku_show" style="margin: 0 auto" class="table table-hover table-bordered table-responsive">
+            <colgroup>
+                <col width="200">
+                <col width="200">
+                <col width="200">
+                <col width="200">
+            </colgroup>
             <thead>
-            <th v-for="title in titles">{{title}}</th>
+                <th style="text-align: center;height: 40px;font-size: 16px;border: 1px solid #e6e6e6;" v-for="title in titles">{{title}}</th>
             </thead>
             <tbody>
             <template v-for="(list,index) in send_list">
@@ -25,28 +30,31 @@
                     <tr :class="show_member?'bg_black':''">
                         <td>{{index}}</td>
                         <td @click="order(index1)">{{goods_info[index1].title}}</td>
-
                         <td ></td>
-
                         <td @click="num_click(index1)">{{arr.total_num}}</td>
                     </tr>
-
                     <tr v-if="show_member"  v-for="arr1 in arr.child">
-
                         <td></td>
                         <td @click="order_name = ''"></td>
-
                         <td>{{option_info[arr1.color].title}}</td>
-
                         <td @click="num_click(index1,arr1.color)">{{arr1.shu}}</td>
                     </tr>
                 </template>
             </template>
             </tbody>
         </table>
-        <table  v-if="sku_show" class="layui-table" layui-even>
+        <table  v-if="sku_show" style="margin: 0 auto" class="table table-hover table-bordered table-responsive">
+            <col width="100">
+            <col width="100">
+            <col width="200">
+            <col width="150">
+            <col width="200">
+            <col width="200">
+            <col width="50">
+            <col width="100">
+            <col width="100">
             <thead>
-            <th v-for="title in titles1">{{title}}</th>
+                <th style="text-align: center;height: 40px;font-size: 16px;border: 1px solid #e6e6e6;" v-for="title in titles1">{{title}}</th>
             </thead>
             <tbody>
             <template v-for="(list,index) in send_list1">
@@ -78,7 +86,8 @@
             show_member:false,
             option_info:[],
             sku_show:false,
-            send_list:[], send_list1:[],
+            send_list:{},
+            send_list1:[],
             setOrders:{},
             order_name:"",
             }
@@ -91,12 +100,13 @@
             setOrder:function(){
                 var colOrders = {};
                 var list = this.send_list[0];
+                console.log(list);
                 console.log(this.send_list[0]);
                 for(let key in list) {
                     colOrders[key] = 1;
                 };
                 this.setOrders = colOrders;
-                console.log(this.setOrders)
+                console.log(this.setOrders);
             },
 
             qingqiu(){
@@ -174,5 +184,12 @@
     }
     .bg_black{
         background: #f1f1f1
+    }
+    button{
+        padding: 5px 10px;
+        border-radius: 4px;
+        background: #2b87fb;
+        border: none;
+        color: white;
     }
 </style>

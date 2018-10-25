@@ -223,7 +223,7 @@
             qignqiu(){
                 $.ajax({
                     type: "post",
-                    url: 'http://hz1.vvc.tw/index/text/showorders',
+                    url: 'http://jd.vvc.tw/index/printorder/showorders',
                     success: (res) => {
                         // console.log(33333,res);
                         var datas = {};

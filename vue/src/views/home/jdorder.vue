@@ -34,7 +34,8 @@
 
 
 
-            <div @click="dayin" class="btn btn-success">一键打单</div>
+            <div @click="dayin" v-if="prints != ''" class="btn btn-success">一键打单</div>
+            <div  class="btn btn-default" disabled="disabled" v-else>一键打单</div>
             <div @click="delivergoods" class="btn btn-danger">一键发货</div>
 
             <!--<button @click="one_dayin(row.orderId)" class="btn btn-danger">发货</button>-->
@@ -66,10 +67,9 @@
                 <td >{{row.sortname}}</td>
                 <td :class="row.presortname?'red':''">{{row.presortname}}</td>
                 <td>{{row.express == "zto"?"中通":""}}{{row.express == "sf"?"顺丰":""}}</td>
-                <td :class="row.has_remark ==''  ?'':'yes_goods'">
-                    {{row.buyer_note?row.buyer_note:"无"}}
+                <td :class="row.has_remark  ||( row.buyer_note =='' &&  row.seller_note =='') ?'':'yes_goods'"> {{row.buyer_note?row.buyer_note:"无"}}
                 </td>
-                <td>{{row.seller_note?row.seller_note:"无"}}</td>
+                <td :class="row.has_remark  ||( row.buyer_note =='' &&  row.seller_note =='') ?'':'yes_goods'">{{row.seller_note?row.seller_note:"无"}}</td>
                 <!--<td>{{row.orderPayment}}</td>-->
                 <!--<td>{{row.modified}}</td>-->
                 <!--<td>{{row.storeOrder}}</td>-->
@@ -231,15 +231,21 @@
 
                 // 修改备注
                 remark: null,
+
+                prints:null,
             }
         },
         mounted() {
             this.qingqiu();
         },
         created() {
+            this.prints = localStorage.getItem("zto");
+
+
+
 
             var source = {};
-            source = new EventSource("http://hz1.vvc.tw/index/text/subscribeOrder");
+            source = new EventSource("http://jd.vvc.tw/index/printorder/subscribeOrder");
             console.log(1111, source);
 
             source.onerror = (event) => {
@@ -307,7 +313,7 @@
                     console.log(8888,datas);
                     if (datas.taskStatus == "printed") {
                             $.ajax({
-                                url: "http://hz1.vvc.tw/index/text/receiveOrder",
+                                url: "http://jd.vvc.tw/index/printorder/receiveOrder",
                                 type: "post",
                                 data: {
                                     waybillCode: datas.requestID
@@ -361,14 +367,14 @@
             qingqiu() {
                 $.ajax({
                     type:"post",
-                    url:"http://hz1.vvc.tw/index/text/showorders",
+                    url:"http://jd.vvc.tw/index/printorder/showorders",
                     success:(res)=>{
-                       var  response =  JSON.parse(res);
-                       console.log(response);
-                        if (response.code) {
-                            this.product_lists = response.data;
-                            this.sub_lists = response.data;
-                            if (response.data.length< 0){
+                       // var  response =  JSON.parse(res);
+                       // console.log(response);
+                        if (res.code) {
+                            this.product_lists = res.data;
+                            this.sub_lists = res.data;
+                            if (res.data.length< 0){
                                 var msg = "获取成功，暂无订单";
                                 this.success(msg);
                             }else {
@@ -380,7 +386,7 @@
                     }
                 })
 
-                // this.axios.post("http://hz1.vvc.tw/index/text/showorders").then((response)=>{
+                // this.axios.post("http://jd.vvc.tw/index/printorder/showorders").then((response)=>{
                 //     // console.log(3333,res)
                 //     // var datas = {};
                 //     // datas = JSON.parse(res);
@@ -451,7 +457,7 @@
 
                     datas.push(objs);
                     $.ajax({
-                        url: "http://hz1.vvc.tw/index/text/modifyOrder",
+                        url: "http://jd.vvc.tw/index/printorder/modifyOrder",
                         type: "post",
                         data: {
                             datas: datas,
@@ -478,18 +484,18 @@
             },
 
             //快递运送选择
-            changetype(e) {
-                console.log(e);
-                var str = "zto";
-                if (e.path[0].value == "zto") {
-                    this.displays = false;
-                    str = e.path[0].value
-                } else if (e.path[0].value == "sf") {
-                    this.displays = true;
-                    str = e.path[0].value == "sf"
-                }
-                this.yunsong = str;
-            },
+            // changetype(e) {
+            //     console.log(e);
+            //     var str = "zto";
+            //     if (e.path[0].value == "zto") {
+            //         this.displays = false;
+            //         str = e.path[0].value
+            //     } else if (e.path[0].value == "sf") {
+            //         this.displays = true;
+            //         str = e.path[0].value == "sf"
+            //     }
+            //     this.yunsong = str;
+            // },
 
             //顺风运送类型
             transport(e) {
@@ -507,7 +513,7 @@
             with_jdorder() {
                 $.ajax({
                     type: "post",
-                    url: "http://hz1.vvc.tw/index/text/getOrder",
+                    url: "http://jd.vvc.tw/index/printorder/getOrder",
                     success: (res) => {
                         // console.log(res);
                         this.qingqiu();
@@ -519,7 +525,7 @@
             xsh_order() {
                 $.ajax({
                     type: "post",
-                    url: "http://hz1.vvc.tw/index/text/getxhsOrder",
+                    url: "http://jd.vvc.tw/index/printorder/getxhsOrder",
                     success: (res) => {
                         console.log(res);
                         this.qingqiu();
@@ -530,7 +536,7 @@
             //获取面单
             getorder() {
                 $.ajax({
-                    url: "http://hz1.vvc.tw/index/text/getExpress",
+                    url: "http://jd.vvc.tw/index/printorder/getExpress",
                     type: "post",
                     success: (res) => {
                         console.log(res);
@@ -547,7 +553,7 @@
             recovery(){
               $.ajax({
                   type:"post",
-                  url:"http://hz1.vvc.tw/index/text/startPrint",
+                  url:"http://jd.vvc.tw/index/printorder/startPrint",
                   success:()=>{}
               })
             },
@@ -575,7 +581,7 @@
             //一键发货
             delivergoods(){
                 console.log("一键发货");
-                this.axios.post("http://hz1.vvc.tw/index/text/sendOrders").then((res)=>{
+                this.axios.post("http://jd.vvc.tw/index/printorder/sendOrders").then((res)=>{
                     console.log(res);
                     var data = JSON.parse(res);
                     if (data.code){
@@ -588,7 +594,7 @@
             syncphrase() {
                 $.ajax({
                     type: "post",
-                    url: "http://hz1.vvc.tw/index/text/updateSortName",
+                    url: "http://jd.vvc.tw/index/printorder/updateSortName",
                     success:() => {
                         this.qingqiu();
                     }
@@ -597,9 +603,9 @@
 
             dayin() {
                 $.ajax({
-                    // url:"http://hz1.vvc.tw/index/text/furui",
+                    // url:"http://jd.vvc.tw/index/printorder/furui",
                     type: "post",
-                    url: "http://hz1.vvc.tw/index/text/publishOrder",
+                    url: "http://jd.vvc.tw/index/printorder/publishOrder",
                     success: (res) => {
                         // console.log(res);
                     }
@@ -644,20 +650,17 @@
                 //     alert("没有获取打印机或打印机被占用");
                 // }
             },
-
             // 多个面单打印
             allorder(miandan) {
                 console.log(miandan);
-
                 var taskid = this.getUUID(8, 10);
-
                 var mian = {
                     "cmd": "print",
                     "requestID": miandan.documentID.toString(),
                     "version": "1.0",
                     "task": {
                         "taskID": taskid.toString(),
-                        "preview": true,
+                        "preview": false,
                         "printer": localStorage.zto.toString(),
                         // "taskStatus": "printed",
                         "previewType": "image",
@@ -759,7 +762,7 @@
             stopprint() {
                 $.ajax({
                     type: "post",
-                    url: "http://hz1.vvc.tw/index/text/printStatus",
+                    url: "http://jd.vvc.tw/index/printorder/printStatus",
                     success: () => {
                         console.log("已经暂停了");
                     }
@@ -878,11 +881,22 @@
         text-align: center;
     }
 
-    .jdorder_tr:nth-child(4){
-        user-select: all;
+    /*.table th {*/
+        /*text-align: center;*/
+        /*padding: 8px;*/
+        /*vertical-align: middle!important;*/
+    /*}
+    /*.table th {*/
+        /*text-align: center;*/
+        /*padding: 8px;*/
+        /*vertical-align: middle!important;*/
+    /*}*/
+
+    .jdorder_tr td:nth-child(4){
+        user-select: text!important;
     }
-    .jdorder_tr:nth-child(5){
-        user-select: all;
+    .jdorder_tr td:nth-child(5) {
+        user-select: text!important;
     }
 
     .jdorder_tr td {

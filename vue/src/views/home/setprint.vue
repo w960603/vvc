@@ -3,7 +3,7 @@
     <div class="zto">中通：<input type="text" :value="zto"  id="zto"> <input type="button" onclick="javascript:localStorage.zto=document.getElementById('zto').value;" value="设置"></div>
     <div  class="sf">顺丰：<input type="text" :value="sf" id="sf"><input type="button" onclick="javascript:localStorage.sf=document.getElementById('sf').value;" value="设置"></div>
     <div  class="yk">永康：<input type="text" :value="yk" id="yk"><input type="button" onclick="javascript:localStorage.yk=document.getElementById('yk').value;" value="设置"></div>
-    <div  class="server">服务器：<input type="text" :value="server"   id="server"><input type="button"  onclick="javascript:localStorage.server=document.getElementById('server').value;" value="设置"></div>
+    <div  class="server">服务器：<input type="text" :value="server"   id="server"><input type="button"  onclick="javascript:localStorage.server=document.getElementById('server').value; window.location.reload()" value="设置"></div>
     <div id="list">
         <b>服务器有以下打印机(不要复制空格)</b>
 

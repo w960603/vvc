@@ -1,11 +1,25 @@
 <template>
-    <div>
-        <div style="width: 1200px; margin: 0 auto; display: flex; height:50px " v-for="(arr,index) in shop_list">
-            <div style="width: 600px;" >{{arr.name}}</div>
-            <div  style="width: 200px;" >{{arr.skucode}}</div>
-            <input type="text" @change="text($event)" :value="arr.outh_id" style="height:30px ">
-            <button style="height:30px" @click="chioce_shop(index)">确认</button>
-        </div>
+    <div style="padding: 20px">
+        <table style="margin: 0 auto" class="table table-hover table-bordered table-responsive">
+            <colgroup>
+                <col width="150">
+                <col width="120">
+                <col width="100">
+            </colgroup>
+            <thead class="jdorder_heard">
+                <th  style="text-align: center;height: 40px;font-size: 16px;border: 1px solid #e6e6e6;" v-for="col in titles">{{col}}</th>
+            </thead>
+            <tbody>
+            <tr  v-for="(row,index) in shop_list" :key="index" class="jdorder_tr">
+                <td>{{row.name}}</td>
+                <td>{{row.sortName}}</td>
+                <td>
+                    <input type="text" @change="text($event)" :value="row.outh_id" style="height:30px;border: 1px solid #e6e6e6;">
+                    <button style="height:30px;width: 60px" @click="chioce_shop(index)">确认</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
@@ -16,21 +30,37 @@
             return{
                 shop_list:[],
                 skuname:"",
+                titles: ["商品名称", "sku简称", "简称数字"]
             }
         },
         created(){
-            $.ajax({
-                type:"post",
-                url:"http://hz1.vvc.tw/index/xhs/goodslist",
-                // url:"https://hz1.vvc.tw/index/xhs/goodslist",
-                success:(res)=>{
-                    var objs = JSON.parse(res);
-                    this.shop_list = objs.data;
-                    console.log(this.shop_list);
-                }
-            })
+         this.data_sku();
+
+         var patt = /e/;
+         var n = patt.test("The best things in life are free!");
+         console.log(n);
+
+
         },
         methods:{
+            data_sku(){
+                $.ajax({
+                    type:"post",
+                    url:"http://jd.vvc.tw/index/printorder/goodslist",
+                    // url:"https://hz1.vvc.tw/index/xhs/goodslist",
+                    success:(res)=>{
+                        // console.log(res);
+                        // var objs = JSON.parse(res);
+                        this.shop_list = res.data;
+                        // this.shop_list = res.data;
+                        // console.log(this.shop_list);
+                        // console.log(1111,this.shop_list);
+                    }
+                })
+            },
+            success(msg) {
+                this.$message.success(msg);
+            },
             text(ev){
                 console.log(ev.path[0].value);
                 this.skuname = ev.path[0].value
@@ -41,15 +71,19 @@
                //  console.log(this.skuname);//新的
                 $.ajax({
                     type:"post",
-                    url:"http://hz1.vvc.tw/index/xhs/updateXhsSku",
+                    url:"http://jd.vvc.tw/index/printorder//updateXhsSku",
                     data:{
                         // skuName:this.shop_list[idx].name,
                         id:this.skuname,
                         skucode:this.shop_list[idx].skucode
-
                     },
                     success:(res)=>{
                         console.log(res);
+                        // var objs = JSON.parse(res);
+                        if(res.code == 1){
+                            this.success(res.msg);
+                            this.data_sku();
+                        }
                     }
                 })
             }
@@ -58,5 +92,9 @@
 </script>
 
 <style scoped>
-
+    .table td {
+        padding: 8px;
+        text-align: left;
+        vertical-align: middle!important;
+    }
 </style>

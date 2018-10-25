@@ -60,13 +60,15 @@
                             <td v-for="row in sub_title">{{col[row.en]}}</td>
                             <!--:change="cedited(edit)"-->
                             <!--v-if="col[index].skuName? vuls = 1111 :vuls = ''"-->
-                            <td ><textarea type="text" :class="col.error" class="text2" value="vuls"  placeholder="例：斗篷披风 果绿色 均码..."   @keyup='edited($event,index)' ></textarea></td>
+                            <td ><textarea type="text" :class="col.error" class="text2" value="vuls"  placeholder=""   @keyup='edited($event,index)' ></textarea></td>
                         </tr>
                         </tbody>
                     </table>
                     <!--<div class="edit" ><input type="text" class="text2" v-model="edit" @keyup.esc='cancelEdit(list)'  @focus='editBefore(edit)' @keyup.13='edited'/></div>-->
-                    <button class="button" @click="close">关闭</button>
-                    <button class="button" style="background: #1E9FFF"  @click="ajax_sku()">提交</button>
+                    <div style="width: 200px;margin: 0 auto">
+                        <button class="button" @click="close">关闭</button>
+                        <button class="button" style="background: #1E9FFF"  @click="ajax_sku()">提交</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -304,7 +306,7 @@
     .button {
         display: inline-block;
         height: 38px;
-        margin-top: 15px;
+        margin: 53px 10px;
         padding: 0 18px;
         border: none;
         background-color: #009688;
