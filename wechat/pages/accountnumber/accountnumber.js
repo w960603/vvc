@@ -1,4 +1,3 @@
-// pages/AccountNumber/accountnumber.js
 const app = getApp();
 Page({
 

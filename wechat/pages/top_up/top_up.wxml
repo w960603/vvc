@@ -47,8 +47,9 @@
             </view>
             <view class="bill">
                 <view class="user">+ {{item.attribute_columns[3][1]}}.00</view>
-                <view class="account" style="text-align:right">{{item.primary_key[0][1]}}</view>
+                <view class="account" style="text-align:right">{{item.attribute_columns[5][1]}}</view>
             </view>
         </view>
     </view>
 </view>
+<guide route='{{route}}'></guide>

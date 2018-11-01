@@ -7,7 +7,6 @@
     display: flex;
     line-height: 88rpx;
     z-index: 999;
-    
     align-items: center;
 }
 
@@ -27,67 +26,98 @@
     color: #fff;
 }
 
-.head-img{
+.head-img {
     position: absolute;
-    top:-128rpx;
-    left:0;
-    width:100vw;
-
+    top: -128rpx;
+    left: 0;
+    width: 100vw;
 }
 
-
-.main{
-    padding:32rpx 48rpx 80rpx 48rpx;
+.main {
+    padding: 32rpx 48rpx 80rpx 48rpx;
 }
 
-.title{
+.title {
     font-size: 32rpx;
-    color: #D7AF85;
+    color: #d7af85;
     padding: 24rpx 0;
     line-height: 44rpx;
 }
-.main-title{
+
+.main-title {
     display: flex;
     justify-content: center;
     text-align: center;
-    padding:12rpx; 
+    padding: 12rpx;
     line-height: 72rpx;
     letter-spacing: 2rpx;
     vertical-align: middle;
 }
-.main-title > view{
-    display:inline-block;
+
+.main-title > view {
+    display: inline-block;
 }
-.title ~ input{
-    border:1px solid #eee;
-    height:80rpx;
+
+input {
+    border: 1px solid #eee;
+    height: 80rpx;
     line-height: 80rpx;
-    margin-bottom:24rpx;
+    margin-bottom: 24rpx;
     font-size: 28rpx;
     padding-left: 1em;
     box-sizing: border-box;
-    border-radius:12rpx;
+    border-radius: 12rpx;
 }
-.title ~input:last-child{
-    margin:0;
+
+input:last-child {
+    margin: 0;
 }
-.avator{
+
+.avator {
     display: inline-block;
-    width:72rpx;
-    height:72rpx;
-    border-radius:50%;
-    box-shadow:0 0 0 2rpx #bbb;
-    margin-right:16rpx;
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2rpx #bbb;
+    margin-right: 16rpx;
 }
-.placeholder{
-    color: #95A0B6;
+
+.placeholder {
+    color: #95a0b6;
 }
-button{
+
+button {
     line-height: 92rpx;
-    width:574rpx;
-    margin:40rpx auto;
-    color:#D7AF85;
-    background:linear-gradient(180deg,rgba(40,40,39,1) 0%,rgba(38,33,31,1) 100%);
-    border-radius:8rpx;
+    width: 574rpx;
+    margin: 40rpx auto;
+    color: #d7af85;
+    background: linear-gradient(180deg, rgba(40, 40, 39, 1) 0%, rgba(38, 33, 31, 1) 100%);
+    border-radius: 8rpx;
     font-size: 32rpx;
 }
+
+.confirm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 24rpx 0;
+}
+
+.confirm input {
+    /* width:90%; */
+    margin: 0;
+}
+
+.confirm .code {
+    width: 100%;
+}
+
+.confirm button {
+    width: 40%;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin: 0;
+    font-size: 28rpx;
+}
+

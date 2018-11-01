@@ -178,8 +178,23 @@ page {
     font-weight:400;
     color:rgba(34,144,239,1);
     line-height: 60rpx;
+    position: relative;
 }
+.view1{
+    display:inline-block;
+    position:absolute;
+    left:20rpx;
+    color:rgba(34,144,239,1);
+    font-size:28rpx;
 
+}
+.view2{
+    display:inline-block;
+    position:absolute;
+    right:20rpx;
+     color:rgba(34,144,239,1);
+     font-size:28rpx;
+}
 .order_num{
     text-align:center;
     font-size:16px;
@@ -217,8 +232,9 @@ page {
     margin: 0 30rpx;
     display:flex;
     padding-left:30rpx;
-    
 }
+
+
 .line1{
     display:inline-block;
     width:10rpx;
@@ -237,4 +253,21 @@ page {
     border-radius: 50%;
     border:4rpx solid rgb(255, 174, 81);
     left:-44rpx;
+}
+.no_data{
+    width:240rpx;
+    height:240rpx;
+    padding-top:200rpx;
+    display:block;
+    text-align:center;
+    margin:0 auto;
+}
+.no_msg{
+    width:234rpx;
+    font-size:36rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:rgba(215,215,215,1);
+    line-height:50rpx;
+    margin:0 auto;
 }

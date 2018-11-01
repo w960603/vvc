@@ -18,7 +18,8 @@
                                 昵称: {{user_info.nick_name}}
                             </p>
                             <p class="h5">
-                                等级: {{user_info.level===1?"天使":(user_info.level===2?"仙女":(user_info.level===3?"女神":(user_info.level===10?"董事":"团长")))}}
+                                等级:
+                                {{user_info.level===1?"天使":(user_info.level===2?"仙女":(user_info.level===3?"女神":(user_info.level===10?"董事":"团长")))}}
                             </p>
                         </div>
                         <div class="col-md-6">
@@ -36,62 +37,108 @@
                             </p>
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="col-md-12">
+                            <ai :id="$route.query.id" @ai_register="qingqiu">
+
+                            </ai>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>face_token</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(row,index) in user_info.ai_img">
+                                <td>{{row.face_token}}</td>
+                                <td>{{row.ctime}}</td>
+                                <td>
+                                    <a-button type="danger" @click="showModal(row.face_token,index)">删除</a-button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <h3 class="h3">收货地址</h3>
                 <table class="table table-bordered">
                     <thead>
-                        <tr>
-                            <th v-for="col in address_title">
-                                {{col.cn}}
-                            </th>
-                            <th>
-                                操作
-                            </th>
-                        </tr>
+                    <tr>
+                        <th v-for="col in address_title">
+                            {{col.cn}}
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="row in user_address">
-                            <td v-for="col in address_title">
-                                {{row[col.en]}}
-                            </td>
-                            <td>
-                                <button class="btn btn-primary">同意授权</button>
-                                <button class="btn btn-primary">拒绝授权</button>
-                            </td>
-                        </tr>
+                    <tr v-for="row in user_address">
+                        <td v-for="col in address_title">
+                            {{row[col.en]}}
+                        </td>
+                        <td>
+                            <button class="btn btn-primary">同意授权</button>
+                            <button class="btn btn-danger">拒绝授权</button>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
+
+
             </div>
         </div>
+
+        <a-modal
+            title="删除人脸数据"
+            :visible="visible"
+            @ok="del_ai"
+            @cancel="handleCancel"
+        >
+            <p class="danger">
+                此操作危险,你确定要删除人脸数据吗?
+            </p>
+        </a-modal>
     </div>
 </template>
 
 <script>
+
+    import ai from '../systerm_manage/ai.vue'
     export default {
+        components:{
+            ai
+        },
         data() {
             return {
                 // id: 2,
-                user_address:[],
-                user_info:{},
+                user_address: [],
+                user_info: {},
 
-                address_title:[
+                visible:false,
+                index: '',
+                face_token: '',
+                address_title: [
                     {
-                        cn:'用户名',
-                        en:'username'
+                        cn: '用户名',
+                        en: 'username'
                     },
                     {
-                        cn:'收件人',
-                        en:'name'
+                        cn: '收件人',
+                        en: 'name'
                     },
                     {
-                        cn:'地址',
-                        en:'full_address'
+                        cn: '地址',
+                        en: 'full_address'
                     },
                     {
-                        cn:'电话',
-                        en:'phone'
+                        cn: '电话',
+                        en: 'phone'
                     },
                 ]
             }
@@ -108,24 +155,54 @@
                     data: {id},
                     success: res => {
                         console.log(res);
-                        if(res.code===1){
-                            this.user_address=res.data.user_address;
-                            this.user_info=res.data.user_info
+                        if (res.code === 1) {
+                            this.user_address = res.data.user_address;
+                            this.user_info = res.data.user_info;
                         }
                     }
                 })
-            }
+            },
+            showModal(token, index) {
+                this.token = token;
+                this.index = index;
+                this.visible = true
+            },
+            del_ai() {
+                $.ajax({
+                    url: "https://api.vvc.tw/suc/user/delUserAiImage",
+                    type: 'post',
+                    data: {
+                        id: this.$route.query.id,
+                        face_token: this.token
+                    },
+                    success: res => {
+                        console.log(res);
+                        if (res.code === 1) {
+                            this.user_info.ai_img.splice(this.index, 1);
+                            this.visible=false;
+                        }
+                    }
+                })
+            },
+            handleCancel() {
+                this.visible = false
+            },
         }
     }
 </script>
 
 <style scoped>
-    .table th, .table td{
+    .table th, .table td {
         vertical-align: middle;
         text-align: center;
     }
-    .avatar{
-        width:100%;
-        border-radius:50%;
+
+    .avatar {
+        width: 100%;
+        border-radius: 50%;
+    }
+    .danger{
+        color: #f00;
+        font-size: 20px;
     }
 </style>

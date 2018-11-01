@@ -2,7 +2,7 @@
 
 <view class='main '>
     <view class='top top-container flex-row'>
-        <image src="{{list.img?list.img:'../../image/icon/no_product.svg'}}" class='logo' mode='aspectFill'></image>
+        <image src="{{list.img?list.img:'https://cdn.vvc.tw/a/images/no_product.svg'}}" class='logo' mode='aspectFill'></image>
         <view class='flex-col top-main'>
             <text class='top-title'>{{list.goods_title?list.goods_title:'无标题'}}</text>
             <text class='desc'>{{list.order}}</text>
@@ -56,7 +56,7 @@
             <text>出货记录</text>   
         </view>
         <view class='flex-col cont-main'>
-            <view class='flex-row ' wx:for='{{list.sends}}' data-index='{{index}}' bindtap='fond_logisti'>
+            <view class='flex-row ' wx:for='{{list.sends}}' data-sends='{{list.sends}}' data-index='{{index}}' bindtap='fond_logisti'>
                 <image class='small-logo' src='../../image/ZTO.svg'></image>
                 <!-- <view> -->
                     <view class='gray'>日期:  <text class='number'>{{item.time}}</text></view>
@@ -70,7 +70,6 @@
                     <text class='number'>{{item.send_num}}件</text>
                 </view>
             </view>
-            
         </view>
     </view> 
     <view class='container'>
@@ -84,17 +83,18 @@
     </view>
     <!-- 弹出层 -->
     <view  class='mask' wx:if="{{isshow}}" style='width:100%;'>
-        <view wx:if="{{objs.Traces.length > 0}}" style="width:686rpx;margin:0 auto; background:#fff;height:826rpx; overflow-y:scroll;border-radius:16rpx;">
+        <view  style="width:686rpx;margin:0 auto; background:#fff;height:826rpx; overflow-y:scroll;border-radius:16rpx;">
             <!-- <view></view> -->
             <!-- 0-无轨迹,1-已揽收, 2-在途中 201-到达派件城市，3-签收,4-问题件 -->
-            <view class='order_status' wx:if="{{objs.State == 3}}">已签收</view>
-            <view class='order_status' wx:elif="{{objs.State == 4}}">问题件</view>
-            <view class='order_status' wx:elif="{{objs.State == 1}}">已揽收</view>
-            <view class='order_status' wx:elif="{{objs.State == 0}}">无轨迹</view>
-            <view class='order_status' wx:elif="{{objs.State == 2}}">在途中</view>
-            <view class='order_status' wx:elif="{{objs.State == 201}}">到达派件城市</view>
-            <view class='order_num'>快递号码: <text  selectable='true'>{{objs.LogisticCode}}</text></view>
-            <view class='addressinfo'>
+            <view class='order_status'>
+                <view wx:if="{{idx>0}}"  class='view1' bindtap='pre_page'>上一页</view>
+                    {{objs.State == 0?"无轨迹":""}}{{objs.State == 1?"已揽收":""}}{{objs.State == 2?"在途中":""}}{{objs.State == 3?"已签收":""}} {{objs.State == 4?"问题件":""}} {{objs.State == 201?"到达派件城市":""}} 
+                <view wx:if="{{idx<(len.length-1)}}" class='view2'  bindtap='next_page'>下一页</view>
+            </view>
+
+            <view class='order_num'>快递号码: <text  selectable='true'>{{len[idx].nu}}</text> <text style='color:#4A90E2;font-size:28rpx;margin-left:8rpx;'>({{idx+1}} / {{len.length}})</text></view>
+
+            <view class='addressinfo' wx:if="{{objs.Traces.length > 0}}">
                 <view  class='time-line' wx:for="{{objs.Traces}}" wx:for-item="itme">
                     <view style='position:relative;'><text class='line1'></text></view>
                     <view>
@@ -103,11 +103,15 @@
                     </view>
                 </view>
             </view>
+            <view wx:else style='width:686rpx;margin:0 auto; background:#fff;height:826rpx;color:red;text-align:center；z-index:-1;'>
+                <image src="../../image/no_data.svg" class="no_data"></image>
+            <view class="no_msg">暂无物流信息</view>
         </view>
-        <view wx:else style='width:686rpx;margin:0 auto; background:#fff;height:826rpx;'>
         </view>
+        
         <view style='margin:24rpx 0; text-align:center;'>
             <image bindtap='quxiao' style='width:64rpx; height:64rpx;' src='../../image/del.svg'></image>
         </view>
     </view>
 </view>
+<guide route='{{route}}'></guide>

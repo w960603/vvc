@@ -49,3 +49,4 @@
 </button>
 <button class='child-save save'></button>
 <CmponentName wx:if="{{isshow1}}" pror-id="{{myid}}" isshow="{{isshow1}}" bindover='closeAddress' bindclosed='close'></CmponentName>
+<guide route='{{route}}'></guide>

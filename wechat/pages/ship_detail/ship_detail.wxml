@@ -63,7 +63,7 @@
                 <view class='order-wrap'>
                     <view class="order" wx:for="{{ orderCont }}" bindtap='show' data-list='{{item}}'>
                         <view class="order_num border bdb" bindtap='order_num'>
-                            <text class="number">订单编号：{{item.order }}</text>
+                            <text class="number">快递单号: {{item.nu }}</text>
                             <view class='state'>
 
                                 <block wx:if="{{item.order_status== 5}}">
@@ -140,3 +140,4 @@
     </view>
 
 </view>
+<guide route='{{route}}'></guide>

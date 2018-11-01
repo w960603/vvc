@@ -50,3 +50,4 @@
 </button>
 <button class='child-save save'></button>
 
+<guide route='{{route}}'></guide>

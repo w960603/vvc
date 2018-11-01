@@ -96,7 +96,6 @@
                 })
             },
             agree(data, callback) {
-
                 $.ajax({
                     url: 'https://api.vvc.tw/suc/order/delCode',
                     type: 'post',

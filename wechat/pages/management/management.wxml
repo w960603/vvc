@@ -1,9 +1,9 @@
 <view class="header" style='{{h}};background-color:{{color}}'>
     <image class='header-posi-img' wx:if='{{backable}}' src='../../image/icon/author_back.svg' bindtap="goback"></image>
     <view class="order_list">账号注册</view>
-    <image class='header-posi-img' wx:if='{{backable}}'  src='../../image/icon/back.svg' style="opacity:0"></image>
+    <image class='header-posi-img' wx:if='{{backable}}' src='../../image/icon/back.svg' style="opacity:0"></image>
 
-    <slot ></slot>
+    <slot></slot>
 </view>
 <view style='{{fill}}'></view>
 
@@ -11,22 +11,34 @@
 
 <view class='main'>
     <view class='title main-title'>
-    <image src='../../image/icon/none.svg' class='avator'></image>
-    <view>
-        您的邀请码由Alex申请
-    </view>    
+        <image src='../../image/icon/none.svg' class='avator'></image>
+        <view>
+            您的邀请码由Alex申请
+        </view>
 
     </view>
     <view>
         <view class='title'>账号信息</view>
         <input placeholder='输入昵称' placeholder-class='placeholder' adjust-position='true' value="{{infoList.nick_name}}" bindblur='inputed' data-info='nick_name'></input>
         <input placeholder='输入自定义账号' placeholder-class='placeholder' adjust-position='true' value="{{infoList.username}}" bindblur='inputed' data-info='username'></input>
-        <input placeholder='请输入您的密码'type='password'  adjust-position='true' placeholder-class='placeholder' value="{{infoList.password}}" bindblur='inputed' data-info='password'></input>
+        <input placeholder='请输入您的密码' type='password' adjust-position='true' placeholder-class='placeholder' value="{{infoList.password}}" bindblur='inputed' data-info='password'></input>
         <input placeholder='再次确认密码' adjust-position='true' type='password' placeholder-class='placeholder' value="{{infoList.password1}}" bindblur='inputed' data-info='password1'></input>
     </view>
     <view>
         <view class='title'>邀请码</view>
         <input placeholder='请输入邀请码' adjust-position='true' value='{{infoList.join_code}}' placeholder-class='placeholder' bindblur='joincode'></input>
+    </view>
+    <view>
+        <view class='title '>手机号</view>
+        
+        <view class='confirm'>
+        <input placeholder='请输入手机号' adjust-position='true' placeholder-class='placeholder' data-info='phone' bindinput='phone'></input>
+            <button bindtap='getcode'>获取验证码</button>
+        </view>
+        <view class='confirm'>
+            <input placeholder='请输入验证码' class='code' adjust-position='true' placeholder-class='placeholder' data-info='code' bindinput='phone'>
+            </input>
+        </view>
     </view>
     <view>
         <view class='title'>收/付方式</view>
@@ -36,3 +48,4 @@
     </view>
     <button bindgetuserinfo='getuserinfo' open-type="getUserInfo">确认</button>
 </view>
+<guide route='{{route}}'></guide>

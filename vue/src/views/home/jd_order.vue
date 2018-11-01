@@ -291,7 +291,7 @@
             qignqiu() {
                 $.ajax({
                     type: "post",
-                    url: 'https://jd.vvc.tw/index/index/orderlist',
+                    url: 'https://.vvc.tw/index/index/orderlist',
                     success: (res) => {
                         console.log(33333,res);
                         if (res.code) {
@@ -551,7 +551,6 @@
     }
     .order{
         display: flex;
-        justify-content: space-around;
         align-items: center;
         padding: 20px;
     }

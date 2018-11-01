@@ -22,6 +22,9 @@ Page({
 
     onLoad: function (res) {
 
+        this.setData({
+            route: this.route
+        })
         wx.hideTabBar({
             success: function (res) {
                 console.log(11111)

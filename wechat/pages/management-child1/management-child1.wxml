@@ -44,3 +44,4 @@
     <button wx:if='{{infos.shouquan==0&&infos.level!=="董事"}}' bindtap='submit'>提交保证金</button>
     
 </view>
+<guide route='{{route}}'></guide>

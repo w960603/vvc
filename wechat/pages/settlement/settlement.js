@@ -19,6 +19,7 @@ Page({
         isshow: false,
         isshow2: true,
         idx1: null,
+        route: '',
         express: {
             title: "配送类型",
             checked: 2,
@@ -47,6 +48,11 @@ Page({
      */
 
     onLoad: function(options) {
+
+        this.setData({
+            route: this.route
+        })
+
         wx.showLoading({
             title: '加载中',
             mask: 'true',

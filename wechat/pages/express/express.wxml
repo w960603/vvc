@@ -163,3 +163,4 @@
         </view>
     </view>
 </view>
+<guide route='{{route}}'></guide>

@@ -12,6 +12,7 @@ Page({
         //适应ipx
         h: '',
         fill: '',
+        route: '',
 
         margin: null,
         bottom: null
@@ -20,7 +21,10 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
+        this.setData({
+            route: this.route
+        })
         if (app.globalData.model == 'iphonex') {
             this.setData({
                 margin: 'margin-bottom:188rpx',

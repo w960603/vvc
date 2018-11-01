@@ -8,7 +8,8 @@ Page({
   data: {
     userinfo:{},
     date1:null,
-    order_list:[],
+      order_list: [],
+      route: '',
 
       //适应ipx
       h: '',
@@ -18,7 +19,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+    onLoad: function (options) {
+        this.setData({
+            route: this.route
+        })
 
       //适应ipx
       this.setData({ h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx" })

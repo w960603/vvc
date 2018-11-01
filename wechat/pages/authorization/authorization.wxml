@@ -43,3 +43,12 @@
         </block>
     </view>
 </view>
+<view class='tips'>
+    <view>提示:</view>
+    <view>1.请输入有效的手机号/微信号/身份证</view>
+    <view>2.如有疑问请咨询客服人员</view>
+</view>
+<view class='produce'>
+    Produced by VVC
+</view>
+<guide route='{{route}}'></guide>

@@ -29,3 +29,4 @@
         <input type="button" class="btn" value="确认" bindtap="orderMeeting"/>
     </view>
 </view>
+<guide route='{{route}}'></guide>

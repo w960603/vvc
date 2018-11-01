@@ -39,7 +39,8 @@
             console.log(selected, selectedRows, changeRows);
         },
     };
-    const columns = [{
+    const columns = [
+        {
         title: 'name',
         dataIndex: 'name',
         width: '25%',

@@ -151,6 +151,9 @@ Page({
      */
     onLoad: function (options) {
 
+        this.setData({
+            route: this.route
+        })
         console.log(options.back)
 
         if (options.back) {

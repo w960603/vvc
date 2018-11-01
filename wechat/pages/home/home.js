@@ -5,18 +5,27 @@ Page({
      * 页面的初始数据
      */
     data: {
-        movies: [{
-                url: 'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/changku/image/vvc_1538101887603.jpg'
+        movies: [
+            {
+                id:'642',
+                img: 'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/changku/image/vvc_1538101887603.jpg',
+                title:'1',
             },
             {
-                url: 'https://wangfurui.oss-cn-hangzhou.aliyuncs.com/image/vvc_1535528888601.jpg'
+                id: '642',
+                img: 'https://wangfurui.oss-cn-hangzhou.aliyuncs.com/image/vvc_1535528888601.jpg',
+                title: '1',
             },
             {
-                url: 'https://wangfurui.oss-cn-hangzhou.aliyuncs.com/image/vvc_1535531251446.jpg'
+                id: '642',
+                img: 'https://wangfurui.oss-cn-hangzhou.aliyuncs.com/image/vvc_1535531251446.jpg',
+                title: '1',
             },
             {
-                url: 'https://wangfurui.oss-cn-hangzhou.aliyuncs.com/image/vvc_1535531265304.jpg'
-            }
+                id: '642',
+                img: 'https://wangfurui.oss-cn-hangzhou.aliyuncs.com/image/vvc_1535531265304.jpg',
+                title: '1',
+            },
         ],
         oytarr: [],
         clientHeight: 0,
@@ -28,23 +37,10 @@ Page({
         loaded: false,
         margin: null,
 
-        
-        showguide:false,
-        guide_imglist:[
-            'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/dlxin/jiaocheng/img/107110097236652162.png',
-            'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/dlxin/jiaocheng/img/136375709681069952.png',
-            'https://vvc-res.oss-cn-hangzhou.aliyuncs.com/dlxin/jiaocheng/img/457465883708244454.png',
-        ],
+        route:'',
+
     },
-    touch(e){
-        console.log(e)
-        e.prevenDefault();
-    },
-    hideguide(){
-        this.setData({
-            showguide:false
-        })
-    },
+    
     /**
      * 生命周期函数--监听页面加载
      */
@@ -98,6 +94,7 @@ Page({
         setTimeout(function() {
             wx.hideToast()
         }, 2500)
+
     },
     imgload() {
         this.setData({
@@ -116,62 +113,46 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-        // function countIndex(offetHight, scrollTop, height, colunm) {
-        //     // 单例获取屏幕宽度比
-        //     if (!countIndex.pix) {
-        //         try {
-        //             let res = wx.getSystemInfoSync()
-        //             countIndex.pix = res.windowWidth / 375
-        //         } catch (e) {
-        //             countIndex.pix = 1
-        //         }
-        //     }
-        //     let scroll = scrollTop - offetHight * countIndex.pix
-        //     let hei = height * countIndex.pix
-        //     return scroll > 0 ? Math.floor(scroll / hei) * colunm : 0
-        // }
+  
     },
 
+    goto_detail(e){
+
+        wx.navigateTo({
+            url: '../detail/detail?id='+e.currentTarget.dataset.id,
+        })
+
+    },
     /**
      * 生命周期函数--监听页面显示
      */
     onLoad: function(option) {
         
-        if(!app.globalData.has_show){
-            app.globalData.has_show = true;
-            
-            wx.getStorage({
-                key: 'count',
-                success: (res) => {
-                    console.log(res)
-                    if ((res.data || res.data == 0) && res.data < 3) {
-                        this.setData({
-                            showguide: true
-                        })
-                    } else {
-                        this.setData({
-                            showguide: false
-                        })
-                    }
-                },
-            })
-        }
-        
-        
+        this.setData({
+            route:this.route
+        })
+  
         setTimeout(function() {
             wx.hideToast()
         }, 2500)
+
+        app.request({
+            url:'https://api.vvc.tw/dlxin/shop/bannerList',
+            methods:'POST',
+            success:res=>{
+                if(res.data.code===1&&res.data.data){
+                    this.setData({
+                        // movies:res.data.data
+                    })
+                }
+            }
+        })
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function() {
-
-        // if (global.data.sence == 1) {
-        //     app.globel.data.sence = 0
-        //     this.setData({ info: null })
-        // }
 
     },
 

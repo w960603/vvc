@@ -13,9 +13,11 @@ Page({
         num: 1,
         oyt: "",
         status: false,
+        route: '',
         timer: null
     },
     onLoad: function() {
+
         this.ctx = wx.createCameraContext('myCamera');
     },
     error(e) {

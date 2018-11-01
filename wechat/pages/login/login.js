@@ -11,9 +11,12 @@ Page({
         transformX: 1,
         userInfo: {},
         btn_show: true,
-      
-        canIUse: wx.canIUse('cover-view')
 
+        canIUse: wx.canIUse('cover-view'),
+
+        video: {
+            "https://api.vvc.tw/video.mp4":'1'
+        },
     },
 
     set_log(e) {
@@ -30,19 +33,19 @@ Page({
             })
         }
     },
-    auth(){
+    auth() {
 
         // console.log("这是需要授权的按钮")
-        if (!wx.canIUse("openSetting")){
+        if (!wx.canIUse("openSetting")) {
             this.setData({
-                btn_show:false
+                btn_show: false
             })
         }
-        
+
         this.setData({
             canIUse: wx.canIUse("openSetting")
         })
-        
+
 
     },
     get_location() {
@@ -50,7 +53,7 @@ Page({
             success: (res) => {
                 console.log(res)
                 if (res.authSetting['scope.userLocation']) {
-                    
+
                     console.log(this.data.btn_show, 32)
                     wx.getLocation({
                         type: 'wgs84',
@@ -79,7 +82,7 @@ Page({
                 }
             },
             fail(err) {
-                
+
                 this.setData({
                     btn_show: true
                 })
@@ -87,18 +90,18 @@ Page({
             }
         })
     },
+
     /**
      * 生命周期函数--监听页面加载
      */
+    
     onLoad: function(options) {
         if (!wx.canIUse('cover-view')) {
             console.log('no')
             wx.redirectTo({
                 url: '../accountnumber/accountnumber?id=1',
             })
-
-        }else{
-
+        } else {
             wx.cloud.callFunction({
                 // 云函数名称
                 name: 'getuserinfo',
@@ -106,7 +109,7 @@ Page({
                 data: {
                     cmd: "get"
                 },
-                success: function (res) {
+                success: function(res) {
                     if (res.result.token) {
                         console.log(res.result.token)
                         app.globalData.token = res.result.token;
@@ -121,6 +124,17 @@ Page({
             })
         }
 
+        wx.request({
+            url: 'https://api.vvc.tw/dlxin/index/loginVideo',
+            methods: 'POST',
+            success: res => {
+                
+                if(res.data.code===1&&!Array.isArray(res.data.data.list))
+                    this.setData({
+                        video:res.data.data.list
+                    })
+            }
+        })
         wx.getLocation({
             type: 'wgs84',
             success: (res) => {
@@ -134,7 +148,7 @@ Page({
                 })
             },
             fail: (err) => {
-               
+
                 this.get_location()
             }
         })
@@ -151,7 +165,7 @@ Page({
     wfrAccount() {
         wx.navigateTo({
             url: '../accountnumber/accountnumber?id=1',
-            complete:function(com){
+            complete: function(com) {
                 console.log(com)
             }
         })
@@ -186,14 +200,14 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function() {
-        
+
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
     onUnload: function() {
-        
+
     },
 
     /**

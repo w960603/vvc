@@ -62,7 +62,10 @@ Page({
         console.log(phone,115)
     },
 
-  onLoad: function (options) {
+    onLoad: function (options) {
+        this.setData({
+            route: this.route
+        })
       //适应ipx
       this.setData({ h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx" })
       this.setData({ fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx" })

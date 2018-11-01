@@ -17,7 +17,8 @@ Page({
         fill: '',
         margin: null,
         custom_id:1,
-        finish_orders:[],
+        finish_orders: [],
+        route: '',
         no_finishs:[]
     },
     // 滚动切换标签样式
@@ -110,6 +111,9 @@ Page({
     footerTap: app.footerTap,
 
     onLoad: function (res) {
+        this.setData({
+            route: this.route
+        })
 
         if (app.globalData.model == 'iphonex') {
             this.setData({
@@ -164,7 +168,7 @@ Page({
 
                     for (var i = 0; i < res.data.data.length; i++) {
                         if (!/http/.test(res.data.data[i].goods_img)) {
-                            res.data.data[i].goods_img = '../../image/icon/no_product.svg'
+                            res.data.data[i].goods_img = 'https://cdn.vvc.tw/a/images/no_product.svg'
 
                         } else {
                             res.data.data[i].goods_img = res.data.data[i].goods_img + '?x-oss-process=image/resize,w_160'

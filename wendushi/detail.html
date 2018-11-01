@@ -255,6 +255,12 @@
 				border: 1px solid lightgray;
 				text-align: center;
 			}
+			.increase .income {
+				line-height: 32px;
+				width: 32px;
+				border: 1px solid lightgray;
+				text-align: center;
+			}
 			
 			.increase input {
 				width: 100px;
@@ -263,6 +269,12 @@
 				border-top: 1px solid lightgray;
 				border-bottom: 1px solid lightgray;
 				text-align: center;
+			}
+			.account{
+				width: 100px;
+				line-height: 30px;
+				text-align: center;
+				color: rgba(208, 2, 27, 1);
 			}
 			
 			.part-4 {
@@ -335,7 +347,7 @@
 				<div class="product_details">
 					<p class="price">￥208.00</p>
 					<p class="inventory">库存556</p>
-					<p class="chose">已选"蓝色"</p>
+					<p class="chose">已选"<span class="chose_color">蓝色</span>"</p>
 				</div>
 			</div>
 			<div class="colorlist">
@@ -348,14 +360,14 @@
 					<span>霓虹色</span>
 				</div>
 			</div>
-			<div class="number">
+			<!--<div class="number">
 				<p class="amount">数量</p>
 				<div class="increase">
 					<p class="reduce">-</p>
-					<input type="number" value="1" />
-					<p class="reduce">+</p>
+					<input type="number" value="1" id="number"/>
+					<p class="income">+</p>
 				</div>
-			</div>
+			</div>-->
 			<div class="part-4">
 				<button class="btn">确定</button>
 			</div>
@@ -378,8 +390,10 @@
 				} else {
 					$(this).addClass("purple").siblings().removeClass("purple")
 				}
-				
+				var purple = $(".purple").text()
+				$(".chose_color").text(purple)
 			})
+			
 			$(".btn").click(function(){
 				window.location.href="order_confirm.html"
 			})

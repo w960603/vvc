@@ -17,6 +17,7 @@ Page({
         orderCont: [],
         express_detail: [],
 
+        route: '',
         ceiling:''
     },
 
@@ -57,7 +58,10 @@ Page({
     },
     
     onLoad: function(options) {
-        
+
+        this.setData({
+            route: this.route
+        })
         this.setData({
             ceiling:app.globalData.userinfo.ceiling
         })

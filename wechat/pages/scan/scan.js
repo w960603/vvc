@@ -12,6 +12,7 @@ Page({
           
         },
 
+        route: '',
          team: [
         
         ]
@@ -30,6 +31,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+
+        this.setData({
+            route: this.route
+        })
         //适应iPhoneX
         this.setData({
             h: 'padding-top:' + app.globalData.statusBarHeight * 2 + 'rpx'

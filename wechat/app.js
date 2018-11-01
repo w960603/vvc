@@ -64,7 +64,9 @@ App({
         })
 
         
-        this.getToken()
+        this.getToken();
+
+        
 
     },
 
@@ -73,10 +75,8 @@ App({
             url:'https://api.vvc.tw/dlxin/index/getAccessToken',
             success:res=>{
                 console.log(res)
-            
-                    this.tok = res.data
-                    console.log(this.tok,this)
-                
+                    this.globalData.tok = res.data
+                    console.log(this.globalData.tok,this)
             }
         })
     },
@@ -103,6 +103,7 @@ App({
         iphonex: '',
         systemInfo:null,
         has_show:false,
+        tok:null,
     },
 
     has_token() {

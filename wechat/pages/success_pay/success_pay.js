@@ -12,13 +12,17 @@ Page({
       //适应ipx
       h: '',
       fill: '',
-      money:0,
+      money: 0,
+      route: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+    onLoad: function (options) {
+        this.setData({
+            route: this.route
+        })
       wx.showToast({
           title: options.info,
           icon: 'none',

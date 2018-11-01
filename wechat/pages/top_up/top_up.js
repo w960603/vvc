@@ -20,7 +20,8 @@ Page({
         infos: {},
         charged: 0,
         color:'#999',
-        hidden:true,
+        hidden: true,
+        route: '',
         value: "¥0.00"
 
     },
@@ -28,7 +29,10 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
+    onLoad: function (options) {
+        this.setData({
+            route: this.route
+        })
         //适应ipx
         this.setData({
             h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx"
@@ -53,15 +57,17 @@ Page({
                 if (res.data.code == 1) {
                     let charged = 0;
                     let billList = res.data.data.rows;
-                    this.setData({
-                        billList: res.data.data.rows
-                    })
+                    
 
-                    console.log(billList.length)
+                    console.log(billList)
                     for (let i = 0; i < billList.length; i++) {
                         console.log(billList[i].attribute_columns[3][1])
                         charged += billList[i].attribute_columns[3][1] * 1
                     }
+
+                    this.setData({
+                        billList: billList
+                    })
                     this.setData({
                         charged: charged
                     })

@@ -109,6 +109,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (option) {
+        this.setData({
+            route: this.route
+        })
         this.setData({ num:option.index})
         // console.log(option.index);
         //适应ipx
@@ -185,9 +188,6 @@ Page({
         }
         this.setData({ shop_type: this.data.shop_type });
     },
-
-
-
 
     // 删除商品
     deletelist(e){
@@ -317,24 +317,7 @@ Page({
                 duration: 1200,
             })
         }
-        //退货的商品
-        
-        // var that = this;
-        // app.request({
-        //     url: '',
-        //     method: 'POST',
-        //     data: {
-        //         key: this.data.str,
-        //         key: this.data.evaContent
-        //     },
-        //     success: (res) => {
-        //         console.log(this.data.evaContent)
-        //         this.setData({
-        //             isshow: !this.data.isshow
-        //         })
-        //     }
-        // })
-
+    
     },
 
 
@@ -353,7 +336,6 @@ Page({
             url: 'https://api.vvc.tw/dlxin/order/returnGoodsList',
             method: 'POST',
             success: (res) => {
-                // console.log(res)
                 if (res.data.data.list) {
 
                     var arr =[]
@@ -366,6 +348,7 @@ Page({
                             arr1.push(res.data.data.list[i]);                            
                         }
                     }
+
                     this.setData({
                         processing: arr
                     })
@@ -374,10 +357,6 @@ Page({
                     this.setData({
                         server_finish:arr1
                     })
-                    // console.log(res.data.data.list.goods_list)
-                    // this.setData({
-                    //     goods_list: res.data.data.list.goods_list
-                    // })
                 }
             }
         });
@@ -385,29 +364,22 @@ Page({
             url: "https://api.vvc.tw/dlxin/order/returnGoodsView",
             method: "POST",
             success: (res) => {
-                // console.log("asdasd", res.data.data)
                 // 售后未完成的数据
                 var arr = [];
                 var arrs = [];
-
                 // 售后完成时的数据finish
                 var finish = []
                 for (var i in res.data.data) {
-                    
                     if (res.data.data[i].name != "VVC代理押金" && i != "option") {
-                        var obj = res.data.data[i].name + "[" + res.data.data[i].color + "]"
-                        arr.push(obj);
-                        arrs.push(res.data.data[i]);
+                        var obj = res.data.data[i].name ? res.data.data[i].name : '' + "[" + res.data.data[i].color ? res.data.data[i].color:'' + "]"
+                        if(obj){
+                            arr.push(obj);
+                            arrs.push(res.data.data[i]);
+                        }
                     } 
-
                 };
-                // console.log("我走啦", finish)
-                
                 this.setData({ itemList: arr });
                 this.setData({ "allorder_shop": arrs });
-
-
-                // console.log(this.data.allorder_shop);
             }
         })
     },

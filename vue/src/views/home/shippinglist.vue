@@ -56,6 +56,7 @@
             <thead>
                 <th style="text-align: center;height: 40px;font-size: 16px;border: 1px solid #e6e6e6;" v-for="title in titles1">{{title}}</th>
             </thead>
+
             <tbody>
             <template v-for="(list,index) in send_list1">
                 <tr >

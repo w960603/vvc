@@ -33,3 +33,4 @@
             </view>
         </scroll-view>
     </view>
+<guide route='{{route}}'></guide>

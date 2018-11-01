@@ -1,1 +1,7 @@
-{}
+{
+    "component": "true",
+    "usingComponents": {
+        "tabbar": "../temp/temp",
+        "guide": "../guide/guide"
+    }
+}

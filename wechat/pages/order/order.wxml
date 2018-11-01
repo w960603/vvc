@@ -4,7 +4,6 @@
 
 <view style="backgeound:#EFEFEF">
     <view class="header" style='{{h}}'>
-
         <view class="order_list">订单列表</view>
     </view>
     <view style='{{fill}}'></view>
@@ -227,6 +226,7 @@
         </swiper>
         <!-- </view> -->
     </view>
+<guide route='{{route}}'></guide>
 
 
 

@@ -14,12 +14,18 @@ Page({
       isshow:false,
       one_address:null,
       ipt_ordernum:null,
-      tear_value:null,
+      tear_value: null,
+      route: '',
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+      this.setData({
+          route: this.route
+      })
+
       if (app.globalData.model == 'iphonex') {
           this.setData({ iphonex: "padding-bottom:60rpx", icon: 'bottom:74rpx' });
       } else {

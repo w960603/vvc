@@ -102,9 +102,33 @@
 				line-height: 30px;
 			}
 			
-			.add {
-				font-size: 14px;
-				color: #9B9B9B;
+			.increase {
+				display: flex;
+				align-items: center;
+				height: 32px;
+			}
+			
+			.increase .reduce {
+				line-height: 32px;
+				width: 32px;
+				border: 1px solid lightgray;
+				text-align: center;
+			}
+			
+			.increase .income {
+				line-height: 32px;
+				width: 32px;
+				border: 1px solid lightgray;
+				text-align: center;
+			}
+			
+			.increase input {
+				width: 100px;
+				height: 30px;
+				border: none;
+				border-top: 1px solid lightgray;
+				border-bottom: 1px solid lightgray;
+				text-align: center;
 			}
 			
 			.parameter {
@@ -215,9 +239,13 @@
 						<span>颜色：</span>
 						<span>蓝色</span>
 					</p>
-					<p class="price">¥208.00</p>
+					<p class="price">单价：¥<span class="unit_price">208.00</span></p>
+					<div class="increase">
+						<p class="reduce">-</p>
+						<input type="number" value="1" id="number" />
+						<p class="income">+</p>
+					</div>
 				</div>
-				<div class="add">×1</div>
 			</div>
 			<div class="parameter">
 				<p>配送类型</p><span>普通快递<i class="iconfont icon-xiangzuo-copy"></i></span></div>
@@ -231,11 +259,43 @@
 		</section>
 		<div class="order-confirm">
 
-			<p class="all">总计<span class="price_all"> ¥208.00</span><span class="num_all">（1件）</span></p>
+			<p class="all">总计:<span style="color:#ED2A10">￥</span><span class="price_all">208.00</span>  <span class="num_all">（<span class="total">1</span>个）</span></p>
 			<button class="btn">立即支付</div>
         </div>
         <script>
         	$(function(){
+        		//商品增减
+			var val= $("#number").val();
+			
+			$(".reduce").click(function(){
+				
+				if(val>1){
+					val--
+					$("#number").val(val)
+					 $(".total").text(val);
+				} 
+				
+				var toatl_price = parseInt(val * $(".unit_price").text()).toFixed(2);
+				return $(".price_all").text(toatl_price);
+				
+			})
+			$(".income").click(function(){
+				
+				if(val>0){
+					
+					val++
+					console.log(val)
+					$("#number").val(val)
+					$(".total").text(val);
+				}
+				 
+				var toatl_price = parseInt(val * $(".unit_price").text()).toFixed(2);
+				return $(".price_all").text(toatl_price);
+			})
+//			var toatl_price = val * $(".unit_price").text()
+//			console.log(val * $(".unit_price").text())
+//				$(".price_all").text(toatl_price)
+			
         		$(".btn").click(function(){
         			window.location.href="pay-success.html"
         		})

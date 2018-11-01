@@ -14,7 +14,7 @@
 		<script src='js/main.js' type="text/javascript"></script>
 		<style>
 			/*头部*/
-			
+		}
 			.input {
 				display: flex;
 				justify-content: space-between;
@@ -31,14 +31,18 @@
 			/*第一部分*/
 			
 			.part-1 {
+				position:relative;
+				left:0;
+				box-sizing: border-box;
 				height: 100px;
-				margin: 0 16px;
+				padding: 0 16px;
 				border-bottom: 6px solid #F7F7F7;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				overflow: scroll;
 			}
-			
+
 			.part-img .icon-dizhiguanli {
 				font-size: 24px;
 				color: #4A90E2;
@@ -64,6 +68,30 @@
 				line-height: 25px;
 				font-size: 14px;
 			}
+			.additional{
+				position:absolute;
+				right:-140px;
+				height: 100px;
+				font-size:14px;
+				/*display:flex;*/
+				transition: 0.5s;
+			}
+				.defalut{
+				text-align: center;
+				width:70px;
+				line-height:100px;
+				background:#E6E6E6;
+				float:left;
+				
+			}
+			.del{
+				text-align: center;
+				width:70px;
+				line-height:100px;
+				background:#F64614;
+				float:left;
+				color:white;
+			}
 			/*第二部分*/
 			
 			.part-2  a{
@@ -83,7 +111,9 @@
 			
 			.add {
 				padding-right: 9px;
+				
 			}
+		
 		</style>
 	</head>
 
@@ -109,9 +139,15 @@
 						<p class="get">收货地址：福建省厦门市思明区前埔路168</p>
 					</div>
 				</div>
+				
 
 				<div class="part-img">
 					<i class="iconfont icon-bianji"></i>
+				</div>
+				
+				<div class="additional">
+					<p class="defalut">设为默认</p>
+					<p class="del">删除</p>
 				</div>
 			</div>
 
@@ -120,7 +156,13 @@
 				<span class="add">+</span>
 				<span>添加收货地址</span></a>
 			</div>
+		
 		</section>
+		<script>
+			$(".del").click(function(){
+				$("prat-1").splice(index,1)
+			})
+		</script>
 	</body>
 
 </html>

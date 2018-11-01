@@ -1,7 +1,8 @@
 {
     "component": "true",
     "usingComponents": {
-        "tabbar": "../temp/temp"
+        "tabbar": "../temp/temp",
+        "guide":"../guide/guide"
     },
     "disableScroll": true
 }

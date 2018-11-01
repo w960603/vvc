@@ -76,7 +76,6 @@
                         <span>{{order_list[col.en]}}</span>
                     </li>
                 </ul>
-
                 <button class="button" @click="close">关闭</button>
             </div>
         </div>
@@ -146,74 +145,74 @@
             this.qignqiu()
         },
         created() {
-            var that = this;
-            this.WebSocket = new WebSocket('ws://localhost:8880');
-            this.WebSocket.onopen = function (res) {
-                console.log(res, 'open');
-                that.bools = true;
-                console.log("连接打印机成功", this.bools);
-            };
-            this.WebSocket.onerror = function (err) {
-                that.bools = false;
-                console.log("连接打印机失败");
-                console.log(err);
-            };
-            this.WebSocket.close = function (clo) {
-                that.bools = false;
-                console.log("断开连接");
-            };
-            // 接收服务端消息
-            this.WebSocket.onmessage = (event)=> {
-                // console.log("我走啦",event);
-                // 获取打印机列表
-                var datas = JSON.parse(event.data);
-
-                console.log(datas);
-
-                if (datas.cmd == "getPrinters") {
-                    console.log("获取到的打印机", datas.printers);
-                    this.printers = datas.printers;
-                };
-
-                if (datas.cmd == "getPrinterConfig") {
-                    console.log("获取打印机配置", datas.msg);
-                };
-
-                if (datas.cmd == "setPrinterConfig") {
-                    console.log("设置打印机配置", datas.msg);
-                };
-
-                if (datas.cmd == "notifyPrintResult") {
-                    console.log("打印通知", datas.msg);
-                };
-                //打印成功把订单从本地
-                var datas = localStorage.getItem("orderid");
-                if (datas.cmd == "print"){
-                    // console.log("设置打印机配置", datas.msg);
-                    if (datas.status == "failed"){
-                        // console.log(datas.taskID);//任务id
-                        // console.log(datas.requestID);//
-                        for (var i = 0;i<dcu_id.length;i++){
-                            if (dcu_id[i].taskID == datas.taskID){
-                                console.log("dcu_id",dcu_id[i].documentID);
-                            }
-                        }
-                    }else if (datas.status == "success") {
-                        $.ajax({
-                            type:"post",
-                            url:"https://jd.vvc.tw/index/order/failureorder",
-                            data:{
-                                waybillCode:datas.requestID
-                            },
-                            success:(res)=>{
-                                console.log(res);
-                            }
-                        })
-                    }
-                }
-                // console.log(JSON.parse(datas));
-                // console.log( "订单完成id",this.orderid);
-            };
+            // var that = this;
+            // this.WebSocket = new WebSocket('ws://localhost:8880');
+            // this.WebSocket.onopen = function (res) {
+            //     console.log(res, 'open');
+            //     that.bools = true;
+            //     console.log("连接打印机成功", this.bools);
+            // };
+            // this.WebSocket.onerror = function (err) {
+            //     that.bools = false;
+            //     console.log("连接打印机失败");
+            //     console.log(err);
+            // };
+            // this.WebSocket.close = function (clo) {
+            //     that.bools = false;
+            //     console.log("断开连接");
+            // };
+            // // 接收服务端消息
+            // this.WebSocket.onmessage = (event)=> {
+            //     // console.log("我走啦",event);
+            //     // 获取打印机列表
+            //     var datas = JSON.parse(event.data);
+            //
+            //     console.log(datas);
+            //
+            //     if (datas.cmd == "getPrinters") {
+            //         console.log("获取到的打印机", datas.printers);
+            //         this.printers = datas.printers;
+            //     };
+            //
+            //     if (datas.cmd == "getPrinterConfig") {
+            //         console.log("获取打印机配置", datas.msg);
+            //     };
+            //
+            //     if (datas.cmd == "setPrinterConfig") {
+            //         console.log("设置打印机配置", datas.msg);
+            //     };
+            //
+            //     if (datas.cmd == "notifyPrintResult") {
+            //         console.log("打印通知", datas.msg);
+            //     };
+            //     //打印成功把订单从本地
+            //     var datas = localStorage.getItem("orderid");
+            //     if (datas.cmd == "print"){
+            //         // console.log("设置打印机配置", datas.msg);
+            //         if (datas.status == "failed"){
+            //             // console.log(datas.taskID);//任务id
+            //             // console.log(datas.requestID);//
+            //             for (var i = 0;i<dcu_id.length;i++){
+            //                 if (dcu_id[i].taskID == datas.taskID){
+            //                     console.log("dcu_id",dcu_id[i].documentID);
+            //                 }
+            //             }
+            //         }else if (datas.status == "success") {
+            //             $.ajax({
+            //                 type:"post",
+            //                 url:"https://jd.vvc.tw/index/order/failureorder",
+            //                 data:{
+            //                     waybillCode:datas.requestID
+            //                 },
+            //                 success:(res)=>{
+            //                     console.log(res);
+            //                 }
+            //             })
+            //         }
+            //     }
+            //     // console.log(JSON.parse(datas));
+            //     // console.log( "订单完成id",this.orderid);
+            // };
         },
         methods: {
             changeprinter(ev){
@@ -226,12 +225,12 @@
                     url: 'http://jd.vvc.tw/index/printorder/showorders',
                     success: (res) => {
                         // console.log(33333,res);
-                        var datas = {};
-                        datas =  JSON.parse(res);
-                        console.log(datas);
-                        if (datas.code) {
-                            this.product_lists = datas.data;
-                            this.sub_lists = datas.data;
+                        // var datas = {};
+                        // datas =  JSON.parse(res);
+                        // console.log(datas);
+                        if (res.code) {
+                            this.product_lists = res.data;
+                            this.sub_lists = res.data;
                         }
                         console.log(this.sub_lists);
                     }

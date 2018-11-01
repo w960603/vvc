@@ -82,6 +82,7 @@ Page({
             },
             
         ],
+        route: '',
         user:null,
         team:null,
         hair_log:null
@@ -89,6 +90,9 @@ Page({
     },
     onLoad: function() {
 
+        this.setData({
+            route: this.route
+        })
         wx.hideTabBar({
             success: function(res) {
             },

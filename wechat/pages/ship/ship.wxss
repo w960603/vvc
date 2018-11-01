@@ -260,3 +260,54 @@ image {
     font-weight: 500;
     color: rgba(155, 155, 155, 1);
 }
+
+
+.btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position:fixed;
+    right:2rpx;
+    top:37%;
+    width:100rpx;
+    height:100rpx;
+    background-color: #c3c3c3;
+    opacity:.75;
+    border-radius:4rpx;
+
+}
+.btn image{
+    width:48rpx;
+    height:54rpx;
+    flex:0 0 auto;
+    margin:8rpx auto 4rpx;
+}
+.connect{
+    position:relative;
+    color:#fff;
+    font-size: 20rpx;
+    line-height: 28rpx;
+    margin-left:16rpx;
+    vertical-align: middle;
+}
+.connect:before{
+    content:'';
+    position:absolute;
+    top: 0rpx;bottom:0;
+    left:-16rpx;
+    display:inline-block;
+    width:8rpx;
+    height:8rpx;
+    margin:auto;
+    border-radius:50%;
+    vertical-align: middle;
+}
+.success:before{
+    background-color:#08C299;
+}
+.fail:before{
+    background-color:#D0021B;
+}
+
+

@@ -64,7 +64,7 @@
                     <view class="pro_par">
                         <view> 产品参数</view>
                     </view>
-                    <view class="flex" wx:for="{{parameterList}}" wx:key="key" wx:for-index="index" wx:for-item="item">
+                    <view class="flex canshu" wx:for="{{parameterList}}" wx:key="key" wx:for-index="index" wx:for-item="item">
                         <view class="gray" wx:if="item.length>1">{{item[0]}}</view>
                         <view class="black" wx:if="item.length>1">{{item[1]}}</view>
                     </view>
@@ -123,3 +123,4 @@
 <view class='mask' catchtouchmove="true" wx:if='{{img_show}}' bindtap='closemask'>
     <button bindtap='save_image' class='save-btn'>保存到相册</button>
 </view>
+<guide route='{{route}}'></guide>

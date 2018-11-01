@@ -1,0 +1,15 @@
+<!--pages/guide/guide.wxml-->
+
+<swiper class='guide' wx:if='{{showguide}}'>
+
+    <swiper-item wx:for='{{guide_imglist}}'>
+            <view class='tips'>
+                左右滑动观看教程
+            </view>
+        <image lazy-load='{{true}}' src='{{item}}?x-oss-process=image/resize,w_375' class='guide-img' mode='widthFix'></image>
+        <block wx:if='{{index===guide_imglist.length-1}}'>
+            <button bindtap='hideguide' plain='{{false}}' class='ikonw'>我知道了</button>
+        </block>
+    </swiper-item>
+    
+</swiper>

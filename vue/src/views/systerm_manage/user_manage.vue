@@ -21,9 +21,9 @@
             </div>
             <div class="col-md-8 pd12 col-md-offset-2">
                 <!--<div >-->
-                    <!--<a-button style="color:lightgreen">添加</a-button>-->
-                    <!--<a-button style="color:red">禁用</a-button>-->
-                    <!--<a-button style="color:orange">恢复</a-button>-->
+                <!--<a-button style="color:lightgreen">添加</a-button>-->
+                <!--<a-button style="color:red">禁用</a-button>-->
+                <!--<a-button style="color:orange">恢复</a-button>-->
                 <!--</div>-->
                 <div>共有数据:<strong>{{userList.length}}</strong>条</div>
             </div>
@@ -45,31 +45,46 @@
                     </colgroup>
                     <thead>
                     <tr>
-                        <th v-for="row in title">
-                            {{row.cn}}
+                        <th v-for="col in title">
+                            <template>
+                                {{col.cn}}
+                            </template>
                         </th>
                         <th>操作</th>
                     </tr>
 
                     </thead>
+
                     <tbody>
                     <tr v-for="row in userList">
-                        <td v-for="(col,index) in title">{{row[col.en]}}</td>
-                        <td>
-                            <!--<button class="btn btn-primary">-->
 
-                                <router-link :to="{name:'userinfo',query:{
+                        <td v-for="(col,index) in title">
+                            <template v-if="col.en==='in_ues'&&row.in_ues===-1">
+                                已禁用
+                            </template>
+                            <template v-else-if="col.en==='in_ues'&&row.in_ues===1">
+                                正常
+                            </template>
+                            <template v-else-if="col.en==='img_url'">
+                                <img class="img" :src="row.img_url" alt="">
+                            </template>
+                            <template v-else>
+                                {{row[col.en]}}
+                            </template>
+
+                        </td>
+
+
+                        <td>
+                            <router-link :to="{name:'userinfo',query:{
                                     id:row.id
                                 }}"
-                                             class="btn btn-primary"
-                                             @click="userInfo(row.id)">
-                                    详细信息
-                                </router-link>
-                            <!--</button>-->
-                            <!--<button class="btn ">-->
-                            <!---->
-                            <!--</button>-->
-                            <!--<button class="btn">修改密码</button>-->
+                                         class="btn btn-primary"
+                                         @click="userInfo(row.id)">
+                                详细信息
+                            </router-link>
+                            <button class="btn btn-success" v-if="row.in_ues==-1" @click="use(row.id)">开通</button>
+                            <button class="btn btn-danger" v-else-if="row.in_ues==1" @click="use(row.id)" >禁用</button>
                         </td>
                     </tr>
                     </tbody>
@@ -91,6 +106,10 @@
                         'en': 'id'
                     },
                     {
+                        'cn': '头像',
+                        'en': 'img_url'
+                    },
+                    {
                         'cn': '等级',
                         'en': 'level'
                     },
@@ -99,12 +118,16 @@
                         'en': 'nick_name'
                     },
                     {
+                        'cn': '用户名',
+                        'en': 'username'
+                    },
+                    {
                         'cn': '上级用户名',
                         'en': 'unick_name'
                     },
                     {
-                        'cn': '用户名',
-                        'en': 'username'
+                        'cn': '状态',
+                        'en': 'in_ues'
                     },
                 ],
                 userList: [],
@@ -121,6 +144,18 @@
                     this.userList = res.data.data
                 })
             },
+            use(id){
+              $.ajax({
+                  url:'https://api.vvc.tw/suc/user/userInUes',
+                  type:'post' ,
+                  data:{
+                      id:id
+                  },
+                  success:res=>{
+                      console.log(res);
+                  }
+              })
+            },
             onSearch() {
 
                 // this.axios.post('https://api.vvc.tw/suc/user/userlist',{
@@ -129,14 +164,14 @@
                 //     console.log(res);
                 // })
                 $.ajax({
-                    url:'https://api.vvc.tw/suc/user/userlist',
-                    type:'post',
-                    data:{
+                    url: 'https://api.vvc.tw/suc/user/userlist',
+                    type: 'post',
+                    data: {
                         nick_name: this.nick_name
                     },
-                    success:res=>{
+                    success: res => {
                         console.log(res);
-                        if(res.code==1){
+                        if (res.code === 1) {
                             this.userList = res.data
                         }
                     }
@@ -145,23 +180,29 @@
 
             },
 
-            userInfo(id){
+            userInfo(id) {
                 $.ajax({
-                    url:'https://api.vvc.tw/suc/user/userinfo',
-                    type:'post',
-                    data:{
-                        id:id
+                    url: 'https://api.vvc.tw/suc/user/userinfo',
+                    type: 'post',
+                    data: {
+                        id: id
                     },
-                    success:res=>{
-                        console.log(res);
+                    success: res => {
+                        if(res.code===1){
+                            this.userList.forEach((item,index)=>{
+                                console.log(item);
+                                if(item.id===id){
+                                    console.log(item);
+                                    item.in_ues = -1*item.in_ues
+                                }
+                            })
+                        }
                     }
                 })
             }
 
         },
-        computed: {
-
-        },
+        computed: {},
         mounted: function () {
         }
 
@@ -173,9 +214,25 @@
     .pd12 {
         padding: 12px;
     }
-.table-wrap{
-    position:relative;
-    height:80vh;
-    overflow:auto;
-}
+
+    .table-wrap {
+        position: relative;
+        height: 80vh;
+        overflow: auto;
+    }
+
+    .table th, .table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .img {
+        width: 36px;
+    }
+
+    .thead {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 </style>

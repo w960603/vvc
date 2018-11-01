@@ -13,7 +13,7 @@
 
 .placeholder {
 
-    font-size: 32rpx;
+    /* font-size: 32rpx; */
 
     /* font-size: 40rpx;
 
@@ -33,6 +33,7 @@
     position: absolute;
     top: 0;
     z-index: -10;
+    background-color:rgba(255, 127, 106, 1);
 }
 
 .earth_img {
@@ -201,7 +202,6 @@
     padding-left: 42rpx;
 }
 
-
 .billList {
     padding: 0 32rpx;
     display: flex;
@@ -215,6 +215,7 @@
     font-weight: 500;
     color: rgba(74, 74, 74, 1);
     line-height: 38rpx;
+    text-align: right;
 }
 
 .account {

@@ -39,7 +39,10 @@ Page({
     note:"",
     reg_code:''
   },
-  onLoad: function () {
+    onLoad: function () {
+        this.setData({
+            route: this.route
+        })
       this.setData({ h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx" })
       this.setData({ fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx" })
      

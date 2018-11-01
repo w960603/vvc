@@ -18,10 +18,12 @@ Page({
         upgradeLevel: null,
         infos: {},
 
+        chajia:'',
         selected: true,
 
         num: null,
-        level:''
+        level: '',
+        route: '',
     },
 
     /**
@@ -33,6 +35,9 @@ Page({
             infos: JSON.parse(options.info)
         })
 
+        this.setData({
+            route: this.route
+        })
 
         this.setData({
             ['infos.lvl']:1,
@@ -63,7 +68,6 @@ Page({
                 this.setData({
                     item: this.data.itemList[res.tapIndex],
                     ['infos.lvl']: res.tapIndex + 1
-
                 });
                 // console.log(this.data.infos)
             },
@@ -102,37 +106,42 @@ Page({
                         this.data.chajia = 1900
 
                     } else if (this.data.infos.level === '仙女' && this.data.upgradeLevel === '女神'){
-                        this.data.chajia = 1700
-                    } else if (this.data.infos.level === '天使' && this.data.upgradeLevel === 'xiannv'){
-                        this.data.chajia = 200
+                        this.data.chajia = 1500
+                    } else if (this.data.infos.level === '天使' && this.data.upgradeLevel === '仙女'){
+                        this.data.chajia = 400
                     }
                     wx.showModal({
                         title: '升级到 ' + this.data.upgradeLevel + ' 级别,还需交押金' + this.data.chajia + '元',
+                        cancelText:'暂不升级',
                         content: '你确定要升级到 ' + this.data.upgradeLevel + ' 级别吗',
                         success:(res)=>{
-                            app.request({
-                                url:'https://api.vvc.tw/dlxin/user/codeUpgrade',
-                                data:{
-                                    id: this.data.infos.id,
-                                    level:this.data.level   
-                                },
-                                 success:res=>{
-                                    //  console.log(res)
-                                    if(res.data.code==1){
-                                        wx.showToast({
-                                            title: '升级成功',
-                                            duration:2000,
-                                        })
-                                        setTimeout(()=>{
-                                            wx.navigateBack({
-
+                            if(res.confirm){
+                                console.log('confirm')
+                                app.request({
+                                    url: 'https://api.vvc.tw/dlxin/user/codeUpgrade',
+                                    data: {
+                                        id: this.data.infos.id,
+                                        level: this.data.level
+                                    },
+                                    success: res => {
+                                        //  console.log(res)
+                                        if (res.data.code == 1) {
+                                            wx.showToast({
+                                                title: '升级成功',
+                                                duration: 2000,
                                             })
-                                        },1500)
-                                        
+                                            setTimeout(() => {
+                                                wx.navigateBack({
+
+                                                })
+                                            }, 1500)
+                                        }
                                     }
-                                    
-                                 }
-                            })
+                                })
+                            }else{
+
+                            }
+                            
                         }
                     })
                 },

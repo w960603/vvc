@@ -1,6 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import vuelogin from "../views/vuelogin"
 import index from '../views/index'
+
+/***登录组件**/ //
+// 手机号登录
+import phoneLogin from "../views/phone_login"
+//二维码登录
+import scanLogin from "../views/scan_login"
+//人脸登录
+import faceLogin from "../views/face_login"
 
 /***ElectronicSurface页面组件**/
 
@@ -10,6 +19,7 @@ import freight from '../views/ElectronicSurface/freight'
 /***warehouse页面组件**/
 import commodity from '../views/warehouse/commodity'
 import diyige from '../views/warehouse/diyige'
+import banner from '../views/warehouse/banner'
 /***Administration页面组件**/
 
 import aftersalesurvey from '../views/Administration/aftersalesurvey'
@@ -34,14 +44,16 @@ import red_book_goods from "../views/home/red_book/red_book_goods"
 import red_book_search from "../views/home/red_book/red_book_search"
 import generativephrase from "../views/home/red_book/generativephrase"
 
-import modify_sku from "../views/home/modify_sku"
+import modify_sku from "../views/warehouse/modify_sku"
 import searchorder from "../views/home/searchorder"
 import statistics from "../views/home/statistics"
 import shippinglist from "../views/home/shippinglist"
 import biggoods from "../views/home/biggoods"
 import tmallShip from "../views/home/tianmao/tmallShip"
 
-// import
+
+//supplier
+import semi_product from '../views/SupplierManagement/semi_product'
 
 /***systerm_manage页面组件**/
 import node_manage from '../views/systerm_manage/node_manage'
@@ -52,7 +64,6 @@ import group_manage from '../views/systerm_manage/group_manage'
 import logon_log from '../views/systerm_manage/logon_log'
 import logs from '../views/systerm_manage/logs'
 import userlog from '../views/systerm_manage/userlog'
-import ai from '../views/systerm_manage/ai'
 import userinfo from '../views/systerm_manage/userinfo'
 /**
     import diyige from '../views/warehouse/diyige'
@@ -64,149 +75,175 @@ Vue.use(Router);
        routes : [
            {
                path: '/',
+               component: vuelogin,
+               name:'vuelogin',
+           },
+           {
+               path:'/phoneLogin',
+               component:phoneLogin,
+               name:"phoneLogin",
+           },
+           {
+             path:"/scanLogin",
+             component:scanLogin,
+             name:"scanLogin"
+           },
+           {
+               path:"/faceLogin",
+               component:faceLogin,
+               name:"faceLogin"
+           },
+           {
+               path: '/index',
                component: index,
                name:'index',
-
                children: [
                    /***home页面组件**/
                    {
-                     path:"/statistics",
+                     path:"statistics",
                      component:statistics,
                      name:"statistics",
                    },
                    {
-                       path:"/shippinglist",
+                       path:"shippinglist",
                        component:shippinglist,
                        name:"shippinglist",
                    },
                    {
-                       path:'/biggoods',
+                       path:'biggoods',
                        component:biggoods,
                        name:"biggoods",
                    },
 
                    /***京东模块**/
                    {
-                       path:'/jdorder',
+                       path:'jdorder',
                        component:jdorder,
                        name:'jdorder'
                    },
                    {
-                       path:'/jd_order',
+                       path:'jd_order',
                        component:jd_order,
                        name:'jd_order'
                    },
                    {
-                       path:'/JDshop',
+                       path:'JDshop',
                        component:JDshop,
                        name:'JDshop'
                    },
                    {
-                       path:"/orderdetail",
+                       path:"orderdetail",
                        component:orderdetail,
                        name:"orderdetail"
                    },
                    {
-                       path:'/jdsearch',
+                       path:'jdsearch',
                        component:jdsearch,
                        name:"jdsearch"
                    },
                    {
-                     path:"/setprint",
+                     path:"setprint",
                        component:setprint,
                      name:"setprint"
                    },
                    /***小红书模块**/
                    {
-                       path:"/red_book_goods",
+                       path:"red_book_goods",
                        component:red_book_goods,
                        name:"red_book_goods"
                    },
                    {
-                       path:"/red_book_search",
+                       path:"red_book_search",
                        component:red_book_search,
                        name:"red_book_search"
                    },
                    {
-                       path:"/generativephrase",
+                       path:"generativephrase",
                        component:generativephrase,
                        name:"generativephrase"
                    },
                    {
-                       path:'/modify_sku',
+                       path:'modify_sku',
                        component:modify_sku,
                        name:'modify_sku'
                    },
                    {
-                       path:'/searchorder',
+                       path:'searchorder',
                        component:searchorder,
                        name:'searchorder'
                    },
                    {
-                       path: '/tmallShip',
+                       path: 'tmallShip',
                        component: tmallShip,
                        name:'tmallShip'
                    },
-                   // {
-                   //     path: '/modify_sku',
-                   //     component: modify_sku,
-                   //     name:'modify_sku'
-                   // },
-                   // {
-                   //     path: '/modify_sku',
-                   //     component: modify_sku,
-                   //     name:'modify_sku'
-                   // },
 
                    /***warehouse页面组件**/
 
                    {
-                       path: '/commodity',
+                       path: 'commodity',
                        component: commodity,
                        name:'commodity'
                    },
                    {
-                       path: '/diyige',
+                       path: 'diyige',
                        component: diyige,
                        name:'diyige'
+                   },
+                   {
+                       path: 'banner',
+                       component: banner,
+                       name:'banner'
                    },
 
                    /***ElectronicSurface页面组件**/
                    {
-                       path: '/jdlist',
+                       path: 'jdlist',
                        component: jdlist,
                        name:'jdlist'
                    },
                    {
-                       path: '/tmalllist',
+                       path: 'tmalllist',
                        component: tmalllist,
                        name:'tmalllist'
                    },
                    {
-                       path: '/freight',
+                       path: 'freight',
                        component: freight,
                        name:'freight'
                    },
 
                    /***Administration页面组件**/
                    {
-                       path: '/aftersalesurvey',
+                       path: 'aftersalesurvey',
                        component: aftersalesurvey,
                        name:'aftersalesurvey'
                    },
                    {
-                       path: '/deposit',
+                       path: 'deposit',
                        component: deposit,
                        name:'deposit'
                    },
                    {
-                       path: '/address',
+                       path: 'address',
                        component: address,
                        name:'address'
                    },
+
+
+                   //Supplier
+
+                   {
+                       path: 'semi_product',
+                       component: semi_product,
+                       name:'semi_product'
+                   },
+
+
+
                    /***systerm_manage页面组件**/
                    {
-                       path: '/user_manage',
+                       path: 'user_manage',
                        component: user_manage,
                        name:'user_manage',
                        children:[
@@ -220,34 +257,29 @@ Vue.use(Router);
                        props:true
                    },
                    {
-                       path:'/node_manage',
+                       path:'node_manage',
                        component:node_manage,
                        name:'node_manage'
                    },
                    {
-                       path:'/operation_log',
+                       path:'operation_log',
                        component:operation_log,
                        name:'operation_log'
                    },
                    {
-                       path:'/logs',
+                       path:'logs',
                        component:logs,
                        name:'logs'
                    },
                    {
-                       path:'/role_manage',
+                       path:'role_manage',
                        component:role_manage,
                        name:'role_manage'
                    },
                    {
-                       path:"/group_manage",
+                       path:"group_manage",
                        component:group_manage,
                        name:"group_manage"
-                   },
-                   {
-                       path:"/ai",
-                       component:ai,
-                       name:"ai"
                    },
                    {
                        path:"logon_log",
@@ -255,21 +287,9 @@ Vue.use(Router);
                        name:"logon_log"
                    },
                    {
-                       path: '/userlog',
+                       path: 'userlog',
                        component: userlog,
                        name:'userlog'
-                   },
-
-                   /***home页面组件**/
-                   {
-                       path:'/jdorder',
-                       component:jdorder,
-                       name:'jdorder'
-                   },
-                   {
-                       path:'/JDshop',
-                       component:JDshop,
-                       name:'JDshop'
                    },
                 ]
            }

@@ -18,4 +18,12 @@
         margin: 0;
         padding: 0;
     }
+    #app{
+        width: 100%;
+        height: 100%;
+    }
+    #app .table th ,#app .table td{
+        vertical-align: middle;
+        text-align: center;
+    }
 </style>

@@ -12,7 +12,7 @@
         <!-- 第一部分 -->
         <view class="part-1 part" style="margin-top:52rpx">
             <view class='title main-title'>
-                <image src='../../image/icon/none.svg' class='avator'></image>
+                <image src='/image/icon/none.svg' class='avator'></image>
                 <view>
                     <text class="nick_name">{{info.nick_name}}</text>
                     <text class="level">{{info.level}}</text>
@@ -25,7 +25,7 @@
                 <input type="number" placeholder='手机' adjust-position='true' class="input" value="{{info.phone}}" data-data='phone' bindinput='inputed' />
             </view>
             <view class="theme">微信:
-                <input type="text" placeholder='微信' adjust-position='true' class="input" value="{{info.wechat}}" data-data='wechat' bindinput='wechatInput' />
+                <input type="text" placeholder='微信' adjust-position='true' class="input" value="{{info.wechat}}" data-data='wechat' bindinput='inputed' />
             </view>
             <view class="theme">身份证:
                 <input type="text" placeholder='身份证' adjust-position='true' class="input" value="{{info.passport}}" data-data='passport' bindinput='inputed' />
@@ -88,7 +88,8 @@
     <view class='mask' bindtap="close"></view>
         <view class="box">
             <image class="reg_code" src="https://api.vvc.tw/dlxin/user/authImg?reg_code={{info.reg_code}}"></image>
-            <view class="album">保存</view>
+            <view class="album" bindtap='save_auth'>保存</view>
         </view>
     </view>
 </view>
+<guide route='{{route}}'></guide>

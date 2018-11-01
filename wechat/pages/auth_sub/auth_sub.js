@@ -17,7 +17,10 @@ Page({
             bank_name: '',
             card_name: '',
             card_num: '',
-            manager:''},
+            manager:'',
+            nick_name:'',
+            level:'',
+            },
         titles:"我的授权",
         hidden:true,
         reg_code:'',
@@ -34,7 +37,45 @@ Page({
         this.setData({ info: this.data.info });
         console.log(this.data.info)
     },
+    save_auth(e) {
+        wx.downloadFile({
+            url: "https://api.vvc.tw/dlxin/user/authImg?reg_code=" + this.data.info.reg_code,
+            success: (res) => {
+                //图片保存到本地
+                wx.saveImageToPhotosAlbum({
+                    filePath: res.tempFilePath,
+                    success: (data) => {
 
+                        wx.showToast({
+                            title: '保存成功',
+                            icon: 'success',
+                            duration: 2000
+                        });
+
+                        this.setData({
+                            img_show: false
+                        })
+                    },
+                    fail: (err) => {
+
+                        wx.showToast({
+                            title: '保存失败',
+                            icon: 'none',
+                            duration: 1500
+                        })
+
+                        this.setData({
+                            img_show: false
+                        })
+                    },
+                    complete: () => {
+                        wx.hideLoading()
+                        this.close();
+                    }
+                })
+            }
+        })
+    },
     orderMeeting(e) {
         app.request({
             url: 'https://api.vvc.tw/dlxin/user/updateauthinfo',
@@ -90,6 +131,9 @@ Page({
     },
 
     onLoad: function (options) {
+        this.setData({
+            route: this.route
+        })
         //适应ipx
         this.setData({ h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx" })
         this.setData({ fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx" });

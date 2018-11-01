@@ -1,0 +1,41 @@
+/* pages/ble/ble.wxss */
+
+.my-device{
+    height:96rpx;
+    padding:0 32rpx;
+    line-height: 96rpx;
+    font-size: 28rpx;
+    color:#9B9B9B
+}
+.list{
+    display: flex;
+    padding:0 32rpx;
+    justify-content: space-between;
+    align-items: center;
+    height:96rpx;
+    background-color:#fff;
+    color:#4a4a4a;
+}
+.list image{
+    width:60rpx;
+    height:68rpx;
+    margin-right:6px;
+}
+.left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 32rpx;
+}
+.left view{
+    line-height: 96rpx;
+}
+.right{
+    position:relative;
+    font-size: 28rpx;
+}
+
+.right::before{
+    width:12rpx;
+    height:12rpx;
+}

@@ -7,7 +7,7 @@
     <swiper class="swiper" indicator-dots='true' autoplay="true" circular interval="3000" duration="1000">
         <block wx:for="{{movies}}" wx:key='item' wx:for-item="item">
             <swiper-item>
-                <image src="{{item.url}}" class="slide-image" bindload='imgload' mode="aspectFill"></image>
+                <image src="{{item.img}}" class="slide-image" data-id='{{item.goods_id}}' bindtap='goto_detail' bindload='imgload' mode="aspectFill"></image>
             </swiper-item>
         </block>
     </swiper>
@@ -38,11 +38,5 @@
     </view>
 </scroll-view>
 
-<swiper class='guide' wx:if='{{showguide}}' bindtouchmove='touch'>
-    <swiper-item wx:for='{{guide_imglist}}'>
-        <image lazy-load='{{true}}' src='{{item}}' class='guide-img' mode='widthFix'></image>
-        <block wx:if='{{index===guide_imglist.length-1}}'>
-            <button bindtap='hideguide' plain='{{false}}' class='ikonw'>我知道了</button>
-        </block>
-    </swiper-item>
-</swiper>
+<guide route='{{route}}'></guide>
+

@@ -19,6 +19,7 @@ Page({
         addnew: false,
 
         edit_info: {},
+        route: '',
 
         checked: true,
         textfield: '',
@@ -58,6 +59,9 @@ Page({
          */
     onLoad: function (options) {
 
+        this.setData({
+            route: this.route
+        })
 var region1 = 'region[' + 0 + ']',
     region2 = 'region[' + 1 + ']',
     region3 = 'region[' + 2 + ']';

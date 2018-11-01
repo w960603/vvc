@@ -1,7 +1,6 @@
 const app = getApp();
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -24,6 +23,12 @@ Page({
     //     },
         objs:{},
         isshow:false,
+
+        // 展示物流信息，数组长度
+        len:null,
+        idx:0,
+      lens: null,
+      route: '',
   },
     navigateBack() {
         wx.navigateBack({ delta: 1 })
@@ -32,35 +37,84 @@ Page({
    * 生命周期函数--监听页面加载
    */
     fond_logisti(e){
-        // console.log(e.currentTarget.dataset.index);
-        console.log(this.data.list.sends[e.currentTarget.dataset.index].nu.length);
-        if(this.data.list.sends[e.currentTarget.dataset.index].nu.length > 11){
-            this.setData({ isshow: !this.data.isshow });
-            app.request({
-                url: "https://api.vvc.tw/dlxin/kdbird/getlogistic",
-                data: {
-                    nu: this.data.list.sends[e.currentTarget.dataset.index].nu,
-                    company: this.data.list.sends[e.currentTarget.dataset.index].company
-                },
-                success: (res) => {
-                    // console.log(res)
-                    if (res.data.code == 1) {
-                        console.log(res.data);
-                        var arr = res.data.data;
+        var idxs = e.currentTarget.dataset.index 
+        this.setData({ len:this.data.list.sends[idxs].wuliu});
+
+        this.setData({ isshow: !this.data.isshow });
+       if (this.data.len.length>0){
+           this.setData({idx:0})
+        this.qingqiu();
+       }
+
+    },
+
+    // 请求物流信息
+    qingqiu(){
+        // console.log('我走啦');
+        app.request({
+            url: "https://api.vvc.tw/dlxin/kdbird/getlogistic",
+            data: {
+                nu: this.data.len[this.data.idx].nu,
+                company: this.data.len[this.data.idx].company
+            },
+            success: (res) => {
+                console.log(res, 46)
+                if (res.data.code == 1) {
+                    var arr = res.data.data;
+                    if (arr == "") {
+                        wx.showToast({
+                            title: '快递正在运输中...',
+                            icon: 'loading',
+                            duration: 1200,
+                        })
+                    } else {
+                        console.log(arr);
                         arr.Traces.reverse(function (a, b) {
                             return a - b;
                         });
-                         console.log(arr);
                         this.setData({ objs: arr });
                     }
                 }
-            })
-        }
+            }
+        })
+    },
+
+
+    // 上一页
+    pre_page(e){
+        // console.log(666,this.data.lens);
+        // if(this.data.lens >0){
+        //     this.setData({ lens: this.data.lens-1});
+        //     this.setData({idx:this.data.idx -1});
+        //     console.log(777,this.data.lens);
+        //     this.qingqiu(this.data.lens);
+        // }
+   this.setData({"idx":this.data.idx -1});
+    this.qingqiu()
+
+    },
+    // 下一页
+    next_page(e){
+
+        this.setData({ "idx": this.data.idx + 1 });
+        this.qingqiu()
+        // console.log(this.data.lens);
+        // console.log(this.data.len);
+        // if (this.data.lens < this.data.len && this.data.lens>=0) {
+
+        //     this.setData({ lens: this.data.lens+1 });
+        //     this.setData({ idx: this.data.idx + 1 });
+        //     console.log(777, this.data.lens);
+        //     this.qingqiu(this.data.lens);
+        // }
     },
   onLoad: function (options) {
-      wx.showLoading({
-          title: '加载中',
+
+      this.setData({
+          route: this.route
       })
+
+      wx.showLoading({title: '加载中'})
       this.setData({ id: options.id })
       console.log(this.data.id)
       //适应ipx

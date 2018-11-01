@@ -114,11 +114,12 @@
         </view>
         <view style='height:160rpx;'></view>
         <view class='footer' style='{{iphonex}}'>
-            <view class='footer-image'>
+            <button open-type='contact' class='footer-image'>
                 <image src='https://cdn.vvc.tw/a/images/vvc_logo.svg'></image>
                 <text>联系客服</text>
-            </view>
+            </button>
             <view class='submit' bindtap="submit">提交</view>
         </view>
     </view>
 </view>
+<guide route='{{route}}'></guide>

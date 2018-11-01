@@ -15,6 +15,7 @@ Page({
         //适应ipx
         h: '',
         fill: '',
+        route: '',
         margin:null
     },
     
@@ -127,6 +128,10 @@ Page({
     footerTap: app.footerTap,
     
     onLoad: function (res) {
+
+        this.setData({
+            route: this.route
+        })
 
         if (app.globalData.model == 'iphonex') {
             this.setData({

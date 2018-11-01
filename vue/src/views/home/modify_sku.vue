@@ -150,11 +150,8 @@
                 this.droped.item = arr;
                 this.droped.index = index;
 
-                console.log(this.draged.item,this.draged.index);
-                console.log(this.droped.item,this.droped.index);
                 this.imgs[this.droped.index] = this.draged.item;
                 this.imgs[this.draged.index] = this.droped.item;
-                console.log(this.imgs);
                 this.$forceUpdate()
             },
             allowDrop(ev) {
@@ -169,17 +166,14 @@
                     type: "post",
                     url: "https://api.vvc.tw/suc/goods/goodsDetail",
                     success: (res) => {
-                        console.log("kkkkkkkkk", res);
                         this.couponList = res.data;
                     }
                 });
             },
             addNewTodo: function () {
-                console.log(this.items);
                 this.items.canshu.push(["", ""])
             },
             post: function () {
-                console.log(this.items);
                 $.ajax({
                     url: 'https://api.vvc.tw/suc/goods/orderDetail/?id=' + this.items.goodid,
                     type: 'post',
@@ -213,21 +207,17 @@
             getinfo(e) {
                 this.ids = e.path ? e.path[0].value : e;
                 this.items.goodid = this.ids;
-                console.log(e, this.ids, this.items.goodid);
                 $.ajax({
                     type: "post",
                     url: 'https://api.vvc.tw/suc/goods/getDetail/?id=' + this.ids,
                     success: (resp) => {
-                        console.log(resp);
                         if (resp.code === 0) {
                             this.items.canshu = this.itemss.canshu;
                             this.items.priceimage = null;
                             this.isshow = true;
-                            console.log(this.isshow, 1111);
                         } else {
                             this.items = resp.data;
                             this.isshow = false;
-                            console.log(this.items, resp.data);
                         }
                         $.ajax({
                             type: "post",
@@ -250,7 +240,6 @@
                                     this.items.title = null;
                                     this.imgs = []
                                 }
-                                console.log("我走啦", this.items);
                             }
                         })
                     }
@@ -258,7 +247,6 @@
 
             },
             change: function (e) {
-                console.log(23232, this.items.canshu[0]);
                 Vue.set(this.items.canshu[0], 1, this.items.goodid);
             },
             getPrice(el) {
@@ -267,7 +255,6 @@
                         el: el,
                         callback: (responent, fileName, date) => {
                             this.items.priceimage = "https://cdn.vvc.tw/" + responent.dir + fileName + "_" + date + ".jpg";
-                            console.log(this.items.priceimage)
                         }
                     });
             },
@@ -277,14 +264,12 @@
                         el: el,
                         callback: (responent, fileName, date) => {
                             this.uploadedImage = "https://cdn.vvc.tw/" + responent.dir + fileName + "_" + date + ".jpg";
-                            console.log(this.uploadedImage)
                         }
                     });
             },
             upload(option) {
                 var getUrl = option.getUrl ? option.getUrl : "https://api.vvc.tw/dlxin/index/getoss";
                 var postUrl = option.postUrl ? option.postUrl : "https://cdn.vvc.tw";
-                console.log(option, getUrl, postUrl);
                 var fileName = option.fileType ? option.fileType : 'vvc';
                 $.ajax({
                     url: getUrl,
@@ -294,7 +279,6 @@
                     },
                     success: (res) => {
                         var responent = res.data;
-                        console.log($(option.el)[0].files[0]);
                         var file = option.el ? $(option.el)[0].files[0] : option.imagePath;
                         var date = new Date().getTime();
                         var datas = new FormData();

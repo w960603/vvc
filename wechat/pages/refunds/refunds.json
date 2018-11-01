@@ -1,6 +1,7 @@
 {
     "component":"true",
     "usingComponents":{
-            "heads":"../head/head"
+            "heads":"../head/head",
+            "guide": "../guide/guide"
         }
     }

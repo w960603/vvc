@@ -2,6 +2,7 @@
     "component": true,
     "usingComponents": {
         "CmponentName": "../proxy_address/proxy_address",
-        "header": "../head/head"
+        "header": "../head/head",
+        "guide": "../guide/guide"
     }
 }

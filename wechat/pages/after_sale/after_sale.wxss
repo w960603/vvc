@@ -140,7 +140,6 @@ sale_content {
 .order {
     display: flex;
     flex-direction: column;
-    backgroun
     margin-bottom: 16rpx;
 }
 
@@ -783,6 +782,9 @@ choice_type_text2 {
     float:left;
     text-align:center;
     background: white;
+}
+.footer-image:after{
+    border:none
 }
 .footer-image image{
     width:48rpx;

@@ -30,7 +30,7 @@
                     <text class="get">收货</text>
                     <image src="{{user.img_url||''}}" style=' background:url("https://cdn.vvc.tw/a/images/none.svg") center center/cover no-repeat' model='aspectFill'></image>
 
-                    <input type="search" bindinput='input_number' class="search" adjust-position='true' bindtap='ship_search' disabled='true' placeholder='收货人' placeholder-class='placeholder' value='{{user.nick_name}}'></input>
+                    <input type="search" bindinput='input_number' class="search" adjust-position='true' bindtap='ship_search' disabled='true' placeholder='收货人' placeholder-class='placeholder' value='{{user.nick_name||express}}'></input>
                     <image src="../../image/icon/search.svg" class="img_search" bindtap='search'></image>
                 </view>
             </view>
@@ -67,3 +67,11 @@
 </scroll-view>
 
 <my-component wx:if='{{isshow3}}' pror-id="{{shipid}}" bindadduser='adduser' bindover='closeShip' bindclosed='close'></my-component>
+
+<view class='btn' bindtap='openBle'>
+    <image src='/image/icon/ble_white.svg'></image>
+    <view class='connect {{connected?"success":"fail"}}'>
+        {{connected?"已连接":"未连接"}}
+    </view>
+</view>
+<guide route='{{route}}'></guide>

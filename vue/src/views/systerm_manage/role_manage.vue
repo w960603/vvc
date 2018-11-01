@@ -15,7 +15,7 @@
                 <a-button  :style="{color:'red'}" :disabled="disable">禁用</a-button>
                 <a-button  :style="{color:'green'}">恢复</a-button>
                 <a-button  :style="{color:'lime'}">回收站</a-button>
-                <a-button  :style="{color:'orange'}">删除</a-button>
+                <a-button  :style="{color:'orange'}" @click="deleteOneProduct">删除</a-button>
             </div>
 
             <div>共有数据:<strong> {{productList.length}} </strong>条</div>
@@ -149,7 +149,7 @@
             },
             //禁用开关
             disabled() {
-                this.disable = true
+                this.disabled = true
             },
             //添加数组的方法
             addSave(arr) {
@@ -170,7 +170,7 @@
             },
             //删除单条项目
             deleteOneProduct: function (index) {
-                this.isshow = !isshow
+                // this.isshow = !isshow;
                 this.productList.splice(index, 1);
             }
         },
@@ -178,7 +178,7 @@
             //搜索名称
             search() {
                 // var _this = this
-                var colList = []
+                var colList = [];
                 for (var i = 0; i < this.productList.length; i++) {
                     if (this.productList[i].rolename.search(this.searchVal) != -1) {
                         colList.push(this.productList[i])
@@ -204,8 +204,14 @@
         padding:5px;
         border-radius:5px;
     }
-    table{text-align: center!important;}
+    table{text-align: center!important;
+        width: 100%;
+        margin: 10px auto;}
     th{text-align: center!important;}
+    tr{
+        line-height:50px;
+        border:1px solid lightgray;
+    }
     .overlay {
         position: fixed;
         top: 0;

@@ -12,38 +12,7 @@ Page({
         status: false,
 
         orderCont: [
-            {
-                img: '../../image/icon/no_product.svg',
-                title: 'VVC冰丝袖套',
-                order_num: '2018082213103923',
-                address: '福建省厦门市思明区前埔路168号',
-                order_time: '2018-08-22 09:48:45',
-                order_status: 1
-            },
-            {
-                img: '../../image/icon/no_product.svg',
-                title: 'VVC冰丝袖套',
-                order_num: '2018082213103923',
-                address: '福建省厦门市思明区前埔路168号',
-                order_time: '2018-08-22 09:48:45',
-                order_status: 2
-            },
-            {
-                img: '../../image/icon/no_product.svg',
-                title: 'VVC冰丝袖套',
-                order_num: '2018082213103923',
-                address: '福建省厦门市思明区前埔路168号',
-                order_time: '2018-08-22 09:48:45',
-                order_status: 0
-            },
-            {
-                img: '../../image/icon/no_product.svg',
-                title: 'VVC冰丝袖套',
-                order_num: '2018082213103923',
-                address: '福建省厦门市思明区前埔路168号',
-                order_time: '2018-08-22 09:48:45',
-                order_status: 1
-            },
+        
         ],
 
 
@@ -116,6 +85,9 @@ Page({
      */
     onLoad: function() {
 
+        this.setData({
+            route: this.route
+        })
         app.request({
             url: 'https://api.vvc.tw/dlxin/order/orderSendinfo',
             data: {

@@ -105,3 +105,4 @@
     </view>
 <my-assembly wx:if="{{isshow}}" prop-menu="{{express}}"  bindclosed="express_type"></my-assembly>
 </view>
+<guide route='{{route}}'></guide>

@@ -39,7 +39,7 @@
                                 <view class="description">
                                     <view class="title_price">
                                         <view wx:for="{{item.goods_list}}" wx:for-item="item1">
-                                            <view class="title1" wx:if="{{item1.name}}">{{ item1.name}}[{{item1.color}}]
+                                            <view class="title1" wx:if="{{item1.name}}">{{ item1.name}}[{{item1.color||"***"}}]
                                                 <text style='margin-left:30rpx'>X{{item1.num}}</text>
                                             </view>
                                         </view>
@@ -180,11 +180,12 @@
             </view>
         </mask>
         <view class="footer" wx:if="{{currentTab == 2}}" style='{{iphonex}}'>
-            <view class='footer-image'>
+            <button class='footer-image' open-type="contact" >
                 <image src='https://cdn.vvc.tw/a/images/vvc_logo.svg'></image>
-                <text>联系客服</text>
-            </view>
-            <view class="submit" bindtap='submit' >提交</view>
+                <text >联系客服</text>
+            </button>
+            <view class="submit" bindtap='comfirmRefer' >提交</view>
         </view>
     </view>
 </view>
+<guide route='{{route}}'></guide>

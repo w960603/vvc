@@ -18,10 +18,7 @@ Page({
         winHeight: "", //窗口高度
         currentTab: 0, //预设当前项的值
         scrollLeft: 0, //tab标题的滚动条位置
-        parameterList: [
-            ["", ""],
-            ["", ""]
-        ],
+        parameterList: [],
         loaded: false,
         material: {
             cloth: '韩国VVC 夏季防晒外套 材质UV UPF50＋ 有效抵挡99％的紫外线，时尚百搭。'
@@ -174,7 +171,10 @@ Page({
         }
 
     },
-    onLoad: function(option) {
+    onLoad: function (option) {
+        this.setData({
+            route: this.route
+        })
         //适应ipx
         this.setData({
             h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx"
@@ -318,11 +318,9 @@ Page({
                         },
                         success: (res) => {
 
-                            if (res.data.data.code == 1) {
+                            if (res.data.code == 1) {
                                 this.setData({
-                                    parameterList: res.data.data.canshu
-                                })
-                                this.setData({
+                                    parameterList: res.data.data.canshu,
                                     price_img: res.data.data.priceimage
                                 })
                             }

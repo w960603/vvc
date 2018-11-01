@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-     "my-assembly":"../assembly/assembly" 
+     "my-assembly":"../assembly/assembly" ,
+    "guide": "../guide/guide"
   }
 }

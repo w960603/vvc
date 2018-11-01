@@ -205,3 +205,4 @@
         </swiper>
     </view>
 </view>
+<guide route='{{route}}'></guide>

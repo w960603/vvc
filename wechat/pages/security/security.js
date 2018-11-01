@@ -26,19 +26,20 @@ Page({
         showback: false,
         newly: [],
 
-        status:true
-        
+        route: '',
+        status: true
+
     },
     onShow: function() {
 
     },
     getuserinfo(e) {
-        
+
         if (e.detail.userInfo) {
-            wx.showToast({
-                title: '登录成功',
-                duration: 2000
-            })
+            // wx.showToast({
+            //     title: '登录成功',
+            //     duration: 2000
+            // })
             this.setData({
                 we_userinfo: e.detail.userInfo,
                 btn_show: false
@@ -46,11 +47,11 @@ Page({
 
         } else {
             console.log(222)
-            wx.showToast({
-                title: '登录失败,请登录后重试',
-                icon: "none",
-                duration: 5000
-            })
+            // wx.showToast({
+            //     title: '登录失败,请登录后重试',
+            //     icon: "none",
+            //     duration: 5000
+            // })
         }
     },
     // 时间
@@ -84,8 +85,13 @@ Page({
         })
     },
     onLoad: function(options) {
-        console.log(app.tok)
-        app.getToken()
+
+        this.setData({
+            route: this.route
+        })
+        // console.log(app.tok)
+        if (!app.globalData.tok)
+            app.getToken();
 
         /************用户验证*************/
         // 登陆过就不用获取微信
@@ -208,7 +214,7 @@ Page({
             }
         }
 
-        
+
         app.request({
             url: 'https://api.vvc.tw/dlxin/user/qrcode',
             method: 'post',
@@ -239,10 +245,11 @@ Page({
                         })
                     }
 
+
                     const innerAudioContext = wx.createInnerAudioContext();
                     innerAudioContext.autoplay = true
-                    innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&ctp=1&vol=15&tok=24.6be9789b8520e2550ef52f03672dbd4c.2592000.1541409606.282335-14254401';
-                    
+                    innerAudioContext.src = 'https://tsn.baidu.com/text2audio?tex=' + encodeURI(res.data.msg) + '&lan=zh&cuid=00%20-%20CF%20-%20E0%20-%204A-0F-19&ctp=1&vol=15&tok=' + app.globalData.tok;
+                    innerAudioContext.onPlay(() => {});
                 }
             }
 
@@ -254,7 +261,7 @@ Page({
             onlyFromCamera: true,
             success: (res) => {
                 console.log(res)
-                if(res.result&&/vvc/i.test(res.result)){
+                if (res.result && /vvc/i.test(res.result)) {
                     var reg2 = /([\d]{8,12})/;
                     var str2 = res.result;
                     var result = str2.match(reg2);
@@ -263,7 +270,7 @@ Page({
                     })
                     this.chaxun();
                 }
-                
+
             }
         });
     },

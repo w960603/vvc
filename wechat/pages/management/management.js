@@ -25,11 +25,14 @@ Page({
             password1: '',
         },
 
+        phone:'',
+        code:'',
         status: true,
         backable: false,
 
         k: null,
 
+        route: '',
     },
 
     /**
@@ -38,6 +41,9 @@ Page({
     
     onLoad: function(options) {
 
+        this.setData({
+            route: this.route
+        })
         if (!!app.globalData.token) {
             this.setData({
                 backable: true
@@ -88,7 +94,58 @@ Page({
             }
         });
     },
+    phone(e){
+        this.data[e.currentTarget.dataset.info] = e.detail.value;
+        console.log(e.currentTarget.dataset.info)
+        this.setData({
+            [e.currentTarget.dataset.info]: e.detail.value
+        })
+    },
+    getcode(){
+
+        if(/^1[3-9][0-9]{9}$/.test(this.data.phone)){
+            app.request({
+                url: 'https://api.vvc.tw/dlxin/index/sendsmscode',
+                methods: 'POST',
+                data: {
+                    phone: this.data.phone
+                },
+                success: res => {
+                    console.log(res)
+                }
+            })
+        }else{
+            wx.showToast({
+                title: '请输入正确的手机号',
+                icon:'none',
+                duration:2000
+            })
+        }
+    },
+    submitcode(){
+        if (/^1[3-9][0-9]{9}$/.test(this.data.phone)&&this.data.code) {
+            app.request({
+                url: 'https://api.vvc.tw/dlxin/index/sendsmscode',
+                methods: 'POST',
+                data: {
+                    phone: this.data.phone
+                },
+                success: res => {
+                    console.log(res)
+                }
+            })
+        } else {
+            wx.showToast({
+                title: '请输入手机号及验证码',
+                icon: 'none',
+                duration: 2000
+            })
+        }
+    },
     confirm: function() {
+
+        this.data.infoList.phone = this.data.phone;
+        this.data.infoList.code = this.data.code;
 
         app.request({
             url: 'https://api.vvc.tw/dlxin/index/registerCode',
@@ -118,7 +175,8 @@ Page({
 
                     wx.showToast({
                         title: res.data.msg,
-                        icon: 'none'
+                        icon: 'none',
+                        duration:3000
                     })
                 }
 

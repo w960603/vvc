@@ -71,6 +71,9 @@ page {
     font-size: 28rpx;
 }
 
+button:after{
+    border:none;
+}
 .return_time, .result {
     font-size: 32rpx;
     line-height: 60rpx;

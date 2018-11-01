@@ -60,3 +60,4 @@
         <button class="btn" bindtap='confirm'>确认</button>
     </view>
 </mask>
+<guide route='{{route}}'></guide>
