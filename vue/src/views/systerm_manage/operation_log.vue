@@ -57,8 +57,6 @@
                         'en':'logon_log首页'},
                     {'cn':'时间',
                         'en':'out_time'}
-
-
                 ],
                 checkData:[],
                 status:false

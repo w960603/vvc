@@ -3,40 +3,33 @@
         <div class="row">
             <div class="col-md-8 bd col-md-offset-2 ">
                 <div class="col-md-8 bd col-md-offset-2 ">
-                    <h3 class="h3">轮播图</h3>
+                    <h3 class="h3">视频</h3>
                     <div class="col-md-12">
                         <ul>
-                            <li class="banner-list" v-for="(item,index) in imgs">
-                                <span class="cancel" @click="delBanner(item.img,index)">&times;</span>
-                                <img :src="item.img" alt="">
-                                <p>商品名:{{item.title}}</p>
+                            <li class="banner-list" v-for="(item,val,index) in imgs">
+                                <span class="cancel" @click="delBanner(val,index)">&times;</span>
+                                <video :src="val" controls="controls"></video>
+                                <p>状态:{{item?'使用中':"未使用"}}</p>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-8 bd col-md-offset-2">
-                    <div class="form-group" style="padding-bottom:10px">
-                        <label class="col-md-2 h5">选择商品编码:</label>
-                        <div class="col-md-10">
-                            <select class="form-control" @change="getinfo($event)">
-                                <option selected v-for="item in couponList" :value="item.id">{{item.title}}{{item.id}}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="col-md-8 bd col-md-offset-2 ">
-                    <h5 class="h4 bold">商品详情</h5>
-                    <div>
-                        <img :src="uploadedImage" width="500"
-                             style="min-width:500px;min-height:300px;max-width:500px; border:1px solid #ddd"
-                             alt="预览图">
-                        <label for="upload-img2" class=" btn btn-primary">选择图片</label>
-                        <input id="upload-img2" type="file" style="display: none;">
-                        <button class="btn btn-primary" @click="getfile('#upload-img2','uploadedImage')">上传并预览
-                        </button>
-                        <button class="btn btn-primary" @click="submitImg">提交保存</button>
+                    <h5 class="h4 bold">视频</h5>
+                    <div class="col-md-12">
+                        <video :src="uploadedImage" width="300"
+                               style="min-width:300px;min-height:150px;max-width:300px; border:1px solid #ddd"
+                               controls="controls"
+                        >
+                        </video>
+                        <div class="col-md-12 pd15">
+                            <label for="upload-img2" class=" btn btn-primary">选择视频</label>
+                            <input id="upload-img2" type="file" accept="video/mp4" style="display: none;">
+                            <button class="btn btn-primary" @click="getfile('#upload-img2','uploadedImage')">上传并预览
+                            </button>
+                            <button class="btn btn-primary" @click="submitImg">提交保存</button>
+                        </div>
+
                     </div>
 
                 </div>
@@ -46,6 +39,7 @@
 </template>
 
 <script>
+    import Vue from 'vue'
     export default {
         name: "banner",
         data() {
@@ -67,7 +61,8 @@
         },
         created() {
             this.getList();
-            this.myclick()
+            this.myclick();
+            console.dir({})
         },
         methods: {
             myclick() {
@@ -79,20 +74,20 @@
                     }
                 });
             },
-            delBanner(img,index){
-              $.ajax({
-                  url:'https://api.vvc.tw/suc/goods/delBanner',
-                  type:'post',
-                  data:{
-                      img:img
-                  }
-              }).then(res=>{
-                  console.log(res);
-                  this.$message.info(res.msg);
-                  if(res.code===1){
-                      this.imgs.splice(index,1)
-                  }
-              })
+            delBanner(url) {
+                $.ajax({
+                    url: 'https://api.vvc.tw/suc/index/delVideo',
+                    type: 'post',
+                    data: {
+                        url
+                    }
+                }).then(res => {
+                    console.log(res);
+                    this.$message.info(res.msg);
+                    if (res.code === 1) {
+                        Vue.delete(this.imgs,url)
+                    }
+                })
             },
             getinfo(e) {
                 console.log(e.target.value);
@@ -115,26 +110,27 @@
                 ev.preventDefault();
             },
             submitImg() {
-                $.ajax({
-                    url: 'https://api.vvc.tw/suc/goods/createBanner',
-                    type: 'post',
-                    data: {
-                        goods_id: this.goods_id,
-                        img: this.uploadedImage
-                    },
-                    success: (res) => {
-                        // if (res.code==1){
-                        this.$message.info(res.msg);
-                        this.getList()
-                        // }
-                    }
-                })
+                if (this.uploadedImage)
+                    $.ajax({
+                        url: 'https://api.vvc.tw/suc/index/createVideo',
+                        type: 'post',
+                        data: {
+                            type: 1,
+                            url: this.uploadedImage
+                        },
+                        success: (res) => {
+                            // if (res.code==1){
+                            this.$message.info(res.msg);
+                            this.getList()
+                            // }
+                        }
+                    })
             },
             getfile(el) {
                 this.upload({
                     el: el,
                     callback: (responent, fileName, date) => {
-                        this.uploadedImage = "https://cdn.vvc.tw/" + responent.dir + fileName + "_" + date + ".jpg";
+                        this.uploadedImage = "https://cdn.vvc.tw/" + responent.dir + fileName + "_" + date + ".mp4";
                     }
                 });
             },
@@ -146,7 +142,7 @@
                     url: getUrl,
                     type: "get",
                     data: {
-                        type: 2,
+                        type: 4,
                     },
                     success: (res) => {
                         var responent = res.data;
@@ -156,7 +152,7 @@
                         datas.set('policy', responent.policy);
                         datas.set('OSSAccessKeyId', responent.accessid);
                         datas.set('Signature', responent.signature);
-                        datas.set('key', responent.dir + fileName + "_" + date + ".jpg");
+                        datas.set('key', responent.dir + fileName + "_" + date + ".mp4");
                         datas.set('file', file);
                         $.ajax({
                             url: postUrl,
@@ -168,22 +164,18 @@
                             processData: false,
                             contentType: false,
                             success: (res) => {
-
                                 option.callback(responent, fileName, date);
                                 // this.uploadedImage = "https://cdn.vvc.tw/" + responent.dir + fileName + "_" + date + ".jpg";
-
                             }
                         })
                     }
                 });
             },
             getList() {
-
-                this.axios.post('https://api.vvc.tw/suc/goods/bannerList').then(res => {
+                this.axios.post('https://api.vvc.tw/suc/index/videoList').then(res => {
                     console.log(res);
                     if (res.data.code === 1) {
-                        this.imgs = res.data.data
-
+                        this.imgs = res.data.data.list
                     }
                 })
 
@@ -220,17 +212,19 @@
         line-height: 18px;
         color: #000;
         font-size: 30px;
-        border-radius:50%;
+        border-radius: 50%;
         background-color: #fff;
-        cursor:pointer;
+        cursor: pointer;
         text-align: center;
         vertical-align: middle;
     }
-    .cancel:hover{
-        border-color:#bbb;
-        color:#bbb
+
+    .cancel:hover {
+        border-color: #bbb;
+        color: #bbb
     }
-    .banner-list img {
+
+    .banner-list video {
         width: 100%;
     }
 </style>

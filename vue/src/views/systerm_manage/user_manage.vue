@@ -83,8 +83,8 @@
                                          @click="userInfo(row.id)">
                                 详细信息
                             </router-link>
-                            <button class="btn btn-success" v-if="row.in_ues==-1" @click="use(row.id)">开通</button>
-                            <button class="btn btn-danger" v-else-if="row.in_ues==1" @click="use(row.id)" >禁用</button>
+                            <button class="btn btn-success" v-if="row.in_ues===-1" @click="use(row.id)">开通</button>
+                            <button class="btn btn-danger" v-else-if="row.in_ues===1" @click="use(row.id)" >禁用</button>
                         </td>
                     </tr>
                     </tbody>

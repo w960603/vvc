@@ -20,11 +20,13 @@ import freight from '../views/ElectronicSurface/freight'
 import commodity from '../views/warehouse/commodity'
 import diyige from '../views/warehouse/diyige'
 import banner from '../views/warehouse/banner'
+import video from '../views/warehouse/video'
 /***Administration页面组件**/
 
 import aftersalesurvey from '../views/Administration/aftersalesurvey'
 import deposit from '../views/Administration/deposit'
 import address from '../views/Administration/address'
+import charge from '../views/Administration/charge'
 
 
 //获取打印机
@@ -49,8 +51,10 @@ import searchorder from "../views/home/searchorder"
 import statistics from "../views/home/statistics"
 import shippinglist from "../views/home/shippinglist"
 import biggoods from "../views/home/biggoods"
-import tmallShip from "../views/home/tianmao/tmallShip"
 
+/*** 天猫模块**/
+import tmallShip from "../views/home/tianmao/tmallShip"
+import phrasetmall from "../views/home/tianmao/phrasetmall"
 
 //supplier
 import semi_product from '../views/SupplierManagement/semi_product'
@@ -65,11 +69,17 @@ import logon_log from '../views/systerm_manage/logon_log'
 import logs from '../views/systerm_manage/logs'
 import userlog from '../views/systerm_manage/userlog'
 import userinfo from '../views/systerm_manage/userinfo'
+import guide from '../views/systerm_manage/guide'
+import admin_manage from '../views/systerm_manage/admin_manage'
+
+
+import systemconfig from '../views/systemconfig/systemconfig'
 /**
     import diyige from '../views/warehouse/diyige'
     import ordertype from '../views/warehouse/ordertype'
     import package from '../views/warehouse/package'
 **/
+
 Vue.use(Router);
    export default new Router({
        routes : [
@@ -142,7 +152,7 @@ Vue.use(Router);
                        name:"jdsearch"
                    },
                    {
-                     path:"setprint",
+                     path:"/setprint",
                        component:setprint,
                      name:"setprint"
                    },
@@ -177,6 +187,11 @@ Vue.use(Router);
                        component: tmallShip,
                        name:'tmallShip'
                    },
+                   {
+                     path:"phrasetmall",
+                     component:phrasetmall,
+                     name:"phrasetmall"
+                   },
 
                    /***warehouse页面组件**/
 
@@ -194,6 +209,11 @@ Vue.use(Router);
                        path: 'banner',
                        component: banner,
                        name:'banner'
+                   },
+                   {
+                       path: 'video',
+                       component: video,
+                       name:'video'
                    },
 
                    /***ElectronicSurface页面组件**/
@@ -229,6 +249,11 @@ Vue.use(Router);
                        component: address,
                        name:'address'
                    },
+                   {
+                       path: 'charge',
+                       component: charge,
+                       name:'charge'
+                   },
 
 
                    //Supplier
@@ -239,21 +264,22 @@ Vue.use(Router);
                        name:'semi_product'
                    },
 
-
-
                    /***systerm_manage页面组件**/
                    {
                        path: 'user_manage',
                        component: user_manage,
                        name:'user_manage',
-                       children:[
-
-                       ]
                    },
                    {
                        path: 'userinfo',
                        component: userinfo,
                        name:'userinfo',
+                       props:true
+                   },
+                   {
+                       path: 'guide',
+                       component: guide,
+                       name:'guide',
                        props:true
                    },
                    {
@@ -290,6 +316,16 @@ Vue.use(Router);
                        path: 'userlog',
                        component: userlog,
                        name:'userlog'
+                   },
+                   {
+                       path: 'systemconfig',
+                       component: systemconfig,
+                       name:'systemconfig'
+                   },
+                   {
+                       path: 'admin_manage',
+                       component: admin_manage,
+                       name:'admin_manage'
                    },
                 ]
            }

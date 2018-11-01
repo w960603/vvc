@@ -78,7 +78,8 @@
         data() {
             return {
                 collapsed: false,
-                rootSubmenuKeys: ['订单', '仓库', '供应商列表', '售后管理', '电子面单', '系统管理',],
+                rootSubmenuKeys: ['订单', '仓库', '供应商列表', '售后管理', '电子面单', '系统管理','系统设置'],
+
                 nav: [
                     {
                         name: "订单",
@@ -120,6 +121,10 @@
                                         name: '天猫订单发货',
                                         url: '/index/tmallShip'
                                     },
+                                    {
+                                        name:"天猫修改短语",
+                                        url:"/index/phrasetmall"
+                                    }
                                 ],
                                 key: 5,
                             },
@@ -192,16 +197,16 @@
                                 url: "/index/banner",
                             },
                             {
+                                name: '视频',
+                                url: "/index/video",
+                            },
+                            {
                                 name: '商品列表',
                                 url: "/index/modify_sku",
                             },
                             {
                                 name: 'sku',
                                 url: '/index/modify_sku',
-                            },
-                            {
-                                name: '地址管理',
-                                url: '/index/address',
                             },
                         ]
                     },
@@ -234,7 +239,14 @@
                             {
                                 name: '退押金',
                                 url: '/index/deposit',
-                                key: 3,
+                            },
+                            {
+                                name: '地址管理',
+                                url: '/index/address',
+                            },
+                            {
+                                name: '充值管理',
+                                url: '/index/charge',
                             },
                         ]
                     },
@@ -246,17 +258,14 @@
                             {
                                 name: '运费',
                                 url: '/index/freight',
-                                key: 1,
                             },
                             {
                                 name: '天猫面单',
                                 url: "/index/tmalllist",
-                                key: 4,
                             },
                             {
                                 name: '京东面单',
                                 url: '/index/jdlist',
-                                key: 5,
                             },
                         ]
                     },
@@ -268,42 +277,49 @@
                             {
                                 name: '分组管理',
                                 url: '/index/group_manage',
-                                key: 2,
-                            },
-                            {
-                                name: '人脸注册',
-                                url: '/index/ai',
-                                key: 2,
                             },
                             {
                                 name: '用户登录日志',
                                 url: '/index/userlog',
-                                key: 2,
+                            },
+                            {
+                                name: '管理员管理',
+                                url: '/index/admin_manage',
+                            },
+                            {
+                                name: '指引页',
+                                url: '/index/guide',
                             },
                             {
                                 name: '用户管理',
                                 url: '/index/user_manage',
-                                key: 3,
                             },
                             {
                                 name: '角色管理',
                                 url: "/index/role_manage",
-                                key: 4,
                             },
                             {
                                 name: '节点管理',
                                 url: '/index/node_manage',
-                                key: 5,
                             },
                             {
                                 name: '操作日志',
                                 url: '/index/operation_log',
-                                key: 7,
                             },
                             {
                                 name: '登录日志',
                                 url: '/index/logon_log',
-                                key: 8,
+                            },
+                        ]
+                    },
+                    {
+                        name: "系统设置",
+                        icon: 'profile',
+                        key: 1,
+                        children: [
+                            {
+                                name: '系统设置',
+                                url: '/index/systemconfig',
                             },
                         ]
                     },

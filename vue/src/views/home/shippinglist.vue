@@ -44,15 +44,18 @@
             </tbody>
         </table>
         <table  v-if="sku_show" style="margin: 0 auto" class="table table-hover table-bordered table-responsive">
-            <col width="100">
-            <col width="100">
-            <col width="200">
-            <col width="150">
-            <col width="200">
-            <col width="200">
-            <col width="50">
-            <col width="100">
-            <col width="100">
+            <colgroup>
+                <col width="100">
+                <col width="100">
+                <col width="200">
+                <col width="150">
+                <col width="200">
+                <col width="200">
+                <col width="50">
+                <col width="100">
+                <col width="100">
+            </colgroup>
+
             <thead>
                 <th style="text-align: center;height: 40px;font-size: 16px;border: 1px solid #e6e6e6;" v-for="title in titles1">{{title}}</th>
             </thead>

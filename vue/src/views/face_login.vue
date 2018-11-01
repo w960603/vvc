@@ -27,7 +27,7 @@
                         <!--<a class="button confirm" href="javascript:;"  id="trueCamera">确定</a>-->
                         <!--<canvas></canvas>-->
                     </div>
-                    <button id='tack'>点击登陆</button>
+                    <button id='tack' @click="tack()">点击登陆</button>
                     <img id='img' src='' style="display:none">
                     <button id="a" value="123" style="display:none"></button>
                 </div>
@@ -52,20 +52,7 @@
             }
         },
         created(){
-            function convertBase64UrlToBlob(urlData) {
-                const bytes = window.atob(urlData.split(',')[1]);
-                // 去掉url的头，并转换为byte
-                // 处理异常,将ascii码小于0的转换为大于0
-                const ab = new ArrayBuffer(bytes.length);
-                const ia = new Uint8Array(ab);
-                for(let i = 0; i < bytes.length; i++) {
-                    ia[i] = bytes.charCodeAt(i);
-                }
-                return new Blob([ab], {
-                    type: 'image/png'
-                });
-            };
-            $(function() { //人脸登陆
+            // $(function() { //人脸登陆
                 var video = document.getElementById('video'),
                     canvas = document.getElementById('canvas'),
                     snap = document.getElementById('tack'),
@@ -89,130 +76,14 @@
                     // console.log(error);
                 });
 
-                document.getElementById("tack").addEventListener('click', function() {
-                    //绘制canvas图形
-                    var num = 0
-                    var timer = setInterval(function () {
-                        if (num < 6){
-                            num ++;
-                            canvas.getContext('2d').drawImage(video, 0, 0, 750, 553); //把canvas图像转为img图片
-                            img.src = canvas.toDataURL("image/jpeg");
-                            console.log(img);
-                            upload({imagePath: img.src});
-                        }else {
-                            clearInterval(timer);
-                            window.location.href = "http://localhost:8081/#/";
-                        }
-                    },1500);
-                    function upload(option) {
-                        var getUrl = option.getUrl ? option.getUrl : "https://api.vvc.tw/dlxin/index/getoss";
-                        var postUrl = option.postUrl ? option.postUrl : "https://oss1.vvc.tw/";
-                        var fileName = option.fileType ? option.fileType : 'vvc';
-                        $.ajax({
-                            url: getUrl,
-                            type: "get",
-                            success: function(res) {
-                                // console.log(res);
-                                var responent = res.data;
-                                console.log(responent);
-                                //console.log($(option.el)[0].files[0]);
-                                //  var file= option.el?$(option.el)[0].files[0]:option.imagePath;
-                                var date = new Date().getTime();
-                                var datas = new FormData();
-                                datas.append('policy', responent.policy);
-                                datas.append('OSSAccessKeyId', responent.accessid);
-                                datas.append('Signature', responent.signature);
-                                datas.append('key', responent.dir + fileName + "_" + date + ".jpg");
-                                datas.append("file", convertBase64UrlToBlob(option.imagePath));
-                                clearInterval(timer);
-                                $.ajax({
-                                    type: 'post',
-                                    url: postUrl,
-                                    data: datas,
-                                    contentType: 'multipart/form-data',
-                                    async: false,
-                                    cache: false,
-                                    processData: false,
-                                    contentType: false,
-                                    success:function(res) {
-                                        console.log(datas);
-                                        console.log("https://oss1.vvc.tw/" + responent.dir + fileName + "_" + date + ".jpg");
-                                        $.ajax({
-                                            url: 'http://api.vvc.tw/suc//pubc/ailogin',
-                                            type: 'post',
-                                            dataType: 'json',
-                                            data: {
-                                                image: "https://oss1.vvc.tw/" + responent.dir + fileName + "_" + date + ".jpg",
-                                                type: 1
-                                            },
-                                            success: function(data) {
-
-                                                console.log(data)
-                                                var option = img.src
-                                                if(data.code == 0) {
-                                                    $("#tack").click();
-                                                } else {
-                                                    //												var width = data.data.info.location.width;
-                                                    //												var height = data.data.info.location.height;
-                                                    //												var left = data.data.info.location.left;
-                                                    //												var top = data.data.info.location.top;
-                                                    //												var rotation = data.data.info.location.rotation;
-                                                    //												$(".border").css({
-                                                    //														'width': width ,
-                                                    //														'height': height,
-                                                    //														'left': left,
-                                                    //														'top': top,
-                                                    //														'border': '2px solid #CD950C',
-                                                    //														'transform': 'rotate(' + rotation + 'deg)'
-                                                    //													}),
-                                                    alert(data.msg)
-
-                                                    window.location.href = "http://jd.vvc.tw/store/dist/#/"
-                                                }
-                                            }
-                                        })
-                                    }
-                                })
-                            }
-                        });
-                    }
-                })
-
-                //	    var demo = function(){
-                $(".border").click(function(width, height, rotation) {
-                    console.log(123)
-
-                })
-                //	    }
-
-                $(function() {
-                    $("#tack").click();
-                    $(".border").click();
-                })
-
-                $.ajax({
-                    type: "POST",
-                    url: "http://api.vvc.tw/suc//pubc/ailogin",
-                    data: $(".loginform").serialize(),
-                    dataType: "json",
-                    success: function(data) {
-                        if(data.code == 1) {
+            //     document.getElementById("tack").addEventListener('click', () =>{
+            //
+            // })
 
 
-                            // window.location.href = "index.html";
-
-
-                        } else {
-                            msg(data.msg);
-                        }
-                    },
-                    error: function(jqXHR) {
-                        msg("发生错误：" + jqXHR.status);
-                    },
-                })
-            })
-
-            function msg(msg) {
+        },
+        methods:{
+            msg(msg) {
                 var Odiv1 = document.createElement('div');
                 Odiv1.id = 'msg';
                 Odiv1.innerHTML = msg;
@@ -220,8 +91,135 @@
                 setTimeout(function() {
                     Odiv1.style.display = 'none';
                 }, 1000)
+            },
+            tack(){
+                //绘制canvas图形
+                var num = 0
+                var timer = setInterval(()=> {
+                    if (num < 6){
+                        num ++;
+                        canvas.getContext('2d').drawImage(video, 0, 0, 750, 553); //把canvas图像转为img图片
+                        img.src = canvas.toDataURL("image/jpeg");
+                        console.log(img);
+                        this.upload({imagePath: img.src});
+                    }else {
+                        clearInterval(timer);
+                        window.location.href = "http://localhost:8081/#/";
+                    }
+                },1500);
+                // })
+
+                //	    var demo = function(){
+                $(".border").click(function(width, height, rotation) {
+                    console.log(123)
+                })
+                $(function() {
+                    $("#tack").click();
+                    $(".border").click();
+                })
+                $.ajax({
+                    type: "POST",
+                    url: "http://api.vvc.tw/suc//pubc/ailogin",
+                    data: $(".loginform").serialize(),
+                    dataType: "json",
+                    success: (data)=> {
+                        if(data.code == 1) {
+                            // window.location.href = "index.html";
+                        } else {
+                            this.msg(data.msg);
+                        }
+                    },
+                    error: function(jqXHR) {
+                       this. msg("发生错误：" + jqXHR.status);
+                    },
+                })
+            },
+
+            upload(option) {
+        var getUrl = option.getUrl ? option.getUrl : "https://api.vvc.tw/dlxin/index/getoss";
+        var postUrl = option.postUrl ? option.postUrl : "https://oss1.vvc.tw/";
+        var fileName = option.fileType ? option.fileType : 'vvc';
+        $.ajax({
+            url: getUrl,
+            type: "get",
+            success: function(res) {
+                // console.log(res);
+                var responent = res.data;
+                console.log(responent);
+                //console.log($(option.el)[0].files[0]);
+                //  var file= option.el?$(option.el)[0].files[0]:option.imagePath;
+                var date = new Date().getTime();
+                var datas = new FormData();
+                datas.append('policy', responent.policy);
+                datas.append('OSSAccessKeyId', responent.accessid);
+                datas.append('Signature', responent.signature);
+                datas.append('key', responent.dir + fileName + "_" + date + ".jpg");
+                datas.append("file", convertBase64UrlToBlob(option.imagePath));
+                clearInterval(timer);
+                $.ajax({
+                    type: 'post',
+                    url: postUrl,
+                    data: datas,
+                    contentType: 'multipart/form-data',
+                    async: false,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success:function(res) {
+                        console.log(datas);
+                        console.log("https://oss1.vvc.tw/" + responent.dir + fileName + "_" + date + ".jpg");
+                        $.ajax({
+                            url: 'http://api.vvc.tw/suc//pubc/ailogin',
+                            type: 'post',
+                            dataType: 'json',
+                            data: {
+                                image: "https://oss1.vvc.tw/" + responent.dir + fileName + "_" + date + ".jpg",
+                                type: 1
+                            },
+                            success: function(data) {
+                                console.log(data)
+                                var option = img.src
+                                if(data.code == 0) {
+                                    $("#tack").click();
+                                } else {
+                                    //												var width = data.data.info.location.width;
+                                    //												var height = data.data.info.location.height;
+                                    //												var left = data.data.info.location.left;
+                                    //												var top = data.data.info.location.top;
+                                    //												var rotation = data.data.info.location.rotation;
+                                    //												$(".border").css({
+                                    //														'width': width ,
+                                    //														'height': height,
+                                    //														'left': left,
+                                    //														'top': top,
+                                    //														'border': '2px solid #CD950C',
+                                    //														'transform': 'rotate(' + rotation + 'deg)'
+                                    //													}),
+                                    alert(data.msg)
+
+                                    window.location.href = "http://jd.vvc.tw/store/dist/#/"
+                                }
+                            }
+                        })
+                    }
+                })
             }
-        },
+        });
+    },
+       convertBase64UrlToBlob(urlData) {
+                const bytes = window.atob(urlData.split(',')[1]);
+                // 去掉url的头，并转换为byte
+                // 处理异常,将ascii码小于0的转换为大于0
+                const ab = new ArrayBuffer(bytes.length);
+                const ia = new Uint8Array(ab);
+                for(let i = 0; i < bytes.length; i++) {
+                    ia[i] = bytes.charCodeAt(i);
+                }
+                return new Blob([ab], {
+                    type: 'image/png'
+                });
+            }
+        }
 
     }
 </script>

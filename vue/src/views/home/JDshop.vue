@@ -41,12 +41,11 @@
                 <div style="width:100%;min-height:100%;">
                     <table>
                         <colgroup>
-                            <col width="250">
-                            <col width="250">
-                            <col width="150">
+                            <col width="300">
                             <col width="80">
-                            <col width="100">
-                            <col width="100">
+                            <col width="150">
+                            <col width="200">
+                            <col width="200">
                             <col width="100">
                         </colgroup>
                         <thead class="jdshop_thead">
@@ -54,20 +53,24 @@
                                 {{row.cn}}
                             </th>
                             <th>SKU简称</th>
+                            <th>修改短语</th>
                         </thead>
                         <tbody>
                         <tr v-for="(col,index) in order_list">
                             <td v-for="row in sub_title">{{col[row.en]}}</td>
                             <!--:change="cedited(edit)"-->
                             <!--v-if="col[index].skuName? vuls = 1111 :vuls = ''"-->
-                            <td ><textarea type="text" :class="col.error" class="text2" value="vuls"  placeholder=""   @keyup='edited($event,index)' ></textarea></td>
+                            <td >
+                                <input type="text" :class="col.error" class="text2" placeholder="" :value="col.outh_id"   @keyup='edited($event,index)' >
+                            </td>
+                            <td><div class="button" style="background: #1E9FFF" @click="ajax_sku($event,index)">提交</div></td>
                         </tr>
                         </tbody>
                     </table>
                     <!--<div class="edit" ><input type="text" class="text2" v-model="edit" @keyup.esc='cancelEdit(list)'  @focus='editBefore(edit)' @keyup.13='edited'/></div>-->
                     <div style="width: 200px;margin: 0 auto">
                         <button class="button" @click="close">关闭</button>
-                        <button class="button" style="background: #1E9FFF"  @click="ajax_sku()">提交</button>
+                        <button class="button" style="background: #1E9FFF" >保存</button>
                     </div>
                 </div>
             </div>
@@ -123,10 +126,6 @@
                 sub_title: [
                     {
                         cn:'商品名称',
-                        en:'wareTitle'
-                    },
-                    {
-                        cn:'货号名称',
                         en:'skuName'
                     },
                     {
@@ -134,17 +133,21 @@
                         cn:'京东价'
                     },
                     {
-                        cn:'商品货号',
+                        cn:'skuid',
                         en:'skuId'
                     },
+                    // {
+                    //     cn:'商品ID',
+                    //     en:'outh_id'
+                    // },
                     {
-                        cn:'商品ID',
-                        en:'wareId'
+                        cn:'短语',
+                        en:'sortname'
                     },
-                    {
-                        cn:'状态',
-                        en:'status'
-                    },
+
+                    // {
+                    //     cn:'修改短语',
+                    // },
                 ],
             }
         },
@@ -155,7 +158,7 @@
             qignqiu() {
                 $.ajax({
                     type: 'get',
-                    url: 'https://jd.vvc.tw/index/index/goodslist',
+                    url: 'https://jd.vvc.tw/dorder/sku/goodslist',
                     data:{
                         page:1,
                         values:""
@@ -196,21 +199,35 @@
             },
             getLists(arr) {
                 this.isShow = true;
-                console.log(arr);
                 $.ajax({
                     type: 'post',
-                    url: 'https://jd.vvc.tw/index/index/goodsku',
+                    url: 'http://jd.vvc.tw/dorder/sku/tonubuSku',
                     data: {
                         goodId: arr.wareId
                     },
                     success: (res) => {
-                        console.log(res,282);
-                        if (res.code) {
-                            console.log(res.data);
-                            this.order_list = res.data;
-                            // this.customerInfo = this.order_list.consigneeInfo
-                        }
+
+                        //本地服务器
+                        // console.log(res,282);
+                       var  ress = JSON.parse(res);
+
+                       console.log(ress);
+                        // if (ress.code) {
+                            console.log(ress);
+                            this.order_list = ress.data;
+                            this.customerInfo = this.order_list.consigneeInfo
+                        // }
                         // console.log(JSON.parse(res));
+
+                        //京东服务器
+                        // console.log(res,282);
+                        // if (res.code) {
+                        //     console.log(res);
+                        //     this.order_list = res.data;
+                            // this.customerInfo = this.order_list.consigneeInfo
+                        // }
+
+
                     }
                 })
             },
@@ -221,21 +238,23 @@
                 this.values = $event.srcElement.value;
                 console.log($event.srcElement.value,this.values);
             },
-            ajax_sku(){
-                console.log(111);
+            ajax_sku(e,index){
+                console.log(this.order_list[index]);
                 if (this.values != null){
-                    console.log(this.sort_name, this.values);
+                    // console.log( this.values, this.order_list[index].skuId);
                     $.ajax({
                         type:"post",
-                        url:"https://jd.vvc.tw/index/index/renamesku",
+                        // url:"https://jd.vvc.tw/index/index/renamesku",
+                        url:"http://jd.vvc.tw/dorder/sku/reNameSkuJd",
                         data:{
-                            sortname:this.values,
-                            skuname:this.sort_name,
+                            skuId:this.order_list[index].skuId,
+                            outh_id:this.values,
                         },
                         success:(res)=>{
                             console.log(res, 322);
-                            layer.msg('修改成功！');
+                            // layer.msg('修改成功！');
                             this.close();
+                            this.$forceUpdate();
                         }
                     })
                 }else{
@@ -327,7 +346,7 @@
         background-color: rgba(0, 0, 0, .5);
     }
     .text2{
-        width:120px;
+        width:170px;
         height:120px;
         border:none;
         vertical-align:middle;

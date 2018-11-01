@@ -17,6 +17,10 @@
     *{
         margin: 0;
         padding: 0;
+        list-style: none;
+    }
+    .pd15{
+        padding: 15px 0 ;
     }
     #app{
         width: 100%;

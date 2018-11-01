@@ -43,20 +43,20 @@
 <script>
     export default {
         name: "deposit",
-        data() {
+        data(){
             return {
                 title: [
                     {
                         cn: '用户名',
-                        en: 'username',
+                        en: 'username'
                     },
                     {
                         cn: '收件人',
-                        en: 'name',
+                        en: 'name'
                     },
                     {
                         cn: '地址',
-                        en: 'full_address',
+                        en: 'full_address'
                     },
                     {
                         cn: '手机号',
@@ -86,7 +86,7 @@
                 $.ajax({
                     url: 'https://api.vvc.tw/suc/user/userAddressCode',
                     type: 'post',
-                    success: res => {
+                    success: (res) => {
                         console.log(res);
                         this.datas = res.data;
                     }
@@ -130,7 +130,7 @@
             handleCancel(e) {
                 console.log('Clicked cancel button');
                 this.visible = false
-            },
+            }
         }
     }
 </script>

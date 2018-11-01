@@ -66,10 +66,7 @@
 </script>
 
 <style scoped>
-    .center-block {
-        display: block;
-        margin: auto;
-    }
+
 
     .overlay {
         position: fixed;

@@ -6,7 +6,6 @@
     <a-button  :style="{color:'orange'}">删除</a-button>
     <a-button  :style="{color:'black'}">回收站</a-button>
     <a-tree
-        checkable
         showLine
         showIcon
         @expand="onExpand"
@@ -15,71 +14,159 @@
         v-model="checkedKeys"
         @select="onSelect"
         :selectedKeys="selectedKeys"
-        :loadData="onLoadData"
         :treeNodes="treeData"
+        checkable
     />
+
+        <!--:loadData="onLoadData"-->
         <a-icon slots="title" type="title" />
     </div>
 </template>
 <script>
-    const treeData = [{
-        title: '0-0',
-        key: '0-0',
-        slots:{icon:'file'},
-        children: [{
-            title: '0-0-0',
-            key: '0-0-0',
-            slots:{icon:'file'},
-            children: [
-                { title: '0-0-0-0', key: '0-0-0-0',slots:{icon:'file'} },
-                {title: '0-0-0-1', key: '0-0-0-1',slots:{icon:'file'} },
-                { title: '0-0-0-2', key: '0-0-0-2',slots:{icon:'file'} },
-            ],
-        }, {
-            title: '0-0-1',
-            key: '0-0-1',
-            slots:{icon:'file'},
-            children: [
-                { title: '0-0-1-0', key: '0-0-1-0',slots:{icon:'file'} },
-                { title: '0-0-1-1', key: '0-0-1-1',slots:{icon:'file'} },
-                { title: '0-0-1-2', key: '0-0-1-2',slots:{icon:'file'} },
-            ],
-        }, {
-            title: '0-0-2',
-            key: '0-0-2',
-            slots:{icon:'file'}
-        }],
-    }, {
-        title: '0-1',
-        key: '0-1',
-        slots:{icon:'file'},
-        children: [
-            { title: '0-1-0-0', key: '0-1-0-0' ,slots:{icon:'file'}},
-            { title: '0-1-0-1', key: '0-1-0-1',slots:{icon:'file'} },
-            { title: '0-1-0-2', key: '0-1-0-2' ,slots:{icon:'file'}},
-        ],
-    }, {
-        title: '0-2',
-        key: '0-2',
-        slots:{icon:'file'}
-    }]
-    // const treeData = []
+    const treeData = [
+    //     {
+    //     title: '0-0',
+    //     key: '0-0',
+    //     slots:{icon:'file'},
+    //     children: [{
+    //         title: '0-0-0',
+    //         key: '0-0-0',
+    //         icon:'file',
+    //         children: [
+    //             { title: '0-0-0-0', key: '0-0-0-0',icon:'file' },
+    //             {title: '0-0-0-1', key: '0-0-0-1',icon:'file'},
+    //             { title: '0-0-0-2', key: '0-0-0-2',icon:'file'},
+    //         ],
+    //     }, {
+    //         title: '0-0-1',
+    //         key: '0-0-1',
+    //         // icon:'file',
+    //         children: [
+    //             {
+    //                 title: '0-0-1-0',
+    //                 key: '0-0-1-0',
+    //                 // icon:'file'
+    //             },
+    //             {
+    //                 title: '0-0-1-1',
+    //                 key: '0-0-1-1',
+    //                 // icon:'file'
+    //             },
+    //             {
+    //                 title: '0-0-1-2',
+    //                 key: '0-0-1-2',
+    //                 icon:'file'
+    //             },
+    //         ],
+    //     }, {
+    //         title: '0-0-2',
+    //         key: '0-0-2',
+    //         // icon:'file',
+    //     }],
+    // },
+    //     {
+    //     title: '0-1',
+    //     key: '0-1',
+    //     // slots:{icon:'file'},
+    //     children: [
+    //         {
+    //             title: '0-1-0-0',
+    //             key: '0-1-0-0' ,
+    //             // slots:{icon:'file'}
+    //             },
+    //         {
+    //             title: '0-1-0-1',
+    //             key: '0-1-0-1',
+    //             // slots:{icon:'file'}
+    //             },
+    //         {
+    //             title: '0-1-0-2',
+    //             key: '0-1-0-2' ,
+    //             // slots:{icon:'file'}
+    //             },
+    //     ],
+    // },
+    //     {
+    //     title: '0-2',
+    //     key: '0-2',
+    //     // slots:{icon:'file'}
+    // }
+    ]
     export default {
         data () {
             return {
+                // expandedKeys: ['0-0-0', '0-0-1'],
                 expandedKeys: ['后台管理', '前台管理'],
                 autoExpandParent: true,
-                checkedKeys: ['0-0-0'],
                 selectedKeys: [],
+                checked:[],
+                checkedKeys: [],
                 treeData,
             }
         },
         watch: {
-            checkedKeys(val) {
-                console.log('onCheck', val)
+            checkedKeys(a,info){
+                console.log('onCheck',a);
+
+                for (var i =0;i<a.length;i++){
+                    console.log(a[i]);
+                    if (a[i].length < 2){
+                        var idx = a[i].substring(2,3);
+                        console.log(idx);
+                        console.log(this.treeData[idx]);
+                    }else{
+                        console.log(a[i])
+                    }
+                }
             }
         },
+        created(){
+          this.qingqiu();
+        },
         methods: {
+            strsub(str){
+                if (str.length > 2){
+
+                }
+            },
+
+            qingqiu(){
+                var url = "https://api.vvc.tw/suc/node/nodeList";
+              this.axios.post(url).then((res)=>{
+                  this.trees(res.data.data)
+                  // console.log();
+                  this.treeData = res.data.data;
+                  // console.log(this.treeData );
+              })
+            },
+            //递归函数
+            trees(list){
+                var keyMap = {
+                    // title: null,
+                    nodename : "title",
+                    icon:"none",
+                    child:"children",
+                    key:"title",
+                };
+
+                for (var i = 0;i<list.length;i++){
+                    for(var key in list[i]){
+                        var newKey = keyMap[key];
+                        if(newKey){
+                            list[i][newKey] = list[i][key];
+                            delete list[i][key];
+                        }
+                    }
+                }
+                for (var i = 0;i<list.length;i++){
+                    if (list[i].children != "undefined" && list[i].children.length>0){
+                        this.trees(list[i].children);
+                    }
+                }
+                return list;
+            },
+
+
             onExpand (expandedKeys) {
                 console.log('onExpand', arguments)
                 // if not set autoExpandParent to false, if children expanded, parent can not collapse.
@@ -88,13 +175,18 @@
                 this.autoExpandParent = false
             },
             onCheck (checkedKeys) {
-                console.log('onCheck', checkedKeys)
-                this.checkedKeys = checkedKeys
+                console.log('onCheck',checkedKeys);
+                this.checkedKeys = checkedKeys;
+
             },
             onSelect (selectedKeys, info) {
-                console.log('onSelect', info)
-                this.selectedKeys = selectedKeys
+                console.log(selectedKeys);
+                console.log(info);
+                console.log("我走啦");
+                // console.log('onSelect', info)
+                // this.selectedKeys = selectedKeys
             },
+
         //     onLoadData (treeNode) {
         //         return new Promise((resolve) => {
         //             if (treeNode.dataRef.children) {

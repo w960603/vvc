@@ -51,10 +51,10 @@
 
                 </td>
                 <td v-for="col in titles">
-                    <template v-if="col.en == 'img'">
+                    <template v-if="col.en === 'img'">
                         <img :src="row[col.en]" class="product-img">
                     </template>
-                    <template v-else-if="col.en == 'order'">
+                    <template v-else-if="col.en === 'order'">
                         <span @click="showbox(row)">{{row[col.en]}}</span>
                         <order :list="row" :isshow="row.orderable" v-cloak @save="orderSave"
                                @cancel="orderSave"></order>

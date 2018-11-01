@@ -57,21 +57,16 @@
         <!--</tr>-->
         <!--</tbody>-->
         <!--</table>-->
-
-
-
         <!--<template>-->
         <!--&lt;!&ndash;pagination: // 默认分页器形式展开&ndash;&gt;-->
         <!--<a-table  :rowSelection="rowSelection" :columns="columns" :dataSource="shuju" />-->
         <!--</template>-->
-
         <!--新页面-->
         <div>
             <div class="pattern" style="margin-left:20px">
                 <span style="color:#1e9ffb;text-shadow:0px 0px 1px #1e9ffb;padding-right: 10px">普通搜索</span>
                 <span style="color: #cecece">搜索模式</span>
             </div>
-
             <div class="con">
                 <!--第一个块-->
                 <div class="sales-volume">
@@ -121,6 +116,14 @@
                     <button class="btn" style="margin-right: 10px;background: #0092fb;color: white" @click="xsh_order">
                         同步小红书(5/30)
                     </button>
+                    <!--<button class="btn" style="margin-right: 10px;background: #0092fb;color: white"-->
+                            <!--@click="with_tmall">同步天猫(5/63)-->
+                    <!--</button>-->
+                    <label for=""class="btn"  style="margin-right: 10px;background: #0092fb;color: white" @click="with_tmall()">同步天猫(5/30)</label>
+                    <select name="" id="" @change="tamll_name($event)" style="height:30px;vertical-align: middle">
+                        <option v-for="arr in tamll" :value="arr.idx">{{arr.name}}</option>
+                    </select>
+
                     <button class="btn" style="margin-right: 10px;background: #0092fb;color: white" @click="syncphrase">
                         刷新短语
                     </button>
@@ -146,14 +149,14 @@
                 <div class="ant-spin-nested-loading">
                     <div class="ant-spin-container">
                         <div class="ant-table ant-table-scroll-position-left ant-table-default" style="height: 540px;overflow-y: scroll;">
-                            <div class="ant-table-content"><!---->
+                            <div class="ant-table-content">
                                 <div class="ant-table-body">
                                     <table class="">
                                         <colgroup>
                                             <col width="50">
                                             <col width="200">
                                             <col width="100">
-                                            <col width="150">
+                                            <col width="270">
                                             <col width="400">
                                             <col width="150">
                                             <col width="200">
@@ -183,16 +186,6 @@
                                             <th><span>买家/卖家备注</span></th>
                                         </tr>
                                         </thead>
-
-                                        <!--bianhao: "1214321354547",-->
-                                        <!--diqu: "杭州",-->
-                                        <!--presortname: "VVC 秋冬钻石修身皮裤 黑色 均码 *1",-->
-                                        <!--from:"xhs",-->
-                                        <!--orderid: "P54045015267742681",-->
-                                        <!--buyer_note: "发冰袖",-->
-                                        <!---->
-                                        <!--sortname: "换一样个好的",-->
-                                        <!--id:"5",-->
                                         <tbody class="ant-table-tbody">
                                         <tr class="ant-table-row  ant-table-row-level-0" data-row-key="0" v-for="(arr,index) in sub_lists">
                                             <td class="ant-table-selection-column">
@@ -208,23 +201,23 @@
                                             <td>
                                                 {{arr.orderid}}
                                                 <span v-if="arr.from =='jd'" class="imgs1"></span>
-                                                <span v-else="arr.from =='xhs'" class="imgs2"></span>
-                                                <span v-if="arr.from =='tamll'" class="imgs3"></span>
+                                                <span v-else-if="arr.from =='xhs'" class="imgs2"></span>
+                                                <span v-else="arr.from =='tmall'" class="imgs3"></span>
                                             </td>
                                             <td>
                                                 <span class="ant-table-row-indent indent-level-0">{{arr.address}}</span>
                                             </td>
                                             <td>
                                                 <span v-if="arr.from == 'jd'">京东</span>
-                                                <span v-else="arr.from == 'xhs'">小红书</span>
-                                                <span v-if="arr.from == 'tmall'">天猫</span>
+                                                <span v-else-if="arr.from == 'xhs'">小红书</span>
+                                                <span v-else="arr.from == 'tmll'">天猫【{{arr.from}}】</span>
                                             </td>
                                             <td  :class="arr.order_good == arr.sortname?'':'red'">{{arr.order_good}}</td>
                                             <td>
                                                 <span v-if="arr.express =='zto'" class="imgs4"></span>
                                                 <span v-if="arr.express =='SF'" class="imgs5"></span>
                                             </td>
-                                            <td>{{arr.kuaidi}}</td>
+                                            <td>{{arr.willCode}}</td>
 
                                             <!--修改订单-->
                                             <td>
@@ -517,8 +510,14 @@
 
                 //数组下标
                 idx:null,
-
                 ipt_remark:"",
+                tamll:[
+                    {name:"vvc旗舰店",idx:1},
+                    {name:"evopowerboards天兔专卖店",idx:2},
+                    {name:"贞瑰旗舰店",idx:3},
+                    {name:"vvc青蛇专卖店",idx:4},
+                ],
+                tmallstore:null,
             }
         },
         mounted() {
@@ -542,19 +541,18 @@
             var source = {};
             var arr = [];
 
-            source = new EventSource("http://hz1.vvc.tw/index/text/subscribeOrder");
+            source = new EventSource("http://jd.vvc.tw/dorder/printorder/subscribeOrder");
             // source = new EventSource("http://hz1.vvc.tw:8080/ws/SSE?uname=Alex");
-            console.log(1111, source);
-
+            // console.log(1111, source);
             source.onerror = (event) => {
-                console.log(event);
+                // console.log(event);
             };
-            source.onmessage = (event) => {
-                console.log("第一次");
-                console.log(event);
+            source.onmessage = (event) =>{
+                // console.log("第一次");
+                // console.log(event);
                 var data = {};
                 data = JSON.parse(event.data);
-                console.log(data);
+                // console.log(data);
                 //开始发送
 
                 this.allorder(data);
@@ -593,17 +591,6 @@
                     // render_list.unshift(n)
                     // this.render1()
 
-
-
-
-
-
-
-                    // this.operation=[{
-                    //      time:new Date().toLocaleTimeString(),
-                    //      fahuo:data.message
-                    //  }];
-
                 }
             }
             //
@@ -636,10 +623,6 @@
             //
             // }
 
-
-
-
-
             // this.WebSocket = new WebSocket('ws://' + localStorage.server + ':13528');
             this.WebSocket = new WebSocket('ws://localhost:13528 ');
             this.WebSocket.onopen = (res) => {
@@ -665,28 +648,26 @@
             this.WebSocket.onerror = (err) => {
                 this.bools = false;
             };
-
             // 接收服务端消息
             this.WebSocket.onmessage = (event) => {
                 var datas = JSON.parse(event.data);
-                console.log(datas);
+                // console.log(datas);
                 if (datas.cmd == "getPrinters") {
                     this.success('打印机连接成功');
-                }
-                ;
+                };
                 if (datas.cmd == "notifyPrintResult") {
-                    console.log(8888, datas);
+                    // console.log(8888, datas);
                     if (datas.taskStatus == "printed") {
                         $.ajax({
-                            // url: "http://jd.vvc.tw/index/printorder/receiveOrder",
-                            url: "http://hz1.vvc.tw/index/text/receiveOrder",
+                            url: "http://jd.vvc.tw/dorder/printorder/receiveOrder",
+                            // url: "http://hz1.vvc.tw/index/text/receiveOrder",
                             type: "post",
                             data: {
                                 waybillCode: datas.requestID
                             },
                             success: (res) => {
-                                var msg = "成功";
-                                this.success(msg);
+                                // var msg = "成功";
+                                // this.success(msg);
                             }
                         });
                     }
@@ -748,6 +729,37 @@
             //         }
             //     }
             // },
+
+            tamll_name(e){
+                this.tmallstore = e.path[0].value;
+            },
+            //同步天猫订单
+            with_tmall(){
+                console.log(this.tmallstore);
+              // this.axios.post("http://hz1.vvc.tw/index/tmorder/getorder",{dianpu:this.tmallstore}).then((res)=>{
+              //     console.log(res);
+              // });
+                var tm = "";
+                if (this.tmallstore == null ){
+                    tm = this.tamll[0].idx;
+                }else {
+                    tm = this.tmallstore
+                }
+
+              $.ajax({
+                  type:"post",
+                  url:"http://jd.vvc.tw/dorder/tmorder/getorder",
+                  data:{
+                      dianpu:tm
+                  },
+                  success:(res)=>{
+                      console.log(res);
+                      this.success(res.msg)
+                      this.qingqiu();
+                      // this.$forceUpdate();
+                  }
+              })
+            },
             ceshi: function() {
                 console.log(this.checked)
             },
@@ -796,6 +808,7 @@
                 // $.ajax({
                 //     type: "post",
                 //     // url:"http://jd.vvc.tw/index/printorder/showorders",
+                //     // url:"http://jd.vvc.tw/index/printorder/showorders",
                 //     url: "http://hz1.vvc.tw/index/text/showorders",
                 //     success: (res) => {
                 //         // var  response =  JSON.parse(res);
@@ -815,7 +828,7 @@
                 //     }
                 // })
 
-                this.axios.post("http://hz1.vvc.tw/index/text/showorders").then((res)=>{
+                this.axios.post("http://jd.vvc.tw/dorder/printorder/showorders").then((res)=>{
                     // var datas = {};
                     // datas = JSON.parse(res);
                     // console.log(3333,res.data.code)
@@ -900,7 +913,7 @@
                     }
                     datas.push(objs);
                     $.ajax({
-                        url: "http://hz1.vvc.tw/index/text/modifyOrder",
+                        url: "http://jd.vvc.tw/dorder/printorder/modifyOrder",
                         type: "post",
                         data: {
                             datas: datas,
@@ -924,7 +937,7 @@
                 this.idx = index;
                 this.isShow = true;
 
-                var url = "http://hz1.vvc.tw/index/text/searchOrder"
+                var url = "http://jd.vvc.tw/dorder/printorder/searchOrder"
                 this.axios.post(url,{id:id}).then((res)=>{
                         this.customerInfo = res.data.data;
                         console.log(this.customerInfo);
@@ -938,7 +951,7 @@
             with_jdorder() {
                 $.ajax({
                     type: "post",
-                    url: "http://hz1.vvc.tw/index/text/getOrder",
+                    url: "http://jd.vvc.tw/dorder/printorder/getOrder",
                     success: (res) => {
                         // console.log(res);
                         this.qingqiu();
@@ -950,7 +963,7 @@
             xsh_order() {
                 $.ajax({
                     type: "post",
-                    url: "http://hz1.vvc.tw/index/text/getxhsOrder",
+                    url: "http://jd.vvc.tw/dorder/printorder/getxhsOrder",
                     success: (res) => {
                         console.log(res);
                         this.qingqiu();
@@ -962,14 +975,14 @@
             getorder() {
                 $.ajax({
                     // url: "http://jd.vvc.tw/index/printorder/getExpress",
-                    url: "http://hz1.vvc.tw/index/xhs/getExpress",
+                    url: "http://jd.vvc.tw/dorder/printorder/getExpress",
                     type: "post",
                     success: (res) => {
                         console.log(res);
                         if (res.code == 1) {
                             this.qingqiu();
                             var msg = "成功"
-                            this.success(mag);
+                            // this.success(mag);
                         }
                     }
                 })
@@ -979,7 +992,7 @@
             recovery() {
                 $.ajax({
                     type: "post",
-                    url: "http://hz1.vvc.tw/index/text/startPrint",
+                    url: "http://jd.vvc.tw/dorder/printorder/startPrint",
                     success: () => {
                         var msg = "恢复成功";
                         this.success(msg);
@@ -1010,7 +1023,7 @@
             //一键发货
             delivergoods() {
                 console.log("一键发货");
-                this.axios.post("http://hz1.vvc.tw/index/xhs/sendOrders").then((res) => {
+                this.axios.post("http://jd.vvc.tw/dorder/orderprint/sendOrders").then((res) => {
                     console.log(res);
                     var data = JSON.parse(res);
                     if (data.code) {
@@ -1023,7 +1036,7 @@
             syncphrase() {
                 $.ajax({
                     type: "post",
-                    url: "http://hz1.vvc.tw/index/xhs/updateSortName",
+                    url: "http://jd.vvc.tw/dorder/printorder/updateSortName",
                     success: () => {
                         this.qingqiu();
                     }
@@ -1034,9 +1047,9 @@
                 $.ajax({
                     // url:"http://jd.vvc.tw/index/printorder/furui",
                     type: "post",
-                    url: "http://hz1.vvc.tw/index/text/publishOrder",
+                    url: "http://jd.vvc.tw/dorder/printorder/publishOrder",
                     success: (res) => {
-                        // console.log(res);
+                        console.log(res);
                     }
                 })
                 // console.log(this.bools);
@@ -1195,7 +1208,7 @@
             stopprint() {
                 $.ajax({
                     type: "post",
-                    url: "http://hz1.vvc.tw/index/text/printStatus",
+                    url: "http://jd.vvc.tw/dorder/printorder/printStatus",
                     success: () => {
                         console.log("已经暂停了");
                         var msg = "暂停成功"
@@ -1400,8 +1413,8 @@
     }
     .imgs3 {
         display: inline-block;
-        width: 60px;
-        height: 20px;
+        width: 20px;
+        height: 10px;
         background: url("https://cdn.vvc.tw/a/images/tamll.svg") no-repeat;
         background-size: 100% 100%;
     }
