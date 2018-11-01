@@ -24,7 +24,7 @@ Page({
     },
     daili() {
         app.request({
-            url: 'https://vapi.vvc.tw/dlxin/user/getSubAddress',
+            url: 'https://vxxx.xxx.xxx/user/getSubAddress',
             success: (res) => {
                 console.log(res)
             }
@@ -47,7 +47,7 @@ Page({
         console.log(e.currentTarget.dataset.index);
 
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/userupdateaddress',
+            url: 'https://xxx.xxx.xxx/user/userupdateaddress',
             method: 'post',
             data: {
                 id: this.data.address_lists[e.currentTarget.dataset.index].id,
@@ -71,7 +71,7 @@ Page({
                 if (sm.confirm) {
                     console.log(app)
                     app.request({
-                        url: 'https://api.vvc.tw/dlxin/user/userDeleteAddress',
+                        url: 'https://xxx.xxx.xxx/user/userDeleteAddress',
                         method: 'POST',
                         data: {
                             id: id
@@ -101,7 +101,7 @@ Page({
     //请求收货地址
     request_address() {
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/getUserAddress',
+            url: 'https://xxx.xxx.xxx/user/getUserAddress',
             method: 'post',
             success: (res) => {
 

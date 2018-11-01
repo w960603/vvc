@@ -541,7 +541,7 @@
             var source = {};
             var arr = [];
 
-            source = new EventSource("http://jd.vvc.tw/dorder/printorder/subscribeOrder");
+            source = new EventSource("http://xxx.xxx.xxx/dorder/printorder/subscribeOrder");
             // source = new EventSource("http://hz1.vvc.tw:8080/ws/SSE?uname=Alex");
             // console.log(1111, source);
             source.onerror = (event) => {
@@ -659,7 +659,7 @@
                     // console.log(8888, datas);
                     if (datas.taskStatus == "printed") {
                         $.ajax({
-                            url: "http://jd.vvc.tw/dorder/printorder/receiveOrder",
+                            url: "http://xxx.xxx.xxx/dorder/printorder/receiveOrder",
                             // url: "http://hz1.vvc.tw/index/text/receiveOrder",
                             type: "post",
                             data: {
@@ -748,7 +748,7 @@
 
               $.ajax({
                   type:"post",
-                  url:"http://jd.vvc.tw/dorder/tmorder/getorder",
+                  url:"http://xxx.xxx.xxx/dorder/tmorder/getorder",
                   data:{
                       dianpu:tm
                   },
@@ -807,8 +807,8 @@
             qingqiu() {
                 // $.ajax({
                 //     type: "post",
-                //     // url:"http://jd.vvc.tw/index/printorder/showorders",
-                //     // url:"http://jd.vvc.tw/index/printorder/showorders",
+                //     // url:"http://xxx.xxx.xxx/index/printorder/showorders",
+                //     // url:"http://xxx.xxx.xxx/index/printorder/showorders",
                 //     url: "http://hz1.vvc.tw/index/text/showorders",
                 //     success: (res) => {
                 //         // var  response =  JSON.parse(res);
@@ -828,7 +828,7 @@
                 //     }
                 // })
 
-                this.axios.post("http://jd.vvc.tw/dorder/printorder/showorders").then((res)=>{
+                this.axios.post("http://xxx.xxx.xxx/dorder/printorder/showorders").then((res)=>{
                     // var datas = {};
                     // datas = JSON.parse(res);
                     // console.log(3333,res.data.code)
@@ -913,7 +913,7 @@
                     }
                     datas.push(objs);
                     $.ajax({
-                        url: "http://jd.vvc.tw/dorder/printorder/modifyOrder",
+                        url: "http://xxx.xxx.xxx/dorder/printorder/modifyOrder",
                         type: "post",
                         data: {
                             datas: datas,
@@ -937,7 +937,7 @@
                 this.idx = index;
                 this.isShow = true;
 
-                var url = "http://jd.vvc.tw/dorder/printorder/searchOrder"
+                var url = "http://xxx.xxx.xxx/dorder/printorder/searchOrder"
                 this.axios.post(url,{id:id}).then((res)=>{
                         this.customerInfo = res.data.data;
                         console.log(this.customerInfo);
@@ -951,7 +951,7 @@
             with_jdorder() {
                 $.ajax({
                     type: "post",
-                    url: "http://jd.vvc.tw/dorder/printorder/getOrder",
+                    url: "http://xxx.xxx.xxx/dorder/printorder/getOrder",
                     success: (res) => {
                         // console.log(res);
                         this.qingqiu();
@@ -963,7 +963,7 @@
             xsh_order() {
                 $.ajax({
                     type: "post",
-                    url: "http://jd.vvc.tw/dorder/printorder/getxhsOrder",
+                    url: "http://xxx.xxx.xxx/dorder/printorder/getxhsOrder",
                     success: (res) => {
                         console.log(res);
                         this.qingqiu();
@@ -974,8 +974,8 @@
             //获取面单
             getorder() {
                 $.ajax({
-                    // url: "http://jd.vvc.tw/index/printorder/getExpress",
-                    url: "http://jd.vvc.tw/dorder/printorder/getExpress",
+                    // url: "http://xxx.xxx.xxx/index/printorder/getExpress",
+                    url: "http://xxx.xxx.xxx/dorder/printorder/getExpress",
                     type: "post",
                     success: (res) => {
                         console.log(res);
@@ -992,7 +992,7 @@
             recovery() {
                 $.ajax({
                     type: "post",
-                    url: "http://jd.vvc.tw/dorder/printorder/startPrint",
+                    url: "http://xxx.xxx.xxx/dorder/printorder/startPrint",
                     success: () => {
                         var msg = "恢复成功";
                         this.success(msg);
@@ -1023,7 +1023,7 @@
             //一键发货
             delivergoods() {
                 console.log("一键发货");
-                this.axios.post("http://jd.vvc.tw/dorder/orderprint/sendOrders").then((res) => {
+                this.axios.post("http://xxx.xxx.xxx/dorder/orderprint/sendOrders").then((res) => {
                     console.log(res);
                     var data = JSON.parse(res);
                     if (data.code) {
@@ -1036,7 +1036,7 @@
             syncphrase() {
                 $.ajax({
                     type: "post",
-                    url: "http://jd.vvc.tw/dorder/printorder/updateSortName",
+                    url: "http://xxx.xxx.xxx/dorder/printorder/updateSortName",
                     success: () => {
                         this.qingqiu();
                     }
@@ -1045,9 +1045,9 @@
 
             dayin() {
                 $.ajax({
-                    // url:"http://jd.vvc.tw/index/printorder/furui",
+                    // url:"http://xxx.xxx.xxx/index/printorder/furui",
                     type: "post",
-                    url: "http://jd.vvc.tw/dorder/printorder/publishOrder",
+                    url: "http://xxx.xxx.xxx/dorder/printorder/publishOrder",
                     success: (res) => {
                         console.log(res);
                     }
@@ -1149,7 +1149,7 @@
             // one_order(printers, orderid) {
             //     $.ajax({
             //         type: "post",
-            //         url: "http://jd.vvc.tw/index/order/printone",
+            //         url: "http://xxx.xxx.xxx/index/order/printone",
             //         data: {
             //             orderId: orderid
             //         },
@@ -1208,7 +1208,7 @@
             stopprint() {
                 $.ajax({
                     type: "post",
-                    url: "http://jd.vvc.tw/dorder/printorder/printStatus",
+                    url: "http://xxx.xxx.xxx/dorder/printorder/printStatus",
                     success: () => {
                         console.log("已经暂停了");
                         var msg = "暂停成功"

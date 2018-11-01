@@ -100,7 +100,7 @@ Page({
             });
             wx.request({
                 method: "POST",
-                url: 'https://api.vvc.tw/dlxin/index/login',
+                url: 'https://xxx.xxx.xxx/index/login',
                 data: {
                     username: this.data.userName,
                     password: this.data.password,
@@ -174,7 +174,7 @@ Page({
             show: false
         });
         wx.request({
-            url: "https://api.vvc.tw/dlxin/index/sendsms",
+            url: "https://xxx.xxx.xxx/index/sendsms",
             method: "POST",
             data: {
                 mobile: this.data.Phone1,
@@ -217,7 +217,7 @@ Page({
         console.log(this.data.Phone1);
         wx.request({
             method: "POST",
-            url: 'https://api.vvc.tw/dlxin/index/login',
+            url: 'https://xxx.xxx.xxx/index/login',
             data: {
                 phone: this.data.Phone1,
                 code: this.data.password1,

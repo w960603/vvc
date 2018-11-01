@@ -263,7 +263,7 @@ Page({
         // let id = wx.getStorageSync('goods_id');
 
         app.request({
-            url: 'https://api.vvc.tw/dlxin/shop/goodsinfo/',
+            url: 'https://xxx.xxx.xxx/shop/goodsinfo/',
             data: {
                 goodsid: this.data.wfrid
             },
@@ -312,7 +312,7 @@ Page({
                     
                     //获取参数
                     app.request({
-                        url: "https://api.vvc.tw/dlxin/shop/getdetail/",
+                        url: "https://xxx.xxx.xxx/shop/getdetail/",
                         data: {
                             id: this.data.wfrid
                         },

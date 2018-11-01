@@ -33,11 +33,11 @@
         created(){
             var randNum = Math.floor(new Date() / 1000);
             // var randNum = 1512328552;
-            var scanUrl = "http://api.vvc.tw/suc/pubc/scanLogin/code/" + randNum;
+            var scanUrl = "http://xxx.xxx.xxx/xxx/pubc/scanLogin/code/" + randNum;
             // document.getElementById('qrcode').src = '//api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(scanUrl);
             this.url = '//api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(scanUrl);
             //document.getElementById('url').href = scanUrl
-            var source = new EventSource("http://api.vvc.tw/suc/pubc/login_status/code/" + randNum);
+            var source = new EventSource("http://xxx.xxx.xxx/xxx/pubc/login_status/code/" + randNum);
             source.onmessage = (event)=> {
                 console.log(event)
                 var back = eval('(' + event.data + ')')

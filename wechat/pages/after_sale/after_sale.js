@@ -285,7 +285,7 @@ Page({
             console.log(this.data.idx);//yy 原因
             console.log(this.data.evaContent);//ly 理由
             app.request({
-                url:"https://api.vvc.tw/dlxin/order/doReturnGoods",
+                url:"https://xxx.xxx.xxx/order/doReturnGoods",
                 method:"POST",
                 data:{
                     ly: this.data.evaContent ,
@@ -333,7 +333,7 @@ Page({
      */
     onShow: function () {
         app.request({
-            url: 'https://api.vvc.tw/dlxin/order/returnGoodsList',
+            url: 'https://xxx.xxx.xxx/order/returnGoodsList',
             method: 'POST',
             success: (res) => {
                 if (res.data.data.list) {
@@ -361,7 +361,7 @@ Page({
             }
         });
         app.request({
-            url: "https://api.vvc.tw/dlxin/order/returnGoodsView",
+            url: "https://xxx.xxx.xxx/order/returnGoodsView",
             method: "POST",
             success: (res) => {
                 // 售后未完成的数据

@@ -184,7 +184,7 @@
             qingqiu() {
                 $.ajax({
                     type: "get",
-                    url: "https://api.vvc.tw/suc/goods/goodslist",
+                    url: "https://xxx.xxx.xxx/xxx/goods/goodslist",
                     // dataType:'json',
                     success: (res) => {
                         console.log(res.data.list);
@@ -238,7 +238,7 @@
                 // console.log(JSON.stringify(this.deleteData));
                 $.ajax({
                     type: 'post',
-                    url: 'https://api.vvc.tw/suc/goods/goodsdel',
+                    url: 'https://xxx.xxx.xxx/xxx/goods/goodsdel',
                     data: {
                         id: JSON.stringify(this.deleteData)
                     },
@@ -282,7 +282,7 @@
                 if (arr) {
                     $.ajax({
                         type: 'post',
-                        url: 'https://api.vvc.tw/suc/goods/goodsupd',
+                        url: 'https://xxx.xxx.xxx/xxx/goods/goodsupd',
                         data: arr,
                         success: (res) => {
                             console.log(res);
@@ -305,7 +305,7 @@
                 if (arr) {
                     $.ajax({
                         type: 'post',
-                        url: 'https://api.vvc.tw/suc/goods/goodsupd',
+                        url: 'https://xxx.xxx.xxx/xxx/goods/goodsupd',
                         data: arr,
                         success: (res) => {
                             this.qingqiu();
@@ -363,7 +363,7 @@
                 if (arr) {
                     $.ajax({
                         type: 'post',
-                        url: 'https://api.vvc.tw/suc/goods/goodsadd',
+                        url: 'https://xxx.xxx.xxx/xxx/goods/goodsadd',
                         data: arr,
                         success: (res) => {
                             //console.log(res);
@@ -382,7 +382,7 @@
             del() {
                 $.ajax({
                     type: 'post',
-                    url: 'https://api.vvc.tw/suc/goods/goodsdel',
+                    url: 'https://xxx.xxx.xxx/xxx/goods/goodsdel',
                     data: {
                         id: this.selectedlist.id,
                     },

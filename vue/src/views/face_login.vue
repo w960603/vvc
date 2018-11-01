@@ -119,7 +119,7 @@
                 })
                 $.ajax({
                     type: "POST",
-                    url: "http://api.vvc.tw/suc//pubc/ailogin",
+                    url: "http://xxx.xxx.xxx/xxx//pubc/ailogin",
                     data: $(".loginform").serialize(),
                     dataType: "json",
                     success: (data)=> {
@@ -136,7 +136,7 @@
             },
 
             upload(option) {
-        var getUrl = option.getUrl ? option.getUrl : "https://api.vvc.tw/dlxin/index/getoss";
+        var getUrl = option.getUrl ? option.getUrl : "https://xxx.xxx.xxx/xxx/index/getoss";
         var postUrl = option.postUrl ? option.postUrl : "https://oss1.vvc.tw/";
         var fileName = option.fileType ? option.fileType : 'vvc';
         $.ajax({
@@ -169,7 +169,7 @@
                         console.log(datas);
                         console.log("https://oss1.vvc.tw/" + responent.dir + fileName + "_" + date + ".jpg");
                         $.ajax({
-                            url: 'http://api.vvc.tw/suc//pubc/ailogin',
+                            url: 'http://xxx.xxx.xxx/xxx//pubc/ailogin',
                             type: 'post',
                             dataType: 'json',
                             data: {
@@ -197,7 +197,7 @@
                                     //													}),
                                     alert(data.msg)
 
-                                    window.location.href = "http://jd.vvc.tw/store/dist/#/"
+                                    window.location.href = "http://xxx.xxx.xxx/store/dist/#/"
                                 }
                             }
                         })

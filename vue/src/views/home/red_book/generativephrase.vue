@@ -46,8 +46,8 @@
             data_sku(){
                 $.ajax({
                     type:"post",
-                    // url:"http://jd.vvc.tw/index/printorder/goodslist",
-                    url:"http://jd.vvc.tw/dorder/xhs/goodslist",
+                    // url:"http://xxx.xxx.xxx/index/printorder/goodslist",
+                    url:"http://xxx.xxx.xxx/dorder/xhs/goodslist",
 
                 success:(res)=>{
                     // console.log(res);
@@ -75,8 +75,8 @@
                //  console.log(this.skuname);//新的
                 $.ajax({
                     type:"post",
-                    // url:"http://jd.vvc.tw/index/printorder//updateXhsSku",
-                    url:"http://jd.vvc.tw/dorder/xhs/updateXhsSku",
+                    // url:"http://xxx.xxx.xxx/index/printorder//updateXhsSku",
+                    url:"http://xxx.xxx.xxx/dorder/xhs/updateXhsSku",
                     data:{
                         // skuName:this.shop_list[idx].name,
                         id:this.skuname,

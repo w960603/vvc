@@ -9,7 +9,7 @@
         name: "freight",
         created(){
             $.ajax({
-                url:'https://api.vvc.tw/suc/freight/goodsSetFreight',
+                url:'https://xxx.xxx.xxx/xxx/freight/goodsSetFreight',
                 type:'post',
                 success:function(){
 

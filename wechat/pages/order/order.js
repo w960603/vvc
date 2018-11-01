@@ -45,7 +45,7 @@ Page({
             quxiao:"确认取消订单吗?",
             del_suc:"删除订单成功",
             orderID: e.currentTarget.dataset.order.id,
-            url: 'https://api.vvc.tw/dlxin/order/delorder'
+            url: 'https://xxx.xxx.xxx/order/delorder'
         }
        this.fus(obj);
     },
@@ -58,7 +58,7 @@ Page({
             quxiao: "确认取消授权吗?",
             del_suc: "取消授权成功",
             orderID: e.currentTarget.dataset.order,
-            url:"https://api.vvc.tw/dlxin/order/delCode"
+            url:"https://xxx.xxx.xxx/order/delCode"
         }
         this.fus(obj);
     },
@@ -179,7 +179,7 @@ Page({
     
     getorder(attr){
         app.request({
-            url: 'https://api.vvc.tw/dlxin/order/orderlist',
+            url: 'https://xxx.xxx.xxx/order/orderlist',
             method: 'POST',
             success: (res) => {
                 if (res.data.code==1) {
@@ -204,7 +204,7 @@ Page({
         })
         // 物流信息
             // app.request({
-            //     url: 'https://api.vvc.tw/dlxin/kdbird/getwuliu',
+            //     url: 'https://xxx.xxx.xxx/kdbird/getwuliu',
             //     method: 'POST',
             //     data: {
             //         order_id: 2147483647,

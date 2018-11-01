@@ -87,7 +87,7 @@
     <view class="mask" hidden="{{hidden}}">
     <view class='mask' bindtap="close"></view>
         <view class="box">
-            <image class="reg_code" src="https://api.vvc.tw/dlxin/user/authImg?reg_code={{info.reg_code}}"></image>
+            <image class="reg_code" src="https://xxx.xxx.xxx/user/authImg?reg_code={{info.reg_code}}"></image>
             <view class="album" bindtap='save_auth'>保存</view>
         </view>
     </view>

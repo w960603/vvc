@@ -53,7 +53,7 @@ Page({
     },
     request(data){
         app.request({
-            url:'https://api.vvc.tw/dlxin/user/groups',
+            url:'https://xxx.xxx.xxx/user/groups',
             methods:'POST',
             data:data,
             success:res=>{

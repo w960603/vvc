@@ -61,7 +61,7 @@
         },
         created() {
             $.ajax({
-                url: 'http://api.vvc.tw/suc/pubc/log',
+                url: 'http://xxx.xxx.xxx/xxx/pubc/log',
                 type: 'post',
 
                 success: res => {

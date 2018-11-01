@@ -139,14 +139,14 @@
         },
         methods: {
             qingqiu() {
-                this.axios.post('https://api.vvc.tw/suc/user/userlist').then(res => {
+                this.axios.post('https://xxx.xxx.xxx/xxx/user/userlist').then(res => {
                     console.log(res);
                     this.userList = res.data.data
                 })
             },
             use(id){
               $.ajax({
-                  url:'https://api.vvc.tw/suc/user/userInUes',
+                  url:'https://xxx.xxx.xxx/xxx/user/userInUes',
                   type:'post' ,
                   data:{
                       id:id
@@ -158,13 +158,13 @@
             },
             onSearch() {
 
-                // this.axios.post('https://api.vvc.tw/suc/user/userlist',{
+                // this.axios.post('https://xxx.xxx.xxx/xxx/user/userlist',{
                 //     nick_name:this.nick_name
                 // }).then(res=>{
                 //     console.log(res);
                 // })
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/user/userlist',
+                    url: 'https://xxx.xxx.xxx/xxx/user/userlist',
                     type: 'post',
                     data: {
                         nick_name: this.nick_name
@@ -182,7 +182,7 @@
 
             userInfo(id) {
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/user/userinfo',
+                    url: 'https://xxx.xxx.xxx/xxx/user/userinfo',
                     type: 'post',
                     data: {
                         id: id

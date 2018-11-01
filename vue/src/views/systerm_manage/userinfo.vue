@@ -150,7 +150,7 @@
             qingqiu() {
                 let id = this.$route.query.id;
                 $.ajax({
-                    url: "https://api.vvc.tw/suc/user/userinfo",
+                    url: "https://xxx.xxx.xxx/xxx/user/userinfo",
                     type: 'post',
                     data: {id},
                     success: res => {
@@ -169,7 +169,7 @@
             },
             del_ai() {
                 $.ajax({
-                    url: "https://api.vvc.tw/suc/user/delUserAiImage",
+                    url: "https://xxx.xxx.xxx/xxx/user/delUserAiImage",
                     type: 'post',
                     data: {
                         id: this.$route.query.id,

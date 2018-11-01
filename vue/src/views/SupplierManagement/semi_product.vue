@@ -135,7 +135,7 @@
             },
             halfList(){
                 $.ajax({
-                    url:'https://api.vvc.tw/suc/goods/halfList',
+                    url:'https://xxx.xxx.xxx/xxx/goods/halfList',
                     type:'post',
                 }).then(res=>{
                     console.log(res);
@@ -148,7 +148,7 @@
 
             delhalf(){
                 $.ajax({
-                    url:'https://api.vvc.tw/suc/goods/delhalf',
+                    url:'https://xxx.xxx.xxx/xxx/goods/delhalf',
                     type:'post',
                     data:{
                         id:this.id
@@ -160,7 +160,7 @@
             },
             updatehalf(item){
                 $.ajax({
-                    url:'https://api.vvc.tw/suc/goods/updatehalf',
+                    url:'https://xxx.xxx.xxx/xxx/goods/updatehalf',
                     type:'post',
                     data:item,
                 }).then(res=>{
@@ -170,11 +170,11 @@
                 })
             },
             createHalf(item){
-                this.axios.post('https://api.vvc.tw/suc/goods/updatehalf',item).then(res=>{
+                this.axios.post('https://xxx.xxx.xxx/xxx/goods/updatehalf',item).then(res=>{
                     console.log(res);
                 })
                 // $.ajax({
-                //     url:'https://api.vvc.tw/suc/goods/createHalf',
+                //     url:'https://xxx.xxx.xxx/xxx/goods/createHalf',
                 //     type:'post',
                 //     data:item,
                 // }).then(res=>{

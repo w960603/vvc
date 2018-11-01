@@ -72,7 +72,7 @@ Page({
                 if (!!res.code) {
                     //发起网络请求
                     wx.request({
-                        url: 'https://api.vvc.tw/dlxin/index/wxcode',
+                        url: 'https://xxx.xxx.xxx/index/wxcode',
                         method: "POST",
                         data: {
                             type: 2,
@@ -105,7 +105,7 @@ Page({
 
         if(/^1[3-9][0-9]{9}$/.test(this.data.phone)){
             app.request({
-                url: 'https://api.vvc.tw/dlxin/index/sendsmscode',
+                url: 'https://xxx.xxx.xxx/index/sendsmscode',
                 methods: 'POST',
                 data: {
                     phone: this.data.phone
@@ -125,7 +125,7 @@ Page({
     submitcode(){
         if (/^1[3-9][0-9]{9}$/.test(this.data.phone)&&this.data.code) {
             app.request({
-                url: 'https://api.vvc.tw/dlxin/index/sendsmscode',
+                url: 'https://xxx.xxx.xxx/index/sendsmscode',
                 methods: 'POST',
                 data: {
                     phone: this.data.phone
@@ -148,7 +148,7 @@ Page({
         this.data.infoList.code = this.data.code;
 
         app.request({
-            url: 'https://api.vvc.tw/dlxin/index/registerCode',
+            url: 'https://xxx.xxx.xxx/index/registerCode',
             method: 'post',
             data: this.data.infoList,
             success: (res) => {
@@ -237,7 +237,7 @@ Page({
                         success: (res) => {
                             console.log(res)
                             wx.request({
-                                url: 'https://api.vvc.tw/dlxin/index/wxcode',
+                                url: 'https://xxx.xxx.xxx/index/wxcode',
                                 method: 'POST',
                                 data: {
                                     type: 2,

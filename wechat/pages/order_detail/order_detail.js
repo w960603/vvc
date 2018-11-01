@@ -52,7 +52,7 @@ Page({
     qingqiu(){
         // console.log('我走啦');
         app.request({
-            url: "https://api.vvc.tw/dlxin/kdbird/getlogistic",
+            url: "https://xxx.xxx.xxx/kdbird/getlogistic",
             data: {
                 nu: this.data.len[this.data.idx].nu,
                 company: this.data.len[this.data.idx].company
@@ -121,7 +121,7 @@ Page({
       this.setData({ h: 'padding-top:' + app.globalData.statusBarHeight * 2 + "rpx" })
       this.setData({ fill: 'padding-top:' + parseInt(app.globalData.statusBarHeight * 2 + 88) + "rpx" })
       app.request({
-          url:'https://api.vvc.tw/dlxin/order/orderinfo',
+          url:'https://xxx.xxx.xxx/order/orderinfo',
           data:{
               id: this.data.id
           },

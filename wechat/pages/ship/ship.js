@@ -95,7 +95,7 @@ Page({
     },
     attached: function() {
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/getSubAddress',
+            url: 'https://xxx.xxx.xxx/user/getSubAddress',
             methos: 'post',
             success: (res) => {
 
@@ -365,7 +365,7 @@ Page({
         });
 
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/hairlog',
+            url: 'https://xxx.xxx.xxx/user/hairlog',
             method: 'POST',
             success: (res) => {
                 this.setData({
@@ -391,7 +391,7 @@ Page({
     request_record(data, callback) {
 
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/hair',
+            url: 'https://xxx.xxx.xxx/user/hair',
             data: data,
             success: (res) => {
                 if (res.data.code == 1) {

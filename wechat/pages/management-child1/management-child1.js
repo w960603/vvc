@@ -118,7 +118,7 @@ Page({
                             if(res.confirm){
                                 console.log('confirm')
                                 app.request({
-                                    url: 'https://api.vvc.tw/dlxin/user/codeUpgrade',
+                                    url: 'https://xxx.xxx.xxx/user/codeUpgrade',
                                     data: {
                                         id: this.data.infos.id,
                                         level: this.data.level
@@ -164,7 +164,7 @@ Page({
                 selected: true
             })
             app.request({
-                url: 'https://api.vvc.tw/dlxin/user/buyCode',
+                url: 'https://xxx.xxx.xxx/user/buyCode',
                 methods: 'POST',
                 data: {
                     reg_code: this.data.infos.joincode,

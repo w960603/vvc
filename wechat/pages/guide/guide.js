@@ -39,7 +39,7 @@ Component({
         getguide(callback) {
 
             app.request({
-                url: 'https://api.vvc.tw/dlxin/user/guide',
+                url: 'https://xxx.xxx.xxx/user/guide',
                 data: {
                     url: this.data.route
                 },

@@ -131,7 +131,7 @@
             },
 
             qingqiu(){
-                var url = "https://api.vvc.tw/suc/node/nodeList";
+                var url = "https://xxx.xxx.xxx/xxx/node/nodeList";
               this.axios.post(url).then((res)=>{
                   this.trees(res.data.data)
                   // console.log();

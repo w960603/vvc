@@ -73,7 +73,7 @@
             myclick() {
                 $.ajax({
                     type: "post",
-                    url: "https://api.vvc.tw/suc/goods/goodsDetail",
+                    url: "https://xxx.xxx.xxx/xxx/goods/goodsDetail",
                     success: (res) => {
                         this.couponList = res.data;
                     }
@@ -81,7 +81,7 @@
             },
             delBanner(img,index){
               $.ajax({
-                  url:'https://api.vvc.tw/suc/goods/delBanner',
+                  url:'https://xxx.xxx.xxx/xxx/goods/delBanner',
                   type:'post',
                   data:{
                       img:img
@@ -116,7 +116,7 @@
             },
             submitImg() {
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/goods/createBanner',
+                    url: 'https://xxx.xxx.xxx/xxx/goods/createBanner',
                     type: 'post',
                     data: {
                         goods_id: this.goods_id,
@@ -139,7 +139,7 @@
                 });
             },
             upload: function (option) {
-                var getUrl = option.getUrl ? option.getUrl : "https://api.vvc.tw/dlxin/index/getoss";
+                var getUrl = option.getUrl ? option.getUrl : "https://xxx.xxx.xxx/xxx/index/getoss";
                 var postUrl = option.postUrl ? option.postUrl : "https://cdn.vvc.tw";
                 var fileName = option.fileType ? option.fileType : 'vvc';
                 $.ajax({
@@ -179,7 +179,7 @@
             },
             getList() {
 
-                this.axios.post('https://api.vvc.tw/suc/goods/bannerList').then(res => {
+                this.axios.post('https://xxx.xxx.xxx/xxx/goods/bannerList').then(res => {
                     console.log(res);
                     if (res.data.code === 1) {
                         this.imgs = res.data.data

@@ -49,7 +49,7 @@ Page({
     },
     request() {
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/rechargelog',
+            url: 'https://xxx.xxx.xxx/user/rechargelog',
             data: {
                 id: this.data.infos.id
             },
@@ -142,7 +142,7 @@ Page({
                     money: this.data.money
                 }
                 app.request({
-                    url: 'https://api.vvc.tw/dlxin/user/recharge',
+                    url: 'https://xxx.xxx.xxx/user/recharge',
                     methods: 'POST',
                     data: datas,
                     success: (res) => {
@@ -179,7 +179,7 @@ Page({
 
     onReady: function() {
         wx.request({
-            url: 'https://api.vvc.tw/dlxin/index/getoss',
+            url: 'https://xxx.xxx.xxx/index/getoss',
             method: "GET",
             data: {
                 type: 3

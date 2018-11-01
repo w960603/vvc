@@ -55,7 +55,7 @@ Page({
   },
 qingqiu(){
     app.request({
-        url: "https://api.vvc.tw/dlxin/user/regCode",
+        url: "https://xxx.xxx.xxx/user/regCode",
         method: "get",
         success: (res) => {
             console.log(res);
@@ -74,7 +74,7 @@ qingqiu(){
 },
   kaika(){
       app.request({
-          url:'https://api.vvc.tw/dlxin/user/addCode',
+          url:'https://xxx.xxx.xxx/user/addCode',
           data:{
               reg_code:this.data.reg_code,
               note:this.data.note

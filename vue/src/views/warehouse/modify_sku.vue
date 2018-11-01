@@ -167,7 +167,7 @@
             myclick() {
                 $.ajax({
                     type: "post",
-                    url: "https://api.vvc.tw/suc/goods/goodsDetail",
+                    url: "https://xxx.xxx.xxx/xxx/goods/goodsDetail",
                     success: (res) => {
                         this.couponList = res.data;
                     }
@@ -178,7 +178,7 @@
             },
             post: function () {
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/goods/orderDetail/?id=' + this.items.goodid,
+                    url: 'https://xxx.xxx.xxx/xxx/goods/orderDetail/?id=' + this.items.goodid,
                     type: 'post',
                     data: {
                         data: JSON.stringify(this.items)
@@ -194,7 +194,7 @@
             },
             submitImg(url, arr) {
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/goods/' + url,
+                    url: 'https://xxx.xxx.xxx/xxx/goods/' + url,
                     type: 'post',
                     data: {
                         id: this.ids,
@@ -212,7 +212,7 @@
                 this.items.goodid = this.ids;
                 $.ajax({
                     type: "post",
-                    url: 'https://api.vvc.tw/suc/goods/getDetail/?id=' + this.ids,
+                    url: 'https://xxx.xxx.xxx/xxx/goods/getDetail/?id=' + this.ids,
                     success: (resp) => {
                         if (resp.code === 0) {
                             this.items.canshu = this.itemss.canshu;
@@ -224,7 +224,7 @@
                         }
                         $.ajax({
                             type: "post",
-                            url: "https://api.vvc.tw/suc/goods/good",
+                            url: "https://xxx.xxx.xxx/xxx/goods/good",
                             data: {
                                 id: this.ids,
                             },
@@ -271,7 +271,7 @@
                     });
             },
             upload(option) {
-                var getUrl = option.getUrl ? option.getUrl : "https://api.vvc.tw/dlxin/index/getoss";
+                var getUrl = option.getUrl ? option.getUrl : "https://xxx.xxx.xxx/xxx/index/getoss";
                 var postUrl = option.postUrl ? option.postUrl : "https://cdn.vvc.tw";
                 var fileName = option.fileType ? option.fileType : 'vvc';
                 $.ajax({

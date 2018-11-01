@@ -67,7 +67,7 @@ Page({
         })
 
         app.request({
-            url: 'https://api.vvc.tw/dlxin/order/orderSendList',
+            url: 'https://xxx.xxx.xxx/order/orderSendList',
             success: (res) => {
                 console.log(res)
                 if (res.data.code == 1) {
@@ -106,7 +106,7 @@ Page({
         })
         
         app.request({
-            url: 'https://api.vvc.tw/dlxin/order/logisticsList',
+            url: 'https://xxx.xxx.xxx/order/logisticsList',
             success: (res) => {
                 console.log(res)
                 if (res.data.code == 1) {

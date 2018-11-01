@@ -58,8 +58,8 @@
         },
         created(){
             //天猫已发货统计
-            var url = "https://api.vvc.tw/suc/tianmao/totalorder",
-                urls = "https://jd.vvc.tw/index/ordercount/showall";
+            var url = "https://xxx.xxx.xxx/xxx/tianmao/totalorder",
+                urls = "https://xxx.xxx.xxx/index/ordercount/showall";
             this.ajax_data(url);
             // console.log("天猫",this.tianmao_data);
             this.ajax_data(urls);
@@ -72,7 +72,7 @@
                     url: url,
                     success:(res)=> {
                         // console.log(res.data);
-                        if(url == "https://api.vvc.tw/suc/tianmao/totalorder"){
+                        if(url == "https://xxx.xxx.xxx/xxx/tianmao/totalorder"){
                             console.log(res);
                             for(var i in res.data){
                                 console.log(i);
@@ -88,7 +88,7 @@
                                 // this.tianmao_data.push(res.data[i].today,res.data[i].yesterday,res.data[i].month,res.data[i].last_month,res.data[i].two_month_ago);
                             }
                             // ,res.three_month_ago
-                        }else if(url == 'https://jd.vvc.tw/index/ordercount/showall'){
+                        }else if(url == 'https://xxx.xxx.xxx/index/ordercount/showall'){
                             console.log("jing",res);
                             this.jingdong_data.push(res.data.res_today,res.data.res_yesterday,res.data.month,res.data.res_thismonth,res.data.res_lastmonth);
                         }

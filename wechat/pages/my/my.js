@@ -103,7 +103,7 @@ Page({
         
 
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/userinfo',
+            url: 'https://xxx.xxx.xxx/user/userinfo',
             
             method: "POST",
             success: (res) => {
@@ -121,7 +121,7 @@ Page({
     },
     onShow:function(){
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/hairInfo',
+            url: 'https://xxx.xxx.xxx/user/hairInfo',
             method: 'POST',
             success: (res) => {
                 if (res.data.data && res.data.code == 1) {
@@ -153,7 +153,7 @@ Page({
                 },
             })
             app.request({
-                url: "https://api.vvc.tw/dlxin/index/logout",
+                url: "https://xxx.xxx.xxx/index/logout",
                 method: "POST",
                 success: (res) => {
                     if (res.data.code == 1) {

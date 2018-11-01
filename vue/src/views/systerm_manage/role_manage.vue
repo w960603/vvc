@@ -119,7 +119,7 @@
             qingqiu() {
                 $.ajax({
                     type: 'get',
-                    url: 'https://api.vvc.tw/suc/role/rolelist',
+                    url: 'https://xxx.xxx.xxx/xxx/role/rolelist',
                     success: (res) => {
                         console.log(res)
                         this.productList = res.data
@@ -155,7 +155,7 @@
             addSave(arr) {
                 if (arr) {
                     $.ajax({
-                        url: "https://api.vvc.tw/suc/role/roleupd",
+                        url: "https://xxx.xxx.xxx/xxx/role/roleupd",
                         type: 'post',
                         data: arr,
                         success: (res) => {

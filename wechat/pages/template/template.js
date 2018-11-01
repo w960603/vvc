@@ -33,7 +33,7 @@ Component({
     // 页面渲染完成
     attached: function() {
         app.request({
-            url: 'https://api.vvc.tw/dlxin/shop/goodsinfo',
+            url: 'https://xxx.xxx.xxx/shop/goodsinfo',
             method: "POST",
             data: {
                 goodsid: this.data.propWfrid
@@ -246,7 +246,7 @@ Component({
                 }
             }
             app.request({
-                url: "https://api.vvc.tw/dlxin/shop/goodsCartAdd",
+                url: "https://xxx.xxx.xxx/shop/goodsCartAdd",
                 data: data,
                 success: (res) => {
                     console.log(res);
@@ -282,7 +282,7 @@ Component({
 
             // JSON.stringify(this.data.array); 
             // app.request({
-            //     url:"https://api.vvc.tw/dlxin/shop/buy",
+            //     url:"https://xxx.xxx.xxx/shop/buy",
             //     method:"POST",
             //     data:{
             //         data: JSON.stringify(this.data.array)

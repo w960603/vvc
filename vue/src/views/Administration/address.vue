@@ -84,7 +84,7 @@
             request() {
 
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/user/userAddressCode',
+                    url: 'https://xxx.xxx.xxx/xxx/user/userAddressCode',
                     type: 'post',
                     success: (res) => {
                         console.log(res);
@@ -95,7 +95,7 @@
             agree(data, callback) {
 
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/user/addressCode',
+                    url: 'https://xxx.xxx.xxx/xxx/user/addressCode',
                     type: 'post',
                     data: data,
                     success: res => {

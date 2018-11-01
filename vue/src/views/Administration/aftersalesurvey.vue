@@ -44,7 +44,7 @@
             qingqiu(){
                 $.ajax({
                     type:'post',
-                    url:'https://api.vvc.tw/order/tmorder/tuihuo',
+                    url:'https://xxx.xxx.xxx/xxx/tmorder/tuihuo',
                     data:{
                         id:0
                     },

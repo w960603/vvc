@@ -158,7 +158,7 @@
             qignqiu() {
                 $.ajax({
                     type: 'get',
-                    url: 'https://jd.vvc.tw/dorder/sku/goodslist',
+                    url: 'https://xxx.xxx.xxx/dorder/sku/goodslist',
                     data:{
                         page:1,
                         values:""
@@ -201,7 +201,7 @@
                 this.isShow = true;
                 $.ajax({
                     type: 'post',
-                    url: 'http://jd.vvc.tw/dorder/sku/tonubuSku',
+                    url: 'http://xxx.xxx.xxx/dorder/sku/tonubuSku',
                     data: {
                         goodId: arr.wareId
                     },
@@ -244,8 +244,8 @@
                     // console.log( this.values, this.order_list[index].skuId);
                     $.ajax({
                         type:"post",
-                        // url:"https://jd.vvc.tw/index/index/renamesku",
-                        url:"http://jd.vvc.tw/dorder/sku/reNameSkuJd",
+                        // url:"https://xxx.xxx.xxx/index/index/renamesku",
+                        url:"http://xxx.xxx.xxx/dorder/sku/reNameSkuJd",
                         data:{
                             skuId:this.order_list[index].skuId,
                             outh_id:this.values,

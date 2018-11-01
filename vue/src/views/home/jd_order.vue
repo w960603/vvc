@@ -259,7 +259,7 @@
                         console.log(datas);
                         // $.ajax({
                         //     type:"post",
-                        //     url:"https://jd.vvc.tw/index/order/failureorder",
+                        //     url:"https://xxx.xxx.xxx/index/order/failureorder",
                         //     data:{
                         //         waybillCode:datas.requestID
                         //     },
@@ -312,7 +312,7 @@
                 this.isShow = true;
                 $.ajax({
                     type: 'post',
-                    url: 'https://jd.vvc.tw/index/index/getorder',
+                    url: 'https://xxx.xxx.xxx/index/index/getorder',
                     data: {
                         orderId: arr.orderId
                     },
@@ -384,7 +384,7 @@
             allorder(printers,express) {
                 $.ajax({
                     type:"post",
-                    url:"https://jd.vvc.tw/index/order/orderlist12",
+                    url:"https://xxx.xxx.xxx/index/order/orderlist12",
                     data:{
                         type:express
                     },
@@ -456,7 +456,7 @@
             one_order(printers,orderid){
                 $.ajax({
                     type:"post",
-                    url:"http://jd.vvc.tw/index/order/printone",
+                    url:"http://xxx.xxx.xxx/index/order/printone",
                     data:{
                         orderId:orderid
                     },

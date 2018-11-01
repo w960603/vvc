@@ -132,7 +132,7 @@
                 if (datas.hasOwnProperty('id')){
                     $.ajax({
                                 type:"post",
-                        url:"https://jd.vvc.tw/index/search/searchorder",
+                        url:"https://xxx.xxx.xxx/index/search/searchorder",
                         data:datas,
                         success:(resp)=>{
                             if (resp.code == 1){
@@ -145,7 +145,7 @@
                 }else if (datas.hasOwnProperty('type')) {
                         $.ajax({
                             type:"post",
-                            url:"https://jd.vvc.tw/index/search/searchorder",
+                            url:"https://xxx.xxx.xxx/index/search/searchorder",
                             data:datas,
                             success:(resp)=>{
                                 console.log(resp);

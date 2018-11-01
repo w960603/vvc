@@ -42,7 +42,7 @@ Page({
     this.setData({date1:time});
 
     app.request({
-        url: 'https://api.vvc.tw/dlxin/user/wallet',
+        url: 'https://xxx.xxx.xxx/user/wallet',
       method: "POST",
       success:(res)=>{
           console.log(res)

@@ -87,7 +87,7 @@
             request() {
 
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/order/delCodeList',
+                    url: 'https://xxx.xxx.xxx/xxx/order/delCodeList',
                     type: 'post',
                     success: res => {
                         console.log(res);
@@ -97,7 +97,7 @@
             },
             agree(data, callback) {
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/order/delCode',
+                    url: 'https://xxx.xxx.xxx/xxx/order/delCode',
                     type: 'post',
                     data: data,
                     success: res => {

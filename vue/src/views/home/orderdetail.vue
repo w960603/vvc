@@ -200,7 +200,7 @@
             //         }else if (datas.status == "success") {
             //             $.ajax({
             //                 type:"post",
-            //                 url:"https://jd.vvc.tw/index/order/failureorder",
+            //                 url:"https://xxx.xxx.xxx/index/order/failureorder",
             //                 data:{
             //                     waybillCode:datas.requestID
             //                 },
@@ -222,7 +222,7 @@
             qignqiu(){
                 $.ajax({
                     type: "post",
-                    url: 'http://jd.vvc.tw/index/printorder/showorders',
+                    url: 'http://xxx.xxx.xxx/index/printorder/showorders',
                     success: (res) => {
                         // console.log(33333,res);
                         // var datas = {};
@@ -245,7 +245,7 @@
                 this.isShow = true;
                 $.ajax({
                     type: 'post',
-                    url: 'https://jd.vvc.tw/index/index/getorder',
+                    url: 'https://xxx.xxx.xxx/index/index/getorder',
                     data: {
                         orderId: arr.orderId
                     },
@@ -335,7 +335,7 @@
                 var documentid = this.getUUID(8,5);
                 $.ajax({
                     type:"post",
-                    url:"https://jd.vvc.tw/index/xhs/printOrderlist",
+                    url:"https://xxx.xxx.xxx/index/xhs/printOrderlist",
                     success:(res)=>{
                         console.log("执行操作",res,res.data);
                         for (var i = 0;i<res.data.length;i++){
@@ -390,7 +390,7 @@
                 var documentid = this.getUUID(8,5);
                 $.ajax({
                     type:"post",
-                    url:"http://jd.vvc.tw/index/order/printone",
+                    url:"http://xxx.xxx.xxx/index/order/printone",
                     data:{
                         orderId:orderid
                     },

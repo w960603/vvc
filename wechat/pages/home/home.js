@@ -69,7 +69,7 @@ Page({
         //     })
         // } else {
         app.request({
-            url: 'https://api.vvc.tw/dlxin/shop/goodslist',
+            url: 'https://xxx.xxx.xxx/shop/goodslist',
             method: "POST",
             success: (res) => {
                 if (res.data.code == 1) {
@@ -137,7 +137,7 @@ Page({
         }, 2500)
 
         app.request({
-            url:'https://api.vvc.tw/dlxin/shop/bannerList',
+            url:'https://xxx.xxx.xxx/shop/bannerList',
             methods:'POST',
             success:res=>{
                 if(res.data.code===1&&res.data.data){

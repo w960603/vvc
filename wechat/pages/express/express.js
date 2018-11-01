@@ -89,7 +89,7 @@ Page({
             route: this.route
         })
         app.request({
-            url: 'https://api.vvc.tw/dlxin/order/orderSendinfo',
+            url: 'https://xxx.xxx.xxx/order/orderSendinfo',
             data: {
                 order_id: "20160429162352"
             },

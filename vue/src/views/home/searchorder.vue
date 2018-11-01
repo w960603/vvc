@@ -108,7 +108,7 @@
             searchorder() {
                 $.ajax({
                     type: 'post',
-                    url: 'https://api.vvc.tw/suc/order/ordersearch',
+                    url: 'https://xxx.xxx.xxx/xxx/order/ordersearch',
                     data: this.keywords,
                     success: (res) => {
                         console.log(res);

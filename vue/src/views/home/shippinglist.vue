@@ -116,7 +116,7 @@
             qingqiu(){
                 $.ajax({
                     type:'get',
-                    url:'http://api.vvc.tw/suc/order/getordersendlist',
+                    url:'http://xxx.xxx.xxx/xxx/order/getordersendlist',
                     success:(res)=>{
                         if (res.code===1){
                             console.log(res);
@@ -156,7 +156,7 @@
             num_click(good,color){
                 $.ajax({
                     type:'get',
-                    url:'http://api.vvc.tw/suc/order/getgoodssendlist',
+                    url:'http://xxx.xxx.xxx/xxx/order/getgoodssendlist',
                     data:{
                         good:good,
                         color:color,

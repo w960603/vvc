@@ -125,7 +125,7 @@
         },
         methods: {
             request() {
-                this.axios.post('https://api.vvc.tw/suc/index/guideList').then(res => {
+                this.axios.post('https://xxx.xxx.xxx/xxx/index/guideList').then(res => {
                     console.log(res);
                     if (res.data.code === 1) {
                         this.list = res.data.data.list
@@ -134,7 +134,7 @@
             },
             delguide(item, index) {
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/index/delGuide',
+                    url: 'https://xxx.xxx.xxx/xxx/index/delGuide',
                     type: 'post',
                     data: {
                         url: item.url
@@ -163,7 +163,7 @@
             },
             save() {
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/index/createGuide',
+                    url: 'https://xxx.xxx.xxx/xxx/index/createGuide',
                     type: 'post',
                     data: {
                         url: this.newList.url,
@@ -191,7 +191,7 @@
                 this.imgs.splice(index, 1)
             },
             upload: function (option) {
-                var getUrl = option.getUrl ? option.getUrl : "https://api.vvc.tw/dlxin/index/getoss";
+                var getUrl = option.getUrl ? option.getUrl : "https://xxx.xxx.xxx/xxx/index/getoss";
                 var postUrl = option.postUrl ? option.postUrl : "https://cdn.vvc.tw";
                 var fileName = option.fileType ? option.fileType : 'vvc';
                 $.ajax({

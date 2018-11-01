@@ -84,7 +84,7 @@
             qingqiu(){
                 $.ajax({
                     type:'get',
-                    url:'https://api.vvc.tw/suc/role/rolelist',
+                    url:'https://xxx.xxx.xxx/xxx/role/rolelist',
                     success:(res)=>{
                         console.log(res)
                         this.operationList = res.data

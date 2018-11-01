@@ -170,7 +170,7 @@
             request() {
 
                 $.ajax({
-                    url: 'http://api.vvc.tw/suc/pubc/log',
+                    url: 'http://xxx.xxx.xxx/xxx/pubc/log',
                     type: 'post',
                     data: {
                         type: 2
@@ -202,7 +202,7 @@
                 };
 
                     $.ajax({
-                        url: 'http://api.vvc.tw/suc/pubc/log',
+                        url: 'http://xxx.xxx.xxx/xxx/pubc/log',
                         type: 'post',
                         data: datas,
                         success: res => {

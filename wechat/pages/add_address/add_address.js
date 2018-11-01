@@ -143,7 +143,7 @@ var region1 = 'region[' + 0 + ']',
 
         // console.log(e)
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/getRelAddress',
+            url: 'https://xxx.xxx.xxx/user/getRelAddress',
             data: {
                 keywords: e.detail.value
             },
@@ -219,7 +219,7 @@ var datas = e.detail.value;
 
 
         app.request({
-            url:'https://api.vvc.tw/dlxin/user/getRelAddress',
+            url:'https://xxx.xxx.xxx/user/getRelAddress',
             data:{
                 keywords: datas
             },
@@ -266,7 +266,7 @@ var datas = e.detail.value;
         if (this.data.addnew) {
             console.log(22);
             app.request({
-                url: 'https://api.vvc.tw/dlxin/user/userCreateAdderss',
+                url: 'https://xxx.xxx.xxx/user/userCreateAdderss',
                 method: 'post',
                 data: {
                     address: this.data.detail_address,
@@ -310,7 +310,7 @@ var datas = e.detail.value;
             })
         }else{
             app.request({
-                url: 'https://api.vvc.tw/dlxin/user/userUpdateAddress',
+                url: 'https://xxx.xxx.xxx/user/userUpdateAddress',
                 method: 'POST',
                 data: {
                     address: this.data.detail_address,

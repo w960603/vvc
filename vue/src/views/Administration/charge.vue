@@ -100,7 +100,7 @@
         methods: {
             operation(row,status,index){
                 $.ajax({
-                    url:'https://api.vvc.tw/suc/user/rechargeStatus',
+                    url:'https://xxx.xxx.xxx/xxx/user/rechargeStatus',
                     type:'post',
                     data:{
                         id:row.id,
@@ -123,7 +123,7 @@
                     }
                 }
                 $.ajax({
-                    url:'https://api.vvc.tw/suc/user/rechargeList',
+                    url:'https://xxx.xxx.xxx/xxx/user/rechargeList',
                     type:'post',
                     data:data
                 }).then(res => {

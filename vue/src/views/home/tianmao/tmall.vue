@@ -64,7 +64,7 @@
             qingqiu() {
                 $.ajax({
                     type: 'get',
-                    url: 'https://api.vvc.tw/order/tmorder/goodslist',
+                    url: 'https://xxx.xxx.xxx/xxx/tmorder/goodslist',
                     success: (res) => {
                         console.log(res);
                         if (res.code) {

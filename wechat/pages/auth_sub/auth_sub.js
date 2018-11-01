@@ -39,7 +39,7 @@ Page({
     },
     save_auth(e) {
         wx.downloadFile({
-            url: "https://api.vvc.tw/dlxin/user/authImg?reg_code=" + this.data.info.reg_code,
+            url: "https://xxx.xxx.xxx/user/authImg?reg_code=" + this.data.info.reg_code,
             success: (res) => {
                 //图片保存到本地
                 wx.saveImageToPhotosAlbum({
@@ -78,7 +78,7 @@ Page({
     },
     orderMeeting(e) {
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/updateauthinfo',
+            url: 'https://xxx.xxx.xxx/user/updateauthinfo',
             method:'post',
             data: this.data.info,
             success:(res)=>{
@@ -110,7 +110,7 @@ Page({
             hidden:!this.data.hidden
         })
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/authImg',
+            url: 'https://xxx.xxx.xxx/user/authImg',
             method:'GET',
             data: {
                 reg_code: this.data.info.reg_code
@@ -146,7 +146,7 @@ Page({
 
 
         app.request({
-            url:'https://api.vvc.tw/dlxin/user/authinfo',
+            url:'https://xxx.xxx.xxx/user/authinfo',
             method:'post',
             success:(res)=>{
                 console.log(res)

@@ -27,7 +27,7 @@
       qingqiu() {
         $.ajax({
           type: 'post',
-          url: 'http://api.vvc.tw/order/tmorder/yue',
+          url: 'http://xxx.xxx.xxx/xxx/tmorder/yue',
           success: (res) => {
             var datas = res;
             console.log(datas);

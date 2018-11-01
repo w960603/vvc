@@ -60,7 +60,7 @@ Page({
                     success: (res) => {
                         console.log(res);
                         wx.request({
-                            url: 'https://api.vvc.tw/dlxin/index/login',
+                            url: 'https://xxx.xxx.xxx/index/login',
                             method: "POST",
                             data: {
                                 type: 3,
@@ -153,7 +153,7 @@ Page({
         
 
         wx.request({
-            url: 'https://api.vvc.tw/dlxin/index/getoss',
+            url: 'https://xxx.xxx.xxx/index/getoss',
             method: "GET",
             success: (res) => {
                 this.obj = res.data.data;

@@ -34,7 +34,7 @@ Page({
       console.log("2222",app.globalData.userinfo);
       this.setData({ images: app.globalData.userinfo.img_url})
       app.request({
-          url: "https://api.vvc.tw/dlxin/order/returnGoodsInfo",
+          url: "https://xxx.xxx.xxx/order/returnGoodsInfo",
           method: "POST",
           data: {
               id: options.id
@@ -119,7 +119,7 @@ chioce(e){
         
             }
             app.request({
-                url:"https://api.vvc.tw/dlxin/order/returnGoodsTrue",
+                url:"https://xxx.xxx.xxx/order/returnGoodsTrue",
                 method:"POST",
                 data:data,
                 success:(res)=>{

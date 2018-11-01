@@ -188,7 +188,7 @@ Page({
 
 
         app.request({
-          url: 'https://api.vvc.tw/dlxin/user/authSearch',
+          url: 'https://xxx.xxx.xxx/user/authSearch',
           method: 'post',
           data:data,
             success: (res) => {

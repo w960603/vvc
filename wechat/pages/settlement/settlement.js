@@ -77,7 +77,7 @@ Page({
 
         //请求结算订单
         app.request({
-            url: "https://api.vvc.tw/dlxin/shop/buy",
+            url: "https://xxx.xxx.xxx/shop/buy",
             method: "POST",
             data: {
                 data: options.data
@@ -124,7 +124,7 @@ Page({
         });
         //请求运费
         app.request({
-            url:"https://api.vvc.tw/suc/freight/getFreightMoney2",
+            url:"https://xxx.xxx.xxxsuc/freight/getFreightMoney2",
             method:"POST",
             success:(res)=>{
                 if(res.data.code==1){
@@ -173,7 +173,7 @@ Page({
         }
 
         app.request({
-            url: "https://api.vvc.tw/dlxin/order/onOrder",
+            url: "https://xxx.xxx.xxx/order/onOrder",
             mothod: "POST",
             data: {
                 form_token: this.data.form_token1,

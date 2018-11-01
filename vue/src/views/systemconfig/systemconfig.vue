@@ -50,7 +50,7 @@
         methods:{
             getStatus(status){
                 $.ajax({
-                    url:'https://api.vvc.tw/suc/system/'+status,
+                    url:'https://xxx.xxx.xxx/xxx/system/'+status,
                     type:'post',
                 }).then(res=>{
                     this[status]=res.data
@@ -59,7 +59,7 @@
             changeStatus(e,v){
                 console.log(e,v);
                 $.ajax({
-                    url:'https://api.vvc.tw/suc/system/'+e,
+                    url:'https://xxx.xxx.xxx/xxx/system/'+e,
                     type:'post',
                     data:{
                         type:v?1:2

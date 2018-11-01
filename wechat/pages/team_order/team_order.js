@@ -56,7 +56,7 @@ Page({
     // 搜索
     search(contents){
         app.request({
-            url: 'https://api.vvc.tw/dlxin/order/teamOrderList',
+            url: 'https://xxx.xxx.xxx/order/teamOrderList',
             method: 'POST',
             data:{content: contents},
             success: (res) => {
@@ -152,7 +152,7 @@ Page({
     getorder() {
 
         app.request({
-            url: 'https://api.vvc.tw/dlxin/order/teamOrderList',
+            url: 'https://xxx.xxx.xxx/order/teamOrderList',
             method: 'POST',
             // data:{
             //     status: attr

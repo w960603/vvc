@@ -25,7 +25,7 @@ Component({
     },
     attached:function(){
         app.request({
-          url: 'https://api.vvc.tw/dlxin/user/getSubAddress',
+          url: 'https://xxx.xxx.xxx/user/getSubAddress',
             methos: 'post',
             success: (res) => {
                 if(res.data.code==1){
@@ -65,7 +65,7 @@ Component({
             })
             // console.log(this.data.inputValue);
             app.request({
-              url:"https://api.vvc.tw/dlxin/user/getSubAddress",
+              url:"https://xxx.xxx.xxx/user/getSubAddress",
                 method:"POST",
                 data:{
                     name: this.data.inputValue,

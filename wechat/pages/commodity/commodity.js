@@ -45,7 +45,7 @@ Page({
 
         //内容
         app.request({
-          url: 'https://api.vvc.tw/dlxin/shop/goodslist',
+          url: 'https://xxx.xxx.xxx/shop/goodslist',
 
             method: "POST",
             success:  (res)=> {

@@ -29,7 +29,7 @@
         qingqiu(){
           $.ajax({
             type:'post',
-            url:'https://jd.vvc.tw/index/index/getkuaidi',
+            url:'https://xxx.xxx.xxx/index/index/getkuaidi',
             success:(res)=>{
 
               if (JSON.parse(res)) {

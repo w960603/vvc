@@ -199,7 +199,7 @@ Page({
             data.cate_two = e.currentTarget.dataset.catetwo;
         }
         app.request({
-            url: "https://api.vvc.tw/dlxin/shop/goodsCartIncDec",
+            url: "https://xxx.xxx.xxx/shop/goodsCartIncDec",
             method: "POST",
             data: data,
             success: (res) => {
@@ -255,7 +255,7 @@ Page({
         });
 
         app.request({
-            url: 'https://api.vvc.tw/dlxin/shop/CartList',
+            url: 'https://xxx.xxx.xxx/shop/CartList',
             method: "POST",
             success: (res) => {
                 if (res.data.code == 1) {

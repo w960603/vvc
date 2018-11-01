@@ -157,7 +157,7 @@
             },
             getList() {
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/admin/adminList',
+                    url: 'https://xxx.xxx.xxx/xxx/admin/adminList',
                     type: 'post',
                 }).then(res => {
                     if (res.code === 1)
@@ -179,7 +179,7 @@
             },
             operate() {
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/admin/delAdmin',
+                    url: 'https://xxx.xxx.xxx/xxx/admin/delAdmin',
                     type: 'post',
                     data: {
                         id: this.id
@@ -220,7 +220,7 @@
                     url = 'createAdmin'
                 }
                 $.ajax({
-                    url: 'https://api.vvc.tw/suc/admin/' + url,
+                    url: 'https://xxx.xxx.xxx/xxx/admin/' + url,
                     type: 'post',
                     data: this.newAdmin
                 }).then(res => {

@@ -102,7 +102,7 @@
                             $.ajax({
                                 type: "POST",
                                 dataType: "json",
-                                url: "http://api.vvc.tw/suc/pubc/sendsms",
+                                url: "http://xxx.xxx.xxx/xxx/pubc/sendsms",
                                 data: {
                                     mobile: number,
                                 },
@@ -142,7 +142,7 @@
                         alert("验证码不能为空@_@！")
                         return
                     }
-                    // window.location.href = 'http://jd.vvc.tw/store/dist/#/';
+                    // window.location.href = 'http://xxx.xxx.xxx/store/dist/#/';
                     //验证码登录
                     $.ajax({
                         type: "POST",

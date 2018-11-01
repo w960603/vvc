@@ -2,7 +2,7 @@
     <div class="container-fluid box" style="padding:20px">
         <div class="row">
             <div class="title h2 col-md-7 text-center">人脸注册</div>
-            <form action="http://api.vvc.tw/bil/ai.html" class="form col-md-12">
+            <form action="http://xxx.xxx.xxx/xxx/ai.html" class="form col-md-12">
 
                 <div class="form-group col-md-12">
                     <label class="col-md-1">手机号：</label>
@@ -54,7 +54,7 @@
         },
         methods: {
             upload: function (option) {
-                var getUrl = option.getUrl ? option.getUrl : "https://api.vvc.tw/dlxin/index/getoss";
+                var getUrl = option.getUrl ? option.getUrl : "https://xxx.xxx.xxx/xxx/index/getoss";
                 var postUrl = option.postUrl ? option.postUrl : "https://oss1.vvc.tw";
 
                 var fileName = option.fileType ? option.fileType : 'vvc';
@@ -101,7 +101,7 @@
                 var id = this.id;
                 var phone = this.phone;
                 $.ajax({
-                    url: 'https://api.vvc.tw/dlxin/Userloginshezhiedit/useredit',
+                    url: 'https://xxx.xxx.xxx/xxx/Userloginshezhiedit/useredit',
                     data: {id: id, phone: phone},
                     type: 'post',
                     dataType: "json",
@@ -114,7 +114,7 @@
                 var id = this.id;
                 var img = this.img;
                 $.ajax({
-                    url: 'https://api.vvc.tw/dlxin/Userloginshezhiedit/userai',
+                    url: 'https://xxx.xxx.xxx/xxx/Userloginshezhiedit/userai',
                     data: {id: id, image: img},
                     type: 'post',
                     dataType: "json",

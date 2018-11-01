@@ -23,7 +23,7 @@ Component({
     },
     attached: function() {
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/search',
+            url: 'https://xxx.xxx.xxx/user/search',
             methos: 'post',
             success: (res) => {
                 console.log(res)
@@ -71,7 +71,7 @@ Component({
                 });
 
                 app.request({
-                    url: "https://api.vvc.tw/dlxin/user/search",
+                    url: "https://xxx.xxx.xxx/user/search",
                     method: "POST",
                     data: {
                         nickname: this.data.inputValue,

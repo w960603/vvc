@@ -44,7 +44,7 @@ Page({
         })
 
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/hairInfo',
+            url: 'https://xxx.xxx.xxx/user/hairInfo',
             method:'POST',
 
             success:(res)=>{

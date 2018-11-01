@@ -216,7 +216,7 @@ Page({
 
 
         app.request({
-            url: 'https://api.vvc.tw/dlxin/user/qrcode',
+            url: 'https://xxx.xxx.xxx/user/qrcode',
             method: 'post',
             data: data,
             success: (res) => {

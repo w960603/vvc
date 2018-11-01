@@ -83,7 +83,7 @@
             }
         },
         created(){
-            var urls = "http://api.vvc.tw/suc/order/surplus";
+            var urls = "http://xxx.xxx.xxx/xxx/order/surplus";
             var data =  this.data_ajax(urls,0);
             console.log(data);
         },

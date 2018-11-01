@@ -72,7 +72,7 @@ App({
 
     getToken(){
         this.request({
-            url:'https://api.vvc.tw/dlxin/index/getAccessToken',
+            url:'https://xxx.xxx.xxx/index/getAccessToken',
             success:res=>{
                 console.log(res)
                     this.globalData.tok = res.data

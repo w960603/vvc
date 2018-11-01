@@ -21,7 +21,7 @@ Page({
                 if (!!res.code) {
                     //发起网络请求
                     wx.request({
-                        url: 'https://api.vvc.tw/dlxin/index/wxcode',
+                        url: 'https://xxx.xxx.xxx/index/wxcode',
                         method:"POST",
                         data: {
                             code: res.code
@@ -93,7 +93,7 @@ Page({
                             // wx.hideToast()
                             console.log(res,'blank')
                             wx.request({
-                                url: 'https://api.vvc.tw/dlxin/index/wxcode',
+                                url: 'https://xxx.xxx.xxx/index/wxcode',
                                 method: 'POST',
                                 data: {
                                     k: this.data.k,

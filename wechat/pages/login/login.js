@@ -15,7 +15,7 @@ Page({
         canIUse: wx.canIUse('cover-view'),
 
         video: {
-            "https://api.vvc.tw/video.mp4":'1'
+            "https://xxx.xxx.xxxvideo.mp4":'1'
         },
     },
 
@@ -125,7 +125,7 @@ Page({
         }
 
         wx.request({
-            url: 'https://api.vvc.tw/dlxin/index/loginVideo',
+            url: 'https://xxx.xxx.xxx/index/loginVideo',
             methods: 'POST',
             success: res => {
                 
